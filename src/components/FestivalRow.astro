@@ -1,0 +1,304 @@
+---
+const { festival } = Astro.props;
+
+const now = new Date();
+const start = new Date(festival.startDate);
+const end = new Date(festival.endDate);
+let status = "";
+if (now > end) {
+  status = "ENDED";
+} else if (now >= start) {
+  status = "LIVE";
+} else {
+  status = "UPCOMING";
+}
+
+const countdownTarget =
+  status === "ENDED" ? end.getTime() :
+  status === "LIVE"  ? end.getTime() :
+  start.getTime();
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+
+const formatDateShort = (d: Date) =>
+  d.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+
+const eventDateStr =
+  start.getFullYear() === end.getFullYear() && start.getMonth() === end.getMonth()
+    ? `${formatDateShort(start)} – ${end.toLocaleDateString("en-US", { day: "numeric" })}, ${start.getFullYear()}`
+    : `${formatDateShort(start)} – ${formatDate(end)}`;
+
+---
+
+<style>
+  .festival-entry {
+    padding: 20px 0 18px;
+  }
+
+  .festival-entry.has-image {
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    padding: 20px;
+    position: relative;
+    min-height: 180px;
+  }
+
+  .festival-entry.has-image::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 6px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.75) 100%);
+    pointer-events: none;
+  }
+
+  .festival-entry.has-image > * {
+    position: relative;
+  }
+
+  .festival-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 6px;
+  }
+
+
+  .festival-name {
+    font-size: 18px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .festival-name a {
+    color: #fff;
+    text-decoration: none;
+    text-shadow:
+      0 0 8px rgba(0,0,0,0.9),
+      0 1px 3px rgba(0,0,0,0.9),
+      0 2px 12px rgba(0,0,0,0.7);
+  }
+
+  .festival-name a:hover { text-decoration: underline; }
+
+  .ext-icon {
+    font-size: 11px;
+    color: #aaa;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  }
+
+  .countdown-wrap {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .countdown {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    text-shadow: 0 0 8px rgba(0,0,0,0.9), 0 1px 3px rgba(0,0,0,0.9);
+  }
+
+  .countdown-label {
+    font-size: 10px;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  }
+
+  .festival-meta {
+    font-size: 12px;
+    color: #ddd;
+    margin-bottom: 4px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  }
+
+  .festival-description {
+    font-size: 12px;
+    color: #bbb;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  }
+
+  .festival-dates {
+    font-size: 13px;
+    color: #eee;
+    margin-bottom: 4px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+  }
+
+  .festival-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .vibe-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+
+  .vibe-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    border: 1px solid #444;
+    color: #bbb;
+    background: rgba(0,0,0,0.35);
+  }
+
+  .ticket-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .ticket-link {
+    font-size: 11px;
+    padding: 2px 9px;
+    border-radius: 3px;
+    border: 1px solid #2d6aa0;
+    color: #7ec8e3;
+    background: #0d1f2d;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .ticket-link:hover {
+    background: #1e3a5f;
+    color: #b3e0f2;
+    text-decoration: none;
+  }
+
+  .status-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+  }
+
+  .status-UPCOMING {
+    background: #0d2a1a;
+    color: #4ade80;
+    border: 1px solid #166534;
+  }
+
+  .status-LIVE {
+    background: #1a0a0a;
+    color: #f87171;
+    border: 1px solid #7f1d1d;
+    animation: pulse 1.4s infinite;
+  }
+
+  .status-ENDED {
+    background: #1a1a1a;
+    color: #555;
+    border: 1px solid #333;
+  }
+
+  .free-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: #0d2a2a;
+    color: #34d399;
+    border: 1px solid #065f46;
+  }
+
+  .festival-entry.ended .festival-name a,
+  .festival-entry.ended .countdown { color: #444; }
+
+  .festival-entry.ended .festival-meta,
+  .festival-entry.ended .festival-dates { color: #3a3a3a; }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #2e2e2e;
+    margin: 5px 0;
+  }
+</style>
+
+<div
+  class={`festival-entry${status === "ENDED" ? " ended" : ""}${festival.image ? " has-image" : ""}`}
+  data-type={festival.type ?? ""}
+  data-vibes={(festival.vibes ?? []).join(",")}
+  data-country={festival.country ?? ""}
+  style={festival.image ? `background-image: url('${import.meta.env.BASE_URL}${festival.image}')` : ""}
+>
+  <div class="festival-header">
+    <div class="festival-name">
+      <a href={festival.website} target="_blank" rel="noopener">
+        {festival.name}
+      </a>
+      <span class="ext-icon">↗</span>
+    </div>
+
+    <div class="countdown-wrap">
+      <div class="countdown" data-date={countdownTarget}>
+        {status === "ENDED" ? "—" : "Loading..."}
+      </div>
+      <div class="countdown-label">
+        {status === "ENDED" ? "ended" : status === "LIVE" ? "ends in" : "starts in"}
+      </div>
+    </div>
+  </div>
+
+  <div class="festival-description">{festival.description}</div>
+
+  <div class="festival-dates">{eventDateStr}</div>
+
+  <div class="festival-meta">{festival.city}, {festival.country}</div>
+
+  <div class="ticket-links">
+    {festival.tickets?.filter((t: { name: string; url: string }) => t.name).length > 0 ? (
+      festival.tickets.filter((t: { name: string; url: string }) => t.name).map((t: { name: string; url: string }) => (
+        <a class="ticket-link" href={t.url} target="_blank" rel="noopener">
+          {t.name}
+        </a>
+      ))
+    ) : (
+      <span class="free-badge">Free</span>
+    )}
+  </div>
+
+  <div class="festival-footer">
+    <span class={`status-badge status-${status}`}>{status}</span>
+    {festival.vibes?.filter((v: string) => v).length > 0 && (
+      <div class="vibe-tags">
+        {festival.vibes.filter((v: string) => v).map((g: string) => (
+          <span class="vibe-tag">{g}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</div>
+
+<hr class="divider" />

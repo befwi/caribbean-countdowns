@@ -1,0 +1,253 @@
+[
+  {
+    "name": "UrbanShow",
+    "website": "https://urbanshow.fr",
+    "description": "World's largest electronic music festival.",
+    "startDate": "2026-04-26",
+    "endDate": "2026-04-27",
+    "city": "Le François",
+    "country": "Martinique",
+    "type": "music festival",
+    "vibes": ["rap", "dancehall", "shatta"],
+    "image": "/images/urbanshow.jpg",
+    "tickets": [
+      { "name": "Bizouk", "url": "https://bizouk.com" }
+    ]
+  },
+  {
+    "name": "BacchaFestival",
+    "website": "https://bacchafestival.com/",
+    "description": "Caribbean Music Festival since 2014.",
+    "startDate": "2026-08-08",
+    "endDate": "2026-08-10",
+    "city": "Le Vauclin",
+    "country": "Martinique",
+    "type": "music festival",
+    "vibes": ["rap", "dancehall", "shatta"],
+    "image": "/images/bacchafestival.jpg",
+    "tickets": [
+      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/baccha-festival-2026/105195" }
+    ]
+  },
+  {
+    "name": "ADI Music Festival",
+    "website": "https://adimusicfestival.com/",
+    "description": "Afro Electro Caribbean Festival.",
+    "startDate": "2026-07-18",
+    "endDate": "2026-07-19",
+    "city": "Le Moule",
+    "country": "Guadeloupe",
+    "type": "music festival",
+    "vibes": ["rap", "dancehall", "shatta"],
+    "image": "/images/adi-music-festival.jpg",
+    "tickets": [
+      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/adi-music-festival-2026/109412" },
+      { "name": "Kiwol", "url": "https://www.kiwol.com/billetterie/13378#ticket" }
+    ]
+  },
+  {
+    "name": "Festival Kolors Dayz",
+    "website": "https://www.instagram.com/younityfest/",
+    "description": "Where laughter meets the beguiling rhythms of Zouk and Kompa.",
+    "startDate": "2026-07-18",
+    "endDate": "2026-07-19",
+    "city": "Le Gosier",
+    "country": "Guadeloupe",
+    "type": "music festival",
+    "vibes": ["zouk", "kompa"],
+    "image": "/images/festivalkolorsdayz.jpg",
+    "tickets": [
+      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/festival-kolors-dayz/116300" },
+      { "name": "Kiwol", "url": "https://www.kiwol.com/billetterie/13372#ticket" }
+    ]
+  },
+  {
+    "name": "Saint Lucia Jazz and Arts Festival",
+    "website": "https://www.saintluciajazzandartsfestival.com/",
+    "description": "Art, music, and cultural performances across Saint Lucia.",
+    "startDate": "2026-04-30",
+    "endDate": "2026-05-10",
+    "city": "",
+    "country": "Saint-Lucia",
+    "type": "music festival",
+    "vibes": ["jazz"],
+    "image": "/images/slujazz.jpg",
+    "tickets": [
+      { "name": "4 Circles Tickets", "url": "https://slujazz.4circlestickets.com/" }
+    ]
+  },
+  {
+    "name": "Lucian Carnival",
+    "website": "carnivalsaintlucia.com",
+    "description": "The festival spans most of July, the peak travel window is the grand finale.",
+    "startDate": "2026-07-01",
+    "endDate": "2026-07-22",
+    "city": "",
+    "country": "Saint-Lucia",
+    "type": "music festival",
+    "vibes": ["calypso", "steelpan", "soca"],
+    "image": "/images/carnivalsaintlucia.jpg",
+    "tickets": [
+      { "name": "4 Circles Tickets", "url": "https://slucarnival.4circlestickets.com/" }
+    ]
+  },
+  {
+    "name": "Terre de Blues Festival",
+    "website": "https://www.terredeblues.com/",
+    "description": "Caribbean music fest with reggae, zouk and more on stunning beaches.",
+    "startDate": "2026-05-22",
+    "endDate": "2026-05-25",
+    "city": "",
+    "country": "Marie-Galante",
+    "type": "music festival",
+    "vibes": ["blues", "soul", "jazz"],
+    "image": "/images/terredeblues-mg.jpg",
+    "tickets": [
+      { "name": "Tickets", "url": "https://www.terredeblues.com/products/list/vq8qo4i4jpymmt" }
+    ]
+  },
+  {
+    "name": "Boomjam reggae one day",
+    "website": "https://www.instagram.com/boomjamdays/",
+    "description": "The festival 100% reggea.",
+    "startDate": "2026-08-15",
+    "endDate": "2026-08-15",
+    "city": "Matoury",
+    "country": "French-Guyana",
+    "type": "music festival",
+    "vibes": ["reggae"],
+    "image": "/images/boomjam-reggea.jpg",
+    "tickets": [
+      { "name": "Sabouj", "url": "https://sabouj.fr/evenements/boomjam-reggea-one-day" }
+    ]
+  },
+  {
+    "name": "Karukera One Love",
+    "website": "https://karukeraonelove.com",
+    "description": "The festival that connect all the Caribbean islands.",
+    "startDate": "2026-07-04",
+    "endDate": "2026-07-05",
+    "city": "Capesterre Belle-Eau",
+    "country": "Guadeloupe",
+    "type": "music festival",
+    "vibes": ["reggae", "dancehall"],
+    "image": "/images/karukeraonelove-gp.jpg",
+    "tickets": [
+      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/karukera-one-love-guadeloupe-2026/116315" }
+    ]
+  },
+  {
+    "name": "World Creole Music Festival",
+    "website": "https://dominicafestivals.com/wcmf-home/",
+    "description": "Celebrating Creole music and culture through three nights of live performances.",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-24",
+    "city": "",
+    "country": "Dominica",
+    "type": "music festival",
+    "vibes": ["bouyon", "zouk", "reggae", "dancehall", "soca"],
+    "image": "/images/wcmf.png",
+    "tickets": [
+      { "name": "4 Circles Tickets", "url": "https://wcmf.4circlestickets.com/events" }
+    ]
+  },
+  {
+    "name": "Reggae Therapy Festival",
+    "website": "https://www.thereggaetherapyfestival.com/",
+    "description": "100% Reggae Festival.",
+    "startDate": "2026-07-11",
+    "endDate": "2026-10-12",
+    "city": "Fort-de-France",
+    "country": "Martinique",
+    "type": "music festival",
+    "vibes": ["reggae"],
+    "image": "/images/reggaetherapy.png",
+    "tickets": [
+      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/reggae-therapy-festival-2026/112483" }
+    ]
+  },
+  {
+    "name": "La pirate race",
+    "website": "https://lapiraterace.com/",
+    "description": "Treasure hunt with obstacle-course and seaside challenges.",
+    "startDate": "2026-05-01",
+    "endDate": "2026-05-01",
+    "city": "",
+    "country": "Martinique",
+    "type": "other",
+    "vibes": [""],
+    "image": "/images/piraterace.png",
+    "tickets": [
+      { "name": "Website", "url": "https://lapiraterace.com/" }
+    ]
+  },
+  {
+    "name": "St. Maarten Heineken Regatta",
+    "website": "https://www.heinekenregatta.com/",
+    "description": "100% Reggae Festival.",
+    "startDate": "2026-03-05",
+    "endDate": "2026-03-08",
+    "city": "Port de Plaisance",
+    "country": "Sint-Maarten",
+    "type": "regatta",
+    "vibes": [""],
+    "image": "/images/heinekenregatta.jpg",
+    "tickets": []
+  },
+  {
+    "name": "West Indies Regatta Festival",
+    "website": "https://westindiesregatta.com/",
+    "description": "Showcase traditional Caribbean boats built entirely of wood and handcrafted on the beaches of Carriacou and Petite Martinique.",
+    "startDate": "2026-04-24",
+    "endDate": "2026-04-26",
+    "city": "Gustavia",
+    "country": "Saint-Barthélemy",
+    "type": "regatta",
+    "vibes": [""],
+    "image": "/images/westindiesregatta.jpg",
+    "tickets": []
+  },
+  {
+    "name": "Barbados Jazz Excursion & Golf Weekend",
+    "website": "https://barbadosjazzexcursion.com/",
+    "description": "Unforgettable Caribbean getaway filled with music and golf.",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-13",
+    "city": "Bridgetown",
+    "country": "Barbados",
+    "type": "music festival",
+    "vibes": ["jazz"],
+    "image": "/images/barbadosjazzexcursion.jpg",
+    "tickets": [
+      { "name": "Website", "url": "https://barbadosjazzexcursion.com/packages/"}
+    ]
+  },
+  {
+    "name": "Creole Jazz Festival",
+    "website": " https://www.creolebeach.com/en/la-creole-jazz-club",
+    "description": "Vibrant musical stage, where jazz blends with Creole rhythms to offer a truly unique sound experience.",
+    "startDate": "2026-07-20",
+    "endDate": "2026-08-16",
+    "city": "Le Gosier",
+    "country": "Guadeloupe",
+    "type": "music festival",
+    "vibes": ["jazz"],
+    "image": "/images/creolejazzfestival.jpg",
+    "tickets": [
+      { "name": "Billetweb", "url": "https://www.billetweb.fr/shop.php?event=co-plateau-duo-smooth-jazz-trio-cariboheme&multi=24525&color=d53b62&color=d53b62&from_multi=1"}
+    ]
+  },
+  {
+    "name": "Tour des yoles",
+    "website": "https://tourdesyoles.com/",
+    "description": "Regatta where tradition meets modernity and the next generation.",
+    "startDate": "2026-07-26",
+    "endDate": "2026-08-02",
+    "city": "",
+    "country": "Martinique",
+    "type": "regatta",
+    "vibes": [""],
+    "image": "/images/tourdesyoles.jpg",
+    "tickets": []
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Fever Fest",
+    "website": "https://feverfest.fr.",
+    "description": "An unforgettable week full of jazz music.",
+    "startDate": "2024-06-29",
+    "endDate": "2024-06-30",
+    "city": "Sinnamary",
+    "country": "French-Guyana",
+    "type": "music festival",
+    "vibes": ["dancehall"],
+    "image": "/images/feverfest.jpg",
+    "tickets": [
+      { "name": "Feverfest.fr", "url": "https://feverfest.fr" }
+    ]
+  },
+  {
+    "name": "Wyhchella",
+    "website": "https://www.instagram.com/wyhcella/",
+    "description": "First and vibrant guianese festival.",
+    "startDate": "2024-07-27",
+    "endDate": "2024-07-28",
+    "city": "Matoury",
+    "country": "French-Guyana",
+    "type": "music festival",
+    "vibes": ["dancehall", "zouk", "zouk"],
+    "image": "/images/wyhcella.jpg",
+    "tickets": [
+      { "name": "Feverfest.fr", "url": "https://feverfest.fr" }
+    ]
+  }
+]

@@ -1,0 +1,48 @@
+[
+  {
+    "name": "YOUNITY FESTIVAL",
+    "website": "https://www.instagram.com/younityfest/",
+    "description": "100% Zouk Festival.",
+    "startDate": "2025-07-26",
+    "endDate": "2025-07-27",
+    "city": "Abymes",
+    "country": "Guadeloupe",
+    "type": "music festival",
+    "vibes": ["zouk"],
+    "image": "/images/younityfest.jpg",
+    "tickets": [
+      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/younity-festival/96712" },
+      { "name": "Kiwol", "url": "https://www.kiwol.com/billetterie/12411#ticket" }
+    ]
+  },
+  {
+    "name": "Kayenn Jazz Festival",
+    "website": "www.instagram.com/kayennjazzfestival/",
+    "description": "An unforgettable week full of jazz music.",
+    "startDate": "2025-10-08",
+    "endDate": "2025-10-19",
+    "city": "Cayenne",
+    "country": "French-Guyana",
+    "type": "music festival",
+    "vibes": ["jazz", "roots", "reggea"],
+    "image": "/images/kayennjazzfestival.jpg",
+    "tickets": [
+      { "name": "Sabouj", "url": "https://sabouj.fr/evenements/kayenn-jazz-festival-2025-or-roots-jazz-reggae" }
+    ]
+  },
+  {
+    "name": "Creole Jazz Festival",
+    "website": " https://www.creolebeach.com/en/la-creole-jazz-club",
+    "description": "Vibrant musical stage, where jazz blends with Creole rhythms to offer a truly unique sound experience.",
+    "startDate": "2025-07-21",
+    "endDate": "2025-08-17",
+    "city": "Le Gosier",
+    "country": "Guadeloupe",
+    "type": "music festival",
+    "vibes": ["jazz"],
+    "image": "/images/creolejazzfestival.jpg",
+    "tickets": [
+      { "name": "Billetweb", "url": "https://www.creolebeach.com/en/la-creole-jazz-club#ventes" }
+    ]
+  }
+]

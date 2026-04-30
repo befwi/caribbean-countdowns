@@ -1,0 +1,309 @@
+---
+// import festivals2025 from "../data/festivals-2025.json";
+import festivals2026 from "../data/festivals-2026.json";
+import festivals2027 from "../data/festivals-2027.json";
+
+// const festivals = [...festivals2025, ...festivals2026];
+const festivals = [...festivals2026, ...festivals2027];
+import FestivalRow from "../components/FestivalRow.astro";
+
+const now = new Date();
+
+function getStatus(f) {
+  const start = new Date(f.startDate);
+  const end = new Date(f.endDate);
+  if (now > end) return "ENDED";
+  if (now >= start) return "LIVE";
+  return "UPCOMING";
+}
+
+const enriched = festivals
+  .map(f => ({ ...f, status: getStatus(f) }))
+  .sort((a, b) => {
+    if (a.status === "ENDED" && b.status !== "ENDED") return 1;
+    if (a.status !== "ENDED" && b.status === "ENDED") return -1;
+    return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
+  });
+
+const eventTypes = ["All", "music festival", "regatta", "other"];
+const vibes = ["All", ...Array.from(new Set(festivals.flatMap(f => f.vibes ?? []).filter(v => v)))];
+const countries = ["All", ...Array.from(new Set(festivals.map(f => f.country).filter(Boolean)))];
+
+const lastUpdate = new Date().toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
+const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.indexOf(v) === i);
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caribbean Countdowns</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* Header */
+    .site-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .site-subtitle {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 32px;
+    }
+
+    /* Filters */
+    .filter-group {
+      margin-bottom: 10px;
+    }
+
+    .filter-group:last-of-type {
+      margin-bottom: 28px;
+    }
+
+    .filter-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #444;
+      margin-bottom: 6px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-tag {
+      cursor: pointer;
+      padding: 4px 12px;
+      border-radius: 3px;
+      border: 1px solid #333;
+      background: transparent;
+      color: #999;
+      font-size: 12px;
+      font-family: inherit;
+      transition: all 0.15s;
+      user-select: none;
+    }
+
+    .filter-tag:hover { border-color: #555; color: #ccc; }
+
+    .filter-tag.active {
+      background: #1e3a5f;
+      border-color: #2d6aa0;
+      color: #7ec8e3;
+    }
+
+    /* Live banner */
+    .live-banner {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #1a0a0a;
+      border: 1px solid #3a1010;
+      border-radius: 4px;
+      padding: 10px 16px;
+      margin-bottom: 32px;
+      font-size: 13px;
+      color: #f87171;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ef4444;
+      animation: pulse 1.4s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Divider */
+    .divider { border: none; border-top: 1px solid #2e2e2e; margin: 0; }
+
+    /* Info bar */
+    .info-bar {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 0;
+      flex-direction: column;
+    }
+
+    .info-bar a { color: #555; text-decoration: underline; }
+    .info-bar a:hover { color: #999; }
+
+    .ical-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+
+    .ical-link {
+      font-size: 11px;
+      padding: 1px 8px;
+      border-radius: 3px;
+      border: 1px solid #333;
+      color: #666;
+      text-decoration: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .ical-link:hover { border-color: #555; color: #999; text-decoration: none; }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <h1 class="site-title">Caribbean Countdowns</h1>
+    <p class="site-subtitle">Countdowns to music festival and events located in the Caribbean.</p>
+
+    <div class="info-bar">
+      <span>To add/update a festival, <a href="https://github.com/befwi/caribfest-deadlines/pulls" target="_blank" rel="noopener">send in a pull request</a>.</span>
+      <span>Last update: {lastUpdate}</span>
+      <span>
+        Download as iCal:
+        <span class="ical-links">
+          <a class="ical-link" href="/ical/all.ics">All</a>
+          {icalCountries.map(c => (
+            <a class="ical-link" href={`/ical/${c.toLowerCase().replace(/\s+/g, '-')}.ics`}>{c}</a>
+          ))}
+        </span>
+      </span>
+    </div>
+
+    <!-- Live banner -->
+    {enriched.filter(f => f.status === "LIVE").length > 0 && (
+      <div class="live-banner">
+        <span class="live-dot"></span>
+        <span>
+          {enriched.filter(f => f.status === "LIVE").map(f => f.name).join(", ")}
+          {enriched.filter(f => f.status === "LIVE").length === 1 ? " is" : " are"} happening now.
+        </span>
+      </div>
+    )}
+
+    <!-- Filters -->
+    <div class="filter-group">
+      <div class="filters">
+        {eventTypes.map(t => (
+          <button class={`filter-tag${t === "All" ? " active" : ""}`} data-filter-type="type" data-value={t}>
+            {t === "All" ? "All types" : t}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filters">
+        {vibes.map(g => (
+          <button class={`filter-tag${g === "All" ? " active" : ""}`} data-filter-type="vibe" data-value={g}>
+            {g === "All" ? "All vibes" : g}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <div class="filters">
+        {countries.map(c => (
+          <button class={`filter-tag${c === "All" ? " active" : ""}`} data-filter-type="country" data-value={c}>
+            {c === "All" ? "All countries" : c}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Festival list -->
+    {enriched.map(festival => (
+      <FestivalRow festival={festival} />
+    ))}
+
+  </div>
+
+  <script is:inline>
+    function format(ms) {
+      if (ms <= 0) return "\u2014";
+      var s = Math.floor(ms / 1000);
+      var d = Math.floor(s / 86400);
+      var h = Math.floor((s % 86400) / 3600);
+      var m = Math.floor((s % 3600) / 60);
+      var sec = s % 60;
+      return d + "d " + h + "h " + m + "m " + sec + "s";
+    }
+
+    function updateCountdowns() {
+      document.querySelectorAll(".countdown[data-date]").forEach(function(el) {
+        var target = Number(el.getAttribute("data-date"));
+        if (!target) return;
+        var diff = target - Date.now();
+        el.textContent = format(diff);
+      });
+    }
+
+    updateCountdowns();
+    setInterval(updateCountdowns, 1000);
+
+    var activeType = "All";
+    var activeVibe = "All";
+    var activeCountry = "All";
+
+    function applyFilters() {
+      document.querySelectorAll(".festival-entry").forEach(function(row) {
+        var rowType = row.getAttribute("data-type") || "";
+        var rowVibes = (row.getAttribute("data-vibes") || "").split(",");
+        var rowCountry = row.getAttribute("data-country") || "";
+        var matchType = activeType === "All" || rowType === activeType;
+        var matchVibe = activeVibe === "All" || rowVibes.indexOf(activeVibe) !== -1;
+        var matchCountry = activeCountry === "All" || rowCountry === activeCountry;
+        var show = matchType && matchVibe && matchCountry;
+        row.style.display = show ? "" : "none";
+        var next = row.nextElementSibling;
+        if (next && next.classList.contains("divider")) {
+          next.style.display = show ? "" : "none";
+        }
+      });
+    }
+
+    document.querySelectorAll(".filter-tag").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var type = btn.getAttribute("data-filter-type");
+        var value = btn.getAttribute("data-value");
+        document.querySelectorAll(".filter-tag[data-filter-type='" + type + "']").forEach(function(b) {
+          b.classList.remove("active");
+        });
+        btn.classList.add("active");
+        if (type === "type") activeType = value;
+        if (type === "vibe") activeVibe = value;
+        if (type === "country") activeCountry = value;
+        applyFilters();
+      });
+    });
+  </script>
+</body>
+</html>
