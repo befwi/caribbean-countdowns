@@ -1,8 +1,10 @@
 import { defineConfig } from 'astro/config';
-import preact from '@astrojs/renderer-preact';
+import * as preactMod from '@astrojs/renderer-preact';
+
+const preact = preactMod.default ?? preactMod.preact ?? preactMod;
 
 export default defineConfig({
   site: 'https://befwi.github.io',
   base: '/caribbean-countdowns',
-  integrations: [preact()],
+  integrations: [typeof preact === 'function' ? preact() : preact],
 });

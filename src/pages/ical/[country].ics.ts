@@ -1,5 +1,6 @@
 import type { APIRoute, GetStaticPaths } from "astro";
-import festivals from "../../data/festivals.json";
+import festivals2026 from "../data/festivals-2026.json";
+import festivals2027 from "../data/festivals-2027.json";
 
 function toIcalDate(dateStr: string) {
   return dateStr.replace(/-/g, "");
