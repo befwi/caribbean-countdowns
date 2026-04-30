@@ -255,7 +255,7 @@ const eventDateStr =
 >
   <div class="festival-header">
     <div class="festival-name">
-      <a href={festival.website} target="_blank" rel="noopener">
+      <a href={festival.website} target="_blank" rel="noopener noreferrer">
         {festival.name}
       </a>
       <span class="ext-icon">↗</span>
@@ -266,7 +266,10 @@ const eventDateStr =
         {status === "ENDED" ? "—" : "Loading..."}
       </div>
       <div class="countdown-label">
-        {status === "ENDED" ? "ended" : status === "LIVE" ? "ends in" : "starts in"}
+        <span class="t-en">{status === "ENDED" ? "ended" : status === "LIVE" ? "ends in" : "starts in"}</span>
+        <span class="t-fr">{status === "ENDED" ? "terminé" : status === "LIVE" ? "se termine dans" : "commence dans"}</span>
+        <span class="t-kr">{status === "ENDED" ? "fini" : status === "LIVE" ? "ka fini adan" : "ka koumansé adan"}</span>
+        <span class="t-es">{status === "ENDED" ? "terminado" : status === "LIVE" ? "termina en" : "empieza en"}</span>
       </div>
     </div>
   </div>
@@ -275,22 +278,32 @@ const eventDateStr =
 
   <div class="festival-dates">{eventDateStr}</div>
 
-  <div class="festival-meta">{festival.city}, {festival.country}</div>
+  <div class="festival-meta">{festival.city ? `${festival.city}, ${festival.country}` : festival.country}</div>
 
   <div class="ticket-links">
     {festival.tickets?.filter((t: { name: string; url: string }) => t.name).length > 0 ? (
       festival.tickets.filter((t: { name: string; url: string }) => t.name).map((t: { name: string; url: string }) => (
-        <a class="ticket-link" href={t.url} target="_blank" rel="noopener">
+        <a class="ticket-link" href={t.url} target="_blank" rel="noopener noreferrer">
           {t.name}
         </a>
       ))
     ) : (
-      <span class="free-badge">Free</span>
+      <span class="free-badge">
+        <span class="t-en">Free</span>
+        <span class="t-fr">Gratuit</span>
+        <span class="t-kr">Gratis</span>
+        <span class="t-es">Gratis</span>
+      </span>
     )}
   </div>
 
   <div class="festival-footer">
-    <span class={`status-badge status-${status}`}>{status}</span>
+    <span class={`status-badge status-${status}`}>
+      <span class="t-en">{status}</span>
+      <span class="t-fr">{status === "UPCOMING" ? "À VENIR" : status === "LIVE" ? "EN COURS" : "TERMINÉ"}</span>
+      <span class="t-kr">{status === "UPCOMING" ? "TALÈ" : status === "LIVE" ? "AN KOU" : "FINI"}</span>
+      <span class="t-es">{status === "UPCOMING" ? "PRÓXIMO" : status === "LIVE" ? "EN VIVO" : "TERMINADO"}</span>
+    </span>
     {festival.vibes?.filter((v: string) => v).length > 0 && (
       <div class="vibe-tags">
         {festival.vibes.filter((v: string) => v).map((g: string) => (

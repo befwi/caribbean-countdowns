@@ -26,17 +26,28 @@ const enriched = festivals
   });
 
 const eventTypes = ["All", "music festival", "regatta", "other"];
+const eventTypeLabels: Record<string, Record<string, string>> = {
+  "All":           { en: "All types",          fr: "Tous les types",      kr: "Tout kalité",        es: "Todos los tipos" },
+  "music festival":{ en: "music festival",      fr: "festival de musique", kr: "mizik fèstival",     es: "festival de música" },
+  "regatta":       { en: "regatta",             fr: "régate",              kr: "kous bato",             es: "regata" },
+  "other":         { en: "other",               fr: "autre",               kr: "le restan",                es: "otro" },
+};
+
 const vibes = ["All", ...Array.from(new Set(festivals.flatMap(f => f.vibes ?? []).filter(v => v)))];
 const countries = ["All", ...Array.from(new Set(festivals.map(f => f.country).filter(Boolean)))];
 
-const lastUpdate = new Date().toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
-const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.indexOf(v) === i);
+const lastUpdateEn = new Date().toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
+const lastUpdateFr = new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+const lastUpdateEs = new Date().toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
+
+const liveFestivals = enriched.filter(f => f.status === "LIVE");
 ---
 
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
   <title>Caribbean Countdowns</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -55,13 +66,18 @@ const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.i
 
     .page { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
 
-    /* Header */
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
     .site-title {
       font-size: 22px;
       font-weight: 700;
       letter-spacing: -0.3px;
       color: #fff;
-      margin-bottom: 6px;
     }
 
     .site-subtitle {
@@ -70,28 +86,40 @@ const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.i
       margin-bottom: 32px;
     }
 
-    /* Filters */
-    .filter-group {
-      margin-bottom: 10px;
-    }
-
-    .filter-group:last-of-type {
-      margin-bottom: 28px;
-    }
-
-    .filter-label {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #444;
-      margin-bottom: 6px;
-    }
-
-    .filters {
+    /* Language buttons */
+    .lang-group {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      gap: 4px;
+      flex-shrink: 0;
     }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #555;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      color: #aaa;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .lang-btn:hover { border-color: #888; color: #eee; }
+
+    .lang-btn.active {
+      background: #1e3a5f;
+      border-color: #2d6aa0;
+      color: #7ec8e3;
+    }
+
+    /* Filters */
+    .filter-group { margin-bottom: 10px; }
+    .filter-group:last-of-type { margin-bottom: 28px; }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .filter-tag {
       cursor: pointer;
@@ -142,10 +170,8 @@ const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.i
       50% { opacity: 0.3; }
     }
 
-    /* Divider */
     .divider { border: none; border-top: 1px solid #2e2e2e; margin: 0; }
 
-    /* Info bar */
     .info-bar {
       font-size: 12px;
       color: #555;
@@ -159,49 +185,53 @@ const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.i
     .info-bar a { color: #555; text-decoration: underline; }
     .info-bar a:hover { color: #999; }
 
-    .ical-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
-
-    .ical-link {
-      font-size: 11px;
-      padding: 1px 8px;
-      border-radius: 3px;
-      border: 1px solid #333;
-      color: #666;
-      text-decoration: none;
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    .ical-link:hover { border-color: #555; color: #999; text-decoration: none; }
   </style>
 </head>
 
 <body>
   <div class="page">
 
-    <h1 class="site-title">Caribbean Countdowns</h1>
-    <p class="site-subtitle">Countdowns to music festival and events located in the Caribbean.</p>
+    <div class="header-row">
+      <h1 class="site-title">Caribbean Countdowns</h1>
+      <div class="lang-group">
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+        <button class="lang-btn" data-lang="kr" onclick="setLang('kr')">KR</button>
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+      </div>
+    </div>
+
+    <p class="site-subtitle">
+      <span class="t-en">Live countdowns to the hottest music festivals and cultural events across the Caribbean.</span>
+      <span class="t-fr">Compte à rebours des festivals de musique de la Caraïbe — concerts, dates de carnaval et événements à venir.</span>
+      <span class="t-kr">Kont a rébò pou festival mizik épi évènman an Karayib la.</span>
+      <span class="t-es">Cuenta regresiva de festivales de música y eventos en el Caribe.</span>
+    </p>
 
     <div class="info-bar">
-      <span>To add/update a festival, <a href="https://github.com/befwi/caribfest-deadlines/pulls" target="_blank" rel="noopener">send in a pull request</a>.</span>
-      <span>Last update: {lastUpdate}</span>
       <span>
-        Download as iCal:
-        <span class="ical-links">
-          <a class="ical-link" href={`${import.meta.env.BASE_URL}ical/all.ics`}>All</a>
-          {icalCountries.map(c => (
-            <a class="ical-link" href={`${import.meta.env.BASE_URL}ical/${c.toLowerCase().replace(/\s+/g, '-')}.ics`}>{c}</a>
-          ))}
-        </span>
+        <span class="t-en">To add/update a festival, <a href="https://github.com/befwi/caribbean-countdowns/pulls" target="_blank" rel="noopener noreferrer">send in a pull request</a>.</span>
+        <span class="t-fr">Pour ajouter/modifier un festival, <a href="https://github.com/befwi/caribbean-countdowns/pulls" target="_blank" rel="noopener noreferrer">faire une pull request</a>.</span>
+        <span class="t-kr">Pou mété an lòt fèstival, <a href="https://github.com/befwi/caribbean-countdowns/pulls" target="_blank" rel="noopener noreferrer">voyé an pull request</a>.</span>
+        <span class="t-es">Para agregar/actualizar un festival, <a href="https://github.com/befwi/caribbean-countdowns/pulls" target="_blank" rel="noopener noreferrer">envía un pull request</a>.</span>
+      </span>
+      <span>
+        <span class="t-en">Last update: {lastUpdateEn}</span>
+        <span class="t-fr">Dernière mise à jour : {lastUpdateFr}</span>
+        <span class="t-kr">Dènyé mizajou : {lastUpdateFr}</span>
+        <span class="t-es">Última actualización: {lastUpdateEs}</span>
       </span>
     </div>
 
     <!-- Live banner -->
-    {enriched.filter(f => f.status === "LIVE").length > 0 && (
+    {liveFestivals.length > 0 && (
       <div class="live-banner">
         <span class="live-dot"></span>
         <span>
-          {enriched.filter(f => f.status === "LIVE").map(f => f.name).join(", ")}
-          {enriched.filter(f => f.status === "LIVE").length === 1 ? " is" : " are"} happening now.
+          <span class="t-en">{liveFestivals.map(f => f.name).join(", ")}{liveFestivals.length === 1 ? " is" : " are"} happening now.</span>
+          <span class="t-fr">{liveFestivals.length === 1 ? "L'évènement " : "Les évènements "}{liveFestivals.map(f => f.name).join(", ")}{liveFestivals.length === 1 ? " est" : " sont"} en cours.</span>
+          <span class="t-kr">{liveFestivals.map(f => f.name).join(", ")} ka fèt a lè la.</span>
+          <span class="t-es">{liveFestivals.map(f => f.name).join(", ")}{liveFestivals.length === 1 ? " está" : " están"} pasando ahora.</span>
         </span>
       </div>
     )}
@@ -211,7 +241,10 @@ const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.i
       <div class="filters">
         {eventTypes.map(t => (
           <button class={`filter-tag${t === "All" ? " active" : ""}`} data-filter-type="type" data-value={t}>
-            {t === "All" ? "All types" : t}
+            <span class="t-en">{eventTypeLabels[t].en}</span>
+            <span class="t-fr">{eventTypeLabels[t].fr}</span>
+            <span class="t-kr">{eventTypeLabels[t].kr}</span>
+            <span class="t-es">{eventTypeLabels[t].es}</span>
           </button>
         ))}
       </div>
@@ -221,7 +254,10 @@ const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.i
       <div class="filters">
         {vibes.map(g => (
           <button class={`filter-tag${g === "All" ? " active" : ""}`} data-filter-type="vibe" data-value={g}>
-            {g === "All" ? "All vibes" : g}
+            <span class="t-en">{g === "All" ? "All vibes" : g}</span>
+            <span class="t-fr">{g === "All" ? "Toutes les vibes" : g}</span>
+            <span class="t-kr">{g === "All" ? "Tout vibe" : g}</span>
+            <span class="t-es">{g === "All" ? "Todos los vibes" : g}</span>
           </button>
         ))}
       </div>
@@ -231,7 +267,10 @@ const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.i
       <div class="filters">
         {countries.map(c => (
           <button class={`filter-tag${c === "All" ? " active" : ""}`} data-filter-type="country" data-value={c}>
-            {c === "All" ? "All countries" : c}
+            <span class="t-en">{c === "All" ? "All countries" : c}</span>
+            <span class="t-fr">{c === "All" ? "Tous les pays" : c}</span>
+            <span class="t-kr">{c === "All" ? "Tout péyi" : c}</span>
+            <span class="t-es">{c === "All" ? "Todos los países" : c}</span>
           </button>
         ))}
       </div>
@@ -246,15 +285,71 @@ const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.i
 
   </div>
 
+  <div id="extToast" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:8px 16px;font-size:12px;color:#999;pointer-events:none;white-space:nowrap;z-index:100;"></div>
+
   <script is:inline>
+    var LANGS = ["en", "fr", "kr", "es"];
+    var lang = localStorage.getItem("lang") || "en";
+
+    function applyLang() {
+      LANGS.forEach(function(l) {
+        document.querySelectorAll(".t-" + l).forEach(function(el) {
+          el.style.display = l === lang ? "" : "none";
+        });
+      });
+      document.documentElement.lang = lang;
+      document.querySelectorAll(".lang-btn").forEach(function(btn) {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
+    }
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem("lang", lang);
+      applyLang();
+    }
+
+    applyLang();
+
+    // External link toast
+    var toastTimer;
+    var toastMsgs = {
+      en: "You are leaving Caribbean Countdowns",
+      fr: "Vous quittez Caribbean Countdowns",
+      kr: "Ou ka kité Caribbean Countdowns",
+      es: "Estás saliendo de Caribbean Countdowns"
+    };
+
+    function showToast() {
+      var toast = document.getElementById("extToast");
+      if (!toast) return;
+      toast.textContent = toastMsgs[lang] || toastMsgs.en;
+      toast.style.display = "block";
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function() { toast.style.display = "none"; }, 3000);
+    }
+
+    window.onclick = function(e) {
+      var el = e.target;
+      while (el && el !== document.body) {
+        if (el.tagName === "A" && el.target === "_blank") {
+          showToast();
+          return;
+        }
+        el = el.parentElement;
+      }
+    };
+
+    // Countdowns
     function format(ms) {
-      if (ms <= 0) return "\u2014";
+      if (ms <= 0) return "—";
       var s = Math.floor(ms / 1000);
       var d = Math.floor(s / 86400);
       var h = Math.floor((s % 86400) / 3600);
       var m = Math.floor((s % 3600) / 60);
       var sec = s % 60;
-      return d + "d " + h + "h " + m + "m " + sec + "s";
+      var unit = (lang === "fr" || lang === "kr") ? "j" : (lang === "es" ? "d" : "d");
+      return d + unit + " " + h + "h " + m + "m " + sec + "s";
     }
 
     function updateCountdowns() {
@@ -269,6 +364,7 @@ const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.i
     updateCountdowns();
     setInterval(updateCountdowns, 1000);
 
+    // Filters
     var activeType = "All";
     var activeVibe = "All";
     var activeCountry = "All";
