@@ -1,16 +1,37 @@
 import type { APIRoute, GetStaticPaths } from "astro";
-import festivals2026 from "../data/festivals-2026.json";
-import festivals2027 from "../data/festivals-2027.json";
+import festivals2026 from '../../data/festivals-2026.json';
+import festivals2027 from '../../data/festivals-2027.json';
+
+type Festival = {
+  name: string;
+  startDate: string;
+  endDate: string;
+  description?: string;
+  city?: string;
+  country: string;
+  website?: string;
+};
+
+const festivalsByYear: Record<string, Festival[]> = {
+  '2026': festivals2026 as Festival[],
+  '2027': festivals2027 as Festival[],
+};
+
+// Merge all years into a single array for "all"
+const allFestivals: Festival[] = [
+  ...festivalsByYear['2026'],
+  ...festivalsByYear['2027'],
+];
 
 function toIcalDate(dateStr: string) {
   return dateStr.replace(/-/g, "");
 }
 
-function escapeIcal(str: string) {
+function escapeIcal(str: string = "") {
   return str.replace(/[\\;,]/g, (c) => `\\${c}`).replace(/\n/g, "\\n");
 }
 
-function buildIcal(entries: typeof festivals) {
+function buildIcal(entries: Festival[]) {
   const lines: string[] = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -29,9 +50,9 @@ function buildIcal(entries: typeof festivals) {
       `DTSTART;VALUE=DATE:${toIcalDate(f.startDate)}`,
       `DTEND;VALUE=DATE:${toIcalDate(f.endDate)}`,
       `SUMMARY:${escapeIcal(f.name)}`,
-      `DESCRIPTION:${escapeIcal(f.description)}`,
-      `LOCATION:${escapeIcal(`${f.city}, ${f.country}`)}`,
-      `URL:${f.website}`,
+      `DESCRIPTION:${escapeIcal(f.description ?? "")}`,
+      `LOCATION:${escapeIcal(`${f.city ?? ""}, ${f.country}`)}`,
+      `URL:${f.website ?? ""}`,
       "END:VEVENT"
     );
   }
@@ -41,7 +62,9 @@ function buildIcal(entries: typeof festivals) {
 }
 
 export const getStaticPaths: GetStaticPaths = () => {
-  const countries = [...new Set(festivals.map((f) => f.country).filter(Boolean))];
+  const countries = [
+    ...new Set(allFestivals.map((f) => f.country).filter(Boolean)),
+  ];
   return [
     { params: { country: "all" } },
     ...countries.map((c) => ({
@@ -52,15 +75,16 @@ export const getStaticPaths: GetStaticPaths = () => {
 
 export const GET: APIRoute = ({ params }) => {
   const { country } = params;
+  const year = params.year as string | undefined; // if you later add year param
 
-  const entries =
+  const source =
     country === "all"
-      ? festivals
-      : festivals.filter(
+      ? allFestivals
+      : allFestivals.filter(
           (f) => f.country.toLowerCase().replace(/\s+/g, "-") === country
         );
 
-  return new Response(buildIcal(entries), {
+  return new Response(buildIcal(source), {
     headers: {
       "Content-Type": "text/calendar; charset=utf-8",
       "Content-Disposition": `attachment; filename="${country}.ics"`,
