@@ -187,9 +187,9 @@ const icalCountries = festivals.map(f => f.country).filter((v, i, a) => v && a.i
       <span>
         Download as iCal:
         <span class="ical-links">
-          <a class="ical-link" href="/ical/all.ics">All</a>
+          <a class="ical-link" href={`${import.meta.env.BASE_URL}ical/all.ics`}>All</a>
           {icalCountries.map(c => (
-            <a class="ical-link" href={`/ical/${c.toLowerCase().replace(/\s+/g, '-')}.ics`}>{c}</a>
+            <a class="ical-link" href={`${import.meta.env.BASE_URL}ical/${c.toLowerCase().replace(/\s+/g, '-')}.ics`}>{c}</a>
           ))}
         </span>
       </span>
