@@ -1,0 +1,559 @@
+---
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Support a Cause — Caribbean Countdowns</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .site-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+
+    .back-link {
+      font-size: 12px;
+      color: #555;
+      text-decoration: underline;
+    }
+    .back-link:hover { color: #999; }
+
+    .lang-group {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #555;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      color: #aaa;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .lang-btn:hover { border-color: #888; color: #eee; }
+    .lang-btn.active { background: #1e3a5f; border-color: #2d6aa0; color: #7ec8e3; }
+
+    .divider { border: none; border-top: 1px solid #2e2e2e; margin: 32px 0; }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    p { color: #aaa; margin-bottom: 12px; }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .step-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #1e3a5f;
+      border: 1px solid #2d6aa0;
+      color: #7ec8e3;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-body strong {
+      display: block;
+      color: #eee;
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+
+    .step-body span { color: #888; font-size: 12px; }
+
+    .ngo-card {
+      background: #111;
+      border: 1px solid #2e2e2e;
+      border-radius: 6px;
+      padding: 20px;
+      margin: 24px 0;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .ngo-badge {
+      background: #0d2a2a;
+      border: 1px solid #065f46;
+      color: #34d399;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+      white-space: nowrap;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .ngo-info strong {
+      display: block;
+      font-size: 15px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .ngo-info p { color: #888; font-size: 12px; margin-bottom: 8px; }
+
+    .ngo-link {
+      font-size: 12px;
+      color: #7ec8e3;
+      text-decoration: underline;
+    }
+    .ngo-link:hover { color: #b3e0f2; }
+
+    .tiers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .tier {
+      background: #111;
+      border: 1px solid #2e2e2e;
+      border-radius: 6px;
+      padding: 18px;
+    }
+
+    .tier-name {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #7ec8e3;
+      margin-bottom: 6px;
+    }
+
+    .tier-amount {
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .tier-amount span {
+      font-size: 13px;
+      font-weight: 400;
+      color: #555;
+    }
+
+    .tier ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .tier ul li {
+      font-size: 12px;
+      color: #888;
+      padding: 3px 0;
+      border-top: 1px solid #1e1e1e;
+    }
+
+    .tier ul li:first-child { border-top: none; }
+
+    .cta-block {
+      background: #111;
+      border: 1px solid #2e2e2e;
+      border-radius: 6px;
+      padding: 20px;
+      margin-top: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .cta-block p { margin: 0; color: #888; font-size: 13px; }
+
+    .cta-btn {
+      background: #1e3a5f;
+      border: 1px solid #2d6aa0;
+      color: #7ec8e3;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 8px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .cta-btn:hover { background: #254e7a; text-decoration: none; color: #b3e0f2; }
+
+    .current-sponsors {
+      margin-top: 8px;
+    }
+
+    .sponsor-slot-empty {
+      border: 1px dashed #2e2e2e;
+      border-radius: 6px;
+      padding: 28px;
+      text-align: center;
+      color: #333;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <div class="header-row">
+      <h1 class="site-title">
+        <a href="/caribbean-countdowns/" style="color:inherit;">Caribbean Countdowns</a>
+      </h1>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <a class="back-link" href="/caribbean-countdowns/">
+          <span class="t-en">← Back</span>
+          <span class="t-fr">← Retour</span>
+          <span class="t-kr">← Retounen</span>
+          <span class="t-es">← Volver</span>
+        </a>
+        <div class="lang-group">
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
+          <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" data-lang="kr" onclick="setLang('kr')">KR</button>
+          <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Intro -->
+    <h2>
+      <span class="t-en">Support a cause, get visibility</span>
+      <span class="t-fr">Soutenez une cause, gagnez en visibilité</span>
+      <span class="t-kr">Sipòté on koz, jwenn vizibilité</span>
+      <span class="t-es">Apoya una causa, gana visibilidad</span>
+    </h2>
+
+    <p>
+      <span class="t-en">Caribbean Countdowns offers visibility to brands and organizations that support causes protecting the Caribbean. No money goes to this site — 100% of donations go directly to the featured NGO.</span>
+      <span class="t-fr">Caribbean Countdowns offre de la visibilité aux marques et organisations qui soutiennent des causes protégeant la Caraïbe. Aucun argent ne va à ce site — 100 % des dons vont directement à l'ONG partenaire.</span>
+      <span class="t-kr">Caribbean Countdowns ofri vizibilité bay mak épi òganizasyon ki sipòté koz pou pwotéjé Karayib la. Okenn lajan pa alé nan sit la — 100% don alé dirèktèman bay NGO patnè a.</span>
+      <span class="t-es">Caribbean Countdowns ofrece visibilidad a marcas y organizaciones que apoyan causas que protegen el Caribe. Ningún dinero va a este sitio — el 100% de las donaciones van directamente a la ONG destacada.</span>
+    </p>
+
+    <hr class="divider" />
+
+    <!-- How it works -->
+    <h2>
+      <span class="t-en">How it works</span>
+      <span class="t-fr">Comment ça fonctionne</span>
+      <span class="t-kr">Kouman sa mache</span>
+      <span class="t-es">Cómo funciona</span>
+    </h2>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>
+            <span class="t-en">Choose a tier and donate</span>
+            <span class="t-fr">Choisissez un palier et faites un don</span>
+            <span class="t-kr">Chwazi on nivo épi fè on don</span>
+            <span class="t-es">Elige un nivel y dona</span>
+          </strong>
+          <span>
+            <span class="t-en">Make your donation directly to the featured NGO. Keep your proof of donation.</span>
+            <span class="t-fr">Faites votre don directement à l'ONG partenaire. Gardez votre preuve de don.</span>
+            <span class="t-kr">Fè don ou dirèktèman bay NGO a. Gadé prèv don ou.</span>
+            <span class="t-es">Haz tu donación directamente a la ONG destacada. Guarda tu comprobante.</span>
+          </span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>
+            <span class="t-en">Send us your proof + your link</span>
+            <span class="t-fr">Envoyez-nous votre preuve + votre lien</span>
+            <span class="t-kr">Voye nou prèv ou + lyen ou</span>
+            <span class="t-es">Envíanos tu comprobante + tu enlace</span>
+          </strong>
+          <span>
+            <span class="t-en">Email us your donation receipt and your website or logo. We verify and add you within 48h.</span>
+            <span class="t-fr">Envoyez-nous votre reçu de don et votre site ou logo. Nous vérifions et vous ajoutons en 48h.</span>
+            <span class="t-kr">Voye nou resi don ou épi sit ou oswa logo ou. Nou vérifié épi ajoute ou adan 48h.</span>
+            <span class="t-es">Envíanos tu recibo de donación y tu web o logo. Verificamos y te añadimos en 48h.</span>
+          </span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>
+            <span class="t-en">Your name appears on the site</span>
+            <span class="t-fr">Votre nom apparaît sur le site</span>
+            <span class="t-kr">Non ou parèt sou sit la</span>
+            <span class="t-es">Tu nombre aparece en el sitio</span>
+          </strong>
+          <span>
+            <span class="t-en">Your brand or organization is listed on the main page for the duration of your tier.</span>
+            <span class="t-fr">Votre marque ou organisation est affichée sur la page principale pendant la durée de votre palier.</span>
+            <span class="t-kr">Mak ou oswa òganizasyon ou afiche sou paj prensipal la pandan diré nivo ou a.</span>
+            <span class="t-es">Tu marca u organización aparece en la página principal durante el periodo de tu nivel.</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Featured NGO -->
+    <h2>
+      <span class="t-en">Current cause</span>
+      <span class="t-fr">Cause actuelle</span>
+      <span class="t-kr">Koz aktyèl la</span>
+      <span class="t-es">Causa actual</span>
+    </h2>
+
+    <div class="ngo-card">
+      <span class="ngo-badge">NGO</span>
+      <div class="ngo-info">
+        <strong>L'Asso-Mer</strong>
+        <p>
+          <span class="t-en">Marine conservation nonprofit based in Martinique. Since 2016, they protect coral reefs, sea turtles, and Caribbean marine heritage through science, restoration, and public education.</span>
+          <span class="t-fr">Association de conservation marine basée en Martinique. Depuis 2016, ils protègent les récifs coralliens, les tortues marines et le patrimoine marin caribéen par la science, la restauration et la sensibilisation.</span>
+          <span class="t-kr">Asosyasyon konsèvasyon maren ki nan Matinik. Depi 2016, yo pwotéjé rési koray, tòti maren épi patrimwàn maren Karayib la atravè siyans, restòrasyon épi edikayon piblik.</span>
+          <span class="t-es">ONG de conservación marina con sede en Martinica. Desde 2016 protegen los arrecifes de coral, las tortugas marinas y el patrimonio marino caribeño a través de la ciencia, la restauración y la educación.</span>
+        </p>
+        <a class="ngo-link" href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">lassomer.fr ↗</a>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Tiers -->
+    <h2>
+      <span class="t-en">Sponsorship tiers</span>
+      <span class="t-fr">Paliers de sponsoring</span>
+      <span class="t-kr">Nivo parenaj</span>
+      <span class="t-es">Niveles de patrocinio</span>
+    </h2>
+
+    <div class="tiers">
+      <div class="tier">
+        <div class="tier-name">
+          <span class="t-en">Friend</span>
+          <span class="t-fr">Ami</span>
+          <span class="t-kr">Zanmi</span>
+          <span class="t-es">Amigo</span>
+        </div>
+        <div class="tier-amount">€50 <span>/ 1 <span class="t-en">month</span><span class="t-fr">mois</span><span class="t-kr">mwa</span><span class="t-es">mes</span></span></div>
+        <ul>
+          <li>
+            <span class="t-en">Name + link on main page</span>
+            <span class="t-fr">Nom + lien sur la page principale</span>
+            <span class="t-kr">Non + lyen sou paj prensipal</span>
+            <span class="t-es">Nombre + enlace en página principal</span>
+          </li>
+          <li>
+            <span class="t-en">Listed on this page</span>
+            <span class="t-fr">Listé sur cette page</span>
+            <span class="t-kr">Listé sou paj sa a</span>
+            <span class="t-es">Listado en esta página</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tier">
+        <div class="tier-name">
+          <span class="t-en">Supporter</span>
+          <span class="t-fr">Soutien</span>
+          <span class="t-kr">Sipòtè</span>
+          <span class="t-es">Colaborador</span>
+        </div>
+        <div class="tier-amount">€150 <span>/ 3 <span class="t-en">months</span><span class="t-fr">mois</span><span class="t-kr">mwa</span><span class="t-es">meses</span></span></div>
+        <ul>
+          <li>
+            <span class="t-en">Name + link on main page</span>
+            <span class="t-fr">Nom + lien sur la page principale</span>
+            <span class="t-kr">Non + lyen sou paj prensipal</span>
+            <span class="t-es">Nombre + enlace en página principal</span>
+          </li>
+          <li>
+            <span class="t-en">Logo displayed</span>
+            <span class="t-fr">Logo affiché</span>
+            <span class="t-kr">Logo afichè</span>
+            <span class="t-es">Logo visible</span>
+          </li>
+          <li>
+            <span class="t-en">Listed on this page</span>
+            <span class="t-fr">Listé sur cette page</span>
+            <span class="t-kr">Listé sou paj sa a</span>
+            <span class="t-es">Listado en esta página</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="tier">
+        <div class="tier-name">
+          <span class="t-en">Partner</span>
+          <span class="t-fr">Partenaire</span>
+          <span class="t-kr">Patnè</span>
+          <span class="t-es">Socio</span>
+        </div>
+        <div class="tier-amount">€400 <span>/ 1 <span class="t-en">year</span><span class="t-fr">an</span><span class="t-kr">an</span><span class="t-es">año</span></span></div>
+        <ul>
+          <li>
+            <span class="t-en">Name + link on main page</span>
+            <span class="t-fr">Nom + lien sur la page principale</span>
+            <span class="t-kr">Non + lyen sou paj prensipal</span>
+            <span class="t-es">Nombre + enlace en página principal</span>
+          </li>
+          <li>
+            <span class="t-en">Logo displayed (prominent)</span>
+            <span class="t-fr">Logo affiché (en évidence)</span>
+            <span class="t-kr">Logo afichè (an evid)</span>
+            <span class="t-es">Logo visible (destacado)</span>
+          </li>
+          <li>
+            <span class="t-en">Listed on this page</span>
+            <span class="t-fr">Listé sur cette page</span>
+            <span class="t-kr">Listé sou paj sa a</span>
+            <span class="t-es">Listado en esta página</span>
+          </li>
+          <li>
+            <span class="t-en">Short description included</span>
+            <span class="t-fr">Courte description incluse</span>
+            <span class="t-kr">Ti deskripsyon enkli</span>
+            <span class="t-es">Breve descripción incluida</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="font-size:12px;color:#555;">
+      <span class="t-en">NGOs and nonprofits protecting the Caribbean can apply for a free listing.</span>
+      <span class="t-fr">Les ONG et associations protégeant la Caraïbe peuvent demander un référencement gratuit.</span>
+      <span class="t-kr">ONG épi asosyasyon ki pwotéjé Karayib la pé mandé yon enskripsyon gratis.</span>
+      <span class="t-es">Las ONG y asociaciones que protejan el Caribe pueden solicitar un listado gratuito.</span>
+    </p>
+
+    <hr class="divider" />
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <p>
+        <span class="t-en">Interested? Email us with your donation receipt and your details.</span>
+        <span class="t-fr">Intéressé·e ? Écrivez-nous avec votre reçu de don et vos informations.</span>
+        <span class="t-kr">Entéresé ? Ekri nou avèk resi don ou épi enfòmasyon ou yo.</span>
+        <span class="t-es">¿Interesado? Escríbenos con tu comprobante de donación y tus datos.</span>
+      </p>
+      <a class="cta-btn" href="mailto:admin.hxqxk@silomails.com?subject=Sponsor%20Caribbean%20Countdowns">
+        <span class="t-en">Contact us</span>
+        <span class="t-fr">Nous contacter</span>
+        <span class="t-kr">Kontakte nou</span>
+        <span class="t-es">Contáctanos</span>
+      </a>
+    </div>
+
+    <hr class="divider" />
+
+    <!-- Current sponsors -->
+    <h2>
+      <span class="t-en">Current sponsors</span>
+      <span class="t-fr">Sponsors actuels</span>
+      <span class="t-kr">Sponsors aktyèl yo</span>
+      <span class="t-es">Patrocinadores actuales</span>
+    </h2>
+
+    <div class="current-sponsors">
+      <div class="sponsor-slot-empty">
+        <span class="t-en">No sponsors yet — be the first.</span>
+        <span class="t-fr">Aucun sponsor pour l'instant — soyez le premier.</span>
+        <span class="t-kr">Okenn sponsor ankò — sé premié ou.</span>
+        <span class="t-es">Aún no hay patrocinadores — sé el primero.</span>
+      </div>
+    </div>
+
+  </div>
+
+  <script is:inline>
+    var LANGS = ["en", "fr", "kr", "es"];
+    var lang = localStorage.getItem("lang") || "en";
+
+    function applyLang() {
+      LANGS.forEach(function(l) {
+        document.querySelectorAll(".t-" + l).forEach(function(el) {
+          el.style.display = l === lang ? "" : "none";
+        });
+      });
+      document.documentElement.lang = lang;
+      document.querySelectorAll(".lang-btn").forEach(function(btn) {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
+    }
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem("lang", lang);
+      applyLang();
+    }
+
+    applyLang();
+  </script>
+</body>
+</html>

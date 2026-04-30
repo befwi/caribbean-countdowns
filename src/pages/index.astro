@@ -185,6 +185,58 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
     .info-bar a { color: #555; text-decoration: underline; }
     .info-bar a:hover { color: #999; }
 
+    /* Sponsor band */
+    .sponsor-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0a1a18;
+      border: 1px solid #0d3d35;
+      border-radius: 4px;
+      padding: 10px 16px;
+      margin-bottom: 32px;
+      font-size: 13px;
+      color: #5eead4;
+    }
+
+    .sponsor-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #14b8a6;
+      flex-shrink: 0;
+    }
+
+    .sponsor-cause {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .sponsor-cause-text {
+      font-size: 13px;
+      color: #5eead4;
+      flex: 1;
+    }
+
+    .sponsor-cause-text a { color: #5eead4; text-decoration: underline; }
+    .sponsor-cause-text a:hover { color: #99f6e4; }
+
+    .sponsor-cta {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 3px;
+      border: 1px solid #0d9488;
+      color: #5eead4;
+      background: #0a1a18;
+      text-decoration: none;
+      transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .sponsor-cta:hover { background: #134e4a; color: #99f6e4; text-decoration: none; }
+
   </style>
 </head>
 
@@ -221,6 +273,25 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
         <span class="t-kr">Dènyé mizajou : {lastUpdateFr}</span>
         <span class="t-es">Última actualización: {lastUpdateEs}</span>
       </span>
+    </div>
+
+    <!-- Sponsor band -->
+    <div class="sponsor-footer">
+      <span class="sponsor-dot"></span>
+      <div class="sponsor-cause">
+        <span class="sponsor-cause-text">
+          <span class="t-en">This site supports <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, marine conservation in Martinique.</span>
+          <span class="t-fr">Ce site soutient <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, conservation marine en Martinique.</span>
+          <span class="t-kr">Sit sa a sipòté <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, konsèvasyon maren an Matinik.</span>
+          <span class="t-es">Este sitio apoya a <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, conservación marina en Martinica.</span>
+        </span>
+        <a class="sponsor-cta" href="/caribbean-countdowns/sponsor/">
+          <span class="t-en">Become a sponsor</span>
+          <span class="t-fr">Devenir sponsor</span>
+          <span class="t-kr">Vin yon sponsor</span>
+          <span class="t-es">Ser patrocinador</span>
+        </a>
+      </div>
     </div>
 
     <!-- Live banner -->
@@ -282,6 +353,10 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
     {enriched.map(festival => (
       <FestivalRow festival={festival} />
     ))}
+
+    <div style="text-align:center;padding:32px 0 8px;">
+      <img src="https://visitor-badge.laobi.icu/badge?page_id=befwi.caribbean-countdowns" alt="visitor count" style="height:18px;opacity:0.5;" />
+    </div>
 
   </div>
 
