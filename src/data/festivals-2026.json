@@ -146,7 +146,7 @@
     "country": "Dominica",
     "type": "music festival",
     "vibes": ["bouyon", "zouk", "reggae", "dancehall", "soca"],
-    "image": "/images/wcmf.png",
+    "image": "/images/wcmf.jpg",
     "tickets": [
       { "name": "4 Circles Tickets", "url": "https://wcmf.4circlestickets.com/events" }
     ]
@@ -161,7 +161,7 @@
     "country": "Martinique",
     "type": "music festival",
     "vibes": ["reggae"],
-    "image": "/images/reggaetherapy.png",
+    "image": "/images/reggaetherapy.jpg",
     "tickets": [
       { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/reggae-therapy-festival-2026/112483" }
     ]
@@ -176,9 +176,9 @@
     "country": "Martinique",
     "type": "other",
     "vibes": [""],
-    "image": "/images/piraterace.png",
+    "image": "/images/piraterace.jpg",
     "tickets": [
-      { "name": "Tickets", "url": "https://lapiraterace.com/" }
+      { "name": "Website", "url": "https://lapiraterace.com/" }
     ]
   },
   {
@@ -219,7 +219,7 @@
     "vibes": ["jazz"],
     "image": "/images/barbadosjazzexcursion.jpg",
     "tickets": [
-      { "name": "Tickets", "url": "https://barbadosjazzexcursion.com/packages/"}
+      { "name": "Website", "url": "https://barbadosjazzexcursion.com/packages/"}
     ]
   },
   {
