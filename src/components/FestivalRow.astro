@@ -251,7 +251,7 @@ const eventDateStr =
   data-type={festival.type ?? ""}
   data-vibes={(festival.vibes ?? []).join(",")}
   data-country={festival.country ?? ""}
-  style={festival.image ? `background-image: url('${import.meta.env.BASE_URL}${festival.image}')` : ""}
+  style={festival.image ? `background-image: url('${festival.image}')` : ""}
 >
   <div class="festival-header">
     <div class="festival-name">
