@@ -253,6 +253,32 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
     }
     .sponsor-cta:hover { background: #134e4a; color: #99f6e4; text-decoration: none; }
 
+    .sponsor-logos {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 600px) {
+      .sponsor-cause {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .sponsor-cause-text {
+        font-size: 12px;
+      }
+      .sponsor-logos {
+        align-self: center;
+      }
+      .sponsor-cta {
+        align-self: center;
+        padding: 5px 16px;
+        font-size: 12px;
+      }
+    }
+
   </style>
 </head>
 
@@ -339,12 +365,14 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
           <span class="t-kr">Mèsi bay sponsor nou <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">Le Rêve Antillais</a></span>
           <span class="t-es">Gracias a nuestro sponsor <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">Le Rêve Antillais</a></span>
         </span>
-        <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer" style="flex-shrink:0;">
-          <img src="/images/sponsors/assomer.png" alt="L'Asso-Mer" style="height:36px;vertical-align:middle;border-radius:4px;background:#fff;padding:3px 7px;" />
-        </a>
-        <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer" style="flex-shrink:0;">
-          <img src="/images/sponsors/lereve-antillais.jpg" alt="Le Rêve Antillais" style="height:36px;vertical-align:middle;border-radius:4px;background:#fff;padding:3px 7px;" />
-        </a>
+        <div class="sponsor-logos">
+          <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/sponsors/assomer.png" alt="L'Asso-Mer" style="height:36px;vertical-align:middle;border-radius:4px;background:#fff;padding:3px 7px;" />
+          </a>
+          <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">
+            <img src="/images/sponsors/lereve-antillais.jpg" alt="Le Rêve Antillais" style="height:36px;vertical-align:middle;border-radius:4px;background:#fff;padding:3px 7px;" />
+          </a>
+        </div>
         <a class="sponsor-cta" href="/sponsor/">
           <span class="t-en">Become a sponsor</span>
           <span class="t-fr">Devenir sponsor</span>
