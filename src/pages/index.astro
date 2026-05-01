@@ -2,6 +2,7 @@
 // import festivals2025 from "../data/festivals-2025.json";
 import festivals2026 from "../data/festivals-2026.json";
 import festivals2027 from "../data/festivals-2027.json";
+import sponsors from "../data/sponsors.json";
 
 // const festivals = [...festivals2025, ...festivals2026];
 const festivals = [...festivals2026, ...festivals2027];
@@ -41,6 +42,12 @@ const lastUpdateFr = new Date().toLocaleDateString("fr-FR", { day: "numeric", mo
 const lastUpdateEs = new Date().toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
 
 const liveFestivals = enriched.filter(f => f.status === "LIVE");
+
+const { ngo, sponsor } = sponsors;
+
+function splitLines(text: string) {
+  return text.split(";").map(s => s.trim()).filter(Boolean);
+}
 ---
 
 <html lang="en">
@@ -82,7 +89,7 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
 
     .site-subtitle {
       font-size: 13px;
-      color: #666;
+      color: #fff;
       margin-bottom: 32px;
     }
 
@@ -98,21 +105,21 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
       border: 1px solid #555;
       border-radius: 3px;
       cursor: pointer;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      padding: 4px 10px;
+      font-size: 18px;
+      letter-spacing: 0;
+      padding: 2px 6px;
       color: #aaa;
       font-family: inherit;
       transition: all 0.15s;
+      opacity: 0.5;
     }
 
-    .lang-btn:hover { border-color: #888; color: #eee; }
+    .lang-btn:hover { border-color: #888; opacity: 0.8; }
 
     .lang-btn.active {
-      background: #1e3a5f;
-      border-color: #2d6aa0;
-      color: #7ec8e3;
+      background: #1a1a1a;
+      border-color: #555;
+      opacity: 1;
     }
 
     /* Filters */
@@ -288,10 +295,10 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
     <div class="header-row">
       <h1 class="site-title">Caribbean Countdowns</h1>
       <div class="lang-group">
-        <button class="lang-btn" data-lang="en" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" data-lang="fr" onclick="setLang('fr')">FR</button>
-        <button class="lang-btn" data-lang="kr" onclick="setLang('kr')">KR</button>
-        <button class="lang-btn" data-lang="es" onclick="setLang('es')">ES</button>
+        <button class="lang-btn" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
+        <button class="lang-btn" data-lang="kr" onclick="setLang('kr')" title="Kréyol">🇭🇹</button>
+        <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+        <button class="lang-btn" data-lang="es" onclick="setLang('es')" title="Español">🇪🇸</button>
       </div>
     </div>
 
@@ -317,10 +324,10 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
       </span>
       <details>
         <summary class="criteria-toggle">
-          <span class="t-en">▸ Listing criteria</span>
-          <span class="t-fr">▸ Critères de sélection</span>
-          <span class="t-kr">▸ Kritè séleksyon</span>
-          <span class="t-es">▸ Criterios de selección</span>
+          <span class="t-en">▸ Click here to see the listing criteria for listed events</span>
+          <span class="t-fr">▸ Cliquez ici pour connaître les critères de sélection des événements listés</span>
+          <span class="t-kr">▸ Klikez la pou wè kritè séleksyon évènman listé yo</span>
+          <span class="t-es">▸ Haz clic aquí para ver los criterios de selección de los eventos listados</span>
         </summary>
         <div class="criteria-list">
           <span>
@@ -354,23 +361,18 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
     <!-- Sponsor band -->
     <div class="sponsor-footer">
       <div class="sponsor-cause">
-        <span class="sponsor-cause-text" style="flex:1;">
-          <span class="t-en">This site supports <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, marine conservation in Martinique.</span>
-          <span class="t-fr">Ce site soutient <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, conservation marine en Martinique.</span>
-          <span class="t-kr">Sit sa a sipòté <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, konsèvasyon maren an Matinik.</span>
-          <span class="t-es">Este sitio apoya a <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, conservación marina en Martinica.</span>
-          <br />
-          <span class="t-en">Thanks to our sponsor <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">Le Rêve Antillais</a></span>
-          <span class="t-fr">Merci à notre sponsor <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">Le Rêve Antillais</a></span>
-          <span class="t-kr">Mèsi bay sponsor nou <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">Le Rêve Antillais</a></span>
-          <span class="t-es">Gracias a nuestro sponsor <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">Le Rêve Antillais</a></span>
+        <span class="sponsor-cause-text">
+          <span class="t-en">This site supports the NGO <a href={ngo.website} target="_blank" rel="noopener noreferrer">{ngo.name}</a><br />Thanks to our sponsor <a href={sponsor.website} target="_blank" rel="noopener noreferrer">{sponsor.name}</a></span>
+          <span class="t-fr">Ce site soutient l'ONG <a href={ngo.website} target="_blank" rel="noopener noreferrer">{ngo.name}</a><br />Merci à notre sponsor <a href={sponsor.website} target="_blank" rel="noopener noreferrer">{sponsor.name}</a></span>
+          <span class="t-kr">Sit sa a sipòté ONG <a href={ngo.website} target="_blank" rel="noopener noreferrer">{ngo.name}</a><br />Mèsi bay sponsor nou <a href={sponsor.website} target="_blank" rel="noopener noreferrer">{sponsor.name}</a></span>
+          <span class="t-es">Este sitio apoya a la ONG <a href={ngo.website} target="_blank" rel="noopener noreferrer">{ngo.name}</a><br />Gracias a nuestro sponsor <a href={sponsor.website} target="_blank" rel="noopener noreferrer">{sponsor.name}</a></span>
         </span>
         <div class="sponsor-logos">
-          <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/sponsors/assomer.png" alt="L'Asso-Mer" style="height:36px;vertical-align:middle;border-radius:4px;background:#fff;padding:3px 7px;" />
+          <a href={ngo.website} target="_blank" rel="noopener noreferrer">
+            <img src={ngo.logo} alt={ngo.name} style="height:36px;vertical-align:middle;border-radius:4px;background:#fff;padding:3px 7px;" />
           </a>
-          <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">
-            <img src="/images/sponsors/lereve-antillais.jpg" alt="Le Rêve Antillais" style="height:36px;vertical-align:middle;border-radius:4px;background:#fff;padding:3px 7px;" />
+          <a href={sponsor.website} target="_blank" rel="noopener noreferrer">
+            <img src={sponsor.logo} alt={sponsor.name} style="height:36px;vertical-align:middle;border-radius:4px;background:#fff;padding:3px 7px;" />
           </a>
         </div>
         <a class="sponsor-cta" href="/sponsor/">
