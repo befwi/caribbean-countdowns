@@ -178,7 +178,7 @@
     "vibes": [""],
     "image": "/images/piraterace.png",
     "tickets": [
-      { "name": "Website", "url": "https://lapiraterace.com/" }
+      { "name": "Tickets", "url": "https://lapiraterace.com/" }
     ]
   },
   {
@@ -219,7 +219,7 @@
     "vibes": ["jazz"],
     "image": "/images/barbadosjazzexcursion.jpg",
     "tickets": [
-      { "name": "Website", "url": "https://barbadosjazzexcursion.com/packages/"}
+      { "name": "Tickets", "url": "https://barbadosjazzexcursion.com/packages/"}
     ]
   },
   {
