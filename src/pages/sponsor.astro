@@ -242,6 +242,53 @@
 
     .current-sponsors {
       margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sponsor-card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #111;
+      border: 1px solid #2e2e2e;
+      border-radius: 6px;
+      padding: 16px 20px;
+      text-decoration: none;
+      transition: border-color 0.15s;
+    }
+    .sponsor-card:hover { border-color: #444; text-decoration: none; }
+
+    .sponsor-logo {
+      background: #fff;
+      border-radius: 4px;
+      padding: 6px 10px;
+      flex-shrink: 0;
+    }
+    .sponsor-logo img { height: 36px; display: block; }
+
+    .sponsor-info strong {
+      display: block;
+      font-size: 13px;
+      color: #eee;
+      margin-bottom: 3px;
+    }
+    .sponsor-info p { font-size: 12px; color: #666; margin: 0; }
+
+    .sponsor-tier-badge {
+      margin-left: auto;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: #1e3a5f;
+      color: #7ec8e3;
+      border: 1px solid #2d6aa0;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .sponsor-slot-empty {
@@ -327,10 +374,10 @@
         <div class="step-num">2</div>
         <div class="step-body">
           <strong>
-            <span class="t-en">Send us email with the NGO name and proof of donation + your website link or logo</span>
-            <span class="t-fr">Envoyez-nous un email avec la votre preuve de don + le lien de votre site ou logo</span>
-            <span class="t-kr">Voye nou an mèl epi prèv don ou + sit internèt ou a ou logo a</span>
-            <span class="t-es">EEnvíanos un correo electrónico con la comprobante y el enlace de tu sitio web o el logo</span>
+            <span class="t-en">Send us email with the NGO in CC + your website link or logo</span>
+            <span class="t-fr">Envoyez-nous un email avec la NGO en copie  + le lien de votre site ou logo</span>
+            <span class="t-kr">Voye nou an mèl epi ONG la adan  + sit internèt ou a ou logo a</span>
+            <span class="t-es">EEnvíanos un correo electrónico con la ONG en copia y el enlace de tu sitio web o el logo</span>
           </strong>
           <span>
             <span class="t-en">We verify and add you within 72h.</span>
@@ -502,7 +549,7 @@
         <span class="t-kr">Entéresé ? Ekri nou avèk resi don ou épi enfòmasyon ou yo.</span>
         <span class="t-es">¿Interesado? Escríbenos con tu comprobante de donación y tus datos.</span>
       </p>
-      <a class="cta-btn" href="mailto:admin.xrru4@aleeas.com?subject=Sponsor%20Caribbean%20Countdowns">
+      <a class="cta-btn" href="mailto:admin.hxqxk@silomails.com?subject=Sponsor%20Caribbean%20Countdowns">
         <span class="t-en">Contact us</span>
         <span class="t-fr">Nous contacter</span>
         <span class="t-kr">Kontakte nou</span>
@@ -521,12 +568,21 @@
     </h2>
 
     <div class="current-sponsors">
-      <div class="sponsor-slot-empty">
-        <span class="t-en">No sponsors yet — be the first.</span>
-        <span class="t-fr">Aucun sponsor pour l'instant — soyez le premier.</span>
-        <span class="t-kr">Okenn sponsor ankò — sé premié ou.</span>
-        <span class="t-es">Aún no hay patrocinadores — sé el primero.</span>
-      </div>
+      <a class="sponsor-card" href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">
+        <div class="sponsor-logo">
+          <img src="/images/sponsors/lereve-antillais.jpg" alt="Le Rêve Antillais" />
+        </div>
+        <div class="sponsor-info">
+          <strong>Le Rêve Antillais</strong>
+          <p>
+            <span class="t-en">Caribbean booking agency — connecting artists, producers and events across the Caribbean.</span>
+            <span class="t-fr">Agence de booking caribéenne — connecter artistes, producteurs et événements à travers la Caraïbe.</span>
+            <span class="t-kr">Ajans booking karayibèn — konèkté atis, pwodiktè épi évènman an Karayib la.</span>
+            <span class="t-es">Agencia de booking caribeña — conectando artistas, productores y eventos en el Caribe.</span>
+          </p>
+        </div>
+        <span class="sponsor-tier-badge">Partner</span>
+      </a>
     </div>
 
   </div>

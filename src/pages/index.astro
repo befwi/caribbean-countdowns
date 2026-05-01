@@ -185,6 +185,22 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
     .info-bar a { color: #555; text-decoration: underline; }
     .info-bar a:hover { color: #999; }
 
+    .criteria-toggle { color: #444; cursor: pointer; list-style: none; }
+    .criteria-toggle:hover { color: #777; }
+    .criteria-toggle::marker { display: none; }
+    details[open] .criteria-toggle { color: #666; }
+    .criteria-list {
+      margin-top: 6px;
+      padding: 10px 14px;
+      border-left: 2px solid #2e2e2e;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .criteria-list span { color: #444; font-size: 11px; }
+    .criteria-list strong { color: #555; }
+
+
     /* Sponsor band */
     .sponsor-footer {
       display: flex;
@@ -273,17 +289,62 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
         <span class="t-kr">Dènyé mizajou : {lastUpdateFr}</span>
         <span class="t-es">Última actualización: {lastUpdateEs}</span>
       </span>
+      <details>
+        <summary class="criteria-toggle">
+          <span class="t-en">▸ Listing criteria</span>
+          <span class="t-fr">▸ Critères de sélection</span>
+          <span class="t-kr">▸ Kritè séleksyon</span>
+          <span class="t-es">▸ Criterios de selección</span>
+        </summary>
+        <div class="criteria-list">
+          <span>
+            <span class="t-en">An event is listed if it meets <strong>at least 2 of these 3 criteria:</strong></span>
+            <span class="t-fr">Un événement est listé s'il remplit <strong>au moins 2 de ces 3 critères :</strong></span>
+            <span class="t-kr">On évènman listé si li rempli <strong>omwen 2 nan 3 kritè sa yo :</strong></span>
+            <span class="t-es">Un evento se lista si cumple <strong>al menos 2 de estos 3 criterios:</strong></span>
+          </span>
+          <span>
+            <span class="t-en">① <strong>Recurring</strong> — minimum 2nd edition (events in their first edition are not listed)</span>
+            <span class="t-fr">① <strong>Récurrence</strong> — minimum 2ème édition (les événements à leur 1ère édition ne sont pas listés)</span>
+            <span class="t-kr">① <strong>Récidiv</strong> — minimòm 2yèm édisyon (évènman ki an 1yer édisyon pa listé)</span>
+            <span class="t-es">① <strong>Recurrencia</strong> — mínimo 2ª edición (los eventos en su 1ª edición no se listan)</span>
+          </span>
+          <span>
+            <span class="t-en">② <strong>Public ticketing</strong> — tickets on sale via an external platform, or free public entry</span>
+            <span class="t-fr">② <strong>Billetterie publique</strong> — billets en vente sur une plateforme externe, ou entrée gratuite ouverte à tous</span>
+            <span class="t-kr">② <strong>Biléteri piblik</strong> — tikè an vant sou platfòm ekstèn, oswa antrée gratis pou tout moun</span>
+            <span class="t-es">② <strong>Taquilla pública</strong> — entradas en venta en plataforma externa, o entrada gratuita abierta al público</span>
+          </span>
+          <span>
+            <span class="t-en">③ <strong>Lineup</strong> — minimum 3 distinct artists or acts publicly announced</span>
+            <span class="t-fr">③ <strong>Programmation</strong> — minimum 3 artistes ou actes distincts annoncés publiquement</span>
+            <span class="t-kr">③ <strong>Pwogramasyon</strong> — minimòm 3 atis oswa akò distinkt anoonsé piblikman</span>
+            <span class="t-es">③ <strong>Cartel</strong> — mínimo 3 artistas o actos distintos anunciados públicamente</span>
+          </span>
+        </div>
+      </details>
     </div>
 
     <!-- Sponsor band -->
     <div class="sponsor-footer">
       <div class="sponsor-cause">
-        <span class="sponsor-cause-text">
+        <span class="sponsor-cause-text" style="flex:1;">
           <span class="t-en">This site supports <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, marine conservation in Martinique.</span>
           <span class="t-fr">Ce site soutient <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, conservation marine en Martinique.</span>
           <span class="t-kr">Sit sa a sipòté <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, konsèvasyon maren an Matinik.</span>
           <span class="t-es">Este sitio apoya a <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, conservación marina en Martinica.</span>
+          <br />
+          <span class="t-en">Thanks to our sponsor <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">Le Rêve Antillais</a></span>
+          <span class="t-fr">Merci à notre sponsor <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">Le Rêve Antillais</a></span>
+          <span class="t-kr">Mèsi bay sponsor nou <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">Le Rêve Antillais</a></span>
+          <span class="t-es">Gracias a nuestro sponsor <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">Le Rêve Antillais</a></span>
         </span>
+        <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer" style="flex-shrink:0;">
+          <img src="/images/sponsors/assomer.png" alt="L'Asso-Mer" style="height:36px;vertical-align:middle;border-radius:4px;background:#fff;padding:3px 7px;" />
+        </a>
+        <a href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer" style="flex-shrink:0;">
+          <img src="/images/sponsors/lereve-antillais.jpg" alt="Le Rêve Antillais" style="height:36px;vertical-align:middle;border-radius:4px;background:#fff;padding:3px 7px;" />
+        </a>
         <a class="sponsor-cta" href="/sponsor/">
           <span class="t-en">Become a sponsor</span>
           <span class="t-fr">Devenir sponsor</span>
@@ -378,7 +439,7 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
 
   </div>
 
-  <div id="extToast" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:8px 16px;font-size:12px;color:#999;pointer-events:none;white-space:nowrap;z-index:100;"></div>
+<div id="extToast" style="display:none;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a1a;border:1px solid #333;border-radius:4px;padding:8px 16px;font-size:12px;color:#999;pointer-events:none;white-space:nowrap;z-index:100;"></div>
 
   <script is:inline>
     var LANGS = ["en", "fr", "kr", "es"];
