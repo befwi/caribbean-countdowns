@@ -277,7 +277,6 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
 
     <!-- Sponsor band -->
     <div class="sponsor-footer">
-      <span class="sponsor-dot"></span>
       <div class="sponsor-cause">
         <span class="sponsor-cause-text">
           <span class="t-en">This site supports <a href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">L'Asso-Mer</a>, marine conservation in Martinique.</span>
@@ -299,10 +298,10 @@ const liveFestivals = enriched.filter(f => f.status === "LIVE");
       <div class="live-banner">
         <span class="live-dot"></span>
         <span>
-          <span class="t-en">{liveFestivals.map(f => f.name).join(", ")}{liveFestivals.length === 1 ? " is" : " are"} happening now.</span>
-          <span class="t-fr">{liveFestivals.length === 1 ? "L'évènement " : "Les évènements "}{liveFestivals.map(f => f.name).join(", ")}{liveFestivals.length === 1 ? " est" : " sont"} en cours.</span>
-          <span class="t-kr">{liveFestivals.map(f => f.name).join(", ")} ka fèt a lè la.</span>
-          <span class="t-es">{liveFestivals.map(f => f.name).join(", ")}{liveFestivals.length === 1 ? " está" : " están"} pasando ahora.</span>
+          <span class="t-en">{liveFestivals.map((f, i) => <><strong style="text-shadow: 0 0 10px rgba(239,68,68,0.7), 0 0 20px rgba(239,68,68,0.3); text-decoration: underline;">{i > 0 ? ", " : ""}{f.name}</strong></>)}{liveFestivals.length === 1 ? " is" : " are"} happening now.</span>
+          <span class="t-fr">{liveFestivals.length === 1 ? "L'évènement " : "Les évènements "}{liveFestivals.map((f, i) => <><strong style="text-shadow: 0 0 10px rgba(239,68,68,0.7), 0 0 20px rgba(239,68,68,0.3); text-decoration: underline;">{i > 0 ? ", " : ""}{f.name}</strong></>)}{liveFestivals.length === 1 ? " est" : " sont"} en cours.</span>
+          <span class="t-kr">{liveFestivals.map((f, i) => <><strong style="text-shadow: 0 0 10px rgba(239,68,68,0.7), 0 0 20px rgba(239,68,68,0.3); text-decoration: underline;">{i > 0 ? ", " : ""}{f.name}</strong></>)} ka fèt a lè la.</span>
+          <span class="t-es">{liveFestivals.map((f, i) => <><strong style="text-shadow: 0 0 10px rgba(239,68,68,0.7), 0 0 20px rgba(239,68,68,0.3); text-decoration: underline;">{i > 0 ? ", " : ""}{f.name}</strong></>)}{liveFestivals.length === 1 ? " está" : " están"} pasando ahora.</span>
         </span>
       </div>
     )}

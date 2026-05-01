@@ -3,8 +3,8 @@
     "name": "Caribbean Multihull Challenge",
     "website": "https://caribbeanmultihullchallenge.com/",
     "description": "100% Multihull.",
-    "startDate": "2027-02-03", 
-    "endDate": "2027-02-07",
+    "startDate": "2027-02-03",
+    "endDate": "2027-02-08",
     "city": "Simpson Bay",
     "country": "Sint-Maarten",
     "type": "regatta",
@@ -17,7 +17,7 @@
     "website": "http://grenadasailingweek.com/",
     "description": "Regatta to experience great sailing and fun.",
     "startDate": "2027-01-31",
-    "endDate": "2027-02-05",
+    "endDate": "2027-02-06",
     "city": "Gustavia",
     "country": "Saint-Barthélemy",
     "type": "regatta",
@@ -28,18 +28,18 @@
     ]
   },
   {
-  "name": "BVI Spring Regatta and Sailing Festival",
-  "website": "http://www.bvispringregatta.org/",
-  "description": "Over 150 yachts come from around the world to race this top Sailing Regattas in the Caribbean.",
-  "startDate": "2027-03-29",
-  "endDate": "2027-04-04",
-  "city": "Tortola",
-  "country": "British Virgin Islands",
-  "type": "regatta",
-  "vibes": [],
-  "image": "/images/bvispringregatta.jpg",
-  "tickets": [
-    {"name": "Website","url": "https://bvispringregatta.org/"  }
+    "name": "BVI Spring Regatta and Sailing Festival",
+    "website": "http://www.bvispringregatta.org/",
+    "description": "Over 150 yachts come from around the world to race this top Sailing Regattas in the Caribbean.",
+    "startDate": "2027-03-29",
+    "endDate": "2027-04-05",
+    "city": "Tortola",
+    "country": "British Virgin Islands",
+    "type": "regatta",
+    "vibes": [],
+    "image": "/images/bvispringregatta.jpg",
+    "tickets": [
+      { "name": "Website", "url": "https://bvispringregatta.org/" }
     ]
   }
 ]

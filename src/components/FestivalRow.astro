@@ -36,6 +36,18 @@ const eventDateStr =
     padding: 20px 0 18px;
   }
 
+  .festival-entry.live {
+    background: #1a0a0a;
+    border: 1px solid #3a1010;
+    border-radius: 6px;
+    padding: 20px;
+  }
+
+  .festival-entry.live .countdown {
+    color: #f87171;
+    animation: pulse 1.4s infinite;
+  }
+
   .festival-entry.has-image {
     background-size: cover;
     background-position: center;
@@ -61,7 +73,7 @@ const eventDateStr =
   .festival-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: 16px;
     margin-bottom: 6px;
   }
@@ -85,6 +97,19 @@ const eventDateStr =
   }
 
   .festival-name a:hover { text-decoration: underline; }
+
+  .festival-entry.live .festival-name {
+    font-size: 20px;
+    letter-spacing: -0.3px;
+  }
+
+  .festival-entry.live .festival-name a {
+    color: #fff;
+    text-shadow:
+      0 0 12px rgba(239, 68, 68, 0.6),
+      0 0 24px rgba(239, 68, 68, 0.3),
+      0 1px 3px rgba(0,0,0,0.9);
+  }
 
   .ext-icon {
     font-size: 11px;
@@ -111,7 +136,7 @@ const eventDateStr =
     color: #ccc;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-top: 2px;
+    margin-bottom: 2px;
     text-shadow: 0 1px 4px rgba(0,0,0,0.8);
   }
 
@@ -247,7 +272,7 @@ const eventDateStr =
 </style>
 
 <div
-  class={`festival-entry${status === "ENDED" ? " ended" : ""}${festival.image ? " has-image" : ""}`}
+  class={`festival-entry${status === "ENDED" ? " ended" : ""}${status === "LIVE" ? " live" : ""}${festival.image ? " has-image" : ""}`}
   data-type={festival.type ?? ""}
   data-vibes={(festival.vibes ?? []).join(",")}
   data-country={festival.country ?? ""}
@@ -262,14 +287,14 @@ const eventDateStr =
     </div>
 
     <div class="countdown-wrap">
-      <div class="countdown" data-date={countdownTarget}>
-        {status === "ENDED" ? "—" : "Loading..."}
-      </div>
       <div class="countdown-label">
         <span class="t-en">{status === "ENDED" ? "ended" : status === "LIVE" ? "ends in" : "starts in"}</span>
         <span class="t-fr">{status === "ENDED" ? "terminé" : status === "LIVE" ? "se termine dans" : "commence dans"}</span>
         <span class="t-kr">{status === "ENDED" ? "fini" : status === "LIVE" ? "ka fini adan" : "ka koumansé adan"}</span>
         <span class="t-es">{status === "ENDED" ? "terminado" : status === "LIVE" ? "termina en" : "empieza en"}</span>
+      </div>
+      <div class="countdown" data-date={countdownTarget}>
+        {status === "ENDED" ? "—" : "Loading..."}
       </div>
     </div>
   </div>
