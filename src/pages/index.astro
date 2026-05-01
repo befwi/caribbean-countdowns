@@ -11,8 +11,8 @@ import FestivalRow from "../components/FestivalRow.astro";
 const now = new Date();
 
 function getStatus(f) {
-  const start = new Date(f.startDate);
-  const end = new Date(f.endDate);
+  const start = new Date(f.startDate + "T00:00:00");
+  const end = new Date(f.endDate + "T23:59:59");
   if (now > end) return "ENDED";
   if (now >= start) return "LIVE";
   return "UPCOMING";
@@ -26,10 +26,11 @@ const enriched = festivals
     return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
   });
 
-const eventTypes = ["All", "music festival", "regatta", "other"];
+const eventTypes = ["All", "music festival", "carnival", "regatta", "other"];
 const eventTypeLabels: Record<string, Record<string, string>> = {
   "All":           { en: "All types",          fr: "Tous les types",      kr: "Tout kalité",        es: "Todos los tipos" },
   "music festival":{ en: "music festival",      fr: "festival de musique", kr: "mizik fèstival",     es: "festival de música" },
+  "carnival":      { en: "carnival",            fr: "carnaval",            kr: "kanaval",            es: "carnaval" },
   "regatta":       { en: "regatta",             fr: "régate",              kr: "kous bato",             es: "regata" },
   "other":         { en: "other",               fr: "autre",               kr: "le restan",                es: "otro" },
 };
