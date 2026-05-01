@@ -1,0 +1,567 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Event — Caribbean Countdowns</title>
+  <style is:global>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+      padding: 48px 24px 80px;
+    }
+
+    .page { max-width: 640px; margin: 0 auto; }
+
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    h1 { font-size: 22px; font-weight: 700; color: #fff; }
+    .subtitle { font-size: 13px; color: #666; margin-bottom: 36px; margin-top: 6px; }
+
+    .lang-group { display: flex; gap: 4px; flex-shrink: 0; }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #555;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 16px;
+      padding: 2px 6px;
+      color: #aaa;
+      font-family: inherit;
+      transition: all 0.15s;
+      opacity: 0.5;
+    }
+    .lang-btn:hover { border-color: #888; opacity: 0.8; }
+    .lang-btn.active { background: #1a1a1a; border-color: #555; opacity: 1; }
+
+    .section { margin-bottom: 28px; }
+
+    label {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #444;
+      margin-bottom: 6px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 3px;
+      color: #e0e0e0;
+      font-family: inherit;
+      font-size: 13px;
+      padding: 7px 10px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    input:focus, select:focus, textarea:focus { border-color: #2d6aa0; }
+    textarea { resize: vertical; min-height: 70px; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .vibes-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .vibe-option {
+      cursor: pointer;
+      padding: 4px 12px;
+      border-radius: 3px;
+      border: 1px solid #333;
+      background: transparent;
+      color: #999;
+      font-size: 12px;
+      font-family: inherit;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .vibe-option.selected {
+      background: #1e3a5f;
+      border-color: #2d6aa0;
+      color: #7ec8e3;
+    }
+
+    .ticket-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .platform-url { display: none; }
+    .platform-url.visible { display: block; }
+
+    .btn-generate {
+      width: 100%;
+      background: #1e3a5f;
+      border: 1px solid #2d6aa0;
+      color: #7ec8e3;
+      border-radius: 3px;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      font-family: inherit;
+      font-weight: 600;
+      transition: background 0.15s;
+      margin-top: 8px;
+    }
+    .btn-generate:hover { background: #24497a; }
+
+    .output-wrap { margin-top: 32px; display: none; }
+    .output-wrap.visible { display: block; }
+
+    .output-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #444;
+      margin-bottom: 8px;
+    }
+
+    #output {
+      background: #141414;
+      border: 1px solid #2e2e2e;
+      border-radius: 4px;
+      padding: 16px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 12px;
+      color: #ccc;
+      white-space: pre;
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+
+    .hint { font-size: 11px; color: #444; margin-top: 10px; }
+
+    hr { border: none; border-top: 1px solid #2e2e2e; margin: 32px 0; }
+
+    .site-title { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; color: #fff; }
+    .site-title a { text-decoration: none; }
+
+    .back-link { font-size: 12px; color: #555; text-decoration: underline; }
+    .back-link:hover { color: #999; }
+
+    details.criteria-box {
+      background: #0a0f1a;
+      border: 1px solid #1e3a5f;
+      border-radius: 4px;
+      padding: 10px 16px;
+    }
+    .criteria-toggle {
+      cursor: pointer;
+      list-style: none;
+      font-size: 13px;
+      color: #7ec8e3;
+    }
+    .criteria-toggle:hover { color: #b3e4f7; }
+    .criteria-toggle::marker { display: none; }
+    .criteria-list {
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid #1e3a5f;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .criteria-list span { color: #5a8fad; font-size: 12px; }
+    .criteria-list strong { color: #7ec8e3; }
+
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="page-header">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <a class="back-link" href="/">
+          <span class="t-en">← Back</span>
+          <span class="t-fr">← Retour</span>
+          <span class="t-kr">← Retounen</span>
+          <span class="t-es">← Volver</span>
+        </a>
+        <div class="lang-group">
+          <button class="lang-btn" data-lang="en" onclick="setLang('en')" title="English">🇬🇧</button>
+          <button class="lang-btn" data-lang="kr" onclick="setLang('kr')" title="Kréyol">🇭🇹</button>
+          <button class="lang-btn" data-lang="fr" onclick="setLang('fr')" title="Français">🇫🇷</button>
+          <button class="lang-btn" data-lang="es" onclick="setLang('es')" title="Español">🇪🇸</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 style="font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;margin-top:28px;">
+      <span class="t-en">Add Event</span>
+      <span class="t-fr">Ajouter un événement</span>
+      <span class="t-kr">Ajouter an évènman</span>
+      <span class="t-es">Agregar un evento</span>
+    </h2>
+
+    <p class="subtitle">
+      <span class="t-en">Fill in the fields — your submission will be sent by email for review and added to the site.</span>
+      <span class="t-fr">Remplissez les champs — votre soumission sera envoyée par email pour validation et ajoutée au site.</span>
+      <span class="t-kr">Ranpli chanm yo — soumisyon ou a pral voye pa imèl pou revizyon epi ajoute sou sit la.</span>
+      <span class="t-es">Rellena los campos — tu propuesta se enviará por correo para revisión y será añadida al sitio.</span>
+    </p>
+
+    <details class="criteria-box" style="margin-bottom:28px;">
+      <summary class="criteria-toggle">
+        <span class="t-en">▸ Click here to see the listing criteria for listed events</span>
+        <span class="t-fr">▸ Cliquez ici pour connaître les critères de sélection des événements listés</span>
+        <span class="t-kr">▸ Klikez la pou wè kritè séleksyon évènman listé yo</span>
+        <span class="t-es">▸ Haz clic aquí para ver los criterios de selección de los eventos listados</span>
+      </summary>
+      <div class="criteria-list">
+        <span>
+          <span class="t-en">An event is listed if it meets <strong>at least 2 of these 3 criteria:</strong></span>
+          <span class="t-fr">Un événement est listé s'il remplit <strong>au moins 2 de ces 3 critères :</strong></span>
+          <span class="t-kr">On évènman listé si li rempli <strong>omwen 2 nan 3 kritè sa yo :</strong></span>
+          <span class="t-es">Un evento se lista si cumple <strong>al menos 2 de estos 3 criterios:</strong></span>
+        </span>
+        <span>
+          <span class="t-en">① <strong>Recurring</strong> — minimum 2nd edition (events in their first edition are not listed)</span>
+          <span class="t-fr">① <strong>Récurrence</strong> — minimum 2ème édition (les événements à leur 1ère édition ne sont pas listés)</span>
+          <span class="t-kr">① <strong>Récidiv</strong> — minimòm 2yèm édisyon (évènman ki an 1yer édisyon pa listé)</span>
+          <span class="t-es">① <strong>Recurrencia</strong> — mínimo 2ª edición (los eventos en su 1ª edición no se listan)</span>
+        </span>
+        <span>
+          <span class="t-en">② <strong>Public ticketing</strong> — tickets on sale via an external platform, or free public entry</span>
+          <span class="t-fr">② <strong>Billetterie publique</strong> — billets en vente sur une plateforme externe, ou entrée gratuite ouverte à tous</span>
+          <span class="t-kr">② <strong>Biléteri piblik</strong> — tikè an vant sou platfòm ekstèn, oswa antrée gratis pou tout moun</span>
+          <span class="t-es">② <strong>Taquilla pública</strong> — entradas en venta en plataforma externa, o entrada gratuita abierta al público</span>
+        </span>
+        <span>
+          <span class="t-en">③ <strong>Lineup</strong> — minimum 3 distinct artists or acts publicly announced</span>
+          <span class="t-fr">③ <strong>Programmation</strong> — minimum 3 artistes ou actes distincts annoncés publiquement</span>
+          <span class="t-kr">③ <strong>Pwogramasyon</strong> — minimòm 3 atis oswa akò distinkt anoonsé piblikman</span>
+          <span class="t-es">③ <strong>Cartel</strong> — mínimo 3 artistas o actos distintos anunciados públicamente</span>
+        </span>
+      </div>
+    </details>
+
+    <div class="section">
+      <label>
+        <span class="t-en">Event name</span>
+        <span class="t-fr">Nom de l'événement</span>
+        <span class="t-kr">Non évènman an</span>
+        <span class="t-es">Nombre del evento</span>
+      </label>
+      <input type="text" id="name" placeholder="e.g. ADI Music Festival" />
+    </div>
+
+    <div class="section">
+      <label>
+        <span class="t-en">Website</span>
+        <span class="t-fr">Site web</span>
+        <span class="t-kr">Sit web</span>
+        <span class="t-es">Sitio web</span>
+      </label>
+      <input type="text" id="website" placeholder="https://..." />
+    </div>
+
+    <div class="section">
+      <label>
+        <span class="t-en">Description</span>
+        <span class="t-fr">Description</span>
+        <span class="t-kr">Deskripsyon</span>
+        <span class="t-es">Descripción</span>
+      </label>
+      <textarea id="description"></textarea>
+    </div>
+
+    <div class="section row">
+      <div>
+        <label>
+          <span class="t-en">Start date</span>
+          <span class="t-fr">Date de début</span>
+          <span class="t-kr">Dat kòmansman</span>
+          <span class="t-es">Fecha de inicio</span>
+        </label>
+        <input type="date" id="startDate" />
+      </div>
+      <div>
+        <label>
+          <span class="t-en">End date</span>
+          <span class="t-fr">Date de fin</span>
+          <span class="t-kr">Dat lafen</span>
+          <span class="t-es">Fecha de fin</span>
+        </label>
+        <input type="date" id="endDate" />
+      </div>
+    </div>
+
+    <div class="section row">
+      <div>
+        <label>
+          <span class="t-en">City</span>
+          <span class="t-fr">Ville</span>
+          <span class="t-kr">Vil</span>
+          <span class="t-es">Ciudad</span>
+        </label>
+        <input type="text" id="city" placeholder="e.g. Le Moule" />
+      </div>
+      <div>
+        <label>
+          <span class="t-en">Country</span>
+          <span class="t-fr">Pays</span>
+          <span class="t-kr">Péyi</span>
+          <span class="t-es">País</span>
+        </label>
+        <input type="text" id="country" placeholder="e.g. Guadeloupe" />
+      </div>
+    </div>
+
+    <div class="section">
+      <label>
+        <span class="t-en">Type of event</span>
+        <span class="t-fr">Type d'événement</span>
+        <span class="t-kr">Kalité évènman</span>
+        <span class="t-es">Tipo de evento</span>
+      </label>
+      <select id="type">
+        <option value="music festival" data-en="Music festival" data-fr="Festival de musique" data-kr="Fèstival mizik" data-es="Festival de música"></option>
+        <option value="carnival" data-en="Carnival" data-fr="Carnaval" data-kr="Kanaval" data-es="Carnaval"></option>
+        <option value="regatta" data-en="Regatta" data-fr="Régate" data-kr="Kous bato" data-es="Regata"></option>
+        <option value="other" data-en="Other" data-fr="Autre" data-kr="Le restan" data-es="Otro"></option>
+      </select>
+    </div>
+
+    <div class="section">
+      <label>Vibes</label>
+      <div class="vibes-grid" id="vibesGrid"></div>
+    </div>
+
+    <div class="section">
+      <label>
+        <span class="t-en">Image</span>
+        <span class="t-fr">Image</span>
+        <span class="t-kr">Imaj</span>
+        <span class="t-es">Imagen</span>
+      </label>
+      <input type="text" id="image" placeholder="https://... (link to an image of the event)" />
+    </div>
+
+    <div class="section">
+      <label>
+        <span class="t-en">Tickets</span>
+        <span class="t-fr">Billets</span>
+        <span class="t-kr">Tikè</span>
+        <span class="t-es">Entradas</span>
+      </label>
+      <div id="ticketPlatforms"></div>
+      <p class="hint">
+        <span class="t-en">Leave all unselected if the event is free — the Free badge will show automatically.</span>
+        <span class="t-fr">Laissez tout non sélectionné si l'événement est gratuit — le badge Gratuit s'affichera automatiquement.</span>
+        <span class="t-kr">Kite tout deseleksyone si évènman an gratis — badge Gratis a pral parèt otomatikman.</span>
+        <span class="t-es">Deja todo sin seleccionar si el evento es gratuito — el badge Gratis aparecerá automáticamente.</span>
+      </p>
+    </div>
+
+    <hr />
+
+    <button class="btn-generate" onclick="generate()">
+      <span class="t-en">Send by email</span>
+      <span class="t-fr">Envoyer par email</span>
+      <span class="t-kr">Voye pa imèl</span>
+      <span class="t-es">Enviar por correo</span>
+    </button>
+
+    <div class="output-wrap" id="outputWrap">
+      <div class="output-label">
+        <span class="t-en">If your email client didn't open, copy this and send it manually</span>
+        <span class="t-fr">Si votre client email ne s'est pas ouvert, copiez ceci et envoyez-le manuellement</span>
+        <span class="t-kr">Si kliyan imèl ou pa ouvè, kopye sa a epi voye li manyèlman</span>
+        <span class="t-es">Si tu cliente de correo no se abrió, copia esto y envíalo manualmente</span>
+      </div>
+      <div id="output"></div>
+    </div>
+  </div>
+
+  <script is:inline>
+    var LANGS = ["en", "fr", "kr", "es"];
+    var lang = localStorage.getItem("lang") || "en";
+
+    function applyLang() {
+      LANGS.forEach(function(l) {
+        document.querySelectorAll(".t-" + l).forEach(function(el) {
+          el.style.display = l === lang ? "" : "none";
+        });
+      });
+      document.documentElement.lang = lang;
+      document.querySelectorAll(".lang-btn").forEach(function(btn) {
+        btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
+      });
+      document.querySelectorAll("#type option").forEach(function(opt) {
+        opt.textContent = opt.getAttribute("data-" + lang) || opt.getAttribute("data-en");
+      });
+    }
+
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem("lang", lang);
+      applyLang();
+    }
+
+    applyLang();
+
+    const VIBES = [
+      "rap", "afro", "dancehall", "shatta", "zouk", "kompa",
+      "jazz", "blues", "soul", "reggae", "calypso", "steelpan",
+      "soca", "bouyon", "roots"
+    ];
+
+    const selectedVibes = new Set();
+
+    const grid = document.getElementById("vibesGrid");
+    VIBES.forEach(function(v) {
+      const btn = document.createElement("button");
+      btn.className = "vibe-option";
+      btn.textContent = v;
+      btn.onclick = function() {
+        if (selectedVibes.has(v)) {
+          selectedVibes.delete(v);
+          btn.classList.remove("selected");
+        } else {
+          selectedVibes.add(v);
+          btn.classList.add("selected");
+        }
+      };
+      grid.appendChild(btn);
+    });
+
+    const TICKET_PLATFORMS = [
+      { name: "Website",           placeholder: "" },
+      { name: "Bizouk",            placeholder: "https://www.bizouk.com/events/..." },
+      { name: "Kiwol",             placeholder: "https://www.kiwol.com/..." },
+      { name: "Billetweb",         placeholder: "https://www.billetweb.fr/..." },
+      { name: "4 Circles Tickets", placeholder: "https://4circlestickets.com/..." },
+      { name: "Other",             placeholder: "https://..." },
+    ];
+
+    const selectedPlatforms = new Set();
+
+    const tContainer = document.getElementById("ticketPlatforms");
+    TICKET_PLATFORMS.forEach(function(p) {
+      const row = document.createElement("div");
+      row.className = "ticket-row";
+
+      const btn = document.createElement("button");
+      btn.className = "vibe-option";
+      btn.textContent = p.name;
+
+      const urlInput = document.createElement("input");
+      urlInput.type = "text";
+      urlInput.className = "platform-url";
+      urlInput.placeholder = p.placeholder;
+      urlInput.dataset.platform = p.name;
+
+      btn.onclick = function() {
+        if (selectedPlatforms.has(p.name)) {
+          selectedPlatforms.delete(p.name);
+          btn.classList.remove("selected");
+          urlInput.classList.remove("visible");
+          urlInput.value = "";
+        } else {
+          selectedPlatforms.add(p.name);
+          btn.classList.add("selected");
+          urlInput.classList.add("visible");
+          if (p.name === "Website") {
+            urlInput.value = document.getElementById("website").value.trim();
+          }
+          urlInput.focus();
+        }
+      };
+
+      row.appendChild(btn);
+      row.appendChild(urlInput);
+      tContainer.appendChild(row);
+    });
+
+    document.getElementById("website").addEventListener("input", function() {
+      const websiteInput = tContainer.querySelector('[data-platform="Website"]');
+      if (websiteInput && selectedPlatforms.has("Website")) {
+        websiteInput.value = this.value.trim();
+      }
+    });
+
+    function generate() {
+      const val = function(id) { return document.getElementById(id).value.trim(); };
+
+      const name        = val("name");
+      const website     = val("website");
+      const description = val("description");
+      const startDate   = val("startDate");
+      const endDate     = val("endDate");
+      const city        = val("city");
+      const country     = val("country");
+      const type        = document.getElementById("type").value;
+      const vibes       = Array.from(selectedVibes);
+      const image       = val("image");
+
+      const tickets = Array.from(document.querySelectorAll(".platform-url.visible"))
+        .map(function(input) { return { name: input.dataset.platform, url: input.value.trim() }; })
+        .filter(function(t) { return t.url; });
+
+      const q = function(s) { return JSON.stringify(s); };
+
+      const ticketsStr = tickets.length === 0
+        ? "[]"
+        : "[\n" + tickets.map(function(t) { return '    { "name": ' + q(t.name) + ', "url": ' + q(t.url) + ' }'; }).join(",\n") + "\n  ]";
+
+      const json = [
+        "{",
+        '  "name": '        + q(name)        + ",",
+        '  "website": '     + q(website)      + ",",
+        '  "description": ' + q(description)  + ",",
+        '  "startDate": '   + q(startDate)    + ",",
+        '  "endDate": '     + q(endDate)      + ",",
+        '  "city": '        + q(city)         + ",",
+        '  "country": '     + q(country)      + ",",
+        '  "type": '        + q(type)         + ",",
+        '  "vibes": '       + "[" + vibes.map(q).join(", ") + "]," ,
+        '  "image": '       + q(image)        + ",",
+        '  "tickets": '     + ticketsStr,
+        "}"
+      ].join("\n") + ",";
+
+      const greetings = {
+        en: "Hi,\n\nHere is my event submission for Caribbean Countdowns:\n\n",
+        fr: "Bonjour,\n\nVoici ma proposition d'événement pour Caribbean Countdowns :\n\n",
+        kr: "Bonjou,\n\nWa soumisyon évènman mwen pou Caribbean Countdowns :\n\n",
+        es: "Hola,\n\nAquí está mi propuesta de evento para Caribbean Countdowns:\n\n"
+      };
+      const closings = {
+        en: "\n\nThanks!",
+        fr: "\n\nMerci !",
+        kr: "\n\nMèsi !",
+        es: "\n\n¡Gracias!"
+      };
+
+      const body = encodeURIComponent((greetings[lang] || greetings.en) + json + (closings[lang] || closings.en));
+      const subject = encodeURIComponent("New event submission — " + name);
+
+      const a = document.createElement("a");
+      a.href = "mailto:admin.hxqxk@silomails.com?subject=" + subject + "&body=" + body;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      document.getElementById("outputWrap").classList.add("visible");
+      document.getElementById("output").textContent = json;
+      applyLang();
+    }
+  </script>
+</body>
+</html>

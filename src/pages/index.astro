@@ -193,22 +193,6 @@ function splitLines(text: string) {
     .info-bar a { color: #555; text-decoration: underline; }
     .info-bar a:hover { color: #999; }
 
-    .criteria-toggle { color: #444; cursor: pointer; list-style: none; }
-    .criteria-toggle:hover { color: #777; }
-    .criteria-toggle::marker { display: none; }
-    details[open] .criteria-toggle { color: #666; }
-    .criteria-list {
-      margin-top: 6px;
-      padding: 10px 14px;
-      border-left: 2px solid #2e2e2e;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .criteria-list span { color: #444; font-size: 11px; }
-    .criteria-list strong { color: #555; }
-
-
     /* Sponsor band */
     .sponsor-footer {
       display: flex;
@@ -312,51 +296,17 @@ function splitLines(text: string) {
 
     <div class="info-bar">
       <span>
-        <span class="t-en">To add/update a festival, <a href="https://github.com/befwi/caribbean-countdowns/pulls" target="_blank" rel="noopener noreferrer">send in a pull request</a>.</span>
-        <span class="t-fr">Pour ajouter/modifier un festival, <a href="https://github.com/befwi/caribbean-countdowns/pulls" target="_blank" rel="noopener noreferrer">faire une pull request</a>.</span>
-        <span class="t-kr">Pou mété an lòt fèstival, <a href="https://github.com/befwi/caribbean-countdowns/pulls" target="_blank" rel="noopener noreferrer">voyé an pull request</a>.</span>
-        <span class="t-es">Para agregar/actualizar un festival, <a href="https://github.com/befwi/caribbean-countdowns/pulls" target="_blank" rel="noopener noreferrer">envía un pull request</a>.</span>
-      </span>
-      <span>
         <span class="t-en">Last update: {lastUpdateEn}</span>
         <span class="t-fr">Dernière mise à jour : {lastUpdateFr}</span>
         <span class="t-kr">Dènyé mizajou : {lastUpdateFr}</span>
         <span class="t-es">Última actualización: {lastUpdateEs}</span>
       </span>
-      <details>
-        <summary class="criteria-toggle">
-          <span class="t-en">▸ Click here to see the listing criteria for listed events</span>
-          <span class="t-fr">▸ Cliquez ici pour connaître les critères de sélection des événements listés</span>
-          <span class="t-kr">▸ Klikez la pou wè kritè séleksyon évènman listé yo</span>
-          <span class="t-es">▸ Haz clic aquí para ver los criterios de selección de los eventos listados</span>
-        </summary>
-        <div class="criteria-list">
-          <span>
-            <span class="t-en">An event is listed if it meets <strong>at least 2 of these 3 criteria:</strong></span>
-            <span class="t-fr">Un événement est listé s'il remplit <strong>au moins 2 de ces 3 critères :</strong></span>
-            <span class="t-kr">On évènman listé si li rempli <strong>omwen 2 nan 3 kritè sa yo :</strong></span>
-            <span class="t-es">Un evento se lista si cumple <strong>al menos 2 de estos 3 criterios:</strong></span>
-          </span>
-          <span>
-            <span class="t-en">① <strong>Recurring</strong> — minimum 2nd edition (events in their first edition are not listed)</span>
-            <span class="t-fr">① <strong>Récurrence</strong> — minimum 2ème édition (les événements à leur 1ère édition ne sont pas listés)</span>
-            <span class="t-kr">① <strong>Récidiv</strong> — minimòm 2yèm édisyon (évènman ki an 1yer édisyon pa listé)</span>
-            <span class="t-es">① <strong>Recurrencia</strong> — mínimo 2ª edición (los eventos en su 1ª edición no se listan)</span>
-          </span>
-          <span>
-            <span class="t-en">② <strong>Public ticketing</strong> — tickets on sale via an external platform, or free public entry</span>
-            <span class="t-fr">② <strong>Billetterie publique</strong> — billets en vente sur une plateforme externe, ou entrée gratuite ouverte à tous</span>
-            <span class="t-kr">② <strong>Biléteri piblik</strong> — tikè an vant sou platfòm ekstèn, oswa antrée gratis pou tout moun</span>
-            <span class="t-es">② <strong>Taquilla pública</strong> — entradas en venta en plataforma externa, o entrada gratuita abierta al público</span>
-          </span>
-          <span>
-            <span class="t-en">③ <strong>Lineup</strong> — minimum 3 distinct artists or acts publicly announced</span>
-            <span class="t-fr">③ <strong>Programmation</strong> — minimum 3 artistes ou actes distincts annoncés publiquement</span>
-            <span class="t-kr">③ <strong>Pwogramasyon</strong> — minimòm 3 atis oswa akò distinkt anoonsé piblikman</span>
-            <span class="t-es">③ <strong>Cartel</strong> — mínimo 3 artistas o actos distintos anunciados públicamente</span>
-          </span>
-        </div>
-      </details>
+      <span>
+        <span class="t-en">Want to add a festival? <a href="/add-event/">Use the form</a>.</span>
+        <span class="t-fr">Ajouter un festival ? <a href="/add-event/">Utiliser le formulaire</a>.</span>
+        <span class="t-kr">Vou vlé mété an fèstival ? <a href="/add-event/">Sèvi ak fòmilè a</a>.</span>
+        <span class="t-es">¿Agregar un festival? <a href="/add-event/">Usa el formulario</a>.</span>
+      </span>
     </div>
 
     <!-- Sponsor band -->
@@ -449,7 +399,7 @@ function splitLines(text: string) {
       <!-- Option A : visitor-badge.laobi.icu (actif) -->
       <img src="https://visitor-badge.laobi.icu/badge?page_id=befwi.caribbean-countdowns" alt="visitor count" style="height:18px;opacity:0.5;" />
       <!-- Option B : hits.seeyoufarm.com -->
-      {/* <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcaribbean-countdowns.com&count_bg=%23333333&title_bg=%23111111&title=visitors&edge_flat=true" alt="visitor count" style="height:18px;opacity:0.5;" /> */}
+      {/* <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcaribbean-countdowns.co&count_bg=%23333333&title_bg=%23111111&title=visitors&edge_flat=true" alt="visitor count" style="height:18px;opacity:0.5;" /> */}
     </div>
 
     <div style="text-align:center;padding:0 0 16px;font-size:11px;">
@@ -465,6 +415,18 @@ function splitLines(text: string) {
         <span class="t-fr">Devenir sponsor</span>
         <span class="t-kr">Vin yon sponsor</span>
         <span class="t-es">Ser patrocinador</span>
+      </a>
+      &nbsp;·&nbsp;
+      <a href="/add-event/" style="color:#333;text-decoration:underline;">
+        <span class="t-en">Add an event</span>
+        <span class="t-fr">Ajouter un événement</span>
+        <span class="t-kr">Ajouter an évènman</span>
+        <span class="t-es">Agregar un evento</span>
+      </a>
+    </div>
+    <div style="text-align:center;padding:0 0 16px;font-size:11px;">
+      <a href="https://countdowns.co" target="_blank" rel="noopener noreferrer" style="color:#2a2a2a;text-decoration:none;">
+        africa.countdowns.co &nbsp;·&nbsp; europe.countdowns.co &nbsp;·&nbsp; latin-america.countdowns.co &nbsp;·&nbsp; north-america.countdowns.co &nbsp;·&nbsp; asia.countdowns.co &nbsp;·&nbsp; middleeast.countdowns.co &nbsp;·&nbsp; oceania.countdowns.co
       </a>
     </div>
 
