@@ -24,6 +24,12 @@ window.setLang = function(l) {
 
 applyLang();
 
+document.querySelectorAll(".lang-btn").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    window.setLang(btn.getAttribute("data-lang"));
+  });
+});
+
 var VIBES = [
   "rap", "afro", "dancehall", "shatta", "zouk", "kompa",
   "jazz", "blues", "soul", "reggae", "calypso", "steelpan",

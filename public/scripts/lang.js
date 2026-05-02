@@ -20,3 +20,9 @@ window.setLang = function(l) {
 };
 
 applyLang();
+
+document.querySelectorAll(".lang-btn").forEach(function(btn) {
+  btn.addEventListener("click", function() {
+    window.setLang(btn.getAttribute("data-lang"));
+  });
+});
