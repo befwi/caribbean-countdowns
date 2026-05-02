@@ -41,8 +41,8 @@ var PERIOD_END   = new Date(_cfg.dataset.periodEnd).getTime();
 var STATS_URL = "/api/ngo-stats";
 
 // Fallback values used while the Worker responds or if it fails
-var communityProgress = 63;
-var communityContributors = 847;
+var communityProgress = 0;
+var communityContributors = 0;
 
 var MAX_USER_TOTAL   = 25;   // max % a single user can contribute in total
 var MAX_PER_SESSION  = 5;    // max % per quiz session (perfect score)

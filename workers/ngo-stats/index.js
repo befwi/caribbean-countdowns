@@ -4,7 +4,7 @@
  * POST { contribution: number } → increments stats, returns updated values
  */
 
-const DEFAULTS = { communityProgress: 63, contributors: 847 };
+const DEFAULTS = { communityProgress: 0, contributors: 0 };
 
 async function getStats(env) {
   const raw = await env.NGO_KV.get("stats");
