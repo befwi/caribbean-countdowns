@@ -1,3 +1,4 @@
+/* index.js — caribbean.countdowns.co */
 var LANGS = ["en", "fr", "kr", "es"];
 var lang = localStorage.getItem("lang") || "en";
 
