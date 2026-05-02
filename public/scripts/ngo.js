@@ -76,12 +76,19 @@ function renderGauge(pct, contributors) {
 
   if (contributors !== undefined) {
     var c = contributors;
-    var contribTexts = {
-      en: c.toLocaleString() + " contributors",
-      fr: c.toLocaleString() + " contributeurs",
-      kr: c.toLocaleString() + " kontribistè",
-      es: c.toLocaleString() + " contribuyentes"
-    };
+    var contribTexts = c > 0
+      ? {
+          en: c.toLocaleString() + " contributors",
+          fr: c.toLocaleString() + " contributeurs",
+          kr: c.toLocaleString() + " kontribistè",
+          es: c.toLocaleString() + " contribuyentes"
+        }
+      : {
+          en: "Be the first to contribute!",
+          fr: "Soyez le premier à contribuer !",
+          kr: "Se premye pou kontribyé !",
+          es: "¡Sé el primero en contribuir!"
+        };
     contribEl.textContent = contribTexts[lang] || contribTexts.en;
   }
 
@@ -111,8 +118,8 @@ function fetchStats() {
   fetch(STATS_URL)
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      communityProgress = data.communityProgress || communityProgress;
-      communityContributors = data.contributors || communityContributors;
+      communityProgress = data.communityProgress != null ? data.communityProgress : communityProgress;
+      communityContributors = data.contributors != null ? data.contributors : communityContributors;
       animateGaugeTo(getTotalProgress(), communityContributors);
     })
     .catch(function() {
@@ -128,27 +135,14 @@ function postContribution(pct) {
   })
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      communityProgress = data.communityProgress || communityProgress;
-      communityContributors = data.contributors || communityContributors;
+      communityProgress = data.communityProgress != null ? data.communityProgress : communityProgress;
+      communityContributors = data.contributors != null ? data.contributors : communityContributors;
     })
     .catch(function() {
       // Worker unreachable — local state still updated
     });
 }
 
-function animateGaugeTo(target) {
-  var current = 0;
-  var step = function() {
-    current = Math.min(current + (target - current) * 0.08 + 0.2, target);
-    renderGauge(current);
-    if (current < target - 0.1) {
-      requestAnimationFrame(step);
-    } else {
-      renderGauge(target);
-    }
-  };
-  requestAnimationFrame(step);
-}
 
 // ─── Countdown ───────────────────────────────────────────────────────────────
 
