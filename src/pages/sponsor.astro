@@ -593,7 +593,7 @@
 
   </div>
 
-  <script is:inline>
+  <script>
     var LANGS = ["en", "fr", "kr", "es"];
     var lang = localStorage.getItem("lang") || "en";
 
@@ -609,11 +609,11 @@
       });
     }
 
-    function setLang(l) {
+    window.setLang = function(l) {
       lang = l;
       localStorage.setItem("lang", lang);
       applyLang();
-    }
+    };
 
     applyLang();
   </script>

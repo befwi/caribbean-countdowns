@@ -389,7 +389,7 @@
     </div>
   </div>
 
-  <script is:inline>
+  <script>
     var LANGS = ["en", "fr", "kr", "es"];
     var lang = localStorage.getItem("lang") || "en";
 
@@ -408,11 +408,11 @@
       });
     }
 
-    function setLang(l) {
+    window.setLang = function(l) {
       lang = l;
       localStorage.setItem("lang", lang);
       applyLang();
-    }
+    };
 
     applyLang();
 
@@ -496,7 +496,7 @@
       }
     });
 
-    function generate() {
+    window.generate = function() {
       const val = function(id) { return document.getElementById(id).value.trim(); };
 
       const name        = val("name");
