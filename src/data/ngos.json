@@ -1,0 +1,23 @@
+{
+  "ngo": {
+    "name": "L'Asso-Mer",
+    "founded": 2016,
+    "location": "Martinique",
+    "volunteers": 10,
+    "focus": "marine conservation",
+    "website": "https://www.lassomer.fr/",
+    "logo": "/images/ngos/assomer.png",
+    "sponsorship": {
+      "start": "2026-05-02T00:00:00",
+      "end": "2026-06-02T23:59:59"
+    },
+    "contact": {
+      "phone": "+596 696 19 00 72",
+      "email": "info@lassomer.fr",
+      "facebook": "https://www.facebook.com/lassomer972",
+      "instagram": "https://www.instagram.com/lassomer972/",
+      "youtube": "https://www.youtube.com/channel/UCSy7gUb4HU5gzybZuxyjCzw/featured",
+      "whatsapp": "https://wa.me/596696190072"
+    }
+  }
+}

@@ -3,6 +3,7 @@
 import festivals2026 from "../data/festivals-2026.json";
 import festivals2027 from "../data/festivals-2027.json";
 import sponsors from "../data/sponsors.json";
+import ngos from "../data/ngos.json";
 
 // const festivals = [...festivals2025, ...festivals2026];
 const festivals = [...festivals2026, ...festivals2027];
@@ -44,7 +45,8 @@ const lastUpdateEs = new Date().toLocaleDateString("es-ES", { day: "numeric", mo
 
 const liveFestivals = enriched.filter(f => f.status === "LIVE");
 
-const { ngo, sponsor } = sponsors;
+const { ngo } = ngos;
+const { sponsor } = sponsors;
 
 function splitLines(text: string) {
   return text.split(";").map(s => s.trim()).filter(Boolean);

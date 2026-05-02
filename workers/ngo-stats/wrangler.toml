@@ -1,0 +1,11 @@
+name = "ngo-stats"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+[[kv_namespaces]]
+binding = "NGO_KV"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/api/ngo-stats"
+zone_name = "countdowns.co"

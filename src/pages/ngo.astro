@@ -1,0 +1,861 @@
+---
+import ngos from "../data/ngos.json";
+const { ngo } = ngos;
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <title>L'Asso-Mer — Caribbean Countdowns</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0f0f;
+      color: #e0e0e0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .back-link { font-size: 12px; color: #555; text-decoration: underline; }
+    .back-link:hover { color: #999; }
+
+    .lang-group { display: flex; gap: 4px; }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #555;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      color: #aaa;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .lang-btn:hover { border-color: #888; color: #eee; }
+    .lang-btn.active { background: #0d2a2a; border-color: #0d9488; color: #5eead4; }
+
+    /* Hero */
+    .ngo-hero {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: #0a1a1a;
+      border: 1px solid #0d3d35;
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-bottom: 32px;
+    }
+
+    .ngo-logo-wrap {
+      background: #fff;
+      border-radius: 6px;
+      padding: 8px 14px;
+      flex-shrink: 0;
+    }
+    .ngo-logo-wrap img { height: 48px; display: block; }
+
+    .ngo-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+      background: #0d2a2a;
+      color: #34d399;
+      border: 1px solid #065f46;
+      margin-bottom: 8px;
+    }
+
+    .ngo-name { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+
+    .ngo-tagline { font-size: 13px; color: #5eead4; }
+
+    /* 3 key elements */
+    .key-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .key-card {
+      background: #0f1a1a;
+      border: 1px solid #1a3a3a;
+      border-radius: 6px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .key-icon { font-size: 24px; margin-bottom: 10px; }
+    .key-title { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .key-text { font-size: 12px; color: #7a9a9a; line-height: 1.6; }
+
+    .key-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; text-align: left; }
+    .key-list li { font-size: 12px; color: #7a9a9a; padding-left: 14px; position: relative; }
+    .key-list li::before { content: '—'; position: absolute; left: 0; color: #0d9488; }
+
+    .id-rows { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+    .id-row { display: flex; flex-direction: column; gap: 2px; align-items: center; }
+    .id-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.7px; color: #2a6a60; }
+    .id-value { font-size: 13px; color: #c0d8d8; }
+    .id-link { color: #5eead4; text-decoration: none; }
+    .id-link:hover { text-decoration: underline; }
+    .id-social { display: flex; gap: 8px; margin-top: 4px; flex-wrap: wrap; justify-content: center; }
+    .id-social-link { display: flex; align-items: center; gap: 5px; color: #5eead4; border: 1px solid #1a3a3a; border-radius: 4px; padding: 4px 10px; text-decoration: none; font-size: 11px; font-weight: 600; transition: all 0.15s; }
+    .id-social-link:hover { border-color: #0d9488; background: #0a1a1a; text-decoration: none; }
+    .id-social-link svg { flex-shrink: 0; }
+
+    /* Divider */
+    .divider { border: none; border-top: 1px solid #1a2e2e; margin: 32px 0; }
+
+    /* Gamification block */
+    .game-header {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #0d9488;
+      margin-bottom: 24px;
+    }
+
+    /* Countdown */
+    .countdown-wrap {
+      background: #0a1a1a;
+      border: 1px solid #0d3d35;
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .countdown-label { font-size: 12px; color: #5eead4; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; }
+    .countdown-label-sub { font-size: 11px; color: #2a6a60; margin-top: 2px; }
+
+    .countdown-timer { display: flex; gap: 12px; }
+
+    .time-block { text-align: center; }
+    .time-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+    .time-label { font-size: 9px; color: #2a6a60; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+
+    .time-sep { font-size: 24px; color: #1a4a40; align-self: flex-start; margin-top: 2px; }
+
+    /* Gauge */
+    .gauge-wrap {
+      background: #0a1a1a;
+      border: 1px solid #0d3d35;
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+
+    .gauge-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .gauge-title { font-size: 13px; font-weight: 700; color: #fff; }
+    .gauge-pct { font-size: 22px; font-weight: 700; color: #34d399; }
+
+    .gauge-track {
+      height: 18px;
+      background: #0f2a2a;
+      border-radius: 9px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .gauge-fill {
+      height: 100%;
+      border-radius: 9px;
+      background: linear-gradient(90deg, #0d9488, #34d399);
+      transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+    }
+
+    .gauge-fill::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 0 9px 9px 0;
+    }
+
+    .gauge-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #2a6a60;
+    }
+
+    .gauge-meta .contributors { color: #5eead4; }
+
+    /* Renewal note */
+    .renewal-note {
+      background: #050f0d;
+      border: 1px solid #065f46;
+      border-radius: 4px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #34d399;
+      margin-bottom: 20px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .renewal-icon { flex-shrink: 0; }
+
+    /* Quiz CTA */
+    .quiz-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      align-items: center;
+    }
+
+    .btn-quiz {
+      background: #0d9488;
+      border: none;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .btn-quiz:hover { background: #0f766e; }
+    .btn-quiz:disabled { background: #1a3a3a; color: #2a6a60; cursor: default; }
+
+    .btn-donate {
+      background: transparent;
+      border: 1px solid #0d9488;
+      color: #5eead4;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-donate:hover { background: #0a1a1a; text-decoration: none; }
+
+    /* Quiz section */
+    #quiz-section { display: none; }
+    #quiz-section.visible { display: block; }
+
+    .quiz-box {
+      background: #0f1a1a;
+      border: 1px solid #1a3a3a;
+      border-radius: 6px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    .quiz-progress {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .quiz-step { font-size: 11px; color: #2a6a60; text-transform: uppercase; letter-spacing: 0.6px; }
+    .quiz-dots { display: flex; gap: 4px; }
+    .quiz-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #1a3a3a;
+      transition: background 0.2s;
+    }
+    .quiz-dot.active { background: #0d9488; }
+    .quiz-dot.done { background: #34d399; }
+
+    .quiz-question {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+
+    .quiz-option {
+      background: #0a1414;
+      border: 1px solid #1a3a3a;
+      border-radius: 4px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      color: #aaa;
+      text-align: left;
+      font-family: inherit;
+      transition: all 0.15s;
+      width: 100%;
+    }
+    .quiz-option:hover:not(:disabled) { border-color: #0d9488; color: #eee; }
+    .quiz-option.correct { background: #052e1a; border-color: #065f46; color: #34d399; }
+    .quiz-option.wrong { background: #1a0808; border-color: #5f1a1a; color: #f87171; }
+
+    .quiz-feedback {
+      margin-top: 14px;
+      font-size: 12px;
+      color: #5eead4;
+      display: none;
+      padding: 10px 14px;
+      background: #050f0d;
+      border-radius: 4px;
+      border: 1px solid #065f46;
+    }
+    .quiz-feedback.wrong-fb { color: #f87171; background: #150505; border-color: #5f1a1a; }
+    .quiz-feedback.visible { display: block; }
+
+    .quiz-next {
+      display: none;
+      margin-top: 14px;
+      background: transparent;
+      border: 1px solid #0d9488;
+      color: #5eead4;
+      padding: 8px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .quiz-next:hover { background: #0a1a1a; }
+    .quiz-next.visible { display: inline-block; }
+
+    /* Result */
+    #quiz-result { display: none; }
+    #quiz-result.visible { display: block; }
+
+    .result-box {
+      background: #050f0d;
+      border: 1px solid #065f46;
+      border-radius: 6px;
+      padding: 28px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .result-score { font-size: 36px; font-weight: 700; color: #34d399; margin-bottom: 8px; }
+    .result-label { font-size: 13px; color: #5eead4; margin-bottom: 20px; }
+    .result-contribution {
+      display: inline-block;
+      background: #0a1a1a;
+      border: 1px solid #0d9488;
+      border-radius: 4px;
+      padding: 8px 20px;
+      font-size: 13px;
+      color: #5eead4;
+      margin-bottom: 20px;
+    }
+
+    .result-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    .btn-replay {
+      background: transparent;
+      border: 1px solid #1a3a3a;
+      color: #aaa;
+      padding: 8px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .btn-replay:hover { border-color: #555; color: #eee; }
+
+    /* Mission accomplished */
+    #mission-accomplished { display: none; }
+    #mission-accomplished.visible { display: block; }
+
+    .mission-box {
+      background: #052e1a;
+      border: 1px solid #065f46;
+      border-radius: 8px;
+      padding: 32px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .mission-icon { font-size: 40px; margin-bottom: 12px; }
+    .mission-title { font-size: 20px; font-weight: 700; color: #34d399; margin-bottom: 8px; }
+    .mission-text { font-size: 13px; color: #5eead4; }
+
+    /* Tier info */
+    .tier-info {
+      background: #0a1414;
+      border: 1px solid #1a3a3a;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+    }
+
+    .tier-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.8px; color: #2a6a60; margin-bottom: 8px; }
+
+    .tier-row {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .tier-item {
+      font-size: 12px;
+      color: #5eead4;
+      border: 1px solid #1a3a3a;
+      border-radius: 3px;
+      padding: 3px 10px;
+    }
+
+    .tier-item.current { border-color: #0d9488; background: #0a1a1a; }
+    .tier-item span { color: #2a6a60; }
+
+    @media (max-width: 600px) {
+      .ngo-hero { flex-direction: column; align-items: flex-start; }
+      .countdown-wrap { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="header-row">
+    <a class="back-link" href="/">
+      <span class="t-en">← Back</span>
+      <span class="t-fr">← Retour</span>
+      <span class="t-kr">← Retounen</span>
+      <span class="t-es">← Volver</span>
+    </a>
+    <div class="lang-group">
+      <button class="lang-btn" data-lang="en" title="English">🇬🇧</button>
+      <button class="lang-btn" data-lang="kr" title="Kréyol">🇭🇹</button>
+      <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
+      <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
+    </div>
+  </div>
+
+  <!-- NGO Hero -->
+  <div class="ngo-hero">
+    <div class="ngo-logo-wrap">
+      <img src={ngo.logo} alt={ngo.name} height="48" />
+    </div>
+    <div>
+      <div class="ngo-badge">
+        <span class="t-en">Featured NGO</span>
+        <span class="t-fr">ONG partenaire</span>
+        <span class="t-kr">ONG patnè</span>
+        <span class="t-es">ONG destacada</span>
+      </div>
+      <div class="ngo-name">L'Asso-Mer</div>
+      <div class="ngo-tagline">
+        <span class="t-en">Protecting Caribbean marine ecosystems</span>
+        <span class="t-fr">Protection des écosystèmes marins de la Caraïbe</span>
+        <span class="t-kr">Pwoteksyon ekosistèm maren Karayib la</span>
+        <span class="t-es">Protección de ecosistemas marinos del Caribe</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3 Key Elements -->
+  <div class="key-grid">
+
+    <div class="key-card">
+      <div class="key-icon">🪪</div>
+      <div class="key-title">
+        <span class="t-en">ID</span>
+        <span class="t-fr">Identité</span>
+        <span class="t-kr">Idantite</span>
+        <span class="t-es">Identidad</span>
+      </div>
+      <div class="id-rows">
+        <div class="id-row">
+          <span class="id-label">
+            <span class="t-en">Founded</span>
+            <span class="t-fr">Fondée en</span>
+            <span class="t-kr">Fonde an</span>
+            <span class="t-es">Fundada en</span>
+          </span>
+          <span class="id-value">{ngo.founded}</span>
+        </div>
+        <div class="id-row">
+          <span class="id-label">
+            <span class="t-en">Location</span>
+            <span class="t-fr">Localisation</span>
+            <span class="t-kr">Kote</span>
+            <span class="t-es">Ubicación</span>
+          </span>
+          <span class="id-value">📍 {ngo.location}</span>
+        </div>
+        <div class="id-row">
+          <span class="id-label">
+            <span class="t-en">Volunteers</span>
+            <span class="t-fr">Bénévoles</span>
+            <span class="t-kr">Bénévol</span>
+            <span class="t-es">Voluntarios</span>
+          </span>
+          <span class="id-value">🙋 {ngo.volunteers}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-card">
+      <div class="key-icon">🐢</div>
+      <div class="key-title">
+        <span class="t-en">Why do we need them?</span>
+        <span class="t-fr">Pourquoi avons-nous besoin d'eux?</span>
+        <span class="t-kr">Poukisa nou bezwen yo ?</span>
+        <span class="t-es">¿Por qué los necesitamos?</span>
+      </div>
+      <ul class="key-list">
+        <li>
+          <span class="t-en">Sea turtle nesting surveys</span>
+          <span class="t-fr">Suivis des nids de tortues marines</span>
+          <span class="t-kr">Sondaj nich tòti maren</span>
+          <span class="t-es">Seguimiento de nidos de tortugas marinas</span>
+        </li>
+        <li>
+          <span class="t-en">Reef health assessments</span>
+          <span class="t-fr">Évaluations de la santé des récifs</span>
+          <span class="t-kr">Évaliyasyon santé rekif</span>
+          <span class="t-es">Evaluaciones de salud arrecifal</span>
+        </li>
+        <li>
+          <span class="t-en">Plastic pollution cleanups</span>
+          <span class="t-fr">Nettoyages des plastiques</span>
+          <span class="t-kr">Netwayaj plastik</span>
+          <span class="t-es">Limpiezas de plásticos</span>
+        </li>
+        <li>
+          <span class="t-en">Environmental education for local communities</span>
+          <span class="t-fr">Éducation environnementale des communautés locales</span>
+          <span class="t-kr">Édikasyon anviwonmantal pou kominòté lokal yo</span>
+          <span class="t-es">Educación ambiental para comunidades locales</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="key-card">
+      <div class="key-icon">📬</div>
+      <div class="key-title">
+        <span class="t-en">Contact</span>
+        <span class="t-fr">Contact</span>
+        <span class="t-kr">Kontak</span>
+        <span class="t-es">Contacto</span>
+      </div>
+      <div class="id-rows">
+        <div class="id-row">
+          <span class="id-label">
+            <span class="t-en">Phone</span>
+            <span class="t-fr">Téléphone</span>
+            <span class="t-kr">Telefòn</span>
+            <span class="t-es">Teléfono</span>
+          </span>
+          <a class="id-value id-link" href={"tel:" + ngo.contact.phone}>📞 {ngo.contact.phone}</a>
+        </div>
+        <div class="id-row">
+          <span class="id-label">Email</span>
+          <a class="id-value id-link" href={"mailto:" + ngo.contact.email}>✉️ {ngo.contact.email}</a>
+        </div>
+        <div class="id-row">
+          <span class="id-label">
+            <span class="t-en">Website</span>
+            <span class="t-fr">Site web</span>
+            <span class="t-kr">Sit wèb</span>
+            <span class="t-es">Sitio web</span>
+          </span>
+          <a class="id-value id-link" href={ngo.website} target="_blank" rel="noopener noreferrer">🌐 lassomer.fr</a>
+        </div>
+        <div class="id-row">
+          <span class="id-label">
+            <span class="t-en">Social</span>
+            <span class="t-fr">Réseaux</span>
+            <span class="t-kr">Rezo sosyal</span>
+            <span class="t-es">Redes</span>
+          </span>
+          <div class="id-social">
+            <a class="id-social-link" href={ngo.contact.facebook} target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+            <a class="id-social-link" href={ngo.contact.instagram} target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+            <a class="id-social-link" href={ngo.contact.youtube} target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+              YouTube
+            </a>
+            <a class="id-social-link" href={ngo.contact.whatsapp} target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Gamification -->
+  <div class="game-header">
+    <span class="t-en">🎮 Community Mission — Help renew L'Asso-Mer's visibility</span>
+    <span class="t-fr">🎮 Mission collective — Aidez à renouveler la visibilité de L'Asso-Mer</span>
+    <span class="t-kr">🎮 Misyon kominotè — Édé renouvle vizibilité L'Asso-Mer</span>
+    <span class="t-es">🎮 Misión colectiva — Ayuda a renovar la visibilidad de L'Asso-Mer</span>
+  </div>
+
+  <!-- Countdown -->
+  <div class="countdown-wrap">
+    <div>
+      <div class="countdown-label">
+        <span class="t-en">Sponsorship period ends in</span>
+        <span class="t-fr">Période de sponsoring se termine dans</span>
+        <span class="t-kr">Peryòd parenaj fini nan</span>
+        <span class="t-es">El período de patrocinio termina en</span>
+      </div>
+      <div class="countdown-label-sub">
+        <span class="t-en">If the gauge reaches 100% before then → visibility auto-renewed</span>
+        <span class="t-fr">Si la jauge atteint 100 % avant → visibilité renouvelée automatiquement</span>
+        <span class="t-kr">Si jwaj la rive 100% avan → vizibilité otomatikman renouvle</span>
+        <span class="t-es">Si el marcador llega al 100% antes → visibilidad renovada automáticamente</span>
+      </div>
+    </div>
+    <div class="countdown-timer">
+      <div class="time-block">
+        <div class="time-value" id="cd-days">--</div>
+        <div class="time-label t-en">days</div>
+        <div class="time-label t-fr">jours</div>
+        <div class="time-label t-kr">jou</div>
+        <div class="time-label t-es">días</div>
+      </div>
+      <div class="time-sep">:</div>
+      <div class="time-block">
+        <div class="time-value" id="cd-hours">--</div>
+        <div class="time-label t-en">hours</div>
+        <div class="time-label t-fr">heures</div>
+        <div class="time-label t-kr">è</div>
+        <div class="time-label t-es">horas</div>
+      </div>
+      <div class="time-sep">:</div>
+      <div class="time-block">
+        <div class="time-value" id="cd-mins">--</div>
+        <div class="time-label t-en">min</div>
+        <div class="time-label t-fr">min</div>
+        <div class="time-label t-kr">min</div>
+        <div class="time-label t-es">min</div>
+      </div>
+      <div class="time-sep">:</div>
+      <div class="time-block">
+        <div class="time-value" id="cd-secs">--</div>
+        <div class="time-label t-en">sec</div>
+        <div class="time-label t-fr">sec</div>
+        <div class="time-label t-kr">sèk</div>
+        <div class="time-label t-es">seg</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gauge -->
+  <div class="gauge-wrap">
+    <div class="gauge-header">
+      <div class="gauge-title">
+        <span class="t-en">Community progress</span>
+        <span class="t-fr">Progression collective</span>
+        <span class="t-kr">Progrè kominotè</span>
+        <span class="t-es">Progreso colectivo</span>
+      </div>
+      <div class="gauge-pct" id="gauge-pct">0%</div>
+    </div>
+    <div class="gauge-track">
+      <div class="gauge-fill" id="gauge-fill" style="width:0%"></div>
+    </div>
+    <div class="gauge-meta">
+      <span class="contributors" id="contributors-count">— </span>
+      <span id="gauge-remaining">
+        <span class="t-en">Fill it before the deadline!</span>
+        <span class="t-fr">Remplissez-la avant la deadline !</span>
+        <span class="t-kr">Ranpli'y avan délè a !</span>
+        <span class="t-es">¡Complétalo antes del plazo!</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Renewal note -->
+  <div class="renewal-note">
+    <span class="renewal-icon">♻️</span>
+    <span>
+      <span class="t-en">If the gauge reaches 100% before the countdown ends, L'Asso-Mer's sponsorship is renewed for the same period at no extra cost. The more people play, the longer the impact lasts.</span>
+      <span class="t-fr">Si la jauge atteint 100 % avant la fin du compte à rebours, le parrainage de L'Asso-Mer est renouvelé pour la même durée sans frais supplémentaires. Plus les gens jouent, plus l'impact dure.</span>
+      <span class="t-kr">Si jwaj la rive 100% avan kont-a-rébò a fini, parenaj L'Asso-Mer renouvle pou menm peryòd la san lajan anplis. Plis moun jwe, plis enpak la dire.</span>
+      <span class="t-es">Si el marcador alcanza el 100% antes de que termine la cuenta regresiva, el patrocinio de L'Asso-Mer se renueva por el mismo período sin costo adicional. Cuanta más gente juegue, más dura el impacto.</span>
+    </span>
+  </div>
+
+  <!-- Quiz CTA -->
+  <div class="quiz-cta">
+    <button class="btn-quiz" id="btn-start-quiz">
+      <span class="t-en">🧠 Take the quiz — contribute to the gauge</span>
+      <span class="t-fr">🧠 Faire le quiz — contribuer à la jauge</span>
+      <span class="t-kr">🧠 Fè kwiz la — kontribyé nan jwaj la</span>
+      <span class="t-es">🧠 Hacer el quiz — contribuir al marcador</span>
+    </button>
+    <a class="btn-donate" href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">
+      <span class="t-en">Donate directly →</span>
+      <span class="t-fr">Faire un don →</span>
+      <span class="t-kr">Fè on don →</span>
+      <span class="t-es">Donar directamente →</span>
+    </a>
+  </div>
+
+  <!-- Quiz section -->
+  <div id="quiz-section">
+    <div class="quiz-box">
+      <div class="quiz-progress">
+        <div class="quiz-step" id="quiz-step-label">
+          <span class="t-en">Question 1 of 8</span>
+          <span class="t-fr">Question 1 sur 8</span>
+          <span class="t-kr">Kèstyon 1 sou 8</span>
+          <span class="t-es">Pregunta 1 de 8</span>
+        </div>
+        <div class="quiz-dots" id="quiz-dots"></div>
+      </div>
+      <div class="quiz-question" id="quiz-question"></div>
+      <div class="quiz-options" id="quiz-options"></div>
+      <div class="quiz-feedback" id="quiz-feedback"></div>
+      <button class="quiz-next" id="quiz-next">
+        <span class="t-en">Next →</span>
+        <span class="t-fr">Suivant →</span>
+        <span class="t-kr">Swivan →</span>
+        <span class="t-es">Siguiente →</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Quiz result -->
+  <div id="quiz-result">
+    <div class="result-box">
+      <div class="result-score" id="result-score">0/8</div>
+      <div class="result-label" id="result-label"></div>
+      <div class="result-contribution" id="result-contribution"></div>
+      <div class="result-actions">
+        <button class="btn-replay" id="btn-replay">
+          <span class="t-en">Play again</span>
+          <span class="t-fr">Rejouer</span>
+          <span class="t-kr">Jwe ankò</span>
+          <span class="t-es">Jugar de nuevo</span>
+        </button>
+        <a class="btn-donate" href="https://www.lassomer.fr/" target="_blank" rel="noopener noreferrer">
+          <span class="t-en">Donate to go further →</span>
+          <span class="t-fr">Faire un don pour aller plus loin →</span>
+          <span class="t-kr">Fè on don pou avancé plis →</span>
+          <span class="t-es">Donar para ir más lejos →</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission accomplished -->
+  <div id="mission-accomplished">
+    <div class="mission-box">
+      <div class="mission-icon">🎉</div>
+      <div class="mission-title">
+        <span class="t-en">Mission accomplished!</span>
+        <span class="t-fr">Mission accomplie !</span>
+        <span class="t-kr">Misyon akonpli !</span>
+        <span class="t-es">¡Misión cumplida!</span>
+      </div>
+      <div class="mission-text">
+        <span class="t-en">The community reached 100%. L'Asso-Mer's visibility has been renewed for another period. Thank you!</span>
+        <span class="t-fr">La communauté a atteint 100 %. La visibilité de L'Asso-Mer est renouvelée pour une nouvelle période. Merci !</span>
+        <span class="t-kr">Kominòté a rive 100%. Vizibilité L'Asso-Mer renouvle pou on peryòd ankò. Mèsi !</span>
+        <span class="t-es">¡La comunidad alcanzó el 100%! La visibilidad de L'Asso-Mer se ha renovado por otro período. ¡Gracias!</span>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- Tier info -->
+  <div class="tier-info">
+    <div class="tier-label">
+      <span class="t-en">Game duration = sponsor tier — more donations = more time for the community</span>
+      <span class="t-fr">Durée du jeu = palier sponsor — plus de dons = plus de temps pour la communauté</span>
+      <span class="t-kr">Dire jwèt = nivo sponsor — plis don = plis tan pou kominòté a</span>
+      <span class="t-es">Duración del juego = nivel de patrocinio — más donaciones = más tiempo para la comunidad</span>
+    </div>
+    <div class="tier-row">
+      <div class="tier-item current">Bronze €50 — <span>30 <span class="t-en">days</span><span class="t-fr">jours</span><span class="t-kr">jou</span><span class="t-es">días</span></span></div>
+      <div class="tier-item">Silver €150 — <span>90 <span class="t-en">days</span><span class="t-fr">jours</span><span class="t-kr">jou</span><span class="t-es">días</span></span></div>
+      <div class="tier-item">Gold €400 — <span>180 <span class="t-en">days</span><span class="t-fr">jours</span><span class="t-kr">jou</span><span class="t-es">días</span></span></div>
+    </div>
+  </div>
+
+  <!-- Sponsor CTA -->
+  <div style="text-align:center;padding:8px 0 0;">
+    <a href="/sponsor/" style="font-size:12px;color:#2a6a60;text-decoration:underline;">
+      <span class="t-en">Become a sponsor and give more time to the mission →</span>
+      <span class="t-fr">Devenir sponsor et offrir plus de temps à la mission →</span>
+      <span class="t-kr">Vin sponsor épi ban misyon la plis tan →</span>
+      <span class="t-es">Conviértete en sponsor y da más tiempo a la misión →</span>
+    </a>
+  </div>
+
+</div>
+
+<div id="ngo-config" hidden
+  data-period-start={ngo.sponsorship.start}
+  data-period-end={ngo.sponsorship.end}></div>
+<script is:inline src="/scripts/ngo.js" defer></script>
+</body>
+</html>
