@@ -1,0 +1,128 @@
+---
+import f2024 from "../data/festivals-2024.json";
+import f2025 from "../data/festivals-2025.json";
+import f2026 from "../data/festivals-2026.json";
+import f2027 from "../data/festivals-2027.json";
+
+const festivals = [...(f2024 as any[]), ...(f2025 as any[]), ...(f2026 as any[]),(f2027 as any[])]
+  .filter((f: any) => f.startDate && f.endDate)
+  .map((f: any) => ({
+    name: f.name,
+    website: f.website || "",
+    startDate: f.startDate,
+    endDate: f.endDate,
+    city: f.city || "",
+    country: f.country || ""
+  }));
+---
+
+<div id="live-banner" style="display:none" role="banner" aria-live="polite">
+  <div class="live-banner-outer">
+    <span class="live-pill">● LIVE</span>
+    <div class="live-ticker-wrap">
+      <div class="live-ticker" id="live-ticker">
+        <span class="live-ticker-copy" id="live-ticker-a"></span>
+        <span class="live-ticker-copy" id="live-ticker-b" aria-hidden="true"></span>
+      </div>
+    </div>
+    <button id="live-banner-close" class="live-close" aria-label="Dismiss">×</button>
+  </div>
+</div>
+
+<div id="live-banner-data" hidden data-festivals={JSON.stringify(festivals)}></div>
+<script is:inline src="/scripts/live-banner.js" defer></script>
+
+<style is:global>
+  #live-banner {
+    background: #041a10;
+    border-bottom: 1px solid #0d3a20;
+    width: 100%;
+    z-index: 100;
+    overflow: hidden;
+  }
+
+  .live-banner-outer {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 12px;
+  }
+
+  .live-pill {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: #052e1a;
+    color: #34d399;
+    border: 1px solid #166534;
+    flex-shrink: 0;
+    white-space: nowrap;
+    animation: live-pulse 2s infinite;
+  }
+
+  @keyframes live-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.55; }
+  }
+
+  .live-ticker-wrap {
+    flex: 1;
+    overflow: hidden;
+    min-width: 0;
+  }
+
+  .live-ticker {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: live-scroll 30s linear infinite;
+  }
+
+  @keyframes live-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .live-ticker-copy {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    padding-right: 80px;
+  }
+
+  .live-tname {
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+  }
+  .live-tname:hover { text-decoration: underline; color: #5eead4; }
+
+  .live-tsep { color: #1a4a2a; }
+  .live-tsep-big { color: #1a5a3a; padding: 0 6px; }
+
+  .live-tloc, .live-tdates, .live-tends { color: #4a8a6a; }
+
+  .live-counter {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 13px;
+    color: #f87171;
+    animation: live-pulse 1.4s infinite;
+  }
+
+  .live-close {
+    background: none;
+    border: none;
+    color: #2a5a3a;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0 4px;
+    flex-shrink: 0;
+    transition: color 0.15s;
+  }
+  .live-close:hover { color: #888; }
+</style>

@@ -1,4 +1,5 @@
 ---
+import LiveBanner from "../components/LiveBanner.astro";
 import ecoCriteria from "../data/eco-criteria.json";
 import f2024 from "../data/festivals-2024.json";
 import f2025 from "../data/festivals-2025.json";
@@ -48,7 +49,7 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
-  <title>Sustainable Festivals — Caribbean Countdowns</title>
+  <title>Sustainable Festivals — countdowns.co</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -355,10 +356,11 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
   </style>
 </head>
 <body>
+<LiveBanner />
   <div class="page">
 
     <div class="header-row">
-      <a href="/" class="back-link">← Caribbean Countdowns</a>
+      <a href="/" class="back-link">Countdowns</a>
       <div class="lang-group">
         <button class="lang-btn active" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="fr">FR</button>

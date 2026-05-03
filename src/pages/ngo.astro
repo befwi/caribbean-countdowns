@@ -1,4 +1,5 @@
 ---
+import LiveBanner from "../components/LiveBanner.astro";
 import ngos from "../data/ngos.json";
 import quizQuestions from "../data/quiz-questions.json";
 const { ngo } = ngos;
@@ -9,7 +10,7 @@ const { ngo } = ngos;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
-  <title>L'Asso-Mer — Caribbean Countdowns</title>
+  <title>L'Asso-Mer — countdowns.co</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -530,6 +531,7 @@ const { ngo } = ngos;
   </style>
 </head>
 <body>
+<LiveBanner />
 <div class="page">
 
   <!-- Header -->

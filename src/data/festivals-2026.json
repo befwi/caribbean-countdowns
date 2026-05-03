@@ -316,5 +316,20 @@
   "tickets": [
     { "name": "Website", "url": "https://mercurybeach.com/billetterie" }
   ]
+  },
+  {
+  "name": "PooL Art Fair Guadeloupe",
+  "website": "https://www.poolartfair.com/",
+  "description": "Vibrant celebration of contemporary art in the Caribbean",
+  "startDate": "2026-06-26",
+  "endDate": "2026-06-28",
+  "city": "Pointe-à-Pitre",
+  "country": "Guadeloupe",
+  "type": "other",
+  "vibes": [],
+  "image": "/images/poolartfairguadeloupe.jpg",
+  "tickets": [
+    { "name": "Website", "url": "https://www.poolartfair.com/billetterie-2026" }
+  ]
   }
 ]

@@ -1,4 +1,5 @@
 ---
+import LiveBanner from "../components/LiveBanner.astro";
 // import festivals2025 from "../data/festivals-2025.json";
 import festivals2026 from "../data/festivals-2026.json";
 import festivals2027 from "../data/festivals-2027.json";
@@ -58,7 +59,7 @@ function splitLines(text: string) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
-  <title>Caribbean Countdowns</title>
+  <title>countdowns.co — Caribbean</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -277,10 +278,13 @@ function splitLines(text: string) {
 </head>
 
 <body>
+<LiveBanner />
   <div class="page">
 
     <div class="header-row">
-      <h1 class="site-title">Caribbean Countdowns</h1>
+      <h1 class="site-title">
+        Countdowns
+      </h1>
       <div class="lang-group">
         <button class="lang-btn" data-lang="en" title="English">🇬🇧</button>
         <button class="lang-btn" data-lang="kr" title="Kréyol">🇭🇹</button>
