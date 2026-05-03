@@ -1,5 +1,17 @@
 ---
+import ecoCriteria from "../data/eco-criteria.json";
 const { festival } = Astro.props;
+
+let ecoGrade: string | null = null;
+if (festival.eco) {
+  let total = 0;
+  for (const cat of ecoCriteria as any[]) {
+    for (const c of cat.criteria) {
+      if ((festival.eco as any)[cat.key]?.[c.key] === true) total += 4;
+    }
+  }
+  ecoGrade = total >= 80 ? "A" : total >= 60 ? "B" : total >= 40 ? "C" : total >= 20 ? "D" : "F";
+}
 
 const now = new Date();
 const start = new Date(festival.startDate + "T00:00:00");
@@ -269,6 +281,22 @@ const eventDateStr =
     border-top: 1px solid #2e2e2e;
     margin: 5px 0;
   }
+
+  .eco-badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    text-decoration: none;
+  }
+  .eco-badge:hover { opacity: 0.8; text-decoration: none; }
+  .eco-A { background: #0d2a0d; color: #4ade80; border: 1px solid #166534; }
+  .eco-B { background: #1a2a08; color: #a3e635; border: 1px solid #365314; }
+  .eco-C { background: #2a1f00; color: #facc15; border: 1px solid #78350f; }
+  .eco-D { background: #2a1200; color: #fb923c; border: 1px solid #7c2d12; }
+  .eco-F { background: #2a0000; color: #f87171; border: 1px solid #7f1d1d; }
 </style>
 
 <div
@@ -329,13 +357,18 @@ const eventDateStr =
       <span class="t-kr">{status === "UPCOMING" ? "TALÈ" : status === "LIVE" ? "AN KOU" : "FINI"}</span>
       <span class="t-es">{status === "UPCOMING" ? "PRÓXIMO" : status === "LIVE" ? "EN VIVO" : "TERMINADO"}</span>
     </span>
-    {festival.vibes?.filter((v: string) => v).length > 0 && (
-      <div class="vibe-tags">
-        {festival.vibes.filter((v: string) => v).map((g: string) => (
-          <span class="vibe-tag">{g}</span>
-        ))}
-      </div>
-    )}
+    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
+      {ecoGrade && (
+        <a href="/sustainability" class={`eco-badge eco-${ecoGrade}`}>♻️ {ecoGrade}</a>
+      )}
+      {festival.vibes?.filter((v: string) => v).length > 0 && (
+        <div class="vibe-tags">
+          {festival.vibes.filter((v: string) => v).map((g: string) => (
+            <span class="vibe-tag">{g}</span>
+          ))}
+        </div>
+      )}
+    </div>
   </div>
 </div>
 

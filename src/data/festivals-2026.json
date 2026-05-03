@@ -27,7 +27,44 @@
     "image": "/images/bacchafestival.jpg",
     "tickets": [
       { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/baccha-festival-2026/105195" }
-    ]
+    ],
+    "eco": {
+      "emissions": {
+        "publicTransport": true,
+        "renewableEnergy": false,
+        "carbonOffset": false,
+        "localHeadliners": true,
+        "shuttleService": false
+      },
+      "waste": {
+        "plasticBan": true,
+        "sorting": true,
+        "zeroWasteCatering": false,
+        "wasteReport": false,
+        "compost": false
+      },
+      "water": {
+        "refillStations": true,
+        "noPlasticBottles": false,
+        "waterTracking": false,
+        "wastewaterPlan": true,
+        "droughtAware": false
+      },
+      "biodiversity": {
+        "notNearProtected": true,
+        "noiseCurfew": true,
+        "leaveNoTrace": true,
+        "lightPollution": false,
+        "ecoNgo": false
+      },
+      "community": {
+        "localVendors": true,
+        "localLineup": true,
+        "ngoPartner": false,
+        "accessiblePricing": true,
+        "socialInclusion": false
+      }
+    }
   },
   {
     "name": "ADI Music Festival",

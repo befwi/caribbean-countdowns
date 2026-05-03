@@ -1,0 +1,560 @@
+---
+import ecoCriteria from "../data/eco-criteria.json";
+import f2024 from "../data/festivals-2024.json";
+import f2025 from "../data/festivals-2025.json";
+import f2026 from "../data/festivals-2026.json";
+import f2027 from "../data/festivals-2027.json";
+
+const allFestivals = [...(f2024 as any[]), ...(f2025 as any[]), ...(f2026 as any[]), ...(f2027 as any[])];
+
+function computeScore(eco: any): number {
+  let total = 0;
+  for (const cat of ecoCriteria as any[]) {
+    for (const c of cat.criteria) {
+      if (eco[cat.key]?.[c.key] === true) total += 4;
+    }
+  }
+  return total;
+}
+
+function getGrade(score: number): string {
+  if (score >= 80) return "A";
+  if (score >= 60) return "B";
+  if (score >= 40) return "C";
+  if (score >= 20) return "D";
+  return "F";
+}
+
+const evaluated = allFestivals
+  .filter((f: any) => f.eco)
+  .map((f: any) => {
+    const score = computeScore(f.eco);
+    const grade = getGrade(score);
+    const breakdown = (ecoCriteria as any[]).map(cat => {
+      const met = cat.criteria.filter((c: any) => f.eco[cat.key]?.[c.key] === true).length;
+      const unmet = cat.criteria.filter((c: any) => !f.eco[cat.key]?.[c.key]);
+      return { ...cat, met, unmet };
+    });
+    const totalTips = breakdown.reduce((s: number, c: any) => s + c.unmet.length, 0);
+    return { ...f, score, grade, breakdown, totalTips };
+  })
+  .sort((a: any, b: any) => b.score - a.score);
+
+const notEvaluated = allFestivals.filter((f: any) => !f.eco);
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Sustainable Festivals — Caribbean Countdowns</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0f0f;
+      color: #e0e0e0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    .back-link { font-size: 12px; color: #555; text-decoration: underline; }
+    .back-link:hover { color: #999; }
+
+    .lang-group { display: flex; gap: 4px; }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #555;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      padding: 4px 10px;
+      color: #aaa;
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+    .lang-btn:hover { border-color: #888; color: #eee; }
+    .lang-btn.active { background: #0d2a2a; border-color: #0d9488; color: #5eead4; }
+
+    /* Hero */
+    .page-hero {
+      margin-bottom: 32px;
+    }
+    .page-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.3px;
+    }
+    .page-subtitle {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 24px;
+    }
+
+    /* Grade legend */
+    .grade-legend {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: #888;
+    }
+    .legend-pill {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 3px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Methodology */
+    .methodology {
+      background: #0d1a1a;
+      border: 1px solid #1a3030;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 40px;
+      font-size: 12px;
+      color: #999;
+    }
+    .methodology p { margin-bottom: 8px; }
+    .methodology p:last-child { margin-bottom: 0; }
+
+    /* Section heading */
+    .section-heading {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 16px;
+    }
+
+    /* Festival card */
+    .festival-card {
+      background: #0d1a1a;
+      border: 1px solid #1a3030;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 16px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      gap: 16px;
+    }
+
+    .festival-name-link {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .festival-name-link:hover { text-decoration: underline; }
+
+    .ext-icon { font-size: 11px; color: #555; margin-left: 4px; }
+
+    .festival-loc {
+      font-size: 12px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    /* Grade circle */
+    .grade-circle {
+      flex-shrink: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .grade-score {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0;
+      opacity: 0.8;
+      margin-top: 1px;
+    }
+    .grade-A { color: #4ade80; background: #0d2a0d; border-color: #166534; }
+    .grade-B { color: #a3e635; background: #1a2a08; border-color: #365314; }
+    .grade-C { color: #facc15; background: #2a1f00; border-color: #78350f; }
+    .grade-D { color: #fb923c; background: #2a1200; border-color: #7c2d12; }
+    .grade-F { color: #f87171; background: #2a0000; border-color: #7f1d1d; }
+
+    /* Category breakdown bars */
+    .breakdown { margin-bottom: 14px; }
+
+    .cat-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .cat-icon { font-size: 14px; width: 18px; flex-shrink: 0; }
+
+    .cat-name {
+      font-size: 11px;
+      color: #aaa;
+      width: 110px;
+      flex-shrink: 0;
+    }
+
+    .bar-track {
+      flex: 1;
+      height: 6px;
+      background: #1a2a2a;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #0d9488;
+      border-radius: 3px;
+      transition: width 0.3s;
+    }
+
+    .cat-fraction {
+      font-size: 11px;
+      color: #555;
+      width: 24px;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* Tips details/summary */
+    .tips-details {
+      border-top: 1px solid #1a3030;
+      padding-top: 12px;
+    }
+
+    .tips-details summary {
+      cursor: pointer;
+      font-size: 12px;
+      color: #0d9488;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      user-select: none;
+    }
+    .tips-details summary::-webkit-details-marker { display: none; }
+    .tips-details summary::before {
+      content: "▶";
+      font-size: 9px;
+      transition: transform 0.2s;
+    }
+    .tips-details[open] summary::before { transform: rotate(90deg); }
+    .tips-details summary:hover { color: #5eead4; }
+
+    .tips-body { padding-top: 16px; }
+
+    .tips-cat { margin-bottom: 20px; }
+    .tips-cat:last-child { margin-bottom: 0; }
+
+    .tips-cat-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tip-item {
+      background: #0a1515;
+      border-left: 2px solid #1a3030;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      border-radius: 0 4px 4px 0;
+    }
+    .tip-item:last-child { margin-bottom: 0; }
+
+    .tip-criterion {
+      font-size: 13px;
+      font-weight: 600;
+      color: #ccc;
+      margin-bottom: 4px;
+    }
+
+    .tip-text {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    /* Not evaluated section */
+    .not-evaluated {
+      margin-top: 48px;
+      border-top: 1px solid #1a2a2a;
+      padding-top: 32px;
+    }
+
+    .not-evaluated-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .not-evaluated-item {
+      font-size: 11px;
+      color: #555;
+      background: #0d1515;
+      border: 1px solid #1a2a2a;
+      border-radius: 4px;
+      padding: 4px 10px;
+    }
+
+    /* Empty state */
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: #444;
+      font-size: 13px;
+    }
+    .empty-state .big { font-size: 36px; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="header-row">
+      <a href="/" class="back-link">← Caribbean Countdowns</a>
+      <div class="lang-group">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="kr">KR</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+    </div>
+
+    <div class="page-hero">
+      <div class="page-title">
+        ♻️
+        <span class="t-en">Sustainable Festivals</span>
+        <span class="t-fr">Festivals durables</span>
+        <span class="t-kr">Festivàl Dirab</span>
+        <span class="t-es">Festivales sostenibles</span>
+      </div>
+      <div class="page-subtitle">
+        <span class="t-en">Environmental scores for Caribbean events — curated independently.</span>
+        <span class="t-fr">Scores environnementaux des événements caribéens — évalués indépendamment.</span>
+        <span class="t-kr">Eskò anviwonmantal pou evènman Karayibyen — evalye endepandamman.</span>
+        <span class="t-es">Puntuaciones ambientales para eventos caribeños — evaluadas de forma independiente.</span>
+      </div>
+
+      <div class="grade-legend">
+        <span class="legend-pill grade-A">A</span>
+        <span class="legend-item">
+          <span class="t-en">80–100 — Exemplary</span>
+          <span class="t-fr">80–100 — Exemplaire</span>
+          <span class="t-kr">80–100 — Ekzanplè</span>
+          <span class="t-es">80–100 — Ejemplar</span>
+        </span>
+        <span style="color:#333;margin:0 4px">·</span>
+        <span class="legend-pill grade-B">B</span>
+        <span class="legend-item">
+          <span class="t-en">60–79 — Good</span>
+          <span class="t-fr">60–79 — Bon</span>
+          <span class="t-kr">60–79 — Bon</span>
+          <span class="t-es">60–79 — Bueno</span>
+        </span>
+        <span style="color:#333;margin:0 4px">·</span>
+        <span class="legend-pill grade-C">C</span>
+        <span class="legend-item">
+          <span class="t-en">40–59 — Making progress</span>
+          <span class="t-fr">40–59 — En progression</span>
+          <span class="t-kr">40–59 — An pwogrè</span>
+          <span class="t-es">40–59 — En progreso</span>
+        </span>
+        <span style="color:#333;margin:0 4px">·</span>
+        <span class="legend-pill grade-D">D</span>
+        <span class="legend-item">
+          <span class="t-en">20–39 — Early stage</span>
+          <span class="t-fr">20–39 — Débutant</span>
+          <span class="t-kr">20–39 — Debutan</span>
+          <span class="t-es">20–39 — Fase inicial</span>
+        </span>
+        <span style="color:#333;margin:0 4px">·</span>
+        <span class="legend-pill grade-F">F</span>
+        <span class="legend-item">0–19</span>
+      </div>
+    </div>
+
+    <div class="methodology">
+      <p>
+        <span class="t-en">Each festival is scored across 5 categories: Emissions, Waste, Water, Biodiversity, and Community. Each category has 5 criteria worth 4 points each — <strong>25 criteria × 4 points = 100 maximum</strong>.</span>
+        <span class="t-fr">Chaque festival est noté sur 5 catégories : Émissions, Déchets, Eau, Biodiversité et Communauté. Chaque catégorie comporte 5 critères valant 4 points chacun — <strong>25 critères × 4 points = 100 maximum</strong>.</span>
+        <span class="t-kr">Chak festivàl evalye sou 5 kategori : Emisyon, Dèchè, Dlo, Biodivèsité ak Kominòté. Chak kategori gen 5 kritè ki vo 4 pwen chak — <strong>25 kritè × 4 pwen = 100 maksimòm</strong>.</span>
+        <span class="t-es">Cada festival se puntúa en 5 categorías: Emisiones, Residuos, Agua, Biodiversidad y Comunidad. Cada categoría tiene 5 criterios de 4 puntos cada uno — <strong>25 criterios × 4 puntos = 100 máximo</strong>.</span>
+      </p>
+      <p>
+        <span class="t-en">Scores are based on publicly available information and assessed independently. If you organise one of these festivals and believe your grade does not reflect your current practices, send us an <a href="mailto:admin.hxqxk@silomails.com?subject=Score%20update%20request" style="color:#0d9488">email with supporting evidence</a> and we will update the evaluation.</span>
+        <span class="t-fr">Les notes sont établies à partir d'informations publiquement disponibles et évaluées de façon indépendante. Si vous organisez l'un de ces festivals et estimez que votre note ne reflète pas vos pratiques actuelles, envoyez-nous un <a href="mailto:admin.hxqxk@silomails.com?subject=Demande%20de%20mise%20%C3%A0%20jour%20du%20score" style="color:#0d9488">e-mail avec preuves à l'appui</a> et nous mettrons l'évaluation à jour.</span>
+        <span class="t-kr">Nòt yo baze sou enfòmasyon ki disponib piblikman epi evalye endepandamman. Si ou òganize youn nan festivàl sa yo epi ou kwè nòt ou a pa reflete pratik ou aktyèl yo, voye nou yon <a href="mailto:admin.hxqxk@silomails.com?subject=Demann%20mizajou%20eskò" style="color:#0d9488">imèl ak prèv yo</a> epi nou pral mete evalyasyon an ajou.</span>
+        <span class="t-es">Las puntuaciones se basan en información públicamente disponible y se evalúan de forma independiente. Si organizas uno de estos festivales y crees que tu nota no refleja tus prácticas actuales, envíanos un <a href="mailto:admin.hxqxk@silomails.com?subject=Solicitud%20de%20actualizaci%C3%B3n%20de%20puntuaci%C3%B3n" style="color:#0d9488">correo con pruebas correspondientes</a> y actualizaremos la evaluación.</span>
+      </p>
+      <p>
+        <span class="t-en">Not yet listed? Use the <a href="/eco-evaluator/" style="color:#0d9488">eco evaluator</a> to run a first self-assessment and understand where your festival stands before reaching out.</span>
+        <span class="t-fr">Pas encore référencé ? Utilisez l'<a href="/eco-evaluator/" style="color:#0d9488">évaluateur éco</a> pour réaliser un premier bilan et comprendre où en est votre festival avant de nous contacter.</span>
+        <span class="t-kr">Poko nan lis la ? Itilize <a href="/eco-evaluator/" style="color:#0d9488">evaluatè éko a</a> pou fè yon premye bilan epi konprann kote festivàl ou ye anvan ou kontakte nou.</span>
+        <span class="t-es">¿Aún no apareces? Usa el <a href="/eco-evaluator/" style="color:#0d9488">evaluador eco</a> para realizar una primera autoevaluación y entender dónde se sitúa tu festival antes de contactarnos.</span>
+      </p>
+    </div>
+
+    {evaluated.length === 0 ? (
+      <div class="empty-state">
+        <div class="big">🌱</div>
+        <span class="t-en">No festivals evaluated yet. Check back soon.</span>
+        <span class="t-fr">Aucun festival évalué pour l'instant. Revenez bientôt.</span>
+        <span class="t-kr">Pa gen festivàl ki evalye ankò. Retounen talè.</span>
+        <span class="t-es">Ningún festival evaluado todavía. Vuelve pronto.</span>
+      </div>
+    ) : (
+      <>
+        <div class="section-heading">
+          <span class="t-en">{evaluated.length} festival{evaluated.length > 1 ? "s" : ""} evaluated</span>
+          <span class="t-fr">{evaluated.length} festival{evaluated.length > 1 ? "s" : ""} évalué{evaluated.length > 1 ? "s" : ""}</span>
+          <span class="t-kr">{evaluated.length} festivàl evalye</span>
+          <span class="t-es">{evaluated.length} festival{evaluated.length > 1 ? "es" : ""} evaluado{evaluated.length > 1 ? "s" : ""}</span>
+        </div>
+
+        {(evaluated as any[]).map((f: any) => (
+          <div class="festival-card">
+            <div class="card-header">
+              <div>
+                <a href={f.website} class="festival-name-link" target="_blank" rel="noopener noreferrer">
+                  {f.name}<span class="ext-icon">↗</span>
+                </a>
+                <div class="festival-loc">
+                  {f.city ? `${f.city}, ` : ""}{f.country}
+                </div>
+              </div>
+              <div class={`grade-circle grade-${f.grade}`}>
+                {f.grade}
+                <span class="grade-score">{f.score}/100</span>
+              </div>
+            </div>
+
+            <div class="breakdown">
+              {f.breakdown.map((cat: any) => (
+                <div class="cat-row">
+                  <span class="cat-icon">{cat.icon}</span>
+                  <span class="cat-name">
+                    <span class="t-en">{cat.label.en}</span>
+                    <span class="t-fr">{cat.label.fr}</span>
+                    <span class="t-kr">{cat.label.kr}</span>
+                    <span class="t-es">{cat.label.es}</span>
+                  </span>
+                  <div class="bar-track">
+                    <div class="bar-fill" style={`width:${cat.met / 5 * 100}%`}></div>
+                  </div>
+                  <span class="cat-fraction">{cat.met}/5</span>
+                </div>
+              ))}
+            </div>
+
+            {f.totalTips > 0 && (
+              <details class="tips-details">
+                <summary>
+                  <span class="t-en">How to improve ({f.totalTips} tip{f.totalTips > 1 ? "s" : ""})</span>
+                  <span class="t-fr">Comment s'améliorer ({f.totalTips} conseil{f.totalTips > 1 ? "s" : ""})</span>
+                  <span class="t-kr">Kijan pou amelyore ({f.totalTips} konsèy)</span>
+                  <span class="t-es">Cómo mejorar ({f.totalTips} consejo{f.totalTips > 1 ? "s" : ""})</span>
+                </summary>
+                <div class="tips-body">
+                  {f.breakdown.filter((cat: any) => cat.unmet.length > 0).map((cat: any) => (
+                    <div class="tips-cat">
+                      <div class="tips-cat-title">
+                        <span>{cat.icon}</span>
+                        <span class="t-en">{cat.label.en}</span>
+                        <span class="t-fr">{cat.label.fr}</span>
+                        <span class="t-kr">{cat.label.kr}</span>
+                        <span class="t-es">{cat.label.es}</span>
+                      </div>
+                      {cat.unmet.map((c: any) => (
+                        <div class="tip-item">
+                          <div class="tip-criterion">
+                            <span class="t-en">{c.label.en}</span>
+                            <span class="t-fr">{c.label.fr}</span>
+                            <span class="t-kr">{c.label.kr}</span>
+                            <span class="t-es">{c.label.es}</span>
+                          </div>
+                          <div class="tip-text">
+                            <span class="t-en">{c.tip.en}</span>
+                            <span class="t-fr">{c.tip.fr}</span>
+                            <span class="t-kr">{c.tip.kr}</span>
+                            <span class="t-es">{c.tip.es}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </details>
+            )}
+          </div>
+        ))}
+      </>
+    )}
+
+    {notEvaluated.length > 0 && (
+      <div class="not-evaluated">
+        <div class="section-heading">
+          <span class="t-en">Awaiting evaluation</span>
+          <span class="t-fr">En attente d'évaluation</span>
+          <span class="t-kr">Ap tann evalyasyon</span>
+          <span class="t-es">Pendiente de evaluación</span>
+        </div>
+        <div class="not-evaluated-list">
+          {(notEvaluated as any[]).map((f: any) => (
+            <span class="not-evaluated-item">{f.name} — {f.country}</span>
+          ))}
+        </div>
+      </div>
+    )}
+
+  </div>
+
+  <script is:inline src="/scripts/lang.js" defer></script>
+</body>
+</html>

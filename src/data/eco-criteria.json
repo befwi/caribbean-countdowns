@@ -1,0 +1,162 @@
+[
+  {
+    "key": "emissions",
+    "icon": "💨",
+    "label": { "en": "Emissions", "fr": "Émissions", "kr": "Emisyon", "es": "Emisiones" },
+    "criteria": [
+      {
+        "key": "publicTransport",
+        "label": { "en": "Attendee transport plan communicated", "fr": "Plan de transport pour les festivaliers communiqué", "kr": "Plan transpò pou patisipan yo kominikasyon", "es": "Plan de transporte para asistentes comunicado" },
+        "tip": { "en": "Formal public transit barely exists on most Caribbean islands — where it does, coverage is limited to urban areas with minimal weekend service. Publish a transport plan: available taxis collectifs, relay parking, carpool matching link, and any dedicated shuttles.", "fr": "Ce critère peut être validé si l'organisateur publie un plan de transport : taxis collectifs disponibles, parkings relais, lien de covoiturage, navettes dédiées. Sans plan publié, la quasi-totalité des festivaliers vient en voiture individuelle.", "kr": "Transpò piblik fòmèl prèske pa egziste sou pifò zile — kote li egziste, li kouvri sèlman zòn iben ak sèvis minimòm nan wikenn. Pibliye yon plan transpò : taxis collectifs disponib, estasyonman relè, lyen kovoituraj, navèt dedye.", "es": "El transporte público formal apenas existe en la mayoría de las islas — donde existe, cubre solo zonas urbanas con servicio mínimo los fines de semana. Publica un plan de transporte: taxis colectivos, aparcamientos de enlace, enlace para compartir coche, lanzaderas." }
+      },
+      {
+        "key": "renewableEnergy",
+        "label": { "en": "Renewable or grid energy (no diesel generators)", "fr": "Énergie renouvelable ou réseau (sans groupes électrogènes)", "kr": "Énerji renouvlab oswa rezo (san jeneratè)", "es": "Energía renovable o de red (sin generadores)" },
+        "tip": { "en": "Use grid power where available or rent solar/battery generators. Diesel generators are the single biggest emission source at most events.", "fr": "Utilisez le réseau électrique ou des générateurs solaires. Les groupes électrogènes diesel sont souvent la première source d'émissions.", "kr": "Itilize kouran rezo a oswa jeneratè solè. Jeneratè dyèzèl se prensipal sous emisyon nan pifò evènman.", "es": "Usa la red eléctrica o generadores solares. Los generadores diésel son la mayor fuente de emisiones en la mayoría de eventos." }
+      },
+      {
+        "key": "carbonOffset",
+        "label": { "en": "Carbon offset programme", "fr": "Programme de compensation carbone", "kr": "Pwogram konpansasyon kabòn", "es": "Programa de compensación de carbono" },
+        "tip": { "en": "Partner with a verified offset scheme (Gold Standard or VCS) to compensate unavoidable emissions — and communicate it to attendees.", "fr": "Associez-vous à un programme certifié (Gold Standard ou VCS) pour compenser les émissions inévitables.", "kr": "Asosye ak yon pwogram sètifye pou konpanse emisyon ki pa ka évité yo.", "es": "Asóciate con un programa certificado para compensar las emisiones inevitables." }
+      },
+      {
+        "key": "localHeadliners",
+        "label": { "en": "Headliners don't require long-haul flights", "fr": "Les têtes d'affiche n'arrivent pas par long-courrier", "kr": "Tèt afich yo pa vwayaje pa avyon long-kouri", "es": "Los cabeza de cartel no requieren vuelos de larga distancia" },
+        "tip": { "en": "Prioritize Caribbean and regional artists. A single transatlantic flight can generate more CO₂ than all other event transport combined.", "fr": "Un vol Paris–Martinique aller-retour émet environ 1,2 tonne CO₂e par personne. Un artiste transatlantique + équipe (5 personnes) peut égaler l'empreinte transport totale d'un festival local de 2 000 spectateurs. Privilégiez les artistes caribéens et régionaux — les vols inter-îles (ex. ~30 min de vol) émettent environ 20× moins que les routes transatlantiques.", "kr": "Bay priyorité artist Karayibyen. Yon sèl vòl transatlantik ka jenere plis CO₂ pase tout lòt transpò evènman an.", "es": "Prioriza artistas caribeños. Un vuelo transatlántico puede generar más CO₂ que todo el transporte del evento." }
+      },
+      {
+        "key": "shuttleService",
+        "label": { "en": "Shuttle or carpool scheme organized", "fr": "Navettes ou covoiturage organisé", "kr": "Navèt oswa kovoituraj òganize", "es": "Servicio de lanzadera o coche compartido" },
+        "tip": { "en": "Fan travel generates 38× more CO₂ than artist travel, hotels, and gear combined (REVERB, 2024). Most Caribbean venues sit 10–30 km from the nearest town — short enough for cost-effective shuttles. Reference: Martinique ran Carnival shuttles from relay car parks for €5 per 4-day pass. Carpooling (3+ occupants) cuts per-person emissions by ~70% vs. solo driving.", "fr": "Le transport du public génère 38× plus de CO₂ que les déplacements des artistes, l'hébergement et le matériel réunis (REVERB, 2024) — c'est le critère le plus impactant de la liste. La plupart des sites se trouvent à 10–30 km de la ville la plus proche, ce qui rend les navettes rentables. Exemple concret : En Martinique des navettes ont été mises en place pour le Carnaval depuis des parkings relais pour seulement 5 € le pass 4 jours. 2–3 parkings relais près des grands axes + un opérateur de cars privé + une communication sur tous les billets et réseaux = une réussite. Le covoiturage (3+ occupants) réduit les émissions par personne de ~70 % — donc réservez les meilleures places aux véhicules en covoiturage.", "kr": "Transpò piblik jenere 38× plis CO₂ pase vwayaj artist, lojman ak ekipman (REVERB, 2024). Pifò sit yo a 10–30 km depi vil ki pi pre. Referans : Matinik te fè navèt Karnaval depi estasyonman relè pou 5 € pou 4 jou. Kovoituraj (3+ okipan) rédiui emisyon pa moun ~70 %.", "es": "El transporte del público genera 38× más CO₂ que los viajes de artistas, alojamiento y equipos combinados (REVERB, 2024). La mayoría de recintos caribeños están a 10–30 km del núcleo más cercano. Referencia: Martinica organizó lanzaderas de Carnaval desde aparcamientos de enlace por €5 el pase de 4 días. Compartir coche (3+ ocupantes) reduce emisiones por persona ~70%." }
+      }
+    ]
+  },
+  {
+    "key": "waste",
+    "icon": "♻️",
+    "label": { "en": "Waste", "fr": "Déchets", "kr": "Dèchè", "es": "Residuos" },
+    "criteria": [
+      {
+        "key": "plasticBan",
+        "label": { "en": "Single-use plastic banned on site", "fr": "Plastique à usage unique interdit sur site", "kr": "Plastik itilizasyon inikal entèdi sou sit", "es": "Plástico de un solo uso prohibido en el sitio" },
+        "tip": { "en": "Replace plastic cups, straws and cutlery with reusable or certified compostable alternatives. Write it into your vendor contracts.", "fr": "Remplacez gobelets, pailles et couverts plastiques par des alternatives réutilisables ou compostables certifiées.", "kr": "Ranplase gode, pay ak kiyè plastik ak altènatif reutilizab oswa konpostab.", "es": "Sustituye vasos, pajitas y cubiertos de plástico por alternativas reutilizables o compostables." }
+      },
+      {
+        "key": "sorting",
+        "label": { "en": "Separate bins on site: recyclable / organic / general waste", "fr": "Bacs séparés sur site : recyclable / organique / général", "kr": "Bak separe sou sit : resiklaj / òganik / jeneral", "es": "Contenedores separados en el sitio: reciclaje / orgánico / general" },
+        "tip": { "en": "Place clearly labeled stations (3 bins minimum: recyclable, organic/food, general waste) throughout the venue. One set of bins per 50 attendees is a good benchmark — people only sort correctly if the right bin is within sight.", "fr": "Installez des stations de tri bien visibles avec au minimum 3 bacs distincts : recyclable (plastique, carton, verre), organique (restes alimentaires) et ordures générales. Comptez un point de tri pour 50 festivaliers — on trie correctement seulement si la bonne poubelle est à portée de vue.", "kr": "Enstale estasyon triyaj ki klèman make ak omwen 3 bak separe : resiklaj (plastik, katon, vè), òganik (rès manje) ak dèchè jeneral. Kalkile yon pwen triyaj pou 50 patisipan — moun triye kòrèkteman sèlman si bon bwat la vizib.", "es": "Instala estaciones de clasificación bien visibles con al menos 3 contenedores distintos: reciclable (plástico, cartón, vidrio), orgánico (restos de comida) y basura general. Un punto de clasificación por cada 50 asistentes — la gente solo clasifica bien si el contenedor correcto está a la vista." }
+      },
+      {
+        "key": "zeroWasteCatering",
+        "label": { "en": "Reusable cups and plates for all catering", "fr": "Gobelets et assiettes réutilisables pour la restauration", "kr": "Gode ak asyèt reutilizab pou tout manje", "es": "Vasos y platos reutilizables para toda la restauración" },
+        "tip": { "en": "Use a cup deposit scheme — attendees pay a small deposit returned when they hand back the cup. Proven to achieve 95%+ cup return rates.", "fr": "Utilisez une consigne sur les gobelets : les festivaliers paient une caution remboursée à la restitution. Taux de retour prouvé supérieur à 95 %.", "kr": "Itilize sistèm depo pou gode — yo remèt depo a lè yo retounen gode a.", "es": "Usa un sistema de depósito de vasos — se devuelve al devolver el vaso. Funciona con >95% de retorno." }
+      },
+      {
+        "key": "wasteReport",
+        "label": { "en": "Publishes post-event waste data", "fr": "Publie les données déchets après l'événement", "kr": "Pibliye done dèchè aprè evènman an", "es": "Publica datos de residuos tras el evento" },
+        "tip": { "en": "Weigh each waste stream after the event and publish the figures. Transparency creates accountability and gives you a baseline to improve year on year.", "fr": "Pesez chaque flux de déchets après l'événement et publiez les chiffres. La transparence crée la responsabilité.", "kr": "Peze chak fliks dèchè aprè evènman an epi pibliye chif yo. Transpawans kréye responsabilité.", "es": "Pesa cada flujo de residuos tras el evento y publica las cifras. La transparencia crea responsabilidad." }
+      },
+      {
+        "key": "compost",
+        "label": { "en": "On-site composting for food waste", "fr": "Compostage sur site des déchets alimentaires", "kr": "Konpostaj sou sit pou dèchè alimantè", "es": "Compostaje in situ de residuos alimentarios" },
+        "tip": { "en": "Partner with a local farm or composting facility to handle organic waste from food vendors. Even a simple arrangement can divert tonnes from landfill.", "fr": "Partenariat avec une ferme ou une installation de compostage locale pour les déchets des restaurateurs.", "kr": "Asosye ak yon fèm lokal pou jere dèchè òganik ki soti nan vandè manje yo.", "es": "Asóciate con una granja o instalación de compostaje local para gestionar residuos de los vendedores." }
+      }
+    ]
+  },
+  {
+    "key": "water",
+    "icon": "💧",
+    "label": { "en": "Water", "fr": "Eau", "kr": "Dlo", "es": "Agua" },
+    "criteria": [
+      {
+        "key": "refillStations",
+        "label": { "en": "Free water refill stations throughout venue", "fr": "Points de remplissage d'eau gratuits sur le site", "kr": "Estasyon ranplisman dlo gratis sou sit la", "es": "Estaciones de recarga de agua gratuitas" },
+        "tip": { "en": "Install refill points at minimum every 100m — this single measure dramatically reduces single-use bottle demand and shows commitment to attendee wellbeing.", "fr": "Installez des points de remplissage au minimum tous les 100 m — cela réduit considérablement la demande en bouteilles plastique.", "kr": "Enstale pwen ranplisman omwen chak 100m — sa rédiui demànd boutèy plastik.", "es": "Instala puntos de recarga al menos cada 100m — reduce drásticamente la demanda de botellas de plástico." }
+      },
+      {
+        "key": "noPlasticBottles",
+        "label": { "en": "No single-use water bottles sold on site", "fr": "Aucune bouteille d'eau à usage unique en vente", "kr": "Pa gen boutèy dlo itilizasyon inikal an vant", "es": "Sin botellas de agua de un solo uso a la venta" },
+        "tip": { "en": "Ban plastic bottle sales site-wide. Sell reusable bottles or branded cups instead — this creates revenue while reducing waste.", "fr": "Interdisez la vente de bouteilles plastiques sur tout le site. Vendez des gourdes réutilisables à la place.", "kr": "Entèdi vant boutèy plastik sou tout sit la. Vann boutèy reutilizab oubyen gode mak la nan plas.", "es": "Prohíbe la venta de botellas de plástico en todo el recinto. Vende botellas reutilizables en su lugar." }
+      },
+      {
+        "key": "waterTracking",
+        "label": { "en": "Tracks total water consumption", "fr": "Suit la consommation totale d'eau", "kr": "Swiv konsomasyon total dlo a", "es": "Seguimiento del consumo total de agua" },
+        "tip": { "en": "Meter venue water use throughout the event and publish the total. This creates the baseline needed to set reduction targets for future editions.", "fr": "Mesurez la consommation d'eau pendant l'événement et publiez le total. Cela crée la base de référence pour fixer des objectifs de réduction.", "kr": "Mezire konsomasyon dlo pandan evènman an epi pibliye total la.", "es": "Mide el consumo de agua durante el evento y publica el total." }
+      },
+      {
+        "key": "wastewaterPlan",
+        "label": { "en": "Wastewater management plan in place", "fr": "Plan de gestion des eaux usées en place", "kr": "Plan jestyon dlo sal an plas", "es": "Plan de gestión de aguas residuales" },
+        "tip": { "en": "Ensure portable toilets use eco-certified chemicals and waste is collected by a licensed service. Document the plan and share it with the venue.", "fr": "Assurez-vous que les toilettes portables utilisent des produits éco-certifiés et que les eaux usées sont collectées par un prestataire agréé.", "kr": "Asire twalèt pòtab yo itilize pwodui sètifye éko epi dlo sal kolekte pa yon sèvis otorize.", "es": "Asegúrate de que los baños portátiles usen productos eco-certificados y que los residuos sean recogidos por un servicio autorizado." }
+      },
+      {
+        "key": "droughtAware",
+        "label": { "en": "Active water conservation measures", "fr": "Mesures actives de conservation de l'eau", "kr": "Mezi aktif pou konsèvasyon dlo", "es": "Medidas activas de conservación del agua" },
+        "tip": { "en": "Brief all staff and vendors on water-saving practices. Use dry urinals where possible and avoid decorative water features.", "fr": "Sensibilisez tout le personnel et les prestataires aux économies d'eau. Utilisez des urinoirs secs si possible.", "kr": "Enfòme tout pèsonèl ak vandè sou pratik ekonomi dlo. Itilize urinwa sèk kote posib.", "es": "Informa a todo el personal sobre prácticas de ahorro de agua. Usa urinarios secos donde sea posible." }
+      }
+    ]
+  },
+  {
+    "key": "biodiversity",
+    "icon": "🌿",
+    "label": { "en": "Biodiversity", "fr": "Biodiversité", "kr": "Biodivèsité", "es": "Biodiversidad" },
+    "criteria": [
+      {
+        "key": "notNearProtected",
+        "label": { "en": "Venue not adjacent to a protected natural area", "fr": "Le site n'est pas adjacent à une zone naturelle protégée", "kr": "Sit la pa adjasan ak yon zòn natirèl pwotèjé", "es": "El recinto no está junto a un área natural protegida" },
+        "tip": { "en": "A protected area includes: national parks, nature reserves, marine protected areas (MPAs), Ramsar wetlands, UNESCO biosphere reserves, and Natura 2000 sites. In the Caribbean this covers coral reefs, mangroves, seagrass beds, nesting beaches and rainforest. If the venue is within 500m of any of these, establish a strict buffer zone, brief all staff on its boundaries, and prohibit attendee access to sensitive zones.", "fr": "Une zone naturelle protégée regroupe : parcs nationaux, réserves naturelles, aires marines protégées (AMP), zones humides Ramsar, réserves de biosphère UNESCO et sites Natura 2000. Dans la Caraïbe, cela inclut les récifs coralliens, les mangroves, les herbiers marins, les plages de ponte des tortues et les forêts tropicales. Si le site se trouve à moins de 500 m de l'un de ces espaces, définissez une zone tampon stricte, informez tout le personnel de ses limites et interdisez l'accès des festivaliers aux zones sensibles.", "kr": "Yon zòn natirèl pwotèjé enkli : pak nasyonal, rezèv natirèl, zòn maren pwotèjé (AMP), zòn imid Ramsar, rezèv byosfè UNESCO ak sit Natura 2000. Nan Karayib la, sa kouvri resif koray, mangrove, zèb maren, plaj kote tòti pon ak forè twopikal. Si sit la a mwens pase 500 m youn nan espas sa yo, etabli yon zòn tanpon strict epi entèdi aksè patisipan nan zòn sansib yo.", "es": "Un área natural protegida incluye: parques nacionales, reservas naturales, áreas marinas protegidas (AMP), humedales Ramsar, reservas de biosfera UNESCO y sitios Natura 2000. En el Caribe esto abarca arrecifes de coral, manglares, praderas de posidonia, playas de anidación de tortugas y bosques tropicales. Si el recinto está a menos de 500 m de alguno de estos espacios, establece una zona de amortiguamiento estricta, informa a todo el personal de sus límites y prohíbe el acceso de los asistentes a las zonas sensibles." }
+      },
+      {
+        "key": "noiseCurfew",
+        "label": { "en": "Noise curfew enforced (after 11pm)", "fr": "Couvre-feu sonore respecté (après 23h)", "kr": "Kofri bri respekte (aprè 11pm)", "es": "Toque de queda de ruido aplicado (después de las 23h)" },
+        "tip": { "en": "Set a hard noise curfew and communicate it to all artists and sound engineers. Essential near coastlines where sea turtles nest at night.", "fr": "Fixez un couvre-feu sonore strict et communiquez-le à tous les artistes et ingénieurs du son — essentiel près des zones de ponte des tortues.", "kr": "Etabli yon kofri bri strict epi enfòme tout artist ak enjenyè son — esansyèl pre zòn kote tòti pon.", "es": "Establece un toque de queda de ruido y comunícalo a todos los artistas e ingenieros de sonido." }
+      },
+      {
+        "key": "leaveNoTrace",
+        "label": { "en": "Official leave-no-trace policy", "fr": "Politique officielle de non-impact sur le terrain", "kr": "Politik ofisyèl 'kite anyen' sou teren", "es": "Política oficial de no dejar rastro" },
+        "tip": { "en": "Brief all vendors and staff on leave-no-trace principles. Organize a post-event cleanup team and document the site's condition before and after.", "fr": "Sensibilisez prestataires et personnel aux principes du sans-trace. Organisez une équipe de nettoyage post-événement.", "kr": "Enfòme tout vandè ak pèsonèl sou prensip 'kite anyen'. Òganize yon ekip netwayaj aprè evènman an.", "es": "Informa a vendedores y personal sobre los principios de no dejar rastro. Organiza un equipo de limpieza post-evento." }
+      },
+      {
+        "key": "lightPollution",
+        "label": { "en": "Light pollution measures (shielded, warm-toned)", "fr": "Mesures contre la pollution lumineuse (éclairage orienté, tons chauds)", "kr": "Mezi kont pòlisyon liminèz (limyè chode, direksyonèl)", "es": "Medidas contra la contaminación lumínica (cálida y dirigida)" },
+        "tip": { "en": "Use downward-facing, warm-toned lighting (>3000K). Avoid upward-pointing spotlights near beaches — artificial light disorients nesting sea turtles.", "fr": "Utilisez un éclairage orienté vers le bas, tons chauds (>3000K). Évitez les projecteurs vers le ciel près des plages — désorienter les tortues marines.", "kr": "Itilize limyè ki dirije vè ba, ton chode (>3000K). Évite limyè ki monte vè syèl pre plaj — yo désoriyante tòti maren.", "es": "Usa iluminación hacia abajo, tonos cálidos (>3000K). Evita focos hacia el cielo cerca de playas — desorientan a las tortugas marinas." }
+      },
+      {
+        "key": "ecoNgo",
+        "label": { "en": "Partners with an environmental NGO", "fr": "Partenariat avec une ONG environnementale", "kr": "Patnè ak yon ONG anviwonmantal", "es": "Socio de una ONG medioambiental" },
+        "tip": { "en": "Partner with L'Asso-Mer or another local environmental NGO. They can provide on-site awareness activities and lend credibility to your environmental commitments.", "fr": "Partenariat avec L'Asso-Mer ou une autre ONG environnementale locale — présence sur site et crédibilité pour vos engagements.", "kr": "Asosye ak L'Asso-Mer oswa yon lòt ONG anviwonmantal lokal. Yo ka bay aktivité konsyantizasyon sou sit la.", "es": "Asóciate con L'Asso-Mer u otra ONG medioambiental local para actividades de sensibilización in situ." }
+      }
+    ]
+  },
+  {
+    "key": "community",
+    "icon": "🤝",
+    "label": { "en": "Community", "fr": "Communauté", "kr": "Kominòté", "es": "Comunidad" },
+    "criteria": [
+      {
+        "key": "localVendors",
+        "label": { "en": ">50% local food and craft vendors", "fr": ">50 % de restaurateurs et artisans locaux", "kr": ">50% vandè manje ak atizanat lokal", "es": ">50% vendedores locales de comida y artesanía" },
+        "tip": { "en": "Set a local vendor quota in your vendor selection criteria. Local supply chains reduce transport emissions and keep revenue in the community.", "fr": "Fixez un quota de prestataires locaux dans vos critères de sélection. Les circuits courts réduisent les émissions et maintiennent les revenus dans la communauté.", "kr": "Establi yon kota vandè lokal nan kritè séleksyon ou yo. Sa rédiui emisyon epi kenbe revni nan kominòté a.", "es": "Establece una cuota de vendedores locales. Las cadenas de suministro locales reducen emisiones y mantienen los ingresos en la comunidad." }
+      },
+      {
+        "key": "localLineup",
+        "label": { "en": ">50% Caribbean or regional artists on lineup", "fr": ">50 % d'artistes caribéens ou régionaux à l'affiche", "kr": ">50% artist Karayibyen oswa rejyonal sou afich", "es": ">50% artistas caribeños o regionales en el cartel" },
+        "tip": { "en": "Reserve the majority of lineup slots for Caribbean artists. This supports the local music economy and eliminates long-haul performer travel.", "fr": "Réservez la majorité des créneaux aux artistes caribéens — soutien à l'économie musicale locale et suppression des voyages longue distance.", "kr": "Rezève majorité plas yo pou artist Karayibyen. Sa sipòté ekonomi mizik lokal la.", "es": "Reserva la mayoría de los puestos del cartel para artistas caribeños." }
+      },
+      {
+        "key": "ngoPartner",
+        "label": { "en": "Donates to or fundraises for an NGO", "fr": "Reverse des fonds ou lève des fonds pour une ONG", "kr": "Bay don oswa kolekte fon pou yon ONG", "es": "Dona o recauda fondos para una ONG" },
+        "tip": { "en": "Allocate a percentage of ticket revenue (even 1%) to an environmental or social NGO. Communicate it clearly — attendees want their ticket to mean something.", "fr": "Allouez un pourcentage des recettes billetterie (même 1 %) à une ONG. Les festivaliers veulent que leur billet ait du sens.", "kr": "Aloke yon pousan revni tikèt (menm 1%) bay yon ONG. Kominikasyon klè sou sa — moun vle tikèt yo gen siyifikasyon.", "es": "Destina un porcentaje de los ingresos de entradas (incluso el 1%) a una ONG. Comunícalo claramente." }
+      },
+      {
+        "key": "accessiblePricing",
+        "label": { "en": "Free entry option or community ticket scheme", "fr": "Entrée gratuite ou tarif communautaire", "kr": "Opsyon antre gratis oswa tikèt kominotè", "es": "Entrada gratuita o esquema de entradas comunitarias" },
+        "tip": { "en": "Offer a free public zone, community tickets for local residents, or a pay-what-you-can scheme. Inclusion builds long-term local support for the event.", "fr": "Proposez une zone gratuite, des tarifs résidents ou un système libre participation. L'inclusion construit un soutien local durable.", "kr": "Ofri yon zòn gratis, tikèt rezidan oswa yon sistèm 'peye sa ou ka'. Enklizyon konstri sipò lokal alontèm.", "es": "Ofrece una zona gratuita, entradas para residentes o un esquema de pago voluntario." }
+      },
+      {
+        "key": "socialInclusion",
+        "label": { "en": "Accessibility measures (mobility, language, disability)", "fr": "Mesures d'accessibilité (mobilité, langue, handicap)", "kr": "Mezi aksesibilité (mobilité, lang, andikap)", "es": "Medidas de accesibilidad (movilidad, idioma, discapacidad)" },
+        "tip": { "en": "Provide wheelchair access, clear accessible routes, multilingual signage (French, Creole, English) and consider sign language interpretation for main stage.", "fr": "Accès fauteuil roulant, parcours accessibles balisés, signalétique multilingue (français, créole, anglais) et interprétation en langue des signes envisagée.", "kr": "Aksè chèz woulant, wout aksesib, siyal miltilenng (fransè, kréyòl, anglè) ak entèpretasyon lang siy pou sèn prensipal.", "es": "Proporciona acceso en silla de ruedas, señalización multilingüe e interpretación de lengua de signos en el escenario principal." }
+      }
+    ]
+  }
+]
