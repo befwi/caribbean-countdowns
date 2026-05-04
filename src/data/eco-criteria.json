@@ -17,7 +17,7 @@
       {
         "key": "carbonOffset",
         "label": { "en": "Carbon offset programme", "fr": "Programme de compensation carbone", "kr": "Pwogram konpansasyon kabòn", "es": "Programa de compensación de carbono" },
-        "tip": { "en": "Partner with a verified offset scheme (Gold Standard or VCS) to compensate unavoidable emissions — and communicate it to attendees.", "fr": "Associez-vous à un programme certifié (Gold Standard ou VCS) pour compenser les émissions inévitables.", "kr": "Asosye ak yon pwogram sètifye pou konpanse emisyon ki pa ka évité yo.", "es": "Asóciate con un programa certificado para compensar las emisiones inevitables." }
+        "tip": { "en": "Partner with a verified offset scheme (Label Bas Carbone or Gold Standard) to compensate unavoidable emissions — and communicate it to attendees.", "fr": "Associez-vous à un programme certifié (Label Bas Carbone ou Gold Standard) pour compenser les émissions inévitables.", "kr": "Asosye ak yon pwogram sètifye pou konpanse emisyon ki pa ka évité yo (Label Bas Carbone ou Gold Standard).", "es": "Asóciate con un programa certificado para compensar las emisiones inevitables (Label Bas Carbone or Gold Standard)." }
       },
       {
         "key": "localHeadliners",
@@ -123,7 +123,7 @@
       {
         "key": "ecoNgo",
         "label": { "en": "Partners with an environmental NGO", "fr": "Partenariat avec une ONG environnementale", "kr": "Patnè ak yon ONG anviwonmantal", "es": "Socio de una ONG medioambiental" },
-        "tip": { "en": "Partner with L'Asso-Mer or another local environmental NGO. They can provide on-site awareness activities and lend credibility to your environmental commitments.", "fr": "Partenariat avec L'Asso-Mer ou une autre ONG environnementale locale — présence sur site et crédibilité pour vos engagements.", "kr": "Asosye ak L'Asso-Mer oswa yon lòt ONG anviwonmantal lokal. Yo ka bay aktivité konsyantizasyon sou sit la.", "es": "Asóciate con L'Asso-Mer u otra ONG medioambiental local para actividades de sensibilización in situ." }
+        "tip": { "en": "Partner with a local environmental NGO. They can provide on-site awareness activities and lend credibility to your environmental commitments.", "fr": "Partenariat avec une ONG environnementale locale — présence sur site et crédibilité pour vos engagements.", "kr": "Asosye ak ONG anviwonmantal lokal. Yo ka bay aktivité konsyantizasyon sou sit la.", "es": "Asóciate con u ONG medioambiental local para actividades de sensibilización in situ." }
       }
     ]
   },
@@ -145,12 +145,12 @@
       {
         "key": "ngoPartner",
         "label": { "en": "Donates to or fundraises for an NGO", "fr": "Reverse des fonds ou lève des fonds pour une ONG", "kr": "Bay don oswa kolekte fon pou yon ONG", "es": "Dona o recauda fondos para una ONG" },
-        "tip": { "en": "Allocate a percentage of ticket revenue (even 1%) to an environmental or social NGO. Communicate it clearly — attendees want their ticket to mean something.", "fr": "Allouez un pourcentage des recettes billetterie (même 1 %) à une ONG. Les festivaliers veulent que leur billet ait du sens.", "kr": "Aloke yon pousan revni tikèt (menm 1%) bay yon ONG. Kominikasyon klè sou sa — moun vle tikèt yo gen siyifikasyon.", "es": "Destina un porcentaje de los ingresos de entradas (incluso el 1%) a una ONG. Comunícalo claramente." }
+        "tip": { "en": "Allocate a percentage of ticket revenue (even 1%) to an environmental or social NGO. Communicate it clearly — attendees want their ticket to mean something.", "fr": "Allouez un pourcentage des recettes billetterie (même 1 %) à une ONG.", "kr": "Aloke yon pousan revni tikèt (menm 1%) bay yon ONG. Kominikasyon klè sou sa.", "es": "Destina un porcentaje de los ingresos de entradas (incluso el 1%) a una ONG. Comunícalo claramente." }
       },
       {
         "key": "accessiblePricing",
         "label": { "en": "Free entry option or community ticket scheme", "fr": "Entrée gratuite ou tarif communautaire", "kr": "Opsyon antre gratis oswa tikèt kominotè", "es": "Entrada gratuita o esquema de entradas comunitarias" },
-        "tip": { "en": "Offer a free public zone, community tickets for local residents, or a pay-what-you-can scheme. Inclusion builds long-term local support for the event.", "fr": "Proposez une zone gratuite, des tarifs résidents ou un système libre participation. L'inclusion construit un soutien local durable.", "kr": "Ofri yon zòn gratis, tikèt rezidan oswa yon sistèm 'peye sa ou ka'. Enklizyon konstri sipò lokal alontèm.", "es": "Ofrece una zona gratuita, entradas para residentes o un esquema de pago voluntario." }
+        "tip": { "en": "Offer a free public zone, community tickets for local residents, or a pay-what-you-can scheme. Inclusion builds long-term local support for the event.", "fr": "Proposez une zone gratuite, des tarifs résidents ou un système libre de participation. L'inclusion construit un soutien local durable.", "kr": "Ofri yon zòn gratis, tikèt rezidan oswa yon sistèm 'peye sa ou ka'. Enklizyon konstri sipò lokal alontèm.", "es": "Ofrece una zona gratuita, entradas para residentes o un esquema de pago voluntario." }
       },
       {
         "key": "socialInclusion",
