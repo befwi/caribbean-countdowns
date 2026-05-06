@@ -136,9 +136,9 @@ if (filterToggle && filterPanel) {
 
 document.addEventListener("click", function(e) {
   if (!filterPanel) return;
-  if (!filterPanel.contains(e.target) && e.target !== filterToggle && !(filterToggle && filterToggle.contains(e.target))) {
-    filterPanel.classList.remove("open");
-  }
+  var wrap = document.querySelector(".search-input-wrap");
+  if (wrap && wrap.contains(e.target)) return;
+  filterPanel.classList.remove("open");
 });
 
 // Filter chips
@@ -161,6 +161,9 @@ document.querySelectorAll(".filter-chip").forEach(function(btn) {
 // Search input
 var searchInput = document.getElementById("searchInput");
 if (searchInput) {
+  searchInput.addEventListener("focus", function() {
+    if (filterPanel) filterPanel.classList.add("open");
+  });
   searchInput.addEventListener("input", function() {
     searchQuery = this.value.trim().toLowerCase();
     applyFilters();
