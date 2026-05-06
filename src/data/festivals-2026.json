@@ -361,5 +361,35 @@
   "tickets": [
     { "name": "Other", "url": "https://secure.ticketpal.com/event/rise-barbados-crop-over-wednesday-2026" }
  ]
+  },
+  {
+  "name": "Barbados Dive Fest",
+  "website": "https://www.instagram.com/divefestbarbados/",
+  "description": "Epic week of underwater exploration and conservation efforts",
+  "startDate": "2026-08-16",
+  "endDate": "2026-08-22",
+  "city": "",
+  "country": "Barbados",
+  "type": "music festival",
+  "vibes": [],
+  "image": "/images/barbadosdivefest.jpg",
+  "tickets": [
+    { "name": "Website", "url": "https://www.instagram.com/divefestbarbados/" }
+ ]
+  },
+  {
+  "name": "Crop Over Festival",
+  "website": "https://ncf.bb/crop-over/",
+  "description": "Barbados’ signature summer cultural festival",
+  "startDate": "2026-07-30",
+  "endDate": "2026-08-04",
+  "city": "Bridgetown",
+  "country": "Barbados",
+  "type": "music festival",
+  "vibes": ["soca", "calypso"],
+  "image": "/images/cropoverfestival.jpg",
+  "tickets": [
+    { "name": "Website", "url": "https://travelnoire.com/crop-over-barbados-guide" }
+ ]
   }
 ]

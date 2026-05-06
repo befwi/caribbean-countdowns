@@ -91,22 +91,22 @@ updateCountdowns();
 setInterval(updateCountdowns, 1000);
 
 // Filters
-var searchQuery = "";
-var activeType = "All";
-var activeVibe = "All";
-var activeCountry = "All";
+var searchQuery    = "";
+var activeType     = "All"; // single select
+var activeVibes    = [];    // multi-select (empty = all)
+var activeCountries = [];   // multi-select (empty = all)
 
 function applyFilters() {
   document.querySelectorAll(".festival-entry").forEach(function(row) {
     var rowName    = (row.getAttribute("data-name")   || "").toLowerCase();
     var rowType    = row.getAttribute("data-type")    || "";
-    var rowVibes   = (row.getAttribute("data-vibes")  || "").split(",");
+    var rowVibes   = (row.getAttribute("data-vibes")  || "").split(",").filter(Boolean);
     var rowCountry = row.getAttribute("data-country") || "";
     var matchSearch  = !searchQuery || rowName.indexOf(searchQuery) !== -1;
-    var matchType    = activeType    === "All" || rowType    === activeType;
-    var matchVibe    = activeVibe    === "All" || rowVibes.indexOf(activeVibe) !== -1;
-    var matchCountry = activeCountry === "All" || rowCountry === activeCountry;
-    var show = matchSearch && matchType && matchVibe && matchCountry;
+    var matchType    = activeType === "All" || rowType === activeType;
+    var matchCountry = activeCountries.length === 0 || activeCountries.indexOf(rowCountry) !== -1;
+    var matchVibe    = activeVibes.length === 0 || activeVibes.some(function(v) { return rowVibes.indexOf(v) !== -1; });
+    var show = matchSearch && matchType && matchCountry && matchVibe;
     row.style.display = show ? "" : "none";
     var next = row.nextElementSibling;
     if (next && next.classList.contains("divider")) {
@@ -116,7 +116,7 @@ function applyFilters() {
 }
 
 function updateFilterBadge() {
-  var count = (activeType !== "All" ? 1 : 0) + (activeVibe !== "All" ? 1 : 0) + (activeCountry !== "All" ? 1 : 0);
+  var count = (activeType !== "All" ? 1 : 0) + activeVibes.length + activeCountries.length;
   var badge = document.getElementById("filterBadge");
   var toggle = document.getElementById("filterToggle");
   if (badge) { badge.textContent = count; badge.style.display = count > 0 ? "" : "none"; }
@@ -146,13 +146,40 @@ document.querySelectorAll(".filter-chip").forEach(function(btn) {
   btn.addEventListener("click", function() {
     var type  = btn.getAttribute("data-filter-type");
     var value = btn.getAttribute("data-value");
-    document.querySelectorAll(".filter-chip[data-filter-type='" + type + "']").forEach(function(b) {
-      b.classList.remove("active");
-    });
-    btn.classList.add("active");
-    if (type === "type")    activeType    = value;
-    if (type === "vibe")    activeVibe    = value;
-    if (type === "country") activeCountry = value;
+
+    if (type === "type") {
+      // Single select
+      document.querySelectorAll(".filter-chip[data-filter-type='type']").forEach(function(b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      activeType = value;
+
+    } else if (type === "country") {
+      if (value === "All") {
+        activeCountries = [];
+        document.querySelectorAll(".filter-chip[data-filter-type='country']").forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+      } else {
+        var idx = activeCountries.indexOf(value);
+        if (idx === -1) { activeCountries.push(value); btn.classList.add("active"); }
+        else            { activeCountries.splice(idx, 1); btn.classList.remove("active"); }
+        var allBtn = document.querySelector(".filter-chip[data-filter-type='country'][data-value='All']");
+        if (allBtn) allBtn.classList.toggle("active", activeCountries.length === 0);
+      }
+
+    } else if (type === "vibe") {
+      if (value === "All") {
+        activeVibes = [];
+        document.querySelectorAll(".filter-chip[data-filter-type='vibe']").forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+      } else {
+        var idx = activeVibes.indexOf(value);
+        if (idx === -1) { activeVibes.push(value); btn.classList.add("active"); }
+        else            { activeVibes.splice(idx, 1); btn.classList.remove("active"); }
+        var allBtn = document.querySelector(".filter-chip[data-filter-type='vibe'][data-value='All']");
+        if (allBtn) allBtn.classList.toggle("active", activeVibes.length === 0);
+      }
+    }
+
     updateFilterBadge();
     applyFilters();
   });
