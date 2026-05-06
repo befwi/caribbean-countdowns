@@ -2,6 +2,13 @@
 var LANGS = ["en", "fr", "kr", "es"];
 var lang = localStorage.getItem("lang") || "en";
 
+var searchPlaceholders = {
+  en: "Search events...",
+  fr: "Rechercher un évènement...",
+  kr: "Chèché yon évènman...",
+  es: "Buscar un evento..."
+};
+
 function applyLang() {
   LANGS.forEach(function(l) {
     document.querySelectorAll(".t-" + l).forEach(function(el) {
@@ -12,6 +19,8 @@ function applyLang() {
   document.querySelectorAll(".lang-btn").forEach(function(btn) {
     btn.classList.toggle("active", btn.getAttribute("data-lang") === lang);
   });
+  var inp = document.getElementById("searchInput");
+  if (inp) inp.placeholder = searchPlaceholders[lang] || searchPlaceholders.en;
 }
 
 window.setLang = function(l) {
@@ -82,19 +91,22 @@ updateCountdowns();
 setInterval(updateCountdowns, 1000);
 
 // Filters
+var searchQuery = "";
 var activeType = "All";
 var activeVibe = "All";
 var activeCountry = "All";
 
 function applyFilters() {
   document.querySelectorAll(".festival-entry").forEach(function(row) {
-    var rowType = row.getAttribute("data-type") || "";
-    var rowVibes = (row.getAttribute("data-vibes") || "").split(",");
+    var rowName    = (row.getAttribute("data-name")   || "").toLowerCase();
+    var rowType    = row.getAttribute("data-type")    || "";
+    var rowVibes   = (row.getAttribute("data-vibes")  || "").split(",");
     var rowCountry = row.getAttribute("data-country") || "";
-    var matchType = activeType === "All" || rowType === activeType;
-    var matchVibe = activeVibe === "All" || rowVibes.indexOf(activeVibe) !== -1;
+    var matchSearch  = !searchQuery || rowName.indexOf(searchQuery) !== -1;
+    var matchType    = activeType    === "All" || rowType    === activeType;
+    var matchVibe    = activeVibe    === "All" || rowVibes.indexOf(activeVibe) !== -1;
     var matchCountry = activeCountry === "All" || rowCountry === activeCountry;
-    var show = matchType && matchVibe && matchCountry;
+    var show = matchSearch && matchType && matchVibe && matchCountry;
     row.style.display = show ? "" : "none";
     var next = row.nextElementSibling;
     if (next && next.classList.contains("divider")) {
@@ -103,17 +115,54 @@ function applyFilters() {
   });
 }
 
-document.querySelectorAll(".filter-tag").forEach(function(btn) {
+function updateFilterBadge() {
+  var count = (activeType !== "All" ? 1 : 0) + (activeVibe !== "All" ? 1 : 0) + (activeCountry !== "All" ? 1 : 0);
+  var badge = document.getElementById("filterBadge");
+  var toggle = document.getElementById("filterToggle");
+  if (badge) { badge.textContent = count; badge.style.display = count > 0 ? "" : "none"; }
+  if (toggle) toggle.classList.toggle("has-active", count > 0);
+}
+
+// Filter panel toggle
+var filterToggle = document.getElementById("filterToggle");
+var filterPanel  = document.getElementById("filterPanel");
+
+if (filterToggle && filterPanel) {
+  filterToggle.addEventListener("click", function(e) {
+    e.stopPropagation();
+    filterPanel.classList.toggle("open");
+  });
+}
+
+document.addEventListener("click", function(e) {
+  if (!filterPanel) return;
+  if (!filterPanel.contains(e.target) && e.target !== filterToggle && !(filterToggle && filterToggle.contains(e.target))) {
+    filterPanel.classList.remove("open");
+  }
+});
+
+// Filter chips
+document.querySelectorAll(".filter-chip").forEach(function(btn) {
   btn.addEventListener("click", function() {
-    var type = btn.getAttribute("data-filter-type");
+    var type  = btn.getAttribute("data-filter-type");
     var value = btn.getAttribute("data-value");
-    document.querySelectorAll(".filter-tag[data-filter-type='" + type + "']").forEach(function(b) {
+    document.querySelectorAll(".filter-chip[data-filter-type='" + type + "']").forEach(function(b) {
       b.classList.remove("active");
     });
     btn.classList.add("active");
-    if (type === "type") activeType = value;
-    if (type === "vibe") activeVibe = value;
+    if (type === "type")    activeType    = value;
+    if (type === "vibe")    activeVibe    = value;
     if (type === "country") activeCountry = value;
+    updateFilterBadge();
     applyFilters();
   });
 });
+
+// Search input
+var searchInput = document.getElementById("searchInput");
+if (searchInput) {
+  searchInput.addEventListener("input", function() {
+    searchQuery = this.value.trim().toLowerCase();
+    applyFilters();
+  });
+}

@@ -330,6 +330,36 @@
   "image": "/images/poolartfairguadeloupe.jpg",
   "tickets": [
     { "name": "Website", "url": "https://www.poolartfair.com/billetterie-2026" }
-  ]
+ ]
+  },
+  {
+  "name": "I AM WOMAN CONCERT BARBADOS",
+  "website": "https://iamwomanconcert.com",
+  "description": "Signature annual concert",
+  "startDate": "2026-05-10",
+  "endDate": "2026-05-10",
+  "city": "Bridgetown",
+  "country": "Barbados",
+  "type": "music festival",
+  "vibes": ["soca", "dancehall"],
+  "image": "/images/iamwomanconcertbarbados.jpg",
+  "tickets": [
+    { "name": "Other", "url": "https://secure.ticketpal.com/event/i-am-woman-2026" }
+ ]
+  },
+  {
+  "name": "RISE TOGETHER",
+  "website": "https://www.instagram.com/risebarbados/",
+  "description": "",
+  "startDate": "2026-07-29",
+  "endDate": "2026-07-29",
+  "city": "Bridgetown",
+  "country": "Barbados",
+  "type": "music festival",
+  "vibes": ["soca", "reggae"],
+  "image": "/images/risetogether.jpg",
+  "tickets": [
+    { "name": "Other", "url": "https://secure.ticketpal.com/event/rise-barbados-crop-over-wednesday-2026" }
+ ]
   }
 ]

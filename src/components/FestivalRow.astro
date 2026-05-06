@@ -301,6 +301,7 @@ const eventDateStr =
 
 <div
   class={`festival-entry${status === "ENDED" ? " ended" : ""}${status === "LIVE" ? " live" : ""}${festival.image ? " has-image" : ""}`}
+  data-name={festival.name ?? ""}
   data-type={festival.type ?? ""}
   data-vibes={(festival.vibes ?? []).join(",")}
   data-country={festival.country ?? ""}
