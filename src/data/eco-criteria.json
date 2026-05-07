@@ -71,7 +71,7 @@
       {
         "key": "refillStations",
         "label": { "en": "Free water refill stations throughout venue", "fr": "Points de remplissage d'eau gratuits sur le site", "kr": "Estasyon ranplisman dlo gratis sou sit la", "es": "Estaciones de recarga de agua gratuitas" },
-        "tip": { "en": "Install refill points at minimum every 100m — this single measure dramatically reduces single-use bottle demand and shows commitment to attendee wellbeing.", "fr": "Installez des points de remplissage au minimum tous les 100 m — cela réduit considérablement la demande en bouteilles plastique.", "kr": "Enstale pwen ranplisman omwen chak 100m — sa rédiui demànd boutèy plastik.", "es": "Instala puntos de recarga al menos cada 100m — reduce drásticamente la demanda de botellas de plástico." }
+        "tip": { "en": "Install refill points at minimum one on the site — this single measure dramatically reduces single-use bottle demand and shows commitment to attendee wellbeing.", "fr": "Installez des points de remplissage au minimum un sur le site — cela réduit considérablement la demande en bouteilles plastique.", "kr": "Enstale pwen ranplisman omwen yon anlè sit la — sa rédiui demànd boutèy plastik.", "es": "Instala puntos de recarga al menos uno — reduce drásticamente la demanda de botellas de plástico." }
       },
       {
         "key": "noPlasticBottles",
