@@ -8,7 +8,7 @@
     "city": "Sinnamary",
     "country": "French-Guyana",
     "type": "music festival",
-    "vibes": ["dancehall"],
+    "details": ["dancehall"],
     "image": "/images/feverfest.jpg",
     "tickets": [
       { "name": "Feverfest.fr", "url": "https://feverfest.fr" }
@@ -23,7 +23,7 @@
     "city": "Matoury",
     "country": "French-Guyana",
     "type": "music festival",
-    "vibes": ["dancehall", "zouk", "zouk"],
+    "details": ["dancehall", "zouk", "zouk"],
     "image": "/images/wyhcella.jpg",
     "tickets": [
       { "name": "Feverfest.fr", "url": "https://feverfest.fr" }

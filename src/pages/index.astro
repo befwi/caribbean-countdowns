@@ -5,18 +5,17 @@ import festivals2026 from "../data/festivals-2026.json";
 import festivals2027 from "../data/festivals-2027.json";
 import sponsors from "../data/sponsors.json";
 import ngos from "../data/ngos.json";
+import { tzDayStart, tzDayEnd } from "../utils/tz";
 
 // const festivals = [...festivals2025, ...festivals2026];
 const festivals = [...festivals2026, ...festivals2027];
 import FestivalRow from "../components/FestivalRow.astro";
 
-const now = new Date();
-
-function getStatus(f) {
-  const start = new Date(f.startDate + "T00:00:00");
-  const end = new Date(f.endDate + "T23:59:59");
-  if (now > end) return "ENDED";
-  if (now >= start) return "LIVE";
+function getStatus(f: any) {
+  const tz = f.timezone ?? "America/Martinique";
+  const nowMs = Date.now();
+  if (nowMs > tzDayEnd(f.endDate, tz)) return "ENDED";
+  if (nowMs >= tzDayStart(f.startDate, tz)) return "LIVE";
   return "UPCOMING";
 }
 
@@ -28,16 +27,18 @@ const enriched = festivals
     return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
   });
 
-const eventTypes = ["All", "music festival", "carnival", "regatta", "other"];
+const eventTypes = ["All", "music festival", "carnival", "regatta", "art", "sport", "other"];
 const eventTypeLabels: Record<string, Record<string, string>> = {
   "All":           { en: "All types",          fr: "Tous les types",      kr: "Tout kalité",        es: "Todos los tipos" },
   "music festival":{ en: "music festival",      fr: "festival de musique", kr: "mizik fèstival",     es: "festival de música" },
   "carnival":      { en: "carnival",            fr: "carnaval",            kr: "kanaval",            es: "carnaval" },
-  "regatta":       { en: "regatta",             fr: "régate",              kr: "kous bato",             es: "regata" },
-  "other":         { en: "other",               fr: "autre",               kr: "le restan",                es: "otro" },
+  "regatta":       { en: "regatta",             fr: "régate",              kr: "kous bato",           es: "regata" },
+  "art":           { en: "art",                 fr: "art",                 kr: "atizay",              es: "arte" },
+  "sport":         { en: "sport",               fr: "sport",               kr: "spo",           es: "deporte" },
+  "other":         { en: "other",               fr: "autre",               kr: "le restan",           es: "otro" },
 };
 
-const vibes = ["All", ...Array.from(new Set(festivals.flatMap(f => f.vibes ?? []).filter(v => v)))];
+const details = ["All", ...Array.from(new Set(festivals.flatMap(f => f.details ?? []).filter(v => v)))];
 const countries = ["All", ...Array.from(new Set(festivals.map(f => f.country).filter(Boolean)))];
 
 const lastUpdateEn = new Date().toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
@@ -416,10 +417,10 @@ function splitLines(text: string) {
         <span class="t-es">Última actualización: {lastUpdateEs}</span>
       </span>
       <span>
-        <span class="t-en">Want to add a festival? <a href="/add-event/">Use the form</a>.</span>
-        <span class="t-fr">Ajouter un festival ? <a href="/add-event/">Utiliser le formulaire</a>.</span>
-        <span class="t-kr">Vou vlé mété an fèstival ? <a href="/add-event/">Sèvi ak fòmilè a</a>.</span>
-        <span class="t-es">¿Agregar un festival? <a href="/add-event/">Usa el formulario</a>.</span>
+        <span class="t-en">Want to add a festival? <a href="/suggest-event/">Use the form</a>.</span>
+        <span class="t-fr">Ajouter un festival ? <a href="/suggest-event/">Utiliser le formulaire</a>.</span>
+        <span class="t-kr">Vou vlé mété an fèstival ? <a href="/suggest-event/">Sèvi ak fòmilè a</a>.</span>
+        <span class="t-es">¿Agregar un festival? <a href="/suggest-event/">Usa el formulario</a>.</span>
       </span>
     </div>
 
@@ -520,24 +521,6 @@ function splitLines(text: string) {
             </div>
           </div>
 
-          <div class="filter-panel-group">
-            <span class="filter-panel-label">
-              <span class="t-en">Vibe</span>
-              <span class="t-fr">Ambiance</span>
-              <span class="t-kr">Vibe</span>
-              <span class="t-es">Ambiente</span>
-            </span>
-            <div class="filter-chips">
-              {vibes.map(v => (
-                <button class={`filter-chip${v === "All" ? " active" : ""}`} data-filter-type="vibe" data-value={v} type="button">
-                  <span class="t-en">{v === "All" ? "All vibes" : v}</span>
-                  <span class="t-fr">{v === "All" ? "Toutes les vibes" : v}</span>
-                  <span class="t-kr">{v === "All" ? "Tout vibe" : v}</span>
-                  <span class="t-es">{v === "All" ? "Todos los vibes" : v}</span>
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -571,7 +554,7 @@ function splitLines(text: string) {
         <span class="t-es">Ser patrocinador</span>
       </a>
       &nbsp;·&nbsp;
-      <a href="/add-event/" style="color:#333;text-decoration:underline;">
+      <a href="/suggest-event/" style="color:#333;text-decoration:underline;">
         <span class="t-en">Add an event</span>
         <span class="t-fr">Ajouter un événement</span>
         <span class="t-kr">Ajouter an évènman</span>

@@ -1,5 +1,6 @@
 ---
 import ecoCriteria from "../data/eco-criteria.json";
+import { tzDayStart, tzDayEnd } from "../utils/tz";
 const { festival } = Astro.props;
 
 let ecoGrade: string | null = null;
@@ -13,22 +14,31 @@ if (festival.eco) {
   ecoGrade = total >= 80 ? "A" : total >= 60 ? "B" : total >= 40 ? "C" : total >= 20 ? "D" : "F";
 }
 
-const now = new Date();
-const start = new Date(festival.startDate + "T00:00:00");
-const end = new Date(festival.endDate + "T23:59:59");
+const tz = festival.timezone ?? "America/Martinique";
+const startMs = tzDayStart(festival.startDate, tz);
+const endMs   = tzDayEnd(festival.endDate, tz);
+const nowMs   = Date.now();
+
 let status = "";
-if (now > end) {
+if (nowMs > endMs) {
   status = "ENDED";
-} else if (now >= start) {
+} else if (nowMs >= startMs) {
   status = "LIVE";
 } else {
   status = "UPCOMING";
 }
 
 const countdownTarget =
-  status === "ENDED" ? end.getTime() :
-  status === "LIVE"  ? end.getTime() :
-  start.getTime();
+  status === "ENDED" ? endMs :
+  status === "LIVE"  ? endMs :
+  startMs;
+
+// Use noon UTC so toLocaleDateString always shows the correct calendar date
+// regardless of build-server timezone (startMs/endMs can cross midnight UTC)
+const [sy, sm, sd] = festival.startDate.split("-").map(Number);
+const [ey, em, ed] = festival.endDate.split("-").map(Number);
+const start = new Date(Date.UTC(sy, sm - 1, sd, 12, 0, 0));
+const end   = new Date(Date.UTC(ey, em - 1, ed, 12, 0, 0));
 
 const formatDate = (d: Date) =>
   d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
@@ -180,14 +190,14 @@ const eventDateStr =
     margin-top: 10px;
   }
 
-  .vibe-tags {
+  .detail-tags {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
     gap: 5px;
   }
 
-  .vibe-tag {
+  .detail-tag {
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -303,7 +313,7 @@ const eventDateStr =
   class={`festival-entry${status === "ENDED" ? " ended" : ""}${status === "LIVE" ? " live" : ""}${festival.image ? " has-image" : ""}`}
   data-name={festival.name ?? ""}
   data-type={festival.type ?? ""}
-  data-vibes={(festival.vibes ?? []).join(",")}
+  data-details={(festival.details ?? []).join(",")}
   data-country={festival.country ?? ""}
   style={festival.image ? `background-image: url('${festival.image}')` : ""}
 >
@@ -362,10 +372,10 @@ const eventDateStr =
       {ecoGrade && (
         <a href="/sustainability" class={`eco-badge eco-${ecoGrade}`}>♻️ {ecoGrade}</a>
       )}
-      {festival.vibes?.filter((v: string) => v).length > 0 && (
-        <div class="vibe-tags">
-          {festival.vibes.filter((v: string) => v).map((g: string) => (
-            <span class="vibe-tag">{g}</span>
+      {festival.details?.filter((v: string) => v).length > 0 && (
+        <div class="detail-tags">
+          {festival.details.filter((v: string) => v).map((g: string) => (
+            <span class="detail-tag">{g}</span>
           ))}
         </div>
       )}

@@ -7,11 +7,19 @@
     "endDate": "2026-04-27",
     "city": "Le François",
     "country": "Martinique",
+    "timezone": "America/Martinique",
     "type": "music festival",
-    "vibes": ["rap", "dancehall", "shatta"],
+    "details": [
+      "rap",
+      "dancehall",
+      "shatta"
+    ],
     "image": "/images/urbanshow.jpg",
     "tickets": [
-      { "name": "Bizouk", "url": "https://bizouk.com" }
+      {
+        "name": "Bizouk",
+        "url": "https://bizouk.com"
+      }
     ]
   },
   {
@@ -22,11 +30,19 @@
     "endDate": "2026-08-10",
     "city": "Le Vauclin",
     "country": "Martinique",
+    "timezone": "America/Martinique",
     "type": "music festival",
-    "vibes": ["rap", "dancehall", "shatta"],
+    "details": [
+      "rap",
+      "dancehall",
+      "shatta"
+    ],
     "image": "/images/bacchafestival.jpg",
     "tickets": [
-      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/baccha-festival-2026/105195" }
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/baccha-festival-2026/105195"
+      }
     ]
   },
   {
@@ -37,12 +53,23 @@
     "endDate": "2026-07-19",
     "city": "Le Moule",
     "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
     "type": "music festival",
-    "vibes": ["rap", "dancehall", "shatta"],
+    "details": [
+      "rap",
+      "dancehall",
+      "shatta"
+    ],
     "image": "/images/adi-music-festival.jpg",
     "tickets": [
-      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/adi-music-festival-2026/109412" },
-      { "name": "Kiwol", "url": "https://www.kiwol.com/billetterie/13378#ticket" }
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/adi-music-festival-2026/109412"
+      },
+      {
+        "name": "Kiwol",
+        "url": "https://www.kiwol.com/billetterie/13378#ticket"
+      }
     ]
   },
   {
@@ -53,12 +80,22 @@
     "endDate": "2026-07-19",
     "city": "Le Gosier",
     "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
     "type": "music festival",
-    "vibes": ["zouk", "kompa"],
+    "details": [
+      "zouk",
+      "kompa"
+    ],
     "image": "/images/festivalkolorsdayz.jpg",
     "tickets": [
-      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/festival-kolors-dayz/116300" },
-      { "name": "Kiwol", "url": "https://www.kiwol.com/billetterie/13372#ticket" }
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/festival-kolors-dayz/116300"
+      },
+      {
+        "name": "Kiwol",
+        "url": "https://www.kiwol.com/billetterie/13372#ticket"
+      }
     ]
   },
   {
@@ -69,11 +106,17 @@
     "endDate": "2026-05-10",
     "city": "",
     "country": "Saint-Lucia",
+    "timezone": "America/St_Lucia",
     "type": "music festival",
-    "vibes": ["jazz"],
+    "details": [
+      "jazz"
+    ],
     "image": "/images/slujazz.jpg",
     "tickets": [
-      { "name": "4 Circles Tickets", "url": "https://slujazz.4circlestickets.com/" }
+      {
+        "name": "4 Circles Tickets",
+        "url": "https://slujazz.4circlestickets.com/"
+      }
     ]
   },
   {
@@ -84,11 +127,19 @@
     "endDate": "2026-07-22",
     "city": "",
     "country": "Saint-Lucia",
+    "timezone": "America/St_Lucia",
     "type": "carnival",
-    "vibes": ["calypso", "steelpan", "soca"],
+    "details": [
+      "calypso",
+      "steelpan",
+      "soca"
+    ],
     "image": "/images/carnivalsaintlucia.jpg",
     "tickets": [
-      { "name": "4 Circles Tickets", "url": "https://slucarnival.4circlestickets.com/" }
+      {
+        "name": "4 Circles Tickets",
+        "url": "https://slucarnival.4circlestickets.com/"
+      }
     ]
   },
   {
@@ -99,11 +150,19 @@
     "endDate": "2026-05-25",
     "city": "",
     "country": "Marie-Galante",
+    "timezone": "America/Guadeloupe",
     "type": "music festival",
-    "vibes": ["blues", "soul", "jazz"],
+    "details": [
+      "blues",
+      "soul",
+      "jazz"
+    ],
     "image": "/images/terredeblues-mg.jpg",
     "tickets": [
-      { "name": "Tickets", "url": "https://www.terredeblues.com/products/list/vq8qo4i4jpymmt" }
+      {
+        "name": "Tickets",
+        "url": "https://www.terredeblues.com/products/list/vq8qo4i4jpymmt"
+      }
     ]
   },
   {
@@ -114,11 +173,17 @@
     "endDate": "2026-08-15",
     "city": "Matoury",
     "country": "French-Guyana",
+    "timezone": "America/Cayenne",
     "type": "music festival",
-    "vibes": ["reggae"],
+    "details": [
+      "reggae"
+    ],
     "image": "/images/boomjam-reggea.jpg",
     "tickets": [
-      { "name": "Sabouj", "url": "https://sabouj.fr/evenements/boomjam-reggea-one-day" }
+      {
+        "name": "Sabouj",
+        "url": "https://sabouj.fr/evenements/boomjam-reggea-one-day"
+      }
     ]
   },
   {
@@ -129,11 +194,18 @@
     "endDate": "2026-07-05",
     "city": "Capesterre Belle-Eau",
     "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
     "type": "music festival",
-    "vibes": ["reggae", "dancehall"],
+    "details": [
+      "reggae",
+      "dancehall"
+    ],
     "image": "/images/karukeraonelove-gp.jpg",
     "tickets": [
-      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/karukera-one-love-guadeloupe-2026/116315" }
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/karukera-one-love-guadeloupe-2026/116315"
+      }
     ]
   },
   {
@@ -144,11 +216,21 @@
     "endDate": "2026-10-24",
     "city": "",
     "country": "Dominica",
+    "timezone": "America/Dominica",
     "type": "music festival",
-    "vibes": ["bouyon", "zouk", "reggae", "dancehall", "soca"],
+    "details": [
+      "bouyon",
+      "zouk",
+      "reggae",
+      "dancehall",
+      "soca"
+    ],
     "image": "/images/wcmf.jpg",
     "tickets": [
-      { "name": "4 Circles Tickets", "url": "https://wcmf.4circlestickets.com/events" }
+      {
+        "name": "4 Circles Tickets",
+        "url": "https://wcmf.4circlestickets.com/events"
+      }
     ]
   },
   {
@@ -159,11 +241,17 @@
     "endDate": "2026-07-12",
     "city": "Fort-de-France",
     "country": "Martinique",
+    "timezone": "America/Martinique",
     "type": "music festival",
-    "vibes": ["reggae"],
+    "details": [
+      "reggae"
+    ],
     "image": "/images/reggaetherapy.jpg",
     "tickets": [
-      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/reggae-therapy-festival-2026/112483" }
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/reggae-therapy-festival-2026/112483"
+      }
     ]
   },
   {
@@ -174,11 +262,17 @@
     "endDate": "2026-05-01",
     "city": "",
     "country": "Martinique",
+    "timezone": "America/Martinique",
     "type": "other",
-    "vibes": [""],
+    "details": [
+      ""
+    ],
     "image": "/images/piraterace.jpg",
     "tickets": [
-      { "name": "Website", "url": "https://lapiraterace.com/" }
+      {
+        "name": "Website",
+        "url": "https://lapiraterace.com/"
+      }
     ]
   },
   {
@@ -189,8 +283,11 @@
     "endDate": "2026-03-08",
     "city": "Port de Plaisance",
     "country": "Sint-Maarten",
+    "timezone": "America/Lower_Princes",
     "type": "regatta",
-    "vibes": [""],
+    "details": [
+      ""
+    ],
     "image": "/images/heinekenregatta.jpg",
     "tickets": []
   },
@@ -202,8 +299,11 @@
     "endDate": "2026-04-26",
     "city": "Gustavia",
     "country": "Saint-Barthélemy",
+    "timezone": "America/St_Barthelemy",
     "type": "regatta",
-    "vibes": [""],
+    "details": [
+      ""
+    ],
     "image": "/images/westindiesregatta.jpg",
     "tickets": []
   },
@@ -215,11 +315,17 @@
     "endDate": "2026-10-13",
     "city": "Bridgetown",
     "country": "Barbados",
+    "timezone": "America/Barbados",
     "type": "music festival",
-    "vibes": ["jazz"],
+    "details": [
+      "jazz"
+    ],
     "image": "/images/barbadosjazzexcursion.jpg",
     "tickets": [
-      { "name": "Website", "url": "https://barbadosjazzexcursion.com/packages/"}
+      {
+        "name": "Website",
+        "url": "https://barbadosjazzexcursion.com/packages/"
+      }
     ]
   },
   {
@@ -230,11 +336,17 @@
     "endDate": "2026-08-16",
     "city": "Le Gosier",
     "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
     "type": "music festival",
-    "vibes": ["jazz"],
+    "details": [
+      "jazz"
+    ],
     "image": "/images/creolejazzfestival.jpg",
     "tickets": [
-      { "name": "Billetweb", "url": "https://www.billetweb.fr/shop.php?event=co-plateau-duo-smooth-jazz-trio-cariboheme&multi=24525&color=d53b62&color=d53b62&from_multi=1"}
+      {
+        "name": "Billetweb",
+        "url": "https://www.billetweb.fr/shop.php?event=co-plateau-duo-smooth-jazz-trio-cariboheme&multi=24525&color=d53b62&color=d53b62&from_multi=1"
+      }
     ]
   },
   {
@@ -245,8 +357,11 @@
     "endDate": "2026-08-02",
     "city": "",
     "country": "Martinique",
+    "timezone": "America/Martinique",
     "type": "regatta",
-    "vibes": [""],
+    "details": [
+      ""
+    ],
     "image": "/images/tourdesyoles.jpg",
     "tickets": []
   },
@@ -258,117 +373,162 @@
     "endDate": "2026-05-30",
     "city": "Le François",
     "country": "Martinique",
+    "timezone": "America/Martinique",
     "type": "music festival",
-    "vibes": ["jazz"],
+    "details": [
+      "jazz"
+    ],
     "image": "/images/jazzanbatol.jpg",
     "tickets": [
-      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/jazz-an-ba-tol-la-kou-samuel/119621"}
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/jazz-an-ba-tol-la-kou-samuel/119621"
+      }
     ]
   },
   {
-  "name": "Mercury Beach",
-  "website": "https://mercurybeach.com",
-  "description": "Beach music festival in Martinique",
-  "startDate": "2026-07-25",
-  "endDate": "2026-07-25",
-  "city": "Anses-d'Arlet",
-  "country": "Martinique",
-  "type": "music festival",
-  "vibes": [],
-  "image": "/images/mercurybeach.jpg",
-  "tickets": [
-    { "name": "Website", "url": "https://mercurybeach.com/billetterie" }
-  ]
+    "name": "Mercury Beach",
+    "website": "https://mercurybeach.com",
+    "description": "Beach music festival in Martinique",
+    "startDate": "2026-07-25",
+    "endDate": "2026-07-25",
+    "city": "Anses-d'Arlet",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [],
+    "image": "/images/mercurybeach.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://mercurybeach.com/billetterie"
+      }
+    ]
   },
   {
-  "name": "PooL Art Fair Guadeloupe",
-  "website": "https://www.poolartfair.com/",
-  "description": "Vibrant celebration of contemporary art in the Caribbean",
-  "startDate": "2026-06-26",
-  "endDate": "2026-06-28",
-  "city": "Pointe-à-Pitre",
-  "country": "Guadeloupe",
-  "type": "art",
-  "vibes": [],
-  "image": "/images/poolartfairguadeloupe.jpg",
-  "tickets": [
-    { "name": "Website", "url": "https://www.poolartfair.com/billetterie-2026" }
- ]
+    "name": "PooL Art Fair Guadeloupe",
+    "website": "https://www.poolartfair.com/",
+    "description": "Vibrant celebration of contemporary art in the Caribbean",
+    "startDate": "2026-06-26",
+    "endDate": "2026-06-28",
+    "city": "Pointe-à-Pitre",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "art",
+    "details": [],
+    "image": "/images/poolartfairguadeloupe.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://www.poolartfair.com/billetterie-2026"
+      }
+    ]
   },
   {
-  "name": "I AM WOMAN Concert Barbados",
-  "website": "https://iamwomanconcert.com",
-  "description": "Signature annual concert",
-  "startDate": "2026-05-10",
-  "endDate": "2026-05-10",
-  "city": "Bridgetown",
-  "country": "Barbados",
-  "type": "music festival",
-  "vibes": ["soca", "dancehall"],
-  "image": "/images/iamwomanconcertbarbados.jpg",
-  "tickets": [
-    { "name": "Other", "url": "https://secure.ticketpal.com/event/i-am-woman-2026" }
- ]
+    "name": "I AM WOMAN Concert Barbados",
+    "website": "https://iamwomanconcert.com",
+    "description": "Signature annual concert",
+    "startDate": "2026-05-10",
+    "endDate": "2026-05-10",
+    "city": "Bridgetown",
+    "country": "Barbados",
+    "timezone": "America/Barbados",
+    "type": "music festival",
+    "details": [
+      "soca",
+      "dancehall"
+    ],
+    "image": "/images/iamwomanconcertbarbados.jpg",
+    "tickets": [
+      {
+        "name": "Other",
+        "url": "https://secure.ticketpal.com/event/i-am-woman-2026"
+      }
+    ]
   },
   {
-  "name": "Rise Together",
-  "website": "https://www.instagram.com/risebarbados/",
-  "description": "",
-  "startDate": "2026-07-29",
-  "endDate": "2026-07-29",
-  "city": "Bridgetown",
-  "country": "Barbados",
-  "type": "music festival",
-  "vibes": ["soca", "reggae"],
-  "image": "/images/risetogether.jpg",
-  "tickets": [
-    { "name": "Other", "url": "https://secure.ticketpal.com/event/rise-barbados-crop-over-wednesday-2026" }
- ]
+    "name": "Rise Together",
+    "website": "https://www.instagram.com/risebarbados/",
+    "description": "",
+    "startDate": "2026-07-29",
+    "endDate": "2026-07-29",
+    "city": "Bridgetown",
+    "country": "Barbados",
+    "timezone": "America/Barbados",
+    "type": "music festival",
+    "details": [
+      "soca",
+      "reggae"
+    ],
+    "image": "/images/risetogether.jpg",
+    "tickets": [
+      {
+        "name": "Other",
+        "url": "https://secure.ticketpal.com/event/rise-barbados-crop-over-wednesday-2026"
+      }
+    ]
   },
   {
-  "name": "Barbados Dive Fest",
-  "website": "https://www.instagram.com/divefestbarbados/",
-  "description": "Epic week of underwater exploration and conservation efforts",
-  "startDate": "2026-08-16",
-  "endDate": "2026-08-22",
-  "city": "",
-  "country": "Barbados",
-  "type": "music festival",
-  "vibes": [],
-  "image": "/images/barbadosdivefest.jpg",
-  "tickets": [
-    { "name": "Website", "url": "https://www.instagram.com/divefestbarbados/" }
- ]
+    "name": "Barbados Dive Fest",
+    "website": "https://www.instagram.com/divefestbarbados/",
+    "description": "Epic week of underwater exploration and conservation efforts",
+    "startDate": "2026-08-16",
+    "endDate": "2026-08-22",
+    "city": "",
+    "country": "Barbados",
+    "timezone": "America/Barbados",
+    "type": "music festival",
+    "details": [],
+    "image": "/images/barbadosdivefest.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://www.instagram.com/divefestbarbados/"
+      }
+    ]
   },
   {
-  "name": "Crop Over Festival",
-  "website": "https://ncf.bb/crop-over/",
-  "description": "Barbados’ signature summer cultural festival",
-  "startDate": "2026-07-30",
-  "endDate": "2026-08-04",
-  "city": "Bridgetown",
-  "country": "Barbados",
-  "type": "music festival",
-  "vibes": ["soca", "calypso"],
-  "image": "/images/cropoverfestival.jpg",
-  "tickets": [
-    { "name": "Website", "url": "https://travelnoire.com/crop-over-barbados-guide" }
- ]
+    "name": "Crop Over Festival",
+    "website": "https://ncf.bb/crop-over/",
+    "description": "Barbados’ signature summer cultural festival",
+    "startDate": "2026-07-30",
+    "endDate": "2026-08-04",
+    "city": "Bridgetown",
+    "country": "Barbados",
+    "timezone": "America/Barbados",
+    "type": "music festival",
+    "details": [
+      "soca",
+      "calypso"
+    ],
+    "image": "/images/cropoverfestival.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://travelnoire.com/crop-over-barbados-guide"
+      }
+    ]
   },
   {
-  "name": "Mada Green",
-  "website": "https://massaiprod.com/mada-green-08/",
-  "description": "Eco Friendly Electronic Party",
-  "startDate": "2026-06-06",
-  "endDate": "2026-06-06",
-  "city": "Saint-Pierre",
-  "country": "Martinique",
-  "type": "music festival",
-  "vibes": ["electro"],
-  "image": "/images/madagreen.jpg",
-  "tickets": [
-    { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/mada-green-8/117946" }
- ],
+    "name": "Mada Green",
+    "website": "https://massaiprod.com/mada-green-08/",
+    "description": "Eco Friendly Electronic Party",
+    "startDate": "2026-06-06",
+    "endDate": "2026-06-06",
+    "city": "Saint-Pierre",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "electro"
+    ],
+    "image": "/images/madagreen.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/mada-green-8/117946"
+      }
+    ],
     "eco": {
       "emissions": {
         "publicTransport": false,
@@ -408,63 +568,196 @@
     }
   },
   {
-  "name": "Mada Color Run",
-  "website": "https://www.instagram.com/queer_nation_mq",
-  "description": "5K bursting with color, music, and pure celebration!",
-  "startDate": "2026-07-12",
-  "endDate": "2026-07-12",
-  "city": "Sainte-Marie",
-  "country": "Martinique",
-  "type": "other",
-  "vibes": [],
-  "image": "/images/madacolorrun.jpg",
-  "tickets": [
-    { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/mada-color-run/120182" }
- ]
+    "name": "Mada Color Run",
+    "website": "https://www.instagram.com/queer_nation_mq",
+    "description": "5 km bursting with color, music, and pure celebration!",
+    "startDate": "2026-07-12",
+    "endDate": "2026-07-12",
+    "city": "Sainte-Marie",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "sport",
+    "details": ["running"],
+    "image": "/images/madacolorrun.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/mada-color-run/120182"
+      }
+    ]
   },
   {
-  "name": "Ladies Break",
-  "website": "https://www.ladiesbreak-festival.com/",
-  "description": "Event dedicated entirely to women, offering a space for relaxation, self-care and empowerment.",
-  "startDate": "2026-07-05",
-  "endDate": "2026-07-05",
-  "city": "",
-  "country": "Martinique",
-  "type": "music festival",
-  "vibes": ["zouk", "reggae", "dancehall"],
-  "image": "/images/ladiesbreak.jpg",
-  "tickets": [
-    { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/ladies-chill-garden-party-by-ladies-brea/120149" }
-]
+    "name": "Ladies Break",
+    "website": "https://www.ladiesbreak-festival.com/",
+    "description": "Event dedicated entirely to women, offering a space for relaxation, self-care and empowerment.",
+    "startDate": "2026-07-05",
+    "endDate": "2026-07-05",
+    "city": "",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "zouk",
+      "reggae",
+      "dancehall"
+    ],
+    "image": "/images/ladiesbreak.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/ladies-chill-garden-party-by-ladies-brea/120149"
+      }
+    ]
   },
   {
-  "name": "Holi Music Festival",
-  "website": "https://www.holi-village.com/",
-  "description": "Inspired by the ancient Hindu celebration of Holi, symbolizing joy, light, friendship and togetherness.",
-  "startDate": "2026-06-27",
+    "name": "Holi Music Festival",
+    "website": "https://www.holi-village.com/",
+    "description": "Inspired by the ancient Hindu celebration of Holi, symbolizing joy, light, friendship and togetherness.",
+    "startDate": "2026-06-27",
+    "endDate": "2026-06-27",
+    "city": "",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [],
+    "image": "/images/holimusicfestival.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/holi-2026/120065"
+      }
+    ]
+  },
+  {
+    "name": "Art Mada Festival",
+    "website": "https://www.instagram.com/reel/DDhJwyxx0Ml/?utm_source=ig_embed&utm_campaign=loading",
+    "description": "Mural art and graffiti, designed to make art accessible to the public in urban spaces.",
+    "startDate": "2026-02-01",
+    "endDate": "2026-02-11",
+    "city": "Fort de France",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "art",
+    "details": [],
+    "image": "/images/artmadafestival2026.jpg",
+    "tickets": [
+      {
+        "name": "",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "name": "Tchimbé Raid Ultra Trail",
+    "website": "https://ctr972.fr/tchimberaid.html",
+    "description": "103 km - Most epic trail of Martinique",
+    "startDate": "2026-05-09",
+    "endDate": "2026-05-10",
+    "city": "Basse-Pointe",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "sport",
+    "details": ["running", "trail"],
+    "image": "/images/tchimberaidultratrail.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://ctr972.fr/tchimberaid.html"
+      }
+    ]
+  },
+  {
+    "name": "Tour Cycliste International de Martinique",
+    "website": "https://www.facebook.com/CRCM972",
+    "description": "",
+    "startDate": "2026-07-03",
+    "endDate": "2026-07-12",
+    "city": "",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "sport",
+    "details": ["cycling"],
+    "image": "/images/tourcyclisteinternationaldemartinique.jpg",
+    "tickets": [
+      {
+        "name": "",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "name": "Tour Cycliste International de Guadeloupe",
+    "website": "https://www.facebook.com/p/Comit%C3%A9-R%C3%A9gional-de-Cyclisme-Iles-de-Guadeloupe-100057630691932/",
+    "description": "",
+    "startDate": "2026-07-31",
+    "endDate": "2026-08-09",
+    "city": "",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "sport",
+    "details": ["cycling"],
+    "image": "/images/tourcyclisteinternationaldeguadeloupe.jpg",
+    "tickets": [
+      {
+        "name": "",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "name": "Tour Cycliste de Guyane",
+    "website": "https://www.facebook.com/CRCM972",
+    "description": "",
+    "startDate": "2026-07-03",
+    "endDate": "2026-07-12",
+    "city": "",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "sport",
+    "details": ["cycling"],
+    "image": "/images/tourcyclistedeguyane.jpg",
+    "tickets": [
+      {
+        "name": "",
+        "url": ""
+      }
+    ]
+  },
+  {
+    "name": "La Ronde des Caps/Ti Cap",
+    "website": "https://www.clubmanikou.com/la-ronde-des-caps/",
+    "description": "21.1 km semi-marathon (Ronde des Caps) and a 14.5 km trail (Ti Cap)",
+    "startDate": "2026-08-22",
+    "endDate": "2026-08-22",
+    "city": "Sainte-Anne",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "sport",
+    "details": ["running", "trail"],
+    "image": "/images/larondedescapsticap.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://www.clubmanikou.com/la-ronde-des-caps/"
+      }
+    ]
+  },
+  {
+  "name": "Transkarukera",
+  "website": "http://transka.fr/",
+  "description": "165 km - Major trail running event in Guadeloupe",
+  "startDate": "2026-06-26",
   "endDate": "2026-06-27",
-  "city": "",
-  "country": "Martinique",
-  "type": "music festival",
-  "vibes": [],
-  "image": "/images/holimusicfestival.jpg",
+  "city": "Bouillante",
+  "country": "Guadeloupe",
+  "type": "sport",
+  "details": ["running", "trail"],
+  "image": "/images/transkarukera.jpg",
   "tickets": [
-    { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/holi-2026/120065" }
+    { "name": "Website", "url": "http://transka.fr/" }
+  ]
+}
 ]
-  },
-  {
-  "name": "Art Mada Festival",
-  "website": "https://www.instagram.com/reel/DDhJwyxx0Ml/?utm_source=ig_embed&utm_campaign=loading",
-  "description": "Mural art and graffiti, designed to make art accessible to the public in urban spaces.",
-  "startDate": "2026-02-01",
-  "endDate": "2026-02-11",
-  "city": "Fort de France",
-  "country": "Martinique",
-  "type": "art",
-  "vibes": [],
-  "image": "/images/artmadafestival2026.jpg",
-  "tickets": [
-    { "name": "", "url": "" }
-]
-  }
-]
+
+
+

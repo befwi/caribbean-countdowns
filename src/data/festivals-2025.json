@@ -8,7 +8,7 @@
     "city": "Abymes",
     "country": "Guadeloupe",
     "type": "music festival",
-    "vibes": ["zouk"],
+    "details": ["zouk"],
     "image": "/images/younityfest.jpg",
     "tickets": [
       { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/younity-festival/96712" },
@@ -24,7 +24,7 @@
     "city": "Cayenne",
     "country": "French-Guyana",
     "type": "music festival",
-    "vibes": ["jazz", "roots", "reggea"],
+    "details": ["jazz", "roots", "reggea"],
     "image": "/images/kayennjazzfestival.jpg",
     "tickets": [
       { "name": "Sabouj", "url": "https://sabouj.fr/evenements/kayenn-jazz-festival-2025-or-roots-jazz-reggae" }
@@ -39,7 +39,7 @@
     "city": "Le Gosier",
     "country": "Guadeloupe",
     "type": "music festival",
-    "vibes": ["jazz"],
+    "details": ["jazz"],
     "image": "/images/creolejazzfestival.jpg",
     "tickets": [
       { "name": "Billetweb", "url": "https://www.creolebeach.com/en/la-creole-jazz-club#ventes" }

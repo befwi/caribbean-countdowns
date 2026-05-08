@@ -6,14 +6,33 @@
 
   var festivals = JSON.parse(dataEl.getAttribute("data-festivals"));
 
-  var now = new Date();
-  now.setHours(0, 0, 0, 0);
+  // Returns UTC offset in ms for a timezone on a given date string.
+  // e.g. tzOffsetMs("2026-05-10", "America/St_Lucia") → -14400000
+  function tzOffsetMs(dateStr, tz) {
+    var noonUTC = new Date(dateStr + "T12:00:00Z");
+    var parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: tz, hour: "2-digit", minute: "2-digit", hour12: false
+    }).formatToParts(noonUTC);
+    var h = parseInt(parts.find(function(p) { return p.type === "hour"; }).value);
+    var m = parseInt(parts.find(function(p) { return p.type === "minute"; }).value);
+    return ((h - 12) * 60 + m) * 60000;
+  }
+
+  function tzDayStart(dateStr, tz) {
+    var p = dateStr.split("-").map(Number);
+    return Date.UTC(p[0], p[1] - 1, p[2], 0, 0, 0) - tzOffsetMs(dateStr, tz);
+  }
+
+  function tzDayEnd(dateStr, tz) {
+    var p = dateStr.split("-").map(Number);
+    return Date.UTC(p[0], p[1] - 1, p[2], 23, 59, 59, 999) - tzOffsetMs(dateStr, tz);
+  }
+
+  var nowMs = Date.now();
 
   var live = festivals.filter(function (f) {
-    var start = new Date(f.startDate);
-    var end   = new Date(f.endDate);
-    end.setHours(23, 59, 59, 999);
-    return now >= start && now <= end;
+    var tz = f.timezone || "America/Martinique";
+    return nowMs >= tzDayStart(f.startDate, tz) && nowMs <= tzDayEnd(f.endDate, tz);
   });
 
   if (!live.length) return;
@@ -21,11 +40,11 @@
   var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 
   function getDateStr(f) {
-    var s = new Date(f.startDate);
-    var e = new Date(f.endDate);
-    return s.getMonth() === e.getMonth()
-      ? months[s.getMonth()] + " " + s.getDate() + "–" + e.getDate()
-      : months[s.getMonth()] + " " + s.getDate() + " – " + months[e.getMonth()] + " " + e.getDate();
+    var s = new Date(f.startDate + "T12:00:00Z");
+    var e = new Date(f.endDate + "T12:00:00Z");
+    return s.getUTCMonth() === e.getUTCMonth()
+      ? months[s.getUTCMonth()] + " " + s.getUTCDate() + "–" + e.getUTCDate()
+      : months[s.getUTCMonth()] + " " + s.getUTCDate() + " – " + months[e.getUTCMonth()] + " " + e.getUTCDate();
   }
 
   function formatMs(ms) {
@@ -66,12 +85,12 @@
       container.appendChild(el("span", "live-tsep", "·"));
       container.appendChild(el("span", "live-tends", "ends in"));
 
-      var end = new Date(f.endDate);
-      end.setHours(23, 59, 59, 999);
+      var tz = f.timezone || "America/Martinique";
+      var endTs = tzDayEnd(f.endDate, tz);
 
       var counter = el("span", "live-counter");
-      counter.setAttribute("data-endts", end.getTime());
-      counter.textContent = formatMs(end.getTime() - Date.now());
+      counter.setAttribute("data-endts", endTs);
+      counter.textContent = formatMs(endTs - Date.now());
       container.appendChild(counter);
     });
   }
