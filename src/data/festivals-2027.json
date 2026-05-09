@@ -64,7 +64,7 @@
     "city": "",
     "country": "Guadeloupe",
     "type": "sport",
-    "details": ["running", "marathon"],
+    "details": ["running", "trail"],
     "image": "/images/guadarun.jpg",
     "tickets": [
      { "name": "Website", "url": "https://www.guadarun.com/" }

@@ -733,7 +733,7 @@
     "country": "Martinique",
     "timezone": "America/Martinique",
     "type": "sport",
-    "details": ["running", "trail"],
+    "details": ["running", "marathon"],
     "image": "/images/larondedescapsticap.jpg",
     "tickets": [
       {
