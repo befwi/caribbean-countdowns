@@ -172,7 +172,7 @@
     "startDate": "2026-08-15",
     "endDate": "2026-08-15",
     "city": "Matoury",
-    "country": "French-Guyana",
+    "country": "French Guiana",
     "timezone": "America/Cayenne",
     "type": "music festival",
     "details": [
@@ -278,7 +278,7 @@
   {
     "name": "St. Maarten Heineken Regatta",
     "website": "https://www.heinekenregatta.com/",
-    "description": "100% Reggae Festival.",
+    "description": "4 days of World Class Racing in the largest regatta of the Caribbean.",
     "startDate": "2026-03-05",
     "endDate": "2026-03-08",
     "city": "Port de Plaisance",
@@ -294,7 +294,7 @@
   {
     "name": "West Indies Regatta Festival",
     "website": "https://westindiesregatta.com/",
-    "description": "Showcase traditional Caribbean boats built entirely of wood and handcrafted on the beaches of Carriacou and Petite Martinique.",
+    "description": "3 days gathering of traditional vessels from across the Caribbean.",
     "startDate": "2026-04-24",
     "endDate": "2026-04-26",
     "city": "Gustavia",
@@ -708,11 +708,11 @@
     "name": "Tour Cycliste de Guyane",
     "website": "https://www.facebook.com/CRCM972",
     "description": "",
-    "startDate": "2026-07-03",
-    "endDate": "2026-07-12",
+    "startDate": "2026-08-14",
+    "endDate": "2026-08-23",
     "city": "",
-    "country": "Martinique",
-    "timezone": "America/Martinique",
+    "country": "French Guiana",
+    "timezone": "America/Cayenne",
     "type": "sport",
     "details": ["cycling"],
     "image": "/images/tourcyclistedeguyane.jpg",
@@ -733,7 +733,7 @@
     "country": "Martinique",
     "timezone": "America/Martinique",
     "type": "sport",
-    "details": ["running", "trail"],
+    "details": ["running", "trail", "marathon"],
     "image": "/images/larondedescapsticap.jpg",
     "tickets": [
       {
@@ -756,8 +756,50 @@
   "image": "/images/transkarukera.jpg",
   "tickets": [
     { "name": "Website", "url": "http://transka.fr/" }
-  ]
-}
+    ]
+  },
+  {
+    "name": "Festival International du Film documentaire Amazonie Caraïbes - FIFAC",
+    "website": "https://festivalfifac.com/",
+    "description": "Promote cinematographic and audiovisual creations from the Guianas, the Amazon Basin, and the Caribbean region.",
+    "startDate": "2026-10-06",
+    "endDate": "2026-10-10",
+    "city": "Saint-Laurent du Maroni",
+    "country": "French Guiana",
+    "timezone": "America/Cayenne",
+    "type": "art",
+    "details": [],
+    "image": "/images/fifacfestival.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://festivalfifac.com/"
+      }
+    ]
+  },
+  {
+    "name": "Kourou Colors Festival",
+    "website": "https://www.instagram.com/kouroucolorsfestival/",
+    "description": "",
+    "startDate": "2026-07-01",
+    "endDate": "2026-07-01",
+    "city": "Kourou",
+    "country": "French Guiana",
+    "timezone": "America/Cayenne",
+    "type": "sport",
+    "details": ["running"],
+    "image": "/images/kouroucolorsfestival.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/kourou-colors-festival-4/120770"
+      },
+      {
+        "name": "Sabouj",
+        "url": "https://sabouj.fr/"
+      }
+    ]
+  }
 ]
 
 

@@ -3,16 +3,47 @@ var LANGS = ["en", "fr", "kr", "es"];
 var lang  = localStorage.getItem("lang") || "en";
 
 var TZ_MAP = {
-  "Martinique":             "America/Martinique",
-  "Guadeloupe":             "America/Guadeloupe",
-  "Marie-Galante":          "America/Guadeloupe",
-  "Saint-Lucia":            "America/St_Lucia",
-  "French-Guyana":          "America/Cayenne",
-  "Sint-Maarten":           "America/Lower_Princes",
-  "Saint-Barthélemy":       "America/St_Barthelemy",
+  // Atlantic Standard Time (UTC-4)
+  "Antigua and Barbuda":    "America/Antigua",
+  "Anguilla":               "America/Anguilla",
+  "Aruba":                  "America/Aruba",
   "Barbados":               "America/Barbados",
-  "Dominica":               "America/Dominica",
+  "Bonaire":                "America/Curacao",
   "British Virgin Islands": "America/Tortola",
+  "Cayman Islands":         "America/Cayman",
+  "Curaçao":                "America/Curacao",
+  "Dominica":               "America/Dominica",
+  "Grenada":                "America/Grenada",
+  "Guadeloupe":             "America/Guadeloupe",
+  "La Désirade":            "America/Guadeloupe",
+  "Les Saintes":            "America/Guadeloupe",
+  "Marie-Galante":          "America/Guadeloupe",
+  "Martinique":             "America/Martinique",
+  "Montserrat":             "America/Montserrat",
+  "Saba":                   "America/Curacao",
+  "Saint Barthélemy":       "America/St_Barthelemy",
+  "Saint Kitts and Nevis":  "America/St_Kitts",
+  "Saint Lucia":            "America/St_Lucia",
+  "Saint Martin":           "America/Martinique",
+  "Saint Vincent and the Grenadines": "America/St_Vincent",
+  "Sint Maarten":           "America/Lower_Princes",
+  "Sint Eustatius":         "America/Curacao",
+  "Trinidad and Tobago":    "America/Trinidad",
+  "Turks and Caicos Islands": "America/Grand_Turk",
+  "U.S. Virgin Islands":    "America/Virgin",
+
+  // Eastern Standard Time (UTC-5)
+  "Bahamas":                "America/Nassau",
+  "Bermuda":                "America/Bermuda",
+  "Cuba":                   "America/Havana",
+  "Dominican Republic":     "America/Santo_Domingo",
+  "Haiti":                  "America/Port-au-Prince",
+  "Jamaica":                "America/Jamaica",
+  "Puerto Rico":            "America/Puerto_Rico",
+
+  // Other timezones
+  "French Guiana":          "America/Cayenne",
+  "Suriname":               "America/Paramaribo",
 };
 var COUNTRIES = Object.keys(TZ_MAP);
 

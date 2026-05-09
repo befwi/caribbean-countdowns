@@ -1,17 +1,15 @@
 [
   {
-    "name": "Caribbean Multihull Challenge",
+    "name": "Caribbean Multihull Challenge - CMC",
     "website": "https://caribbeanmultihullchallenge.com/",
-    "description": "100% Multihull.",
+    "description": "Caribbean's premier multihull regatta.",
     "startDate": "2027-02-03",
     "endDate": "2027-02-07",
     "city": "Simpson Bay",
     "country": "Sint-Maarten",
     "timezone": "America/Lower_Princes",
     "type": "regatta",
-    "details": [
-      ""
-    ],
+    "details": [],
     "image": "/images/caribbeanmultihullchallenge.png",
     "tickets": []
   },
@@ -25,9 +23,7 @@
     "country": "Saint-Barthélemy",
     "timezone": "America/St_Barthelemy",
     "type": "regatta",
-    "details": [
-      ""
-    ],
+    "details": [],
     "image": "/images/grenadasailingweek.jpg",
     "tickets": [
       {
@@ -39,7 +35,7 @@
   {
     "name": "BVI Spring Regatta and Sailing Festival",
     "website": "http://www.bvispringregatta.org/",
-    "description": "Over 150 yachts come from around the world to race this top Sailing Regattas in the Caribbean.",
+    "description": "3 days of coastal racing and parties, followed by a Maritime Heritage Day at Nanny Cay.",
     "startDate": "2027-03-29",
     "endDate": "2027-04-04",
     "city": "Tortola",
