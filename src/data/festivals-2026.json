@@ -733,7 +733,7 @@
     "country": "Martinique",
     "timezone": "America/Martinique",
     "type": "sport",
-    "details": ["running", "marathon"],
+    "details": ["running", "trail"],
     "image": "/images/larondedescapsticap.jpg",
     "tickets": [
       {
@@ -750,6 +750,7 @@
   "endDate": "2026-06-27",
   "city": "Bouillante",
   "country": "Guadeloupe",
+  "timezone": "America/Guadeloupe",
   "type": "sport",
   "details": ["running", "trail"],
   "image": "/images/transkarukera.jpg",
