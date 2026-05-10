@@ -4,7 +4,7 @@
     "website": "https://urbanshow.fr",
     "description": "Showcase local and regional talent with street art, music, dance, fashion and film.",
     "startDate": "2026-04-26",
-    "endDate": "2026-04-27",
+    "endDate": "2026-04-26",
     "city": "Le François",
     "country": "Martinique",
     "timezone": "America/Martinique",
@@ -69,32 +69,6 @@
       {
         "name": "Kiwol",
         "url": "https://www.kiwol.com/billetterie/13378#ticket"
-      }
-    ]
-  },
-  {
-    "name": "Festival Kolors Dayz",
-    "website": "https://www.instagram.com/younityfest/",
-    "description": "Where laughter meets the beguiling rhythms of Zouk and Kompa.",
-    "startDate": "2026-07-18",
-    "endDate": "2026-07-19",
-    "city": "Le Gosier",
-    "country": "Guadeloupe",
-    "timezone": "America/Guadeloupe",
-    "type": "music festival",
-    "details": [
-      "zouk",
-      "kompa"
-    ],
-    "image": "/images/festivalkolorsdayz.jpg",
-    "tickets": [
-      {
-        "name": "Bizouk",
-        "url": "https://www.bizouk.com/events/details/festival-kolors-dayz/116300"
-      },
-      {
-        "name": "Kiwol",
-        "url": "https://www.kiwol.com/billetterie/13372#ticket"
       }
     ]
   },
@@ -187,7 +161,7 @@
     ]
   },
   {
-    "name": "Karukera One Love",
+    "name": "Karukera One Love - Guadeloupe",
     "website": "https://karukeraonelove.com",
     "description": "The festival that connect all the Caribbean islands.",
     "startDate": "2026-07-04",
@@ -366,7 +340,7 @@
     "tickets": []
   },
   {
-    "name": "Jazz An Ba Tol'",
+    "name": "Jazz An Ba Tol #1 - JABT",
     "website": "https://www.instagram.com/jamdoover",
     "description": "A multi-arts event where dance highlights and protests social issues",
     "startDate": "2026-05-30",
@@ -510,7 +484,7 @@
     ]
   },
   {
-    "name": "Mada Green",
+    "name": "Mada Green #8",
     "website": "https://massaiprod.com/mada-green-08/",
     "description": "Eco Friendly Electronic Party",
     "startDate": "2026-06-06",
@@ -531,16 +505,16 @@
     ],
     "eco": {
       "emissions": {
-        "publicTransport": false,
+        "attendeeTransport": false,
         "renewableEnergy": false,
         "carbonOffset": false,
         "localHeadliners": false,
-        "shuttleService": false
+        "lowCarbonCatering": false
       },
       "waste": {
         "plasticBan": false,
         "sorting": false,
-        "zeroWasteCatering": false,
+        "zeroWasteCatering": true,
         "wasteReport": false,
         "compost": false
       },
@@ -553,14 +527,14 @@
       },
       "biodiversity": {
         "notNearProtected": true,
-        "noiseCurfew": false,
+        "wildlifeBriefing": true,
         "leaveNoTrace": false,
         "lightPollution": false,
         "ecoNgo": false
       },
       "community": {
         "localVendors": true,
-        "localLineup": true,
+        "localLineup": false,
         "ngoPartner": true,
         "accessiblePricing": false,
         "socialInclusion": false
