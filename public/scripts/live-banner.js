@@ -106,7 +106,7 @@
   buildContent(tickerA);
   buildContent(tickerB);
 
-  banner.style.display = "";
+  banner.classList.add("is-visible");
 
   requestAnimationFrame(function () {
     var w = tickerA.offsetWidth + 80;
@@ -121,7 +121,7 @@
   setInterval(tick, 1000);
 
   closeEl.addEventListener("click", function () {
-    banner.style.display = "none";
+    banner.classList.remove("is-visible");
     sessionStorage.setItem("live-banner-dismissed", "1");
   });
 })();

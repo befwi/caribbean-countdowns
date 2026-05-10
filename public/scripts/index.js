@@ -12,7 +12,7 @@ var searchPlaceholders = {
 function applyLang() {
   LANGS.forEach(function(l) {
     document.querySelectorAll(".t-" + l).forEach(function(el) {
-      el.style.display = l === lang ? "" : "none";
+      el.style.display = l === lang ? (el.tagName === "DIV" || el.tagName === "P" ? "block" : "inline") : "none";
     });
   });
   document.documentElement.lang = lang;
@@ -197,20 +197,3 @@ if (searchInput) {
   });
 }
 
-// Lazy load festival background images
-if ("IntersectionObserver" in window) {
-  var bgObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        var el = entry.target;
-        var bg = el.getAttribute("data-bg");
-        if (bg) el.style.backgroundImage = "url('" + bg + "')";
-        bgObserver.unobserve(el);
-      }
-    });
-  }, { rootMargin: "200px" });
-
-  document.querySelectorAll(".festival-entry[data-bg]").forEach(function(el) {
-    bgObserver.observe(el);
-  });
-}

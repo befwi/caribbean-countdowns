@@ -315,7 +315,7 @@ const eventDateStr =
   data-type={festival.type ?? ""}
   data-details={(festival.details ?? []).join(",")}
   data-country={festival.country ?? ""}
-  data-bg={festival.image && status !== "ENDED" ? festival.image : undefined}
+  style={festival.image ? `background-image: url('${festival.image}')` : ""}
 >
   <div class="festival-header">
     <div class="festival-name">

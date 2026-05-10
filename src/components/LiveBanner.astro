@@ -17,7 +17,7 @@ const festivals = [...(f2024 as any[]), ...(f2025 as any[]), ...(f2026 as any[])
   }));
 ---
 
-<div id="live-banner" style="display:none" role="banner" aria-live="polite">
+<div id="live-banner" role="banner" aria-live="polite">
   <div class="live-banner-outer">
     <span class="live-pill">● LIVE</span>
     <div class="live-ticker-wrap">
@@ -40,6 +40,12 @@ const festivals = [...(f2024 as any[]), ...(f2025 as any[]), ...(f2026 as any[])
     width: 100%;
     z-index: 100;
     overflow: hidden;
+    visibility: hidden;
+    height: 40px;
+  }
+  #live-banner.is-visible {
+    visibility: visible;
+    height: auto;
   }
 
   .live-banner-outer {
