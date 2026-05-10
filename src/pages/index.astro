@@ -27,12 +27,12 @@ const enriched = festivals
     return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
   });
 
-const eventTypes = ["All", "music festival", "carnival", "regatta", "art", "sport", "other"];
+const eventTypes = ["All", "music festival", "carnival", "sailing race", "art", "sport", "other"];
 const eventTypeLabels: Record<string, Record<string, string>> = {
   "All":           { en: "All types",          fr: "Tous les types",      kr: "Tout kalité",        es: "Todos los tipos" },
   "music festival":{ en: "music festival",      fr: "festival de musique", kr: "mizik fèstival",     es: "festival de música" },
   "carnival":      { en: "carnival",            fr: "carnaval",            kr: "kanaval",            es: "carnaval" },
-  "regatta":       { en: "regatta",             fr: "régate",              kr: "kous bato",           es: "regata" },
+  "sailing race":  { en: "sailing race",        fr: "course à la voile",   kr: "kous vwal",          es: "carrera de vela" },
   "art":           { en: "art",                 fr: "art",                 kr: "atizay",              es: "arte" },
   "sport":         { en: "sport",               fr: "sport",               kr: "spo",           es: "deporte" },
   "other":         { en: "other",               fr: "autre",               kr: "le restan",           es: "otro" },

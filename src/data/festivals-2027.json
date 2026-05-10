@@ -8,7 +8,7 @@
     "city": "Simpson Bay",
     "country": "Sint-Maarten",
     "timezone": "America/Lower_Princes",
-    "type": "regatta",
+    "type": "sailing race",
     "details": [],
     "image": "/images/caribbeanmultihullchallenge.png",
     "tickets": []
@@ -22,7 +22,7 @@
     "city": "Gustavia",
     "country": "Saint-Barthélemy",
     "timezone": "America/St_Barthelemy",
-    "type": "regatta",
+    "type": "sailing race",
     "details": [],
     "image": "/images/grenadasailingweek.jpg",
     "tickets": [
@@ -41,7 +41,7 @@
     "city": "Tortola",
     "country": "British Virgin Islands",
     "timezone": "America/Tortola",
-    "type": "regatta",
+    "type": "sailing race",
     "details": [],
     "image": "/images/bvispringregatta.jpg",
     "tickets": [
