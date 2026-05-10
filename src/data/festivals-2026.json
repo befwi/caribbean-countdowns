@@ -722,7 +722,7 @@
   },
   {
   "name": "Transkarukera",
-  "website": "http://transka.fr/",
+  "website": "https://www.facebook.com/transkarukera.guadeloupe",
   "description": "165 km - Major trail running event in Guadeloupe",
   "startDate": "2026-06-26",
   "endDate": "2026-06-27",
@@ -733,7 +733,7 @@
   "details": ["running", "trail"],
   "image": "/images/transkarukera.jpg",
   "tickets": [
-    { "name": "Website", "url": "http://transka.fr/" }
+    { "name": "Website", "url": "https://www.facebook.com/transkarukera.guadeloupe" }
     ]
   },
   {

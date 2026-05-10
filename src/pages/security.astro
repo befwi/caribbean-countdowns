@@ -1,0 +1,375 @@
+---
+import LiveBanner from "../components/LiveBanner.astro";
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Security — caribbean.countdowns.co</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0f0f;
+      color: #e0e0e0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .page { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .site-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+
+    .back-link {
+      font-size: 12px;
+      color: #555;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+    .back-link:hover { color: #888; }
+
+    .lang-group {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #555;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 18px;
+      letter-spacing: 0;
+      padding: 2px 6px;
+      color: #aaa;
+      font-family: inherit;
+      transition: all 0.15s;
+      opacity: 0.5;
+    }
+    .lang-btn:hover { border-color: #888; opacity: 0.8; }
+    .lang-btn.active { background: #1a1a1a; border-color: #555; opacity: 1; }
+
+    .page-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .subtitle { font-size: 13px; color: #666; margin-bottom: 40px; }
+
+    .scores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .score-card {
+      background: #0d1a1a;
+      border: 1px solid #1a3030;
+      border-radius: 8px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.15s;
+    }
+    .score-card:hover { border-color: #0d9488; }
+    .score-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width: 340px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .service-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #aaa;
+      letter-spacing: 0.3px;
+    }
+
+    .grade-badge {
+      font-size: 22px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 6px;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    .grade-Aplus  { color: #4ade80; background: #0d2a0d; border: 1px solid #166534; }
+    .grade-A      { color: #a3e635; background: #1a2a08; border: 1px solid #365314; }
+    .grade-clean  { color: #5eead4; background: #0d2a2a; border: 1px solid #0d9488; }
+    .grade-safe   { color: #5eead4; background: #0d2a2a; border: 1px solid #0d9488; font-size: 13px; }
+
+    .card-desc {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .card-link {
+      font-size: 11px;
+      color: #0d9488;
+      letter-spacing: 0.3px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #888;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .contact-box {
+      background: #0d1a1a;
+      border: 1px solid #1a3030;
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .contact-box p { font-size: 13px; color: #aaa; }
+    .contact-btn {
+      display: inline-block;
+      background: #0d2a2a;
+      border: 1px solid #0d9488;
+      border-radius: 5px;
+      color: #5eead4;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 20px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+    .contact-btn:hover { background: #0d3535; }
+
+  </style>
+</head>
+<body>
+<LiveBanner />
+<div class="page">
+
+  <div class="header-row">
+    <h1 class="site-title"><a href="/">Countdowns</a></h1>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <a class="back-link" href="/">
+        <span class="t-en">← Back</span>
+        <span class="t-fr">← Retour</span>
+        <span class="t-kr">← Retounen</span>
+        <span class="t-es">← Volver</span>
+      </a>
+      <div class="lang-group">
+        <button class="lang-btn" data-lang="en" title="English">🇬🇧</button>
+        <button class="lang-btn" data-lang="kr" title="Kréyol">🇭🇹</button>
+        <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
+        <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="page-title">🔒 <span class="t-en">Security</span><span class="t-fr">Sécurité</span><span class="t-kr">Sekirite</span><span class="t-es">Seguridad</span></p>
+  <p class="subtitle">
+    <span class="t-en">Third-party security assessments for caribbean.countdowns.co</span>
+    <span class="t-fr">Évaluations de sécurité tierces pour caribbean.countdowns.co</span>
+    <span class="t-kr">Evalyasyon sekirite pou caribbean.countdowns.co</span>
+    <span class="t-es">Evaluaciones de seguridad de terceros para caribbean.countdowns.co</span>
+  </p>
+
+  <div class="scores-grid">
+
+    <a class="score-card" href="https://developer.mozilla.org/en-US/observatory/analyze?host=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+      <div class="card-header">
+        <span class="service-name">Mozilla Observatory</span>
+        <span class="grade-badge grade-Aplus">A+</span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">Tests HTTP headers, CSP, cookies, and HTTPS configuration against Mozilla's security guidelines.</span>
+        <span class="t-fr">Teste les en-têtes HTTP, CSP, cookies et la configuration HTTPS selon les recommandations de sécurité de Mozilla.</span>
+        <span class="t-kr">Teste en-tèt HTTP, CSP, cookie ak konfigirasyon HTTPS selon règleman sekirite Mozilla.</span>
+        <span class="t-es">Prueba los encabezados HTTP, CSP, cookies y la configuración HTTPS según las pautas de seguridad de Mozilla.</span>
+      </p>
+      <span class="card-link">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </span>
+    </a>
+
+    <a class="score-card" href="https://www.ssllabs.com/ssltest/analyze.html?d=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+      <div class="card-header">
+        <span class="service-name">SSL Labs</span>
+        <span class="grade-badge grade-Aplus">A+</span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">Qualys SSL Labs deep analysis of TLS configuration, certificate chain, and cipher suites.</span>
+        <span class="t-fr">Analyse approfondie de la configuration TLS, de la chaîne de certificats et des suites de chiffrement par Qualys SSL Labs.</span>
+        <span class="t-kr">Analiz TLS, chèn sètifika ak suite chiffrement Qualys SSL Labs.</span>
+        <span class="t-es">Análisis profundo de la configuración TLS, la cadena de certificados y los conjuntos de cifrado de Qualys SSL Labs.</span>
+      </p>
+      <span class="card-link">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </span>
+    </a>
+
+    <a class="score-card" href="https://securityheaders.com/?q=https%3A%2F%2Fcaribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+      <div class="card-header">
+        <span class="service-name">Security Headers</span>
+        <span class="grade-badge grade-Aplus">A+</span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">Scans and grades HTTP response headers for completeness and security best practices.</span>
+        <span class="t-fr">Analyse et note les en-têtes de réponse HTTP pour leur complétude et les bonnes pratiques de sécurité.</span>
+        <span class="t-kr">Verifye epi note en-tèt repons HTTP pou konplètès ak bon pratik sekirite.</span>
+        <span class="t-es">Analiza y califica los encabezados de respuesta HTTP según su completitud y las mejores prácticas de seguridad.</span>
+      </p>
+      <span class="card-link">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </span>
+    </a>
+
+    <a class="score-card" href="https://themarkup.org/blacklight?url=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+      <div class="card-header">
+        <span class="service-name">Blacklight — The Markup</span>
+        <span class="grade-badge grade-safe">Safe</span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">0 ad trackers · 0 third-party cookies · no fingerprinting · no session recording · no keylogging · no social pixels.</span>
+        <span class="t-fr">0 traceur · 0 cookie tiers · pas de fingerprinting · pas d'enregistrement de session · pas de keylogging · pas de pixels sociaux.</span>
+        <span class="t-kr">0 tracè · 0 cookie tès · pa gen fingerprinting · pa gen anrejistreman sesyon · pa gen keylogging · pa gen piksèl sosyal.</span>
+        <span class="t-es">0 rastreadores · 0 cookies de terceros · sin fingerprinting · sin grabación de sesión · sin keylogging · sin píxeles sociales.</span>
+      </p>
+      <span class="card-link">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </span>
+    </a>
+
+    <a class="score-card" href="https://transparencyreport.google.com/safe-browsing/search?url=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+      <div class="card-header">
+        <span class="service-name">Google Safe Browsing</span>
+        <span class="grade-badge grade-safe">Safe</span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">No unsafe content found — no malware, phishing, or unwanted software detected on this site.</span>
+        <span class="t-fr">Aucun contenu dangereux détecté — pas de malware, phishing ou logiciel indésirable sur ce site.</span>
+        <span class="t-kr">Pa gen kontni danjere jwenn — pa gen malware, phishing oswa lojisyèl enpòtan detekte sou sit sa.</span>
+        <span class="t-es">No se encontró contenido peligroso — sin malware, phishing ni software no deseado en este sitio.</span>
+      </p>
+      <span class="card-link">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </span>
+    </a>
+
+    <a class="score-card" href="https://2gdpr.com/758979399" target="_blank" rel="noopener noreferrer">
+      <div class="card-header">
+        <span class="service-name">2GDPR</span>
+        <span class="grade-badge grade-safe">Safe</span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">GDPR compliance scan found no consent violations, cookie issues, or data protection concerns.</span>
+        <span class="t-fr">L'analyse de conformité RGPD n'a révélé aucune violation du consentement, problème de cookie ou manquement à la protection des données.</span>
+        <span class="t-kr">Analiz konfòmite RGPD pa jwenn okenn vyolasyon konsantman, pwoblèm cookie oswa enkyetid pwoteksyon done.</span>
+        <span class="t-es">El análisis de cumplimiento del RGPD no encontró violaciones de consentimiento, problemas de cookies ni fallos en la protección de datos.</span>
+      </p>
+      <span class="card-link">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </span>
+    </a>
+
+    <a class="score-card" href="https://snyk.io/test/github/befwi/caribbean-countdowns" target="_blank" rel="noopener noreferrer">
+      <div class="card-header">
+        <span class="service-name">Snyk</span>
+        <span class="grade-badge grade-safe">
+          <span class="t-en">0 vulnerability</span>
+          <span class="t-fr">0 vulnérabilité</span>
+          <span class="t-kr">0 vilnerabilite</span>
+          <span class="t-es">0 vulnerabilidad</span>
+        </span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">Dependency vulnerability scan — no known security issues found in npm packages.</span>
+        <span class="t-fr">Analyse des dépendances — aucune vulnérabilité connue détectée dans les paquets npm.</span>
+        <span class="t-kr">Analiz depandans — pa gen vulnerabilite konnu jwenn nan pake npm yo.</span>
+        <span class="t-es">Análisis de dependencias — no se encontraron vulnerabilidades conocidas en los paquetes npm.</span>
+      </p>
+      <span class="card-link">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </span>
+    </a>
+
+  </div>
+
+  <p class="section-title">
+    <span class="t-en">Report a vulnerability</span>
+    <span class="t-fr">Signaler une vulnérabilité</span>
+    <span class="t-kr">Rapòte yon vilnerabilite</span>
+    <span class="t-es">Reportar una vulnerabilidad</span>
+  </p>
+  <div class="contact-box">
+    <p>
+      <span class="t-en">Found a security issue? Please report it responsibly before disclosing it publicly.</span>
+      <span class="t-fr">Vous avez trouvé un problème de sécurité ? Merci de le signaler de façon responsable avant toute divulgation publique.</span>
+      <span class="t-kr">Ou jwenn yon pwoblèm sekirite ? Tanpri rapòte li responsabman anvan ou pibliye li.</span>
+      <span class="t-es">¿Encontraste un problema de seguridad? Por favor repórtalo de forma responsable antes de divulgarlo públicamente.</span>
+    </p>
+    <a class="contact-btn" href="https://github.com/befwi/caribbean-countdowns/security/advisories/new" target="_blank" rel="noopener noreferrer">
+      <span class="t-en">Report on GitHub ↗</span>
+      <span class="t-fr">Signaler sur GitHub ↗</span>
+      <span class="t-kr">Rapòte sou GitHub ↗</span>
+      <span class="t-es">Reportar en GitHub ↗</span>
+    </a>
+  </div>
+
+</div>
+<script is:inline src="/scripts/lang.js" defer></script>
+</body>
+</html>
