@@ -357,6 +357,10 @@
       {
         "name": "Bizouk",
         "url": "https://www.bizouk.com/events/details/jazz-an-ba-tol-la-kou-samuel/119621"
+      },
+      {
+        "name": "Monipass",
+        "url": "https://www.monipass.com/billetterie/martinique/concerts/6281-jazz-an-ba-tol-la-kou-samuel.html"
       }
     ]
   },
@@ -771,6 +775,44 @@
       {
         "name": "Sabouj",
         "url": "https://sabouj.fr/"
+      }
+    ]
+  },
+  {
+    "name": "Ti' Balcon",
+    "website": "https://meltingprod.org/",
+    "description": "An iconic event reflecting the unique atmosphere of the Carnival of French Guiana",
+    "startDate": "2026-02-18",
+    "endDate": "2026-02-18",
+    "city": "Remire-Montjoly",
+    "country": "French Guiana",
+    "timezone": "America/Cayenne",
+    "type": "other",
+    "details": [],
+    "image": "/images/tibalcon.jpg",
+    "tickets": [
+      {
+        "name": "Sabouj",
+        "url": "https://sabouj.fr/evenements/tibalcon"
+      }
+    ]
+  },
+  {
+    "name": "Cap-Martinique",
+    "website": "https://cap-martinique.com/",
+    "description": "Transatlantic sailing race designed specifically for amateurs",
+    "startDate": "2026-04-20",
+    "endDate": "2026-05-10",
+    "city": "Fort-de-France",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "regatta",
+    "details": [],
+    "image": "/images/capmartinique.jpg",
+    "tickets": [
+      {
+        "name": "",
+        "url": ""
       }
     ]
   }

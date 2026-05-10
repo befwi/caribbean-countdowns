@@ -28,5 +28,325 @@
     "tickets": [
       { "name": "Feverfest.fr", "url": "https://feverfest.fr" }
     ]
+  },
+  {
+    "name": "Boomjam days",
+    "website": "https://www.instagram.com/boomjamdays/",
+    "description": "One or Two days festival in the Amazonia.",
+    "startDate": "2024-08-17",
+    "endDate": "2024-08-18",
+    "city": "Kourou",
+    "country": "French Guiana",
+    "timezone": "America/Cayenne",
+    "type": "music festival",
+    "details": [
+      "reggae"
+    ],
+    "image": "/images/boomjam.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/boomjam-days-2/75462"
+      }
+    ]
+  },
+  {
+    "name": "Karukera One Love - Guadeloupe",
+    "website": "https://karukeraonelove.com",
+    "description": "The festival that connect all the Caribbean islands.",
+    "startDate": "2024-03-30",
+    "endDate": "2024-03-31",
+    "city": "Capesterre Belle-Eau",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "music festival",
+    "details": [
+      "reggae",
+      "dancehall"
+    ],
+    "image": "/images/karukeraonelove-gp.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com"
+      }
+    ]
+  },
+  {
+    "name": "World Creole Music Festival",
+    "website": "https://dominicafestivals.com/wcmf-home/",
+    "description": "Celebrating Creole music and culture through three nights of live performances.",
+    "startDate": "2024-10-25",
+    "endDate": "2024-10-27",
+    "city": "",
+    "country": "Dominica",
+    "timezone": "America/Dominica",
+    "type": "music festival",
+    "details": [
+      "bouyon",
+      "zouk",
+      "reggae",
+      "dancehall",
+      "soca"
+    ],
+    "image": "/images/wcmf.jpg",
+    "tickets": [
+      {
+        "name": "4 Circles Tickets",
+        "url": "https://wcmf.4circlestickets.com/events"
+      }
+    ]
+  },
+  {
+    "name": "Reggae Therapy Festival",
+    "website": "https://www.thereggaetherapyfestival.com/",
+    "description": "100% Reggae Festival.",
+    "startDate": "2024-07-12",
+    "endDate": "2024-07-13",
+    "city": "Fort-de-France",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "reggae"
+    ],
+    "image": "/images/reggaetherapy.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/the-reggae-therapy-festival-2024/75761"
+      }
+    ]
+  },
+  {
+    "name": "La pirate race",
+    "website": "https://lapiraterace.com/",
+    "description": "Treasure hunt with obstacle-course and seaside challenges.",
+    "startDate": "2024-03-31",
+    "endDate": "2024-03-31",
+    "city": "",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "other",
+    "details": [
+      ""
+    ],
+    "image": "/images/piraterace.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://lapiraterace.com/"
+      }
+    ]
+  },
+  {
+    "name": "St. Maarten Heineken Regatta",
+    "website": "https://www.heinekenregatta.com/",
+    "description": "4 days of World Class Racing in the largest regatta of the Caribbean.",
+    "startDate": "2024-02-29",
+    "endDate": "2024-03-03",
+    "city": "Port de Plaisance",
+    "country": "Sint-Maarten",
+    "timezone": "America/Lower_Princes",
+    "type": "regatta",
+    "details": [
+      ""
+    ],
+    "image": "/images/heinekenregatta.jpg",
+    "tickets": []
+  },
+  {
+    "name": "West Indies Regatta Festival",
+    "website": "https://westindiesregatta.com/",
+    "description": "3 days gathering of traditional vessels from across the Caribbean.",
+    "startDate": "2024-04-26",
+    "endDate": "2024-04-28",
+    "city": "Gustavia",
+    "country": "Saint-Barthélemy",
+    "timezone": "America/St_Barthelemy",
+    "type": "regatta",
+    "details": [
+      ""
+    ],
+    "image": "/images/westindiesregatta.jpg",
+    "tickets": []
+  },
+  {
+    "name": "Creole Jazz Festival",
+    "website": " https://www.creolebeach.com/en/la-creole-jazz-club",
+    "description": "Vibrant musical stage, where jazz blends with Creole rhythms to offer a truly unique sound experience.",
+    "startDate": "2024-07-22",
+    "endDate": "2024-08-18",
+    "city": "Le Gosier",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "music festival",
+    "details": [
+      "jazz"
+    ],
+    "image": "/images/creolejazzfestival.jpg",
+    "tickets": [
+      {
+        "name": "Billetweb",
+        "url": "https://www.billetweb.fr"
+      }
+    ]
+  },
+  {
+    "name": "Tour des yoles",
+    "website": "https://tourdesyoles.com/",
+    "description": "Regatta where tradition meets modernity and the next generation.",
+    "startDate": "2024-07-15",
+    "endDate": "2024-07-21",
+    "city": "",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "regatta",
+    "details": [
+      ""
+    ],
+    "image": "/images/tourdesyoles.jpg",
+    "tickets": []
+  },
+  {
+    "name": "Jazz An Ba Tol #2 - JABT",
+    "website": "https://www.instagram.com/jamdoover",
+    "description": "A multi-arts event where dance highlights and protests social issues",
+    "startDate": "2024-02-24",
+    "endDate": "2024-02-24",
+    "city": "Le François",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "jazz"
+    ],
+    "image": "/images/jazzanbatol.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/jazz-an-ba-tol-2-la-wond-des-bassistes-s/110569"
+      }
+    ]
+  },
+  {
+    "name": "Jazz An Ba Tol #3 - JABT",
+    "website": "https://www.instagram.com/jamdoover",
+    "description": "A multi-arts event where dance highlights and protests social issues",
+    "startDate": "2024-06-01",
+    "endDate": "2024-06-01",
+    "city": "Le François",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "jazz"
+    ],
+    "image": "/images/jazzanbatol.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/jazz-an-ba-tol-2-la-wond-des-bassistes-s/110569"
+      }
+    ]
+  },
+  {
+    "name": "Mercury Beach",
+    "website": "https://mercurybeach.com",
+    "description": "Beach music festival in Martinique",
+    "startDate": "2024-07-27",
+    "endDate": "2024-07-27",
+    "city": "Anses-d'Arlet",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [],
+    "image": "/images/mercurybeach.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://mercurybeach.com/billetterie"
+      }
+    ]
+  },
+  {
+    "name": "Mada Green #3",
+    "website": "https://massaiprod.com/mada-green-2024/",
+    "description": "Eco Friendly Electronic Party",
+    "startDate": "2024-06-08",
+    "endDate": "2024-06-08",
+    "city": "Saint-Pierre",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "electro"
+    ],
+    "image": "/images/madagreen.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/mada-green-iii-8-juin/77585"
+      }
+    ]
+  },
+  {
+    "name": "Mada Green #4",
+    "website": "https://massaiprod.com/mada-green-2024/",
+    "description": "Eco Friendly Electronic Party",
+    "startDate": "2024-12-14",
+    "endDate": "2024-12-14",
+    "city": "Saint-Pierre",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "electro"
+    ],
+    "image": "/images/madagreen.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/mada-green-4/86790"
+      }
+    ]
+  },
+  {
+    "name": "Ti' Balcon",
+    "website": "https://meltingprod.org/",
+    "description": "An iconic event reflecting the unique atmosphere of the Carnival of French Guiana",
+    "startDate": "2024-02-28",
+    "endDate": "2024-02-28",
+    "city": "Remire-Montjoly",
+    "country": "French Guiana",
+    "timezone": "America/Cayenne",
+    "type": "other",
+    "details": [],
+    "image": "/images/tibalcon.jpg",
+    "tickets": [
+      {
+        "name": "Billetweb",
+        "url": "https://www.billetweb.fr/tibalcon-2024"
+      }
+    ]
+  },
+  {
+    "name": "Cap-Martinique",
+    "website": "https://cap-martinique.com/",
+    "description": "Transatlantic sailing race designed specifically for amateurs",
+    "startDate": "2026-04-20",
+    "endDate": "2026-05-10",
+    "city": "Fort-de-France",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "regatta",
+    "details": [],
+    "image": "/images/capmartinique.jpg",
+    "tickets": [
+      {
+        "name": "",
+        "url": ""
+      }
+    ]
   }
 ]

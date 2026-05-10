@@ -1,5 +1,78 @@
 [
   {
+    "name": "Urban Show",
+    "website": "https://urbanshow.fr",
+    "description": "Showcase local and regional talent with street art, music, dance, fashion and film.",
+    "startDate": "2025-04-26",
+    "endDate": "2025-04-26",
+    "city": "Fort de France",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "rap",
+      "dancehall",
+      "shatta"
+    ],
+    "image": "/images/urbanshow.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/urban-show-2025/91207"
+      }
+    ]
+  },
+  {
+    "name": "Baccha Festival",
+    "website": "https://bacchafestival.com/",
+    "description": "Caribbean Music Festival since 2014.",
+    "startDate": "2025-08-09",
+    "endDate": "2025-08-10",
+    "city": "Le Vauclin",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "rap",
+      "dancehall",
+      "shatta"
+    ],
+    "image": "/images/bacchafestival.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/baccha-festival-2025/89151"
+      }
+    ]
+  },
+  {
+    "name": "ADI Music Festival",
+    "website": "https://adimusicfestival.com/",
+    "description": "Afro Electro Caribbean Festival.",
+    "startDate": "2025-07-19",
+    "endDate": "2025-07-20",
+    "city": "Le Moule",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "music festival",
+    "details": [
+      "rap",
+      "dancehall",
+      "shatta"
+    ],
+    "image": "/images/adi-music-festival.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/all-day-in-music-festival-2025/89328"
+      },
+      {
+        "name": "Kiwol",
+        "url": "https://www.kiwol.com/billetterie/11949#ticket"
+      }
+    ]
+  },
+  {
     "name": "YOUNITY FESTIVAL",
     "website": "https://www.instagram.com/younityfest/",
     "description": "100% Zouk Festival.",
@@ -43,6 +116,414 @@
     "image": "/images/creolejazzfestival.jpg",
     "tickets": [
       { "name": "Billetweb", "url": "https://www.creolebeach.com/en/la-creole-jazz-club#ventes" }
+    ]
+  },
+  {
+    "name": "Saint Lucia Jazz and Arts Festival",
+    "website": "https://www.saintluciajazzandartsfestival.com/",
+    "description": "Art, music, and cultural performances across Saint Lucia.",
+    "startDate": "2025-04-30",
+    "endDate": "2025-05-11",
+    "city": "",
+    "country": "Saint-Lucia",
+    "timezone": "America/St_Lucia",
+    "type": "music festival",
+    "details": [
+      "jazz"
+    ],
+    "image": "/images/slujazz.jpg",
+    "tickets": [
+      {
+        "name": "4 Circles Tickets",
+        "url": "https://slujazz.4circlestickets.com/"
+      }
+    ]
+  },
+  {
+    "name": "Lucian Carnival",
+    "website": "carnivalsaintlucia.com",
+    "description": "The festival spans most of July, the peak travel window is the grand finale.",
+    "startDate": "2025-07-14",
+    "endDate": "2025-07-24",
+    "city": "",
+    "country": "Saint-Lucia",
+    "timezone": "America/St_Lucia",
+    "type": "carnival",
+    "details": [
+      "calypso",
+      "steelpan",
+      "soca"
+    ],
+    "image": "/images/carnivalsaintlucia.jpg",
+    "tickets": [
+      {
+        "name": "4 Circles Tickets",
+        "url": "https://slucarnival.4circlestickets.com/"
+      }
+    ]
+  },
+  {
+    "name": "Terre de Blues Festival",
+    "website": "https://www.terredeblues.com/",
+    "description": "Caribbean music fest with reggae, zouk and more on stunning beaches.",
+    "startDate": "2025-06-06",
+    "endDate": "2025-06-09",
+    "city": "",
+    "country": "Marie-Galante",
+    "timezone": "America/Guadeloupe",
+    "type": "music festival",
+    "details": [
+      "blues",
+      "soul",
+      "jazz"
+    ],
+    "image": "/images/terredeblues-mg.jpg",
+    "tickets": [
+      {
+        "name": "Tickets",
+        "url": "https://www.terredeblues.com/products/list/vq8qo4i4jpymmt"
+      }
+    ]
+  },
+  {
+    "name": "Boomjam days",
+    "website": "https://www.instagram.com/boomjamdays/",
+    "description": "Two or One day festival in the Amazonia.",
+    "startDate": "2025-08-15",
+    "endDate": "2025-08-15",
+    "city": "Kourou",
+    "country": "French Guiana",
+    "timezone": "America/Cayenne",
+    "type": "music festival",
+    "details": [
+      "reggae"
+    ],
+    "image": "/images/boomjam.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com"
+      }
+    ]
+  },
+  {
+    "name": "Karukera One Love - Guadeloupe",
+    "website": "https://karukeraonelove.com",
+    "description": "The festival that connect all the Caribbean islands.",
+    "startDate": "2025-04-19",
+    "endDate": "2025-04-20",
+    "city": "Capesterre Belle-Eau",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "music festival",
+    "details": [
+      "reggae",
+      "dancehall"
+    ],
+    "image": "/images/karukeraonelove-gp.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/karukera-one-love-guadeloupe-2026/116315"
+      }
+    ]
+  },
+  {
+    "name": "World Creole Music Festival",
+    "website": "https://dominicafestivals.com/wcmf-home/",
+    "description": "Celebrating Creole music and culture through three nights of live performances.",
+    "startDate": "2025-10-24",
+    "endDate": "2025-10-26",
+    "city": "",
+    "country": "Dominica",
+    "timezone": "America/Dominica",
+    "type": "music festival",
+    "details": [
+      "bouyon",
+      "zouk",
+      "reggae",
+      "dancehall",
+      "soca"
+    ],
+    "image": "/images/wcmf.jpg",
+    "tickets": [
+      {
+        "name": "4 Circles Tickets",
+        "url": "https://wcmf.4circlestickets.com/events"
+      }
+    ]
+  },
+  {
+    "name": "Reggae Therapy Festival",
+    "website": "https://www.thereggaetherapyfestival.com/",
+    "description": "100% Reggae Festival.",
+    "startDate": "2025-07-12",
+    "endDate": "2025-07-13",
+    "city": "Fort-de-France",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "reggae"
+    ],
+    "image": "/images/reggaetherapy.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/reggae-therapy-festival-2025/90127"
+      }
+    ]
+  },
+  {
+    "name": "La pirate race",
+    "website": "https://lapiraterace.com/",
+    "description": "Treasure hunt with obstacle-course and seaside challenges.",
+    "startDate": "2025-04-20",
+    "endDate": "2025-04-20",
+    "city": "",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "other",
+    "details": [
+      ""
+    ],
+    "image": "/images/piraterace.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://lapiraterace.com/"
+      }
+    ]
+  },
+  {
+    "name": "St. Maarten Heineken Regatta",
+    "website": "https://www.heinekenregatta.com/",
+    "description": "4 days of World Class Racing in the largest regatta of the Caribbean.",
+    "startDate": "2025-03-06",
+    "endDate": "2025-03-09",
+    "city": "Port de Plaisance",
+    "country": "Sint-Maarten",
+    "timezone": "America/Lower_Princes",
+    "type": "regatta",
+    "details": [
+      ""
+    ],
+    "image": "/images/heinekenregatta.jpg",
+    "tickets": []
+  },
+  {
+    "name": "West Indies Regatta Festival",
+    "website": "https://westindiesregatta.com/",
+    "description": "3 days gathering of traditional vessels from across the Caribbean.",
+    "startDate": "2025-04-25",
+    "endDate": "2025-04-27",
+    "city": "Gustavia",
+    "country": "Saint-Barthélemy",
+    "timezone": "America/St_Barthelemy",
+    "type": "regatta",
+    "details": [
+      ""
+    ],
+    "image": "/images/westindiesregatta.jpg",
+    "tickets": []
+  },
+  {
+    "name": "Creole Jazz Festival",
+    "website": " https://www.creolebeach.com/en/la-creole-jazz-club",
+    "description": "Vibrant musical stage, where jazz blends with Creole rhythms to offer a truly unique sound experience.",
+    "startDate": "2025-07-21",
+    "endDate": "2025-08-17",
+    "city": "Le Gosier",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "music festival",
+    "details": [
+      "jazz"
+    ],
+    "image": "/images/creolejazzfestival.jpg",
+    "tickets": [
+      {
+        "name": "Billetweb",
+        "url": "https://www.billetweb.fr"
+      }
+    ]
+  },
+  {
+    "name": "Tour des yoles",
+    "website": "https://tourdesyoles.com/",
+    "description": "Regatta where tradition meets modernity and the next generation.",
+    "startDate": "2025-07-27",
+    "endDate": "2025-08-03",
+    "city": "",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "regatta",
+    "details": [
+      ""
+    ],
+    "image": "/images/tourdesyoles.jpg",
+    "tickets": []
+  },
+  {
+    "name": "Jazz An Ba Tol #1 - JABT",
+    "website": "https://www.instagram.com/jamdoover",
+    "description": "A multi-arts event where dance highlights and protests social issues",
+    "startDate": "2025-03-15",
+    "endDate": "2025-03-15",
+    "city": "Le François",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "jazz"
+    ],
+    "image": "/images/jazzanbatol.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/jazz-an-ba-tol-2-la-wond-des-bassistes-s/110569"
+      }
+    ]
+  },
+  {
+    "name": "Jazz An Ba Tol #2 - JABT",
+    "website": "https://www.instagram.com/jamdoover",
+    "description": "A multi-arts event where dance highlights and protests social issues",
+    "startDate": "2025-11-29",
+    "endDate": "2025-11-29",
+    "city": "Le François",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "jazz"
+    ],
+    "image": "/images/jazzanbatol.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/jazz-an-ba-tol-2-la-wond-des-bassistes-s/110569"
+      }
+    ]
+  },
+  {
+    "name": "PooL Art Fair Guadeloupe",
+    "website": "https://www.poolartfair.com/",
+    "description": "Vibrant celebration of contemporary art in the Caribbean",
+    "startDate": "2025-06-13",
+    "endDate": "2025-06-15",
+    "city": "Pointe-à-Pitre",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "art",
+    "details": [],
+    "image": "/images/poolartfairguadeloupe.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://www.poolartfair.com/billetterie-2026"
+      }
+    ]
+  },
+  {
+    "name": "Mercury Beach",
+    "website": "https://mercurybeach.com",
+    "description": "Beach music festival in Martinique",
+    "startDate": "2025-07-26",
+    "endDate": "2025-07-26",
+    "city": "Anses-d'Arlet",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [],
+    "image": "/images/mercurybeach.jpg",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://mercurybeach.com/billetterie"
+      }
+    ]
+  },
+  {
+    "name": "Mada Green #5",
+    "website": "https://massaiprod.com/mada-green-05/",
+    "description": "Eco Friendly Electronic Party",
+    "startDate": "2025-06-07",
+    "endDate": "2025-06-07",
+    "city": "Saint-Pierre",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "electro"
+    ],
+    "image": "/images/madagreen.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/mada-green-5/96262"
+      }
+    ]
+  },
+  {
+    "name": "Mada Green #6 à la plage",
+    "website": "https://massaiprod.com/mada-green-06/",
+    "description": "Eco Friendly Electronic Party",
+    "startDate": "2025-08-30",
+    "endDate": "2025-08-30",
+    "city": "Sainte-Anne",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "electro"
+    ],
+    "image": "/images/madagreen.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/mada-green-6-a-la-plage/102274"
+      }
+    ]
+  },
+  {
+    "name": "Mada Green #7",
+    "website": "https://massaiprod.com/mada-green-06/",
+    "description": "Eco Friendly Electronic Party",
+    "startDate": "2025-12-06",
+    "endDate": "2025-12-06",
+    "city": "Saint-Pierre",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [
+      "electro"
+    ],
+    "image": "/images/madagreen.jpg",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/mada-green-7/109895"
+      }
+    ]
+  },
+  {
+    "name": "Ti' Balcon",
+    "website": "https://meltingprod.org/",
+    "description": "An iconic event reflecting the unique atmosphere of the Carnival of French Guiana",
+    "startDate": "2025-02-09",
+    "endDate": "2025-02-09",
+    "city": "Remire-Montjoly",
+    "country": "French Guiana",
+    "timezone": "America/Cayenne",
+    "type": "other",
+    "details": [],
+    "image": "/images/tibalcon.jpg",
+    "tickets": [
+      {
+        "name": "Sabouj",
+        "url": "https://sabouj.fr/evenements/tibalcon-dimanche-0902"
+      }
     ]
   }
 ]
