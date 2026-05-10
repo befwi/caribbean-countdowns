@@ -1,0 +1,249 @@
+---
+import LiveBanner from "../components/LiveBanner.astro";
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Environmental impact — caribbean.countdowns.co</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0a0f0f;
+      color: #e0e0e0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .page { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .site-title {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: #fff;
+    }
+
+    .back-link {
+      font-size: 12px;
+      color: #555;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+    .back-link:hover { color: #888; }
+
+    .lang-group {
+      display: flex;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid #555;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 18px;
+      letter-spacing: 0;
+      padding: 2px 6px;
+      color: #aaa;
+      font-family: inherit;
+      transition: all 0.15s;
+      opacity: 0.5;
+    }
+    .lang-btn:hover { border-color: #888; opacity: 0.8; }
+    .lang-btn.active { background: #1a1a1a; border-color: #555; opacity: 1; }
+
+    .page-title { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .subtitle { font-size: 13px; color: #666; margin-bottom: 40px; }
+
+    .scores-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .score-card {
+      background: #0d1a1a;
+      border: 1px solid #1a3030;
+      border-radius: 8px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.15s;
+    }
+    .score-card:hover { border-color: #2d7a3a; }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .service-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #aaa;
+      letter-spacing: 0.3px;
+    }
+
+    .grade-badge {
+      font-size: 13px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 6px;
+      line-height: 1.4;
+      flex-shrink: 0;
+    }
+    .grade-green  { color: #4ade80; background: #0d2a0d; border: 1px solid #166534; }
+    .grade-B      { color: #a3e635; background: #1a2a08; border: 1px solid #365314; }
+    .grade-C      { color: #facc15; background: #2a1f00; border: 1px solid #78350f; }
+    .grade-D      { color: #fb923c; background: #2a1200; border: 1px solid #7c2d12; }
+    .grade-F      { color: #f87171; background: #2a0000; border: 1px solid #7f1d1d; }
+    .grade-pending { color: #555; background: #111; border: 1px solid #333; font-size: 11px; }
+
+    .card-desc {
+      font-size: 12px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .card-link {
+      font-size: 11px;
+      color: #2d7a3a;
+      letter-spacing: 0.3px;
+    }
+
+  </style>
+</head>
+<body>
+<LiveBanner />
+<div class="page">
+
+  <div class="header-row">
+    <h1 class="site-title"><a href="/">Countdowns</a></h1>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <a class="back-link" href="/">
+        <span class="t-en">← Back</span>
+        <span class="t-fr">← Retour</span>
+        <span class="t-kr">← Retounen</span>
+        <span class="t-es">← Volver</span>
+      </a>
+      <div class="lang-group">
+        <button class="lang-btn" data-lang="en" title="English">🇬🇧</button>
+        <button class="lang-btn" data-lang="kr" title="Kréyol">🇭🇹</button>
+        <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
+        <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="page-title">🌿 <span class="t-en">Environmental impact</span><span class="t-fr">Impact environnemental</span><span class="t-kr">Enpak anviwonnman</span><span class="t-es">Impacto ambiental</span></p>
+  <p class="subtitle">
+    <span class="t-en">Third-party assessments of caribbean.countdowns.co's environmental footprint.</span>
+    <span class="t-fr">Évaluations tierces de l'empreinte environnementale de caribbean.countdowns.co.</span>
+    <span class="t-kr">Evalyasyon tès enpak anviwonnman caribbean.countdowns.co.</span>
+    <span class="t-es">Evaluaciones de terceros sobre la huella ambiental de caribbean.countdowns.co.</span>
+  </p>
+
+  <div class="scores-grid">
+
+
+
+    <a class="score-card" href="https://www.thegreenwebfoundation.org/green-web-check/?url=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+      <div class="card-header">
+        <span class="service-name">Green Web Foundation</span>
+        <span class="grade-badge grade-green">
+          <span class="t-en">Green</span>
+          <span class="t-fr">Vert</span>
+          <span class="t-kr">Vèt</span>
+          <span class="t-es">Verde</span>
+        </span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">Verifies whether the site is hosted on infrastructure powered by renewable energy. Cloudflare is certified green.</span>
+        <span class="t-fr">Vérifie si le site est hébergé sur une infrastructure alimentée par des énergies renouvelables. Cloudflare est certifié vert.</span>
+        <span class="t-kr">Verifye si sit la eryèje sou enfrastrikti ki alimante pa enèji renouvlab. Cloudflare sètifye vèt.</span>
+        <span class="t-es">Verifica si el sitio está alojado en infraestructura alimentada por energía renovable. Cloudflare está certificado como verde.</span>
+      </p>
+      <span class="card-link">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </span>
+    </a>
+
+    <a class="score-card" href="https://ecograder.com/report/caribbean-countdowns-co" target="_blank" rel="noopener noreferrer">
+      <div class="card-header">
+        <span class="service-name">Ecograder</span>
+        <span class="grade-badge grade-pending">
+          <span class="t-en">updating</span>
+          <span class="t-fr">en cours</span>
+          <span class="t-kr">aktyalizasyon</span>
+          <span class="t-es">actualizando</span>
+        </span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">Scores the site out of 100 across green hosting, page weight, performance, and UX best practices.</span>
+        <span class="t-fr">Note le site sur 100 selon l'hébergement vert, le poids des pages, les performances et les bonnes pratiques UX.</span>
+        <span class="t-kr">Note sit la sou 100 selon ebergman vèt, pwa paj, pèfòmans ak bon pratik UX.</span>
+        <span class="t-es">Puntúa el sitio sobre 100 en alojamiento verde, peso de página, rendimiento y buenas prácticas de UX.</span>
+      </p>
+      <span class="card-link">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </span>
+    </a>
+
+    <a class="score-card" href="https://digitalbeacon.co/report/caribbean-countdowns-co" target="_blank" rel="noopener noreferrer">
+      <div class="card-header">
+        <span class="service-name">Digital Beacon</span>
+        <span class="grade-badge grade-pending">
+          <span class="t-en">updating</span>
+          <span class="t-fr">en cours</span>
+          <span class="t-kr">aktyalizasyon</span>
+          <span class="t-es">actualizando</span>
+        </span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">Measures CO₂ per visit, energy use, and page weight. Provides actionable recommendations to reduce impact.</span>
+        <span class="t-fr">Mesure le CO₂ par visite, la consommation d'énergie et le poids de la page. Fournit des recommandations concrètes pour réduire l'impact.</span>
+        <span class="t-kr">Mezire CO₂ pa vizit, konsòmasyon enèji ak pwa paj. Bay rekòmandasyon konkrèt pou redui enpak.</span>
+        <span class="t-es">Mide el CO₂ por visita, el consumo de energía y el peso de la página. Ofrece recomendaciones concretas para reducir el impacto.</span>
+      </p>
+      <span class="card-link">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </span>
+    </a>
+
+  </div>
+
+</div>
+<script is:inline src="/scripts/lang.js" defer></script>
+</body>
+</html>

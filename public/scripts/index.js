@@ -196,3 +196,21 @@ if (searchInput) {
     applyFilters();
   });
 }
+
+// Lazy load festival background images
+if ("IntersectionObserver" in window) {
+  var bgObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        var el = entry.target;
+        var bg = el.getAttribute("data-bg");
+        if (bg) el.style.backgroundImage = "url('" + bg + "')";
+        bgObserver.unobserve(el);
+      }
+    });
+  }, { rootMargin: "200px" });
+
+  document.querySelectorAll(".festival-entry[data-bg]").forEach(function(el) {
+    bgObserver.observe(el);
+  });
+}
