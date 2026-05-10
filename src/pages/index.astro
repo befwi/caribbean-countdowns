@@ -455,10 +455,10 @@ function splitLines(text: string) {
       <div class="live-banner">
         <span class="live-dot"></span>
         <span>
-          <span class="t-en">{liveFestivals.map((f, i) => <><strong style="text-shadow: 0 0 10px rgba(239,68,68,0.7), 0 0 20px rgba(239,68,68,0.3); text-decoration: underline;">{i > 0 ? ", " : ""}{f.name}</strong></>)}{liveFestivals.length === 1 ? " is" : " are"} happening now.</span>
-          <span class="t-fr">{liveFestivals.length === 1 ? "L'évènement " : "Les évènements "}{liveFestivals.map((f, i) => <><strong style="text-shadow: 0 0 10px rgba(239,68,68,0.7), 0 0 20px rgba(239,68,68,0.3); text-decoration: underline;">{i > 0 ? ", " : ""}{f.name}</strong></>)}{liveFestivals.length === 1 ? " est" : " sont"} en cours.</span>
-          <span class="t-kr">{liveFestivals.map((f, i) => <><strong style="text-shadow: 0 0 10px rgba(239,68,68,0.7), 0 0 20px rgba(239,68,68,0.3); text-decoration: underline;">{i > 0 ? ", " : ""}{f.name}</strong></>)} ka fèt a lè la.</span>
-          <span class="t-es">{liveFestivals.map((f, i) => <><strong style="text-shadow: 0 0 10px rgba(239,68,68,0.7), 0 0 20px rgba(239,68,68,0.3); text-decoration: underline;">{i > 0 ? ", " : ""}{f.name}</strong></>)}{liveFestivals.length === 1 ? " está" : " están"} pasando ahora.</span>
+          <span class="t-en"><strong>{liveFestivals.length}</strong> {liveFestivals.length === 1 ? "event is" : "events are"} happening now.</span>
+          <span class="t-fr"><strong>{liveFestivals.length}</strong> {liveFestivals.length === 1 ? "évènement est" : "évènements sont"} en cours.</span>
+          <span class="t-kr"><strong>{liveFestivals.length}</strong> {liveFestivals.length === 1 ? "évènman ap" : "évènman ap"} fèt kounye a.</span>
+          <span class="t-es"><strong>{liveFestivals.length}</strong> {liveFestivals.length === 1 ? "evento está" : "eventos están"} ocurriendo ahora.</span>
         </span>
       </div>
     )}
