@@ -8,10 +8,15 @@
     "city": "Sinnamary",
     "country": "French Guiana",
     "type": "music festival",
-    "details": ["dancehall"],
-    "image": "/images/feverfest.jpg",
+    "details": [
+      "dancehall"
+    ],
+    "image": "/images/feverfest.webp",
     "tickets": [
-      { "name": "Feverfest.fr", "url": "https://feverfest.fr" }
+      {
+        "name": "Feverfest.fr",
+        "url": "https://feverfest.fr"
+      }
     ]
   },
   {
@@ -23,10 +28,17 @@
     "city": "Matoury",
     "country": "French Guiana",
     "type": "music festival",
-    "details": ["dancehall", "zouk", "zouk"],
-    "image": "/images/wyhcella.jpg",
+    "details": [
+      "dancehall",
+      "zouk",
+      "zouk"
+    ],
+    "image": "/images/wyhcella.webp",
     "tickets": [
-      { "name": "Feverfest.fr", "url": "https://feverfest.fr" }
+      {
+        "name": "Feverfest.fr",
+        "url": "https://feverfest.fr"
+      }
     ]
   },
   {
@@ -42,7 +54,7 @@
     "details": [
       "reggae"
     ],
-    "image": "/images/boomjam.jpg",
+    "image": "/images/boomjam.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -64,7 +76,7 @@
       "reggae",
       "dancehall"
     ],
-    "image": "/images/karukeraonelove-gp.jpg",
+    "image": "/images/karukeraonelove-gp.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -89,7 +101,7 @@
       "dancehall",
       "soca"
     ],
-    "image": "/images/wcmf.jpg",
+    "image": "/images/wcmf.webp",
     "tickets": [
       {
         "name": "4 Circles Tickets",
@@ -110,7 +122,7 @@
     "details": [
       "reggae"
     ],
-    "image": "/images/reggaetherapy.jpg",
+    "image": "/images/reggaetherapy.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -131,7 +143,7 @@
     "details": [
       ""
     ],
-    "image": "/images/piraterace.jpg",
+    "image": "/images/piraterace.webp",
     "tickets": [
       {
         "name": "Website",
@@ -152,7 +164,7 @@
     "details": [
       ""
     ],
-    "image": "/images/heinekenregatta.jpg",
+    "image": "/images/heinekenregatta.webp",
     "tickets": []
   },
   {
@@ -168,7 +180,7 @@
     "details": [
       ""
     ],
-    "image": "/images/westindiesregatta.jpg",
+    "image": "/images/westindiesregatta.webp",
     "tickets": []
   },
   {
@@ -184,7 +196,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/creolejazzfestival.jpg",
+    "image": "/images/creolejazzfestival.webp",
     "tickets": [
       {
         "name": "Billetweb",
@@ -205,7 +217,7 @@
     "details": [
       ""
     ],
-    "image": "/images/tourdesyoles.jpg",
+    "image": "/images/tourdesyoles.webp",
     "tickets": []
   },
   {
@@ -221,7 +233,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/jazzanbatol.jpg",
+    "image": "/images/jazzanbatol.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -242,7 +254,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/jazzanbatol.jpg",
+    "image": "/images/jazzanbatol.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -261,7 +273,7 @@
     "timezone": "America/Martinique",
     "type": "music festival",
     "details": [],
-    "image": "/images/mercurybeach.jpg",
+    "image": "/images/mercurybeach.webp",
     "tickets": [
       {
         "name": "Website",
@@ -282,7 +294,7 @@
     "details": [
       "electro"
     ],
-    "image": "/images/madagreen.jpg",
+    "image": "/images/madagreen.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -303,7 +315,7 @@
     "details": [
       "electro"
     ],
-    "image": "/images/madagreen.jpg",
+    "image": "/images/madagreen.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -322,7 +334,7 @@
     "timezone": "America/Cayenne",
     "type": "other",
     "details": [],
-    "image": "/images/tibalcon.jpg",
+    "image": "/images/tibalcon.webp",
     "tickets": [
       {
         "name": "Billetweb",
@@ -341,7 +353,7 @@
     "timezone": "America/Martinique",
     "type": "sailing race",
     "details": [],
-    "image": "/images/capmartinique.jpg",
+    "image": "/images/capmartinique.webp",
     "tickets": [
       {
         "name": "",

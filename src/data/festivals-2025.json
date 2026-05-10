@@ -14,7 +14,7 @@
       "dancehall",
       "shatta"
     ],
-    "image": "/images/urbanshow.jpg",
+    "image": "/images/urbanshow.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -37,7 +37,7 @@
       "dancehall",
       "shatta"
     ],
-    "image": "/images/bacchafestival.jpg",
+    "image": "/images/bacchafestival.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -60,7 +60,7 @@
       "dancehall",
       "shatta"
     ],
-    "image": "/images/adi-music-festival.jpg",
+    "image": "/images/adi-music-festival.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -81,11 +81,19 @@
     "city": "Abymes",
     "country": "Guadeloupe",
     "type": "music festival",
-    "details": ["zouk"],
-    "image": "/images/younityfest.jpg",
+    "details": [
+      "zouk"
+    ],
+    "image": "/images/younityfest.webp",
     "tickets": [
-      { "name": "Bizouk", "url": "https://www.bizouk.com/events/details/younity-festival/96712" },
-      { "name": "Kiwol", "url": "https://www.kiwol.com/billetterie/12411#ticket" }
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/younity-festival/96712"
+      },
+      {
+        "name": "Kiwol",
+        "url": "https://www.kiwol.com/billetterie/12411#ticket"
+      }
     ]
   },
   {
@@ -97,10 +105,17 @@
     "city": "Cayenne",
     "country": "French Guiana",
     "type": "music festival",
-    "details": ["jazz", "roots", "reggea"],
-    "image": "/images/kayennjazzfestival.jpg",
+    "details": [
+      "jazz",
+      "roots",
+      "reggea"
+    ],
+    "image": "/images/kayennjazzfestival.webp",
     "tickets": [
-      { "name": "Sabouj", "url": "https://sabouj.fr/evenements/kayenn-jazz-festival-2025-or-roots-jazz-reggae" }
+      {
+        "name": "Sabouj",
+        "url": "https://sabouj.fr/evenements/kayenn-jazz-festival-2025-or-roots-jazz-reggae"
+      }
     ]
   },
   {
@@ -112,10 +127,15 @@
     "city": "Le Gosier",
     "country": "Guadeloupe",
     "type": "music festival",
-    "details": ["jazz"],
-    "image": "/images/creolejazzfestival.jpg",
+    "details": [
+      "jazz"
+    ],
+    "image": "/images/creolejazzfestival.webp",
     "tickets": [
-      { "name": "Billetweb", "url": "https://www.creolebeach.com/en/la-creole-jazz-club#ventes" }
+      {
+        "name": "Billetweb",
+        "url": "https://www.creolebeach.com/en/la-creole-jazz-club#ventes"
+      }
     ]
   },
   {
@@ -131,7 +151,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/slujazz.jpg",
+    "image": "/images/slujazz.webp",
     "tickets": [
       {
         "name": "4 Circles Tickets",
@@ -154,7 +174,7 @@
       "steelpan",
       "soca"
     ],
-    "image": "/images/carnivalsaintlucia.jpg",
+    "image": "/images/carnivalsaintlucia.webp",
     "tickets": [
       {
         "name": "4 Circles Tickets",
@@ -177,7 +197,7 @@
       "soul",
       "jazz"
     ],
-    "image": "/images/terredeblues-mg.jpg",
+    "image": "/images/terredeblues-mg.webp",
     "tickets": [
       {
         "name": "Tickets",
@@ -198,7 +218,7 @@
     "details": [
       "reggae"
     ],
-    "image": "/images/boomjam.jpg",
+    "image": "/images/boomjam.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -220,7 +240,7 @@
       "reggae",
       "dancehall"
     ],
-    "image": "/images/karukeraonelove-gp.jpg",
+    "image": "/images/karukeraonelove-gp.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -245,7 +265,7 @@
       "dancehall",
       "soca"
     ],
-    "image": "/images/wcmf.jpg",
+    "image": "/images/wcmf.webp",
     "tickets": [
       {
         "name": "4 Circles Tickets",
@@ -266,7 +286,7 @@
     "details": [
       "reggae"
     ],
-    "image": "/images/reggaetherapy.jpg",
+    "image": "/images/reggaetherapy.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -287,7 +307,7 @@
     "details": [
       ""
     ],
-    "image": "/images/piraterace.jpg",
+    "image": "/images/piraterace.webp",
     "tickets": [
       {
         "name": "Website",
@@ -308,7 +328,7 @@
     "details": [
       ""
     ],
-    "image": "/images/heinekenregatta.jpg",
+    "image": "/images/heinekenregatta.webp",
     "tickets": []
   },
   {
@@ -324,7 +344,7 @@
     "details": [
       ""
     ],
-    "image": "/images/westindiesregatta.jpg",
+    "image": "/images/westindiesregatta.webp",
     "tickets": []
   },
   {
@@ -340,7 +360,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/creolejazzfestival.jpg",
+    "image": "/images/creolejazzfestival.webp",
     "tickets": [
       {
         "name": "Billetweb",
@@ -361,7 +381,7 @@
     "details": [
       ""
     ],
-    "image": "/images/tourdesyoles.jpg",
+    "image": "/images/tourdesyoles.webp",
     "tickets": []
   },
   {
@@ -377,7 +397,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/jazzanbatol.jpg",
+    "image": "/images/jazzanbatol.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -398,7 +418,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/jazzanbatol.jpg",
+    "image": "/images/jazzanbatol.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -417,7 +437,7 @@
     "timezone": "America/Guadeloupe",
     "type": "art",
     "details": [],
-    "image": "/images/poolartfairguadeloupe.jpg",
+    "image": "/images/poolartfairguadeloupe.webp",
     "tickets": [
       {
         "name": "Website",
@@ -436,7 +456,7 @@
     "timezone": "America/Martinique",
     "type": "music festival",
     "details": [],
-    "image": "/images/mercurybeach.jpg",
+    "image": "/images/mercurybeach.webp",
     "tickets": [
       {
         "name": "Website",
@@ -457,7 +477,7 @@
     "details": [
       "electro"
     ],
-    "image": "/images/madagreen.jpg",
+    "image": "/images/madagreen.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -478,7 +498,7 @@
     "details": [
       "electro"
     ],
-    "image": "/images/madagreen.jpg",
+    "image": "/images/madagreen.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -499,7 +519,7 @@
     "details": [
       "electro"
     ],
-    "image": "/images/madagreen.jpg",
+    "image": "/images/madagreen.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -518,7 +538,7 @@
     "timezone": "America/Cayenne",
     "type": "other",
     "details": [],
-    "image": "/images/tibalcon.jpg",
+    "image": "/images/tibalcon.webp",
     "tickets": [
       {
         "name": "Sabouj",

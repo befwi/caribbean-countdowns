@@ -14,7 +14,7 @@
       "dancehall",
       "shatta"
     ],
-    "image": "/images/urbanshow.jpg",
+    "image": "/images/urbanshow.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -37,7 +37,7 @@
       "dancehall",
       "shatta"
     ],
-    "image": "/images/bacchafestival.jpg",
+    "image": "/images/bacchafestival.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -60,7 +60,7 @@
       "dancehall",
       "shatta"
     ],
-    "image": "/images/adi-music-festival.jpg",
+    "image": "/images/adi-music-festival.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -85,7 +85,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/slujazz.jpg",
+    "image": "/images/slujazz.webp",
     "tickets": [
       {
         "name": "4 Circles Tickets",
@@ -108,7 +108,7 @@
       "steelpan",
       "soca"
     ],
-    "image": "/images/carnivalsaintlucia.jpg",
+    "image": "/images/carnivalsaintlucia.webp",
     "tickets": [
       {
         "name": "4 Circles Tickets",
@@ -131,7 +131,7 @@
       "soul",
       "jazz"
     ],
-    "image": "/images/terredeblues-mg.jpg",
+    "image": "/images/terredeblues-mg.webp",
     "tickets": [
       {
         "name": "Tickets",
@@ -152,7 +152,7 @@
     "details": [
       "reggae"
     ],
-    "image": "/images/boomjam-reggea.jpg",
+    "image": "/images/boomjam-reggea.webp",
     "tickets": [
       {
         "name": "Sabouj",
@@ -174,7 +174,7 @@
       "reggae",
       "dancehall"
     ],
-    "image": "/images/karukeraonelove-gp.jpg",
+    "image": "/images/karukeraonelove-gp.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -199,7 +199,7 @@
       "dancehall",
       "soca"
     ],
-    "image": "/images/wcmf.jpg",
+    "image": "/images/wcmf.webp",
     "tickets": [
       {
         "name": "4 Circles Tickets",
@@ -220,7 +220,7 @@
     "details": [
       "reggae"
     ],
-    "image": "/images/reggaetherapy.jpg",
+    "image": "/images/reggaetherapy.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -241,7 +241,7 @@
     "details": [
       ""
     ],
-    "image": "/images/piraterace.jpg",
+    "image": "/images/piraterace.webp",
     "tickets": [
       {
         "name": "Website",
@@ -262,7 +262,7 @@
     "details": [
       ""
     ],
-    "image": "/images/heinekenregatta.jpg",
+    "image": "/images/heinekenregatta.webp",
     "tickets": []
   },
   {
@@ -278,7 +278,7 @@
     "details": [
       ""
     ],
-    "image": "/images/westindiesregatta.jpg",
+    "image": "/images/westindiesregatta.webp",
     "tickets": []
   },
   {
@@ -294,7 +294,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/barbadosjazzexcursion.jpg",
+    "image": "/images/barbadosjazzexcursion.webp",
     "tickets": [
       {
         "name": "Website",
@@ -315,7 +315,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/creolejazzfestival.jpg",
+    "image": "/images/creolejazzfestival.webp",
     "tickets": [
       {
         "name": "Billetweb",
@@ -336,7 +336,7 @@
     "details": [
       ""
     ],
-    "image": "/images/tourdesyoles.jpg",
+    "image": "/images/tourdesyoles.webp",
     "tickets": []
   },
   {
@@ -352,7 +352,7 @@
     "details": [
       "jazz"
     ],
-    "image": "/images/jazzanbatol.jpg",
+    "image": "/images/jazzanbatol.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -375,7 +375,7 @@
     "timezone": "America/Martinique",
     "type": "music festival",
     "details": [],
-    "image": "/images/mercurybeach.jpg",
+    "image": "/images/mercurybeach.webp",
     "tickets": [
       {
         "name": "Website",
@@ -394,7 +394,7 @@
     "timezone": "America/Guadeloupe",
     "type": "art",
     "details": [],
-    "image": "/images/poolartfairguadeloupe.jpg",
+    "image": "/images/poolartfairguadeloupe.webp",
     "tickets": [
       {
         "name": "Website",
@@ -416,7 +416,7 @@
       "soca",
       "dancehall"
     ],
-    "image": "/images/iamwomanconcertbarbados.jpg",
+    "image": "/images/iamwomanconcertbarbados.webp",
     "tickets": [
       {
         "name": "Other",
@@ -438,7 +438,7 @@
       "soca",
       "reggae"
     ],
-    "image": "/images/risetogether.jpg",
+    "image": "/images/risetogether.webp",
     "tickets": [
       {
         "name": "Other",
@@ -457,7 +457,7 @@
     "timezone": "America/Barbados",
     "type": "music festival",
     "details": [],
-    "image": "/images/barbadosdivefest.jpg",
+    "image": "/images/barbadosdivefest.webp",
     "tickets": [
       {
         "name": "Website",
@@ -479,7 +479,7 @@
       "soca",
       "calypso"
     ],
-    "image": "/images/cropoverfestival.jpg",
+    "image": "/images/cropoverfestival.webp",
     "tickets": [
       {
         "name": "Website",
@@ -500,7 +500,7 @@
     "details": [
       "electro"
     ],
-    "image": "/images/madagreen.jpg",
+    "image": "/images/madagreen.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -555,8 +555,10 @@
     "country": "Martinique",
     "timezone": "America/Martinique",
     "type": "sport",
-    "details": ["running"],
-    "image": "/images/madacolorrun.jpg",
+    "details": [
+      "running"
+    ],
+    "image": "/images/madacolorrun.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -579,7 +581,7 @@
       "reggae",
       "dancehall"
     ],
-    "image": "/images/ladiesbreak.jpg",
+    "image": "/images/ladiesbreak.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -598,7 +600,7 @@
     "timezone": "America/Martinique",
     "type": "music festival",
     "details": [],
-    "image": "/images/holimusicfestival.jpg",
+    "image": "/images/holimusicfestival.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -617,7 +619,7 @@
     "timezone": "America/Martinique",
     "type": "art",
     "details": [],
-    "image": "/images/artmadafestival2026.jpg",
+    "image": "/images/artmadafestival2026.webp",
     "tickets": [
       {
         "name": "",
@@ -635,8 +637,11 @@
     "country": "Martinique",
     "timezone": "America/Martinique",
     "type": "sport",
-    "details": ["running", "trail"],
-    "image": "/images/tchimberaidultratrail.jpg",
+    "details": [
+      "running",
+      "trail"
+    ],
+    "image": "/images/tchimberaidultratrail.webp",
     "tickets": [
       {
         "name": "Website",
@@ -654,8 +659,10 @@
     "country": "Martinique",
     "timezone": "America/Martinique",
     "type": "sport",
-    "details": ["cycling"],
-    "image": "/images/tourcyclisteinternationaldemartinique.jpg",
+    "details": [
+      "cycling"
+    ],
+    "image": "/images/tourcyclisteinternationaldemartinique.webp",
     "tickets": [
       {
         "name": "",
@@ -673,8 +680,10 @@
     "country": "Guadeloupe",
     "timezone": "America/Guadeloupe",
     "type": "sport",
-    "details": ["cycling"],
-    "image": "/images/tourcyclisteinternationaldeguadeloupe.jpg",
+    "details": [
+      "cycling"
+    ],
+    "image": "/images/tourcyclisteinternationaldeguadeloupe.webp",
     "tickets": [
       {
         "name": "",
@@ -692,8 +701,10 @@
     "country": "French Guiana",
     "timezone": "America/Cayenne",
     "type": "sport",
-    "details": ["cycling"],
-    "image": "/images/tourcyclistedeguyane.jpg",
+    "details": [
+      "cycling"
+    ],
+    "image": "/images/tourcyclistedeguyane.webp",
     "tickets": [
       {
         "name": "",
@@ -711,8 +722,12 @@
     "country": "Martinique",
     "timezone": "America/Martinique",
     "type": "sport",
-    "details": ["running", "trail", "marathon"],
-    "image": "/images/larondedescapsticap.jpg",
+    "details": [
+      "running",
+      "trail",
+      "marathon"
+    ],
+    "image": "/images/larondedescapsticap.webp",
     "tickets": [
       {
         "name": "Website",
@@ -721,19 +736,25 @@
     ]
   },
   {
-  "name": "Transkarukera",
-  "website": "https://www.facebook.com/transkarukera.guadeloupe",
-  "description": "165 km - Major trail running event in Guadeloupe",
-  "startDate": "2026-06-26",
-  "endDate": "2026-06-27",
-  "city": "Bouillante",
-  "country": "Guadeloupe",
-  "timezone": "America/Guadeloupe",
-  "type": "sport",
-  "details": ["running", "trail"],
-  "image": "/images/transkarukera.jpg",
-  "tickets": [
-    { "name": "Website", "url": "https://www.facebook.com/transkarukera.guadeloupe" }
+    "name": "Transkarukera",
+    "website": "https://www.facebook.com/transkarukera.guadeloupe",
+    "description": "165 km - Major trail running event in Guadeloupe",
+    "startDate": "2026-06-26",
+    "endDate": "2026-06-27",
+    "city": "Bouillante",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "sport",
+    "details": [
+      "running",
+      "trail"
+    ],
+    "image": "/images/transkarukera.webp",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://www.facebook.com/transkarukera.guadeloupe"
+      }
     ]
   },
   {
@@ -747,7 +768,7 @@
     "timezone": "America/Cayenne",
     "type": "art",
     "details": [],
-    "image": "/images/fifacfestival.jpg",
+    "image": "/images/fifacfestival.webp",
     "tickets": [
       {
         "name": "Website",
@@ -765,8 +786,10 @@
     "country": "French Guiana",
     "timezone": "America/Cayenne",
     "type": "sport",
-    "details": ["running"],
-    "image": "/images/kouroucolorsfestival.jpg",
+    "details": [
+      "running"
+    ],
+    "image": "/images/kouroucolorsfestival.webp",
     "tickets": [
       {
         "name": "Bizouk",
@@ -789,7 +812,7 @@
     "timezone": "America/Cayenne",
     "type": "other",
     "details": [],
-    "image": "/images/tibalcon.jpg",
+    "image": "/images/tibalcon.webp",
     "tickets": [
       {
         "name": "Sabouj",
@@ -808,7 +831,7 @@
     "timezone": "America/Martinique",
     "type": "sailing race",
     "details": [],
-    "image": "/images/capmartinique.jpg",
+    "image": "/images/capmartinique.webp",
     "tickets": [
       {
         "name": "",
@@ -827,7 +850,7 @@
     "timezone": "America/Guadeloupe",
     "type": "sailing race",
     "details": [],
-    "image": "/images/routedurhum.jpg",
+    "image": "/images/routedurhum.webp",
     "tickets": [
       {
         "name": "",
@@ -836,6 +859,3 @@
     ]
   }
 ]
-
-
-
