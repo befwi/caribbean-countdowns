@@ -84,14 +84,11 @@ import LiveBanner from "../components/LiveBanner.astro";
       border: 1px solid #1a3030;
       border-radius: 8px;
       padding: 24px;
-      text-decoration: none;
       color: inherit;
       display: flex;
       flex-direction: column;
       gap: 16px;
-      transition: border-color 0.15s;
     }
-    .score-card:hover { border-color: #0d9488; }
     .score-card:last-child:nth-child(odd) {
       grid-column: 1 / -1;
       max-width: 340px;
@@ -209,7 +206,7 @@ import LiveBanner from "../components/LiveBanner.astro";
 
   <div class="scores-grid">
 
-    <a class="score-card" href="https://developer.mozilla.org/en-US/observatory/analyze?host=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+    <div class="score-card">
       <div class="card-header">
         <span class="service-name">Mozilla Observatory</span>
         <span class="grade-badge grade-Aplus">A+</span>
@@ -220,15 +217,15 @@ import LiveBanner from "../components/LiveBanner.astro";
         <span class="t-kr">Teste en-tèt HTTP, CSP, cookie ak konfigirasyon HTTPS selon règleman sekirite Mozilla.</span>
         <span class="t-es">Prueba los encabezados HTTP, CSP, cookies y la configuración HTTPS según las pautas de seguridad de Mozilla.</span>
       </p>
-      <span class="card-link">
+      <a class="card-link" href="https://developer.mozilla.org/en-US/observatory/analyze?host=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
         <span class="t-en">View full report ↗</span>
         <span class="t-fr">Voir le rapport complet ↗</span>
         <span class="t-kr">Wè rapò konplè ↗</span>
         <span class="t-es">Ver informe completo ↗</span>
-      </span>
-    </a>
+      </a>
+    </div>
 
-    <a class="score-card" href="https://www.ssllabs.com/ssltest/analyze.html?d=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+    <div class="score-card">
       <div class="card-header">
         <span class="service-name">SSL Labs</span>
         <span class="grade-badge grade-Aplus">A+</span>
@@ -239,15 +236,15 @@ import LiveBanner from "../components/LiveBanner.astro";
         <span class="t-kr">Analiz TLS, chèn sètifika ak suite chiffrement Qualys SSL Labs.</span>
         <span class="t-es">Análisis profundo de la configuración TLS, la cadena de certificados y los conjuntos de cifrado de Qualys SSL Labs.</span>
       </p>
-      <span class="card-link">
+      <a class="card-link" href="https://www.ssllabs.com/ssltest/analyze.html?d=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
         <span class="t-en">View full report ↗</span>
         <span class="t-fr">Voir le rapport complet ↗</span>
         <span class="t-kr">Wè rapò konplè ↗</span>
         <span class="t-es">Ver informe completo ↗</span>
-      </span>
-    </a>
+      </a>
+    </div>
 
-    <a class="score-card" href="https://securityheaders.com/?q=https%3A%2F%2Fcaribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+    <div class="score-card">
       <div class="card-header">
         <span class="service-name">Security Headers</span>
         <span class="grade-badge grade-Aplus">A+</span>
@@ -258,15 +255,15 @@ import LiveBanner from "../components/LiveBanner.astro";
         <span class="t-kr">Verifye epi note en-tèt repons HTTP pou konplètès ak bon pratik sekirite.</span>
         <span class="t-es">Analiza y califica los encabezados de respuesta HTTP según su completitud y las mejores prácticas de seguridad.</span>
       </p>
-      <span class="card-link">
+      <a class="card-link" href="https://securityheaders.com/?q=https%3A%2F%2Fcaribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
         <span class="t-en">View full report ↗</span>
         <span class="t-fr">Voir le rapport complet ↗</span>
         <span class="t-kr">Wè rapò konplè ↗</span>
         <span class="t-es">Ver informe completo ↗</span>
-      </span>
-    </a>
+      </a>
+    </div>
 
-    <a class="score-card" href="https://themarkup.org/blacklight?url=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+    <div class="score-card">
       <div class="card-header">
         <span class="service-name">Blacklight — The Markup</span>
         <span class="grade-badge grade-safe">Safe</span>
@@ -277,15 +274,15 @@ import LiveBanner from "../components/LiveBanner.astro";
         <span class="t-kr">0 tracè · 0 cookie tès · pa gen fingerprinting · pa gen anrejistreman sesyon · pa gen keylogging · pa gen piksèl sosyal.</span>
         <span class="t-es">0 rastreadores · 0 cookies de terceros · sin fingerprinting · sin grabación de sesión · sin keylogging · sin píxeles sociales.</span>
       </p>
-      <span class="card-link">
+      <a class="card-link" href="https://themarkup.org/blacklight?url=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
         <span class="t-en">View full report ↗</span>
         <span class="t-fr">Voir le rapport complet ↗</span>
         <span class="t-kr">Wè rapò konplè ↗</span>
         <span class="t-es">Ver informe completo ↗</span>
-      </span>
-    </a>
+      </a>
+    </div>
 
-    <a class="score-card" href="https://transparencyreport.google.com/safe-browsing/search?url=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+    <div class="score-card">
       <div class="card-header">
         <span class="service-name">Google Safe Browsing</span>
         <span class="grade-badge grade-safe">Safe</span>
@@ -296,15 +293,15 @@ import LiveBanner from "../components/LiveBanner.astro";
         <span class="t-kr">Pa gen kontni danjere jwenn — pa gen malware, phishing oswa lojisyèl enpòtan detekte sou sit sa.</span>
         <span class="t-es">No se encontró contenido peligroso — sin malware, phishing ni software no deseado en este sitio.</span>
       </p>
-      <span class="card-link">
+      <a class="card-link" href="https://transparencyreport.google.com/safe-browsing/search?url=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
         <span class="t-en">View full report ↗</span>
         <span class="t-fr">Voir le rapport complet ↗</span>
         <span class="t-kr">Wè rapò konplè ↗</span>
         <span class="t-es">Ver informe completo ↗</span>
-      </span>
-    </a>
+      </a>
+    </div>
 
-    <a class="score-card" href="https://2gdpr.com/758979399" target="_blank" rel="noopener noreferrer">
+    <div class="score-card">
       <div class="card-header">
         <span class="service-name">2GDPR</span>
         <span class="grade-badge grade-safe">Safe</span>
@@ -315,15 +312,15 @@ import LiveBanner from "../components/LiveBanner.astro";
         <span class="t-kr">Analiz konfòmite RGPD pa jwenn okenn vyolasyon konsantman, pwoblèm cookie oswa enkyetid pwoteksyon done.</span>
         <span class="t-es">El análisis de cumplimiento del RGPD no encontró violaciones de consentimiento, problemas de cookies ni fallos en la protección de datos.</span>
       </p>
-      <span class="card-link">
+      <a class="card-link" href="https://2gdpr.com/758979399" target="_blank" rel="noopener noreferrer">
         <span class="t-en">View full report ↗</span>
         <span class="t-fr">Voir le rapport complet ↗</span>
         <span class="t-kr">Wè rapò konplè ↗</span>
         <span class="t-es">Ver informe completo ↗</span>
-      </span>
-    </a>
+      </a>
+    </div>
 
-    <a class="score-card" href="https://snyk.io/test/github/befwi/caribbean-countdowns" target="_blank" rel="noopener noreferrer">
+    <div class="score-card">
       <div class="card-header">
         <span class="service-name">Snyk</span>
         <span class="grade-badge grade-safe">
@@ -339,13 +336,13 @@ import LiveBanner from "../components/LiveBanner.astro";
         <span class="t-kr">Analiz depandans — pa gen vulnerabilite konnu jwenn nan pake npm yo.</span>
         <span class="t-es">Análisis de dependencias — no se encontraron vulnerabilidades conocidas en los paquetes npm.</span>
       </p>
-      <span class="card-link">
+      <a class="card-link" href="https://snyk.io/test/github/befwi/caribbean-countdowns" target="_blank" rel="noopener noreferrer">
         <span class="t-en">View full report ↗</span>
         <span class="t-fr">Voir le rapport complet ↗</span>
         <span class="t-kr">Wè rapò konplè ↗</span>
         <span class="t-es">Ver informe completo ↗</span>
-      </span>
-    </a>
+      </a>
+    </div>
 
   </div>
 

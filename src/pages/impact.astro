@@ -84,14 +84,11 @@ import LiveBanner from "../components/LiveBanner.astro";
       border: 1px solid #1a3030;
       border-radius: 8px;
       padding: 24px;
-      text-decoration: none;
       color: inherit;
       display: flex;
       flex-direction: column;
       gap: 16px;
-      transition: border-color 0.15s;
     }
-    .score-card:hover { border-color: #2d7a3a; }
 
     .card-header {
       display: flex;
@@ -171,7 +168,7 @@ import LiveBanner from "../components/LiveBanner.astro";
 
 
 
-    <a class="score-card" href="https://www.thegreenwebfoundation.org/green-web-check/?url=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
+    <div class="score-card">
       <div class="card-header">
         <span class="service-name">Green Web Foundation</span>
         <span class="grade-badge grade-green">
@@ -187,15 +184,15 @@ import LiveBanner from "../components/LiveBanner.astro";
         <span class="t-kr">Verifye si sit la eryèje sou enfrastrikti ki alimante pa enèji renouvlab. Cloudflare sètifye vèt.</span>
         <span class="t-es">Verifica si el sitio está alojado en infraestructura alimentada por energía renovable. Cloudflare está certificado como verde.</span>
       </p>
-      <span class="card-link">
+      <a class="card-link" href="https://www.thegreenwebfoundation.org/green-web-check/?url=caribbean.countdowns.co" target="_blank" rel="noopener noreferrer">
         <span class="t-en">View full report ↗</span>
         <span class="t-fr">Voir le rapport complet ↗</span>
         <span class="t-kr">Wè rapò konplè ↗</span>
         <span class="t-es">Ver informe completo ↗</span>
-      </span>
-    </a>
+      </a>
+    </div>
 
-    <a class="score-card" href="https://ecograder.com/report/TY7yPWloqlbVlVGTfGJL7EFt" target="_blank" rel="noopener noreferrer">
+    <div class="score-card">
       <div class="card-header">
         <span class="service-name">Ecograder</span>
         <span class="grade-badge grade-Aplus">97 / 100</span>
@@ -206,15 +203,15 @@ import LiveBanner from "../components/LiveBanner.astro";
         <span class="t-kr">Note sit la sou 100 selon ebergman vèt, pwa paj, pèfòmans ak bon pratik UX.</span>
         <span class="t-es">Puntúa el sitio sobre 100 en alojamiento verde, peso de página, rendimiento y buenas prácticas de UX.</span>
       </p>
-      <span class="card-link">
+      <a class="card-link" href="https://ecograder.com/report/TY7yPWloqlbVlVGTfGJL7EFt" target="_blank" rel="noopener noreferrer">
         <span class="t-en">View full report ↗</span>
         <span class="t-fr">Voir le rapport complet ↗</span>
         <span class="t-kr">Wè rapò konplè ↗</span>
         <span class="t-es">Ver informe completo ↗</span>
-      </span>
-    </a>
+      </a>
+    </div>
 
-    <a class="score-card" href="https://digitalbeacon.co/report/caribbean-countdowns-co" target="_blank" rel="noopener noreferrer">
+    <div class="score-card">
       <div class="card-header">
         <span class="service-name">Digital Beacon</span>
         <span class="grade-badge grade-Aplus">A+</span>
@@ -225,13 +222,13 @@ import LiveBanner from "../components/LiveBanner.astro";
         <span class="t-kr">Mezire CO₂ pa vizit, konsòmasyon enèji ak pwa paj. Bay rekòmandasyon konkrèt pou redui enpak.</span>
         <span class="t-es">Mide el CO₂ por visita, el consumo de energía y el peso de la página. Ofrece recomendaciones concretas para reducir el impacto.</span>
       </p>
-      <span class="card-link">
+      <a class="card-link" href="https://digitalbeacon.co/report/caribbean-countdowns-co" target="_blank" rel="noopener noreferrer">
         <span class="t-en">View full report ↗</span>
         <span class="t-fr">Voir le rapport complet ↗</span>
         <span class="t-kr">Wè rapò konplè ↗</span>
         <span class="t-es">Ver informe completo ↗</span>
-      </span>
-    </a>
+      </a>
+    </div>
 
   </div>
 
