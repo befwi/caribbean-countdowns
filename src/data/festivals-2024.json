@@ -360,5 +360,24 @@
         "url": ""
       }
     ]
+  },
+  {
+    "name": "DSPLAND",
+    "website": "https://www.instagram.com/dsp.land",
+    "description": "The most incredible adult funfair in the Caribbean",
+    "startDate": "2024-08-03",
+    "endDate": "2024-08-03",
+    "city": "Le Lamentin",
+    "country": "Martinique",
+    "timezone": "America/Martinique",
+    "type": "music festival",
+    "details": [""],
+    "image": "",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/dsp-land-2024/80627"
+      }
+    ]
   }
 ]
