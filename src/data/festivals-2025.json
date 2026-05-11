@@ -557,7 +557,7 @@
     "timezone": "America/Martinique",
     "type": "music festival",
     "details": [""],
-    "image": "",
+    "image": "/images/dspland.webp",
     "tickets": [
       {
         "name": "Bizouk",
