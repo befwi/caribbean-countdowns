@@ -26,8 +26,8 @@
     "name": "Baccha Festival",
     "website": "https://bacchafestival.com/",
     "description": "Caribbean Music Festival since 2014.",
-    "startDate": "2026-08-08",
-    "endDate": "2026-08-10",
+    "startDate": "2026-08-07",
+    "endDate": "2026-08-09",
     "city": "Le Marin",
     "country": "Martinique",
     "timezone": "America/Martinique",
@@ -42,7 +42,13 @@
       {
         "name": "Bizouk",
         "url": "https://www.bizouk.com/events/details/baccha-festival-2026/105195"
+      },
+      {
+        "name": "Weezevent",
+        "url": "https://my.weezevent.com/baccha-festival-2026"
       }
+    ]
+  },
     ]
   },
   {
