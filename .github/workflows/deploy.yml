@@ -6,6 +6,8 @@ env:
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "0 5 * * *"
 
 permissions:
   contents: read
