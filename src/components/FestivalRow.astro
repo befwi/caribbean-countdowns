@@ -310,12 +310,12 @@ const eventDateStr =
 </style>
 
 <div
-  class={`festival-entry${status === "ENDED" ? " ended" : ""}${status === "LIVE" ? " live" : ""}${festival.image ? " has-image" : ""}`}
+  class={`festival-entry${status === "ENDED" ? " ended" : ""}${status === "LIVE" ? " live" : ""}${(festival.image && status !== "ENDED") ? " has-image" : ""}`}
   data-name={festival.name ?? ""}
   data-type={festival.type ?? ""}
   data-details={(festival.details ?? []).join(",")}
   data-country={festival.country ?? ""}
-  style={festival.image ? `background-image: url('${festival.image}')` : ""}
+  style={(festival.image && status !== "ENDED") ? `background-image: url('${festival.image}')` : ""}
 >
   <div class="festival-header">
     <div class="festival-name">
