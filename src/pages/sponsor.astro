@@ -70,6 +70,40 @@ import LiveBanner from "../components/LiveBanner.astro";
 
     .divider { border: none; border-top: 1px solid #2e2e2e; margin: 32px 0; }
 
+    .exclusion-box {
+      background: #111;
+      border: 1px solid #2e2e2e;
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin: 20px 0 0;
+    }
+
+    .exclusion-box strong {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .exclusion-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .exclusion-list li {
+      font-size: 11px;
+      color: #666;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 3px;
+      padding: 2px 8px;
+    }
+
     h2 {
       font-size: 18px;
       font-weight: 700;
@@ -344,6 +378,65 @@ import LiveBanner from "../components/LiveBanner.astro";
       <span class="t-es">countdowns.co ofrece visibilidad a marcas y organizaciones que apoyan causas que protegen el Caribe. Ningún dinero va a este sitio — el 100% de las donaciones van directamente a la ONG destacada.</span>
     </p>
 
+    <div class="exclusion-box">
+      <strong>
+        <span class="t-en">Not eligible</span>
+        <span class="t-fr">Non éligibles</span>
+        <span class="t-kr">Pa élijib</span>
+        <span class="t-es">No elegibles</span>
+      </strong>
+      <p style="font-size:12px;color:#555;margin-bottom:10px;">
+        <span class="t-en">Sponsorship is a form of visibility. We don't offer it to sectors whose core activity conflicts with the health of the Caribbean — its ecosystems, coastlines, and communities.</span>
+        <span class="t-fr">Le sponsoring est une forme de visibilité. Nous ne l'offrons pas aux secteurs dont l'activité principale va à l'encontre de la santé de la Caraïbe — ses écosystèmes, ses côtes et ses communautés.</span>
+        <span class="t-kr">Sponsoring sé on fòm vizibilité. Nou pa ofri l bay sektè ki aktivi prensipal li an konfli ak lasanté Karayib la — ekosistèm li, rivyè bò lanmè yo, épi kominote yo.</span>
+        <span class="t-es">El patrocinio es una forma de visibilidad. No la ofrecemos a sectores cuya actividad principal entra en conflicto con la salud del Caribe — sus ecosistemas, costas y comunidades.</span>
+      </p>
+      <ul class="exclusion-list">
+        <li>
+          <span class="t-en">Fossil fuels (oil, gas, coal extractors &amp; distributors)</span>
+          <span class="t-fr">Énergies fossiles (extracteurs &amp; distributeurs de pétrole, gaz, charbon)</span>
+          <span class="t-kr">Konbistib fosil (pétwòl, gaz, chabon — ekstraktè &amp; distribitè)</span>
+          <span class="t-es">Combustibles fósiles (extractores &amp; distribuidores de petróleo, gas, carbón)</span>
+        </li>
+        <li>
+          <span class="t-en">Airlines &amp; aviation travel agencies</span>
+          <span class="t-fr">Compagnies aériennes &amp; agences de voyage</span>
+          <span class="t-kr">Konpayi avyon &amp; ajans vwayaj</span>
+          <span class="t-es">Aerolíneas &amp; agencias de viaje aéreo</span>
+        </li>
+        <li>
+          <span class="t-en">Cruise companies</span>
+          <span class="t-fr">Compagnies de croisière</span>
+          <span class="t-kr">Konpayi kwazye</span>
+          <span class="t-es">Compañías de cruceros</span>
+        </li>
+        <li>
+          <span class="t-en">Car manufacturers (combustion, hybrid, SUV)</span>
+          <span class="t-fr">Constructeurs auto (thermique, hybride, SUV)</span>
+          <span class="t-kr">Fabikan machin (tèmik, ibrid, SUV)</span>
+          <span class="t-es">Fabricantes de autos (térmico, híbrido, SUV)</span>
+        </li>
+        <li>
+          <span class="t-en">Fast fashion</span>
+          <span class="t-fr">Fast fashion</span>
+          <span class="t-kr">Fast fashion</span>
+          <span class="t-es">Moda rápida</span>
+        </li>
+        <li>
+          <span class="t-en">Fast food &amp; ultra-processed food</span>
+          <span class="t-fr">Fast food &amp; alimentation ultra-transformée</span>
+          <span class="t-kr">Fast food &amp; manje pwoséde</span>
+          <span class="t-es">Comida rápida &amp; alimentos ultraprocesados</span>
+        </li>
+        <li>
+          <span class="t-en">Industrial meat industry</span>
+          <span class="t-fr">Industrie de la viande industrielle</span>
+          <span class="t-kr">Endistri vyann endistriyèl</span>
+          <span class="t-es">Industria cárnica industrial</span>
+        </li>
+      </ul>
+    </div>
+
     <hr class="divider" />
 
     <!-- How it works -->
@@ -577,10 +670,7 @@ import LiveBanner from "../components/LiveBanner.astro";
 
     <div class="current-sponsors">
       <a class="sponsor-card" href="https://lereveantillais.com/" target="_blank" rel="noopener noreferrer">
-        <div class="sponsor-logo">
-          <img src="/images/sponsors/lereve-antillais.jpg" alt="Le Rêve Antillais" />
-        </div>
-        <div class="sponsor-info">
+<div class="sponsor-info">
           <strong>Le Rêve Antillais</strong>
           <p>
             <span class="t-en">Caribbean booking agency — connecting artists, producers and events across the Caribbean.</span>
