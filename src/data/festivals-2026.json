@@ -861,5 +861,142 @@
         "url": ""
       }
     ]
+  },
+  {
+    "name": "St. Kitts Music Festival",
+    "website": "https://stkittsmusicfestival.com/",
+    "description": "Originally called the Shak Shak Festival, this major cultural event that draws visitors for both its music and island atmosphere.",
+    "startDate": "2026-06-25",
+    "endDate": "2026-06-27",
+    "city": "Basseterre",
+    "country": "Saint Kitts and Nevis",
+    "timezone": "America/St_Kitts",
+    "type": "music festival",
+    "details": ["soca", "reggae"],
+    "image": "/images/stkittsmusicfestival.webp",
+    "tickets": [
+      {
+        "name": "Other",
+        "url": "https://events.jad.cash/stkittsmusicfestival/"
+      }
+    ]
+  },
+  {
+    "name": "Barbados Reggae Weekend",
+    "website": "https://www.barbadosreggaeweekend.com/",
+    "description": "3-day reggae experience in Barbados, where the rhythm of reggae fuses with the infectious vibes of the island.",
+    "startDate": "2026-04-24",
+    "endDate": "2026-04-26",
+    "city": "Bridgetown",
+    "country": "Barbados",
+    "timezone": "America/Barbados",
+    "type": "music festival",
+    "details": ["reggae"],
+    "image": "/images/barbadosreggaeweekend.webp",
+    "tickets": [
+      {
+        "name": "Other",
+        "url": "https://www.eventbrite.com/cc/barbados-reggae-weekend-3275819"
+      }
+    ]
+  },
+  {
+    "name": "Reggae Sumfest",
+    "website": "https://reggaesumfest.com/",
+    "description": "Largest music festival in Jamaica and the Caribbean",
+    "startDate": "2026-07-13",
+    "endDate": "2026-07-19",
+    "city": "St. Ann",
+    "country": "Jamaica",
+    "timezone": "America/Jamaica",
+    "type": "music festival",
+    "details": ["reggae", "dancehall"],
+    "image": "/images/reggaesumfest.webp",
+    "tickets": [
+      {
+        "name": "Tixr",
+        "url": "https://www.tixr.com/groups/reggaesumfest/events/taste-of-reggae-sumfest-kartel-mavado-more-plantation-cove-more-179983"
+      }
+    ]
+  },
+  {
+    "name": "Carriacou Maroon & String Band Music Festival",
+    "website": "https://www.facebook.com/carriacoumaroonsbmfest/",
+    "description": "One of the biggest cultural events in Carriacou",
+    "startDate": "2026-04-24",
+    "endDate": "2026-04-26",
+    "city": "",
+    "country": "Grenada",
+    "timezone": "America/Grenada",
+    "type": "music festival",
+    "details": [],
+    "image": "/images/carriacoumaroonsbmfest.webp",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://www.facebook.com/carriacoumaroonsbmfest/"
+      }
+    ]
+  },
+  {
+    "name": "Beachfront Jazz",
+    "website": "https://tobagojazzmusicweekend.com/events/beachfront-jazz-2/",
+    "description": "Tobago’s premier jazz experience",
+    "startDate": "2026-05-02",
+    "endDate": "2026-05-02",
+    "city": "",
+    "country": "Trinidad and Tobago",
+    "timezone": "America/Port_of_Spain",
+    "type": "music festival",
+    "details": ["jazz"],
+    "image": "/images/beachfrontjazz.webp",
+    "tickets": [
+      {
+        "name": "Ticketpal",
+        "url": "https://secure.ticketpal.com/event/b2s-beachfront-jazz"
+      },
+      {
+        "name": "Island eTickets",
+        "url": "https://islandetickets.com/event/httpsislandeticketscomeventjazzunderthes"
+      }
+    ]
+  },
+  {
+    "name": "Dominica Jazz'n Creole",
+    "website": "https://www.facebook.com/carriacoumaroonsbmfest/",
+    "description": "Fusion of jazz music with Creole music, food and culture",
+    "startDate": "2026-05-03",
+    "endDate": "2026-05-03",
+    "city": "",
+    "country": "Dominica",
+    "timezone": "America/Dominica",
+    "type": "music festival",
+    "details": [],
+    "image": "/images/jazzncreole.webp",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://www.facebook.com/carriacoumaroonsbmfest/"
+      }
+    ]
+   },
+  {
+    "name": "Aqua Music Festival",
+    "website": "https://www.aquamusicfestival.com/",
+    "description": "The biggest and wettest caribbean festival",
+    "startDate": "2026-08-01",
+    "endDate": "2026-08-02",
+    "city": "Saint-François",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "music festival",
+    "details": ["dancehall", "shatta"],
+    "image": "/images/aquamusicfestival.webp",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/aqua-music-festival-2026/104945"
+      }
+    ]
   }
 ]

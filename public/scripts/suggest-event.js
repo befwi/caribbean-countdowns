@@ -28,7 +28,7 @@ var TZ_MAP = {
   "Saint Vincent and the Grenadines": "America/St_Vincent",
   "Sint Maarten":           "America/Lower_Princes",
   "Sint Eustatius":         "America/Curacao",
-  "Trinidad and Tobago":    "America/Trinidad",
+  "Trinidad and Tobago":    "America/Port_of_Spain",
   "Turks and Caicos Islands": "America/Grand_Turk",
   "U.S. Virgin Islands":    "America/Virgin",
 

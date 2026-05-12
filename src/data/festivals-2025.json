@@ -564,5 +564,62 @@
         "url": "https://www.bizouk.com/events/details/dspland-2025/100472"
       }
     ]
+  },
+  {
+    "name": "Barbados Reggae Weekend",
+    "website": "https://www.barbadosreggaeweekend.com/",
+    "description": "3-day reggae experience in Barbados, where the rhythm of reggae fuses with the infectious vibes of the island.",
+    "startDate": "2025-04-25",
+    "endDate": "2025-04-27",
+    "city": "Bridgetown",
+    "country": "Barbados",
+    "timezone": "America/Barbados",
+    "type": "music festival",
+    "details": ["reggae"],
+    "image": "/images/barbadosreggaeweekend.webp",
+    "tickets": [
+      {
+        "name": "Other",
+        "url": "https://www.eventbrite.com/cc/barbados-reggae-weekend-3275819"
+      }
+    ]
+  },
+  {
+    "name": "Reggae Sumfest",
+    "website": "https://reggaesumfest.com/",
+    "description": "Largest music festival in Jamaica and the Caribbean",
+    "startDate": "2025-07-13",
+    "endDate": "2025-07-19",
+    "city": "St. Ann",
+    "country": "Jamaica",
+    "timezone": "America/Jamaica",
+    "type": "music festival",
+    "details": ["reggae", "dancehall"],
+    "image": "/images/reggaesumfest.webp",
+    "tickets": [
+      {
+        "name": "",
+        "url": ""
+      }
+    ]
+   },
+  {
+    "name": "Aqua fest",
+    "website": "https://www.aquamusicfestival.com/",
+    "description": "Caribbean wet festival",
+    "startDate": "2025-08-02",
+    "endDate": "2025-08-03",
+    "city": "Saint-François",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "music festival",
+    "details": ["dancehall", "shatta"],
+    "image": "/images/aquamusicfestival.webp",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/aqua-music-festival-2025/88070"
+      }
+    ]
   }
 ]

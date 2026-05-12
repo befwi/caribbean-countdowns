@@ -71,5 +71,43 @@
         "url": "https://www.guadarun.com/"
       }
     ]
+  },
+  {
+    "name": "Barbados Reggae Weekend",
+    "website": "https://www.barbadosreggaeweekend.com/",
+    "description": "3-day reggae experience in Barbados, where the rhythm of reggae fuses with the infectious vibes of the island.",
+    "startDate": "2027-04-23",
+    "endDate": "2027-04-25",
+    "city": "Bridgetown",
+    "country": "Barbados",
+    "timezone": "America/Barbados",
+    "type": "music festival",
+    "details": ["reggae"],
+    "image": "/images/barbadosreggaeweekend.webp",
+    "tickets": [
+      {
+        "name": "Eventbrite",
+        "url": "https://www.eventbrite.com/cc/barbados-reggae-weekend-3275819"
+      }
+    ]
+  },
+  {
+    "name": "Carriacou Maroon & String Band Music Festival",
+    "website": "https://www.facebook.com/carriacoumaroonsbmfest/",
+    "description": "One of the biggest cultural events in Carriacou",
+    "startDate": "2027-04-23",
+    "endDate": "2027-04-25",
+    "city": "",
+    "country": "Grenada",
+    "timezone": "America/Grenada",
+    "type": "music festival",
+    "details": [],
+    "image": "/images/carriacoumaroonsbmfest.webp",
+    "tickets": [
+      {
+        "name": "Website",
+        "url": "https://www.facebook.com/carriacoumaroonsbmfest/"
+      }
+    ]
   }
 ]
