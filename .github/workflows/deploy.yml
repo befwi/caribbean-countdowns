@@ -28,7 +28,8 @@ jobs:
           AWS_DEFAULT_REGION: auto
         run: |
           aws s3 sync s3://caribbean-data/ src/data/ \
-            --endpoint-url https://${{ secrets.CF_ACCOUNT_ID }}.r2.cloudflarestorage.com
+            --endpoint-url https://${{ secrets.CF_ACCOUNT_ID }}.r2.cloudflarestorage.com \
+            --quiet
 
       - uses: actions/setup-node@v4
         with:
