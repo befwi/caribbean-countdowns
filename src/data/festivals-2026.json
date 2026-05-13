@@ -998,5 +998,24 @@
         "url": "https://www.bizouk.com/events/details/aqua-music-festival-2026/104945"
       }
     ]
+   },
+  {
+    "name": "All Stars Festival Kompa Zouk",
+    "website": "https://www.allstarsfestival-guyane.com/",
+    "description": "",
+    "startDate": "2026-07-11",
+    "endDate": "2026-07-11",
+    "city": "Remire-Montjoly",
+    "country": "Guadeloupe",
+    "timezone": "America/Guadeloupe",
+    "type": "music festival",
+    "details": ["zouk", "kompa"],
+    "image": "",
+    "tickets": [
+      {
+        "name": "Bizouk",
+        "url": "https://www.bizouk.com/events/details/all-stars-festival-kompa-zouk/116361"
+      }
+    ]
   }
 ]
