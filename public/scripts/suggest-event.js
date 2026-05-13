@@ -3,7 +3,6 @@ var LANGS = ["en", "fr", "kr", "es"];
 var lang  = localStorage.getItem("lang") || "en";
 
 var TZ_MAP = {
-  // Atlantic Standard Time (UTC-4)
   "Antigua and Barbuda":    "America/Antigua",
   "Anguilla":               "America/Anguilla",
   "Aruba":                  "America/Aruba",
@@ -31,8 +30,6 @@ var TZ_MAP = {
   "Trinidad and Tobago":    "America/Port_of_Spain",
   "Turks and Caicos Islands": "America/Grand_Turk",
   "U.S. Virgin Islands":    "America/Virgin",
-
-  // Eastern Standard Time (UTC-5)
   "Bahamas":                "America/Nassau",
   "Bermuda":                "America/Bermuda",
   "Cuba":                   "America/Havana",
@@ -40,8 +37,6 @@ var TZ_MAP = {
   "Haiti":                  "America/Port-au-Prince",
   "Jamaica":                "America/Jamaica",
   "Puerto Rico":            "America/Puerto_Rico",
-
-  // Other timezones
   "French Guiana":          "America/Cayenne",
   "Suriname":               "America/Paramaribo",
 };
@@ -57,6 +52,14 @@ var TICKET_PLATFORMS = [
   { name: "4 Circles Tickets", placeholder: "https://4circlestickets.com/..." },
   { name: "Sabouj",            placeholder: "https://sabouj.fr/..." },
   { name: "Other",             placeholder: "https://..." },
+];
+
+var ECO_CRITERIA = [
+  { id: "transport",  label: { en: "Shared transport organized (shuttle, carpool)",  fr: "Transport partagé organisé (navette, covoiturage)",      kr: "Transpò patajé òganize (navèt, covwatiraj)",           es: "Transporte compartido organizado (lanzadera, carpool)" } },
+  { id: "no_plastic", label: { en: "Single-use plastic banned on site",              fr: "Plastique à usage unique interdit sur le site",           kr: "Plastik itilizasyon inikal entèdi sou sit",            es: "Plástico de un solo uso prohibido en el recinto" } },
+  { id: "reusable",   label: { en: "Reusable cups and plates used",                  fr: "Gobelets et assiettes réutilisables utilisés",            kr: "Gode ak asyèt reutilizab itilize",                    es: "Vasos y platos reutilizables utilizados" } },
+  { id: "water",      label: { en: "Free water refill stations on site",             fr: "Points de recharge d'eau gratuits sur le site",           kr: "Estasyon ranplisman dlo gratis sou sit",               es: "Puntos de recarga de agua gratuitos en el recinto" } },
+  { id: "ngo",        label: { en: "Partners with an environmental NGO",             fr: "Partenariat avec une ONG environnementale",               kr: "Patnè ak yon ONG anviwonmantal",                      es: "Socio de una ONG medioambiental" } },
 ];
 
 var LABELS = {
@@ -121,15 +124,17 @@ var STEPS = [
   { id:"tickets",     required:false, type:"tickets",
     question:{ en:"Where can people buy tickets?",        fr:"Où peut-on acheter des billets ?",        kr:"Ki kote moun ka achte tikè ?",         es:"¿Dónde puede la gente comprar entradas?" },
     hint:    { en:"Select platforms and paste the URL. Leave all blank if free.", fr:"Sélectionnez les plateformes et collez l'URL. Tout vide = gratuit.", kr:"Chwazi platfòm yo epi kole URL. Tout vide = gratis.", es:"Selecciona plataformas y pega la URL. Todo vacío = gratuito." } },
+  { id:"eco",         required:false, type:"eco",
+    question:{ en:"Does this festival have any of these practices?",          fr:"Ce festival applique-t-il certaines de ces pratiques ?",       kr:"Èske fèstival sa a gen okenn nan pratik sa yo ?",          es:"¿Este festival tiene alguna de estas prácticas?" },
+    hint:    { en:"Select only what you know for certain — skip if unsure",   fr:"Cochez uniquement ce que vous savez avec certitude",           kr:"Chwazi sèlman sa ou konnen avèk sèten — pase si pa sèten", es:"Selecciona solo lo que sepas con certeza — omite si no estás seguro" } },
   { id:"notes",       required:false, type:"textarea",
     question:{ en:"Anything else to tell us?",            fr:"Autre chose à nous dire ?",               kr:"Eske gen lòt bagay ou vle di nou ?",   es:"¿Algo más que quieras decirnos?" },
-    hint:    { en:"Edition number, contact, special details... (not included in the listing)", fr:"Numéro d'édition, contact, détails... (non inclus dans la fiche)", kr:"Nimewo edisyon, contact, detay... (pa enkli nan lis la)", es:"Número de edición, contacto, detalles... (no se incluye en el listado)" } },
+    hint:    { en:"Edition number, contact, sustainability page URL... (not included in the listing)", fr:"Numéro d'édition, contact, URL page durabilité... (non inclus dans la fiche)", kr:"Nimewo edisyon, contact, URL paj dirab... (pa enkli nan lis la)", es:"Número de edición, contacto, URL página sostenibilidad... (no se incluye en el listado)" } },
 ];
 
 var currentStep = 0;
-var state = { details: [], tickets: [] };
+var state = { details: [], tickets: [], ecoSignals: [] };
 
-/* ── Lang ── */
 function applyLang() {
   LANGS.forEach(function(l) {
     document.querySelectorAll(".t-" + l).forEach(function(el) {
@@ -149,7 +154,6 @@ window.setLang = function(l) {
   if (currentStep < STEPS.length) { renderStep(currentStep); } else { renderFinal(); }
 };
 
-/* ── Helpers ── */
 function escHtml(s) {
   return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
@@ -180,6 +184,7 @@ function hasValue(n) {
   if (step.type === "date-range")  return !!(state.startDate || state.endDate);
   if (step.type === "multiselect") return state.details.length > 0;
   if (step.type === "tickets")     return state.tickets.length > 0;
+  if (step.type === "eco")         return state.ecoSignals.length > 0;
   return !!(state[step.id]);
 }
 
@@ -198,7 +203,6 @@ function updateNav(n) {
   }
 }
 
-/* ── renderStep ── */
 function renderStep(n) {
   var step      = STEPS[n];
   var container = document.getElementById("wizardStep");
@@ -249,6 +253,13 @@ function renderStep(n) {
             + '<button class="detail-option' + (sel ? " selected" : "") + '" data-platform="' + escHtml(p.name) + '" type="button">' + escHtml(p.name) + '</button>'
             + '<input type="url" class="platform-url step-input' + (sel ? " visible" : "") + '" data-platform="' + escHtml(p.name) + '" placeholder="' + escHtml(p.placeholder) + '" value="' + escHtml(existing ? existing.url : "") + '" />'
             + '</div>';
+    });
+    html += '</div>';
+  } else if (step.type === "eco") {
+    html += '<div class="details-grid" id="ecoGrid">';
+    ECO_CRITERIA.forEach(function(c) {
+      var sel = state.ecoSignals.indexOf(c.id) !== -1;
+      html += '<button class="detail-option' + (sel ? " selected" : "") + '" data-eco="' + escHtml(c.id) + '" type="button">' + escHtml(c.label[lang] || c.label.en) + '</button>';
     });
     html += '</div>';
   }
@@ -308,6 +319,15 @@ function renderStep(n) {
         if (existing) existing.url = urlInput.value.trim();
       });
     });
+  } else if (step.type === "eco") {
+    container.querySelectorAll("button[data-eco]").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var v = btn.getAttribute("data-eco"), idx = state.ecoSignals.indexOf(v);
+        if (idx === -1) { state.ecoSignals.push(v); btn.classList.add("selected"); }
+        else            { state.ecoSignals.splice(idx, 1); btn.classList.remove("selected"); }
+        updateNav(n);
+      });
+    });
   } else {
     var input = container.querySelector("#stepInput");
     if (input) {
@@ -318,7 +338,6 @@ function renderStep(n) {
   updateNav(n);
 }
 
-/* ── saveStep ── */
 function saveStep(n) {
   var step = STEPS[n];
   if (step.type === "text" || step.type === "url" || step.type === "textarea") {
@@ -332,10 +351,9 @@ function saveStep(n) {
     if (sd) state.startDate = sd.value;
     if (ed) state.endDate   = ed.value || (sd ? sd.value : "");
   }
-  // multiselect and tickets update state in real-time via their event listeners
+  // multiselect, tickets, eco update state in real-time via event listeners
 }
 
-/* ── Final screen ── */
 function buildJSON() {
   var q = JSON.stringify;
   var tickets = state.tickets.filter(function(t) { return t.url; });
@@ -358,6 +376,7 @@ function buildJSON() {
     '    "details": ['    + state.details.map(q).join(", ") + "]",
     '    "image": '       + q(state.image        || ""),
     '    "tickets": '     + ticketsStr,
+    '    "eco": ['        + state.ecoSignals.map(q).join(", ") + "]",
   ];
   return "  {\n" + fields.join(",\n") + "\n  }";
 }
