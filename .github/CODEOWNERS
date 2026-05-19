@@ -1,1 +1,11 @@
- * @countdowns-co
+* @mangroroot
+
+  → Commit directly to a new branch → open PR → merge.
+
+  Or via terminal:
+  git checkout -b fix/codeowners
+  echo "* @mangroroot" > .github/CODEOWNERS
+  git add .github/CODEOWNERS
+  git commit -m "fix: correct CODEOWNERS username"
+  git push origin fix/codeowners
+  gh pr create --fill && gh pr merge --squash --delete-branch --auto
