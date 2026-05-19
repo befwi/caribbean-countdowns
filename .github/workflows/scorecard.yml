@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
 
@@ -37,13 +37,13 @@ jobs:
           publish_results: true
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4 # pin SHA after first run
+        uses: actions/upload-artifact@v7 # pin SHA after first run
         with:
           name: SARIF file
           path: results.sarif
           retention-days: 5
 
       - name: Upload to code-scanning dashboard
-        uses: github/codeql-action/upload-sarif@v3 # pin SHA after first run
+        uses: github/codeql-action/upload-sarif@v4 # pin SHA after first run
         with:
           sarif_file: results.sarif
