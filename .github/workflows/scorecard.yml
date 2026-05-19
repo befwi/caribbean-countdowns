@@ -1,0 +1,49 @@
+name: OpenSSF Scorecard
+
+# After pushing, run once to SHA-pin the action tags:
+#   npx pin-github-action .github/workflows/scorecard.yml
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "30 1 * * 6"  # weekly, Saturday 01:30 UTC
+  pull_request:
+    branches: [main]
+
+permissions: read-all
+
+jobs:
+  analysis:
+    name: Scorecard analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      id-token: write
+      contents: read
+      actions: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          persist-credentials: false
+
+      - name: Run Scorecard analysis
+        uses: ossf/scorecard-action@v2.4.1 # pin SHA after first run
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          publish_results: true
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4 # pin SHA after first run
+        with:
+          name: SARIF file
+          path: results.sarif
+          retention-days: 5
+
+      - name: Upload to code-scanning dashboard
+        uses: github/codeql-action/upload-sarif@v3 # pin SHA after first run
+        with:
+          sarif_file: results.sarif
