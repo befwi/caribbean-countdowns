@@ -121,7 +121,8 @@ import LiveBanner from "../components/LiveBanner.astro";
     .grade-Aplus  { color: #4ade80; background: #0d2a0d; border: 1px solid #166534; }
     .grade-A      { color: #a3e635; background: #1a2a08; border: 1px solid #365314; }
     .grade-clean  { color: #5eead4; background: #0d2a2a; border: 1px solid #0d9488; }
-    .grade-safe   { color: #5eead4; background: #0d2a2a; border: 1px solid #0d9488; font-size: 13px; }
+    .grade-safe    { color: #5eead4; background: #0d2a2a; border: 1px solid #0d9488; font-size: 13px; }
+    .grade-pending { color: #a78bfa; background: #1a0d2a; border: 1px solid #6d28d9; font-size: 12px; }
 
     .card-desc {
       font-size: 12px;
@@ -171,6 +172,68 @@ import LiveBanner from "../components/LiveBanner.astro";
       flex-shrink: 0;
     }
     .contact-btn:hover { background: #0d3535; }
+
+    .pipeline-card {
+      background: #0d1a1a;
+      border: 1px solid #1a3030;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 48px;
+    }
+
+    .pipeline-checks {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .check-icon {
+      color: #4ade80;
+      font-size: 14px;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .check-label strong {
+      color: #e0e0e0;
+      font-size: 12px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .check-label .check-desc {
+      font-size: 11px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .badge-img {
+      height: 22px;
+      border-radius: 3px;
+      display: block;
+    }
+
+    .pipeline-footer {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid #1a3030;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pipeline-footer-label {
+      font-size: 11px;
+      color: #555;
+    }
 
   </style>
 </head>
@@ -344,6 +407,100 @@ import LiveBanner from "../components/LiveBanner.astro";
       </a>
     </div>
 
+    <div class="score-card">
+      <div class="card-header">
+        <span class="service-name">OpenSSF Scorecard</span>
+        <span class="grade-badge grade-pending">Pending</span>
+      </div>
+      <p class="card-desc">
+        <span class="t-en">Automated supply-chain security analysis — checks SHA-pinned dependencies, branch protection, token permissions, and CI hygiene. Score out of 10. First workflow run pending.</span>
+        <span class="t-fr">Analyse automatique de la chaîne d'approvisionnement — vérifie les dépendances épinglées, la protection des branches, les permissions et l'hygiène CI. Score sur 10. Premier run en attente.</span>
+        <span class="t-kr">Analiz otomatik sekirite chèn aprovizyon — verifye depandans SHA-epingle, pwoteksyon branch, pèmisyon token ak ijyèn CI. Nòt sou 10. Premye run an atant.</span>
+        <span class="t-es">Análisis automatizado de cadena de suministro — verifica dependencias SHA-ancladas, protección de ramas, permisos de token e higiene CI. Puntuación sobre 10. Primer run pendiente.</span>
+      </p>
+      <a class="card-link" href="https://scorecard.dev/viewer/?uri=github.com/countdowns-co/caribbean-countdowns" target="_blank" rel="noopener noreferrer">
+        <span class="t-en">View full report ↗</span>
+        <span class="t-fr">Voir le rapport complet ↗</span>
+        <span class="t-kr">Wè rapò konplè ↗</span>
+        <span class="t-es">Ver informe completo ↗</span>
+      </a>
+    </div>
+
+  </div>
+
+  <p class="section-title">
+    <span class="t-en">Build Integrity</span>
+    <span class="t-fr">Intégrité du build</span>
+    <span class="t-kr">Entegrite bild la</span>
+    <span class="t-es">Integridad del build</span>
+  </p>
+  <div class="pipeline-card">
+    <div class="pipeline-checks">
+
+      <div class="check-item">
+        <span class="check-icon">✓</span>
+        <span class="check-label">
+          <strong>SHA-pinned Actions</strong>
+          <span class="check-desc">
+            <span class="t-en">All CI actions pinned to exact commit SHA — prevents malicious tag overwrites.</span>
+            <span class="t-fr">Actions CI épinglées à un SHA exact — empêche la substitution malveillante de tag.</span>
+            <span class="t-kr">Aksyon CI epingle nan SHA egzak — anpeche ranplasman tag malveyan.</span>
+            <span class="t-es">Acciones CI ancladas a un SHA exacto — previene sobrescrituras de etiquetas maliciosas.</span>
+          </span>
+        </span>
+      </div>
+
+      <div class="check-item">
+        <span class="check-icon">✓</span>
+        <span class="check-label">
+          <strong>npm ci — deterministic installs</strong>
+          <span class="check-desc">
+            <span class="t-en">Lock-file-strict — no silent dependency drift between builds.</span>
+            <span class="t-fr">Strict selon le lock-file — pas de dérive silencieuse des dépendances.</span>
+            <span class="t-kr">Strict sou fichye lock — pa gen chanjman silen depandans.</span>
+            <span class="t-es">Estricto según lock-file — sin drift silencioso de dependencias.</span>
+          </span>
+        </span>
+      </div>
+
+      <div class="check-item">
+        <span class="check-icon">✓</span>
+        <span class="check-label">
+          <strong>JSON validated pre-build</strong>
+          <span class="check-desc">
+            <span class="t-en">Event data checked with python3 — malformed JSON breaks the pipeline, not the site.</span>
+            <span class="t-fr">Données vérifiées avec python3 — un JSON invalide bloque le pipeline, pas le site.</span>
+            <span class="t-kr">Done evènman verifye ak python3 — JSON enfòm kase pipeline a, pa sit la.</span>
+            <span class="t-es">Datos verificados con python3 — JSON malformado rompe el pipeline, no el sitio.</span>
+          </span>
+        </span>
+      </div>
+
+      <div class="check-item">
+        <span class="check-icon">✓</span>
+        <span class="check-label">
+          <strong>npm audit — CVE gate</strong>
+          <span class="check-desc">
+            <span class="t-en">High-severity CVEs block every deploy — no known vulnerabilities reach production.</span>
+            <span class="t-fr">Les CVE de haute sévérité bloquent chaque deploy — aucune vulnérabilité connue en production.</span>
+            <span class="t-kr">CVE wo nivo bloke chak deploy — pa gen vilnerabilite konnu nan pwodiksyon.</span>
+            <span class="t-es">Las CVE de alta gravedad bloquean cada deploy — ninguna vulnerabilidad conocida llega a producción.</span>
+          </span>
+        </span>
+      </div>
+
+    </div>
+    <div class="pipeline-footer">
+      <span class="pipeline-footer-label">
+        <span class="t-en">Live deploy status:</span>
+        <span class="t-fr">Statut du deploy :</span>
+        <span class="t-kr">Estati deploy:</span>
+        <span class="t-es">Estado del deploy:</span>
+      </span>
+      <a href="https://github.com/countdowns-co/caribbean-countdowns/actions/workflows/deploy.yml" target="_blank" rel="noopener noreferrer">
+        <img class="badge-img" src="https://github.com/countdowns-co/caribbean-countdowns/actions/workflows/deploy.yml/badge.svg" alt="Deploy status" />
+      </a>
+    </div>
   </div>
 
   <p class="section-title">
