@@ -44,6 +44,6 @@ jobs:
           retention-days: 5
 
       - name: Upload to code-scanning dashboard
-        uses: github/codeql-action/upload-sarif@v3 # pin SHA after first run
+        uses: github/codeql-action/upload-sarif@v4 # pin SHA after first run
         with:
           sarif_file: results.sarif
