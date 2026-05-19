@@ -37,3 +37,4 @@ The site is designed to minimise compute: fully static, edge-served, no server r
 ## 📄 Licence
 
 MIT
+
