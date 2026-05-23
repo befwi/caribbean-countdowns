@@ -197,3 +197,26 @@ if (searchInput) {
   });
 }
 
+// Past events toggle
+var pastCard    = document.getElementById("past-toggle-card");
+var pastSection = document.getElementById("past-events-section");
+var pastOpen    = false;
+
+if (pastCard && pastSection) {
+  function togglePast() {
+    pastOpen = !pastOpen;
+    pastSection.style.display = pastOpen ? "" : "none";
+    pastCard.classList.toggle("open", pastOpen);
+    pastCard.setAttribute("aria-expanded", String(pastOpen));
+    var l = pastCard.querySelector(".past-chevron-l");
+    var r = pastCard.querySelector(".past-chevron-r");
+    if (l) l.textContent = pastOpen ? "▼" : "▶";
+    if (r) r.textContent = pastOpen ? "▼" : "◀";
+    if (pastOpen) applyFilters();
+  }
+  pastCard.addEventListener("click", togglePast);
+  pastCard.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); togglePast(); }
+  });
+}
+
