@@ -1,5 +1,6 @@
 ---
 import LiveBanner from "../components/LiveBanner.astro";
+import PageFooter from "../components/PageFooter.astro";
 import ecoCriteria from "../data/eco-criteria.json";
 import f2024 from "../data/festivals-2024.json";
 import f2025 from "../data/festivals-2025.json";
@@ -558,5 +559,6 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
   </div>
 
   <script is:inline src="/scripts/lang.js" defer></script>
+<PageFooter />
 </body>
 </html>

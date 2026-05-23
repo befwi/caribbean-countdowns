@@ -25,15 +25,14 @@ const enriched = festivals
     return new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
   });
 
-const eventTypes = ["All", "music festival", "carnival", "sailing race", "art", "sport", "other"];
+const eventTypes = ["All", "music", "sport", "sailing", "art", "other"];
 const eventTypeLabels: Record<string, Record<string, string>> = {
-  "All":           { en: "All types",          fr: "Tous les types",      kr: "Tout kalité",        es: "Todos los tipos" },
-  "music festival":{ en: "music festival",      fr: "festival de musique", kr: "mizik fèstival",     es: "festival de música" },
-  "carnival":      { en: "carnival",            fr: "carnaval",            kr: "kanaval",            es: "carnaval" },
-  "sailing race":  { en: "sailing race",        fr: "course à la voile",   kr: "kous vwal",          es: "carrera de vela" },
-  "art":           { en: "art",                 fr: "art",                 kr: "atizay",              es: "arte" },
-  "sport":         { en: "sport",               fr: "sport",               kr: "spo",           es: "deporte" },
-  "other":         { en: "other",               fr: "autre",               kr: "le restan",           es: "otro" },
+  "All":     { en: "All types",   fr: "Tous les types", kr: "Tout kalité",  es: "Todos los tipos" },
+  "music":   { en: "Music",       fr: "Musique",        kr: "Mizik",        es: "Música" },
+  "sport":   { en: "Sport",       fr: "Sport",          kr: "Spo",          es: "Deporte" },
+  "sailing": { en: "Sailing",     fr: "Voile",          kr: "Vwal",         es: "Vela" },
+  "art":     { en: "Art",         fr: "Art",            kr: "Atizay",       es: "Arte" },
+  "other":   { en: "Other",       fr: "Autre",          kr: "Le restan",    es: "Otro" },
 };
 
 const details = ["All", ...Array.from(new Set(festivals.flatMap(f => f.details ?? []).filter(v => v)))];
@@ -43,7 +42,9 @@ const lastUpdateEn = new Date().toLocaleDateString("en-US", { day: "numeric", mo
 const lastUpdateFr = new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
 const lastUpdateEs = new Date().toLocaleDateString("es-ES", { day: "numeric", month: "long", year: "numeric" });
 
-const liveFestivals = enriched.filter(f => f.status === "LIVE");
+const liveFestivals   = enriched.filter(f => f.status === "LIVE");
+const endedFestivals  = enriched.filter(f => f.status === "ENDED");
+const activeFestivals = enriched.filter(f => f.status !== "ENDED");
 
 const { ngo } = ngos;
 const { sponsor } = sponsors;
@@ -363,6 +364,44 @@ function splitLines(text: string) {
       flex-shrink: 0;
     }
 
+    /* Past events toggle */
+    .past-toggle-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 16px;
+      margin: 4px 0 4px;
+      background: transparent;
+      border: 1px solid #1a1a1a;
+      border-radius: 5px;
+      cursor: pointer;
+      user-select: none;
+      transition: border-color 0.15s, background 0.15s;
+      outline: none;
+    }
+    .past-toggle-card:hover { border-color: #2e2e2e; background: #0a0a0a; }
+    .past-toggle-card:focus-visible { border-color: #444; }
+    .past-toggle-card.open { border-color: #2e2e2e; }
+    .past-chevron { color: #2e2e2e; font-size: 11px; flex-shrink: 0; }
+    .past-label {
+      flex: 1;
+      text-align: center;
+      font-size: 11px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .past-count {
+      font-size: 10px;
+      color: #2a2a2a;
+      font-family: monospace;
+      padding: 1px 5px;
+      border: 1px solid #1e1e1e;
+      border-radius: 3px;
+    }
+
     @media (max-width: 600px) {
       .sponsor-cause {
         flex-direction: column;
@@ -526,10 +565,34 @@ function splitLines(text: string) {
 
     <hr class="divider" />
 
-    <!-- Festival list -->
-    {enriched.map(festival => (
+    <!-- Festival list — active events -->
+    {activeFestivals.map(festival => (
       <FestivalRow festival={festival} />
     ))}
+
+    <!-- Past events toggle card -->
+    {endedFestivals.length > 0 && (
+      <div id="past-toggle-card" class="past-toggle-card" role="button" tabindex="0" aria-expanded="false">
+        <span class="past-chevron past-chevron-l">▶</span>
+        <span class="past-label">
+          <span class="t-en">Past events</span>
+          <span class="t-fr">Événements passés</span>
+          <span class="t-kr">Évènman ki fini</span>
+          <span class="t-es">Eventos pasados</span>
+          <span class="past-count">{endedFestivals.length}</span>
+        </span>
+        <span class="past-chevron past-chevron-r">◀</span>
+      </div>
+    )}
+
+    <!-- Past events — hidden by default -->
+    {endedFestivals.length > 0 && (
+      <div id="past-events-section" style="display:none">
+        {endedFestivals.map(festival => (
+          <FestivalRow festival={festival} />
+        ))}
+      </div>
+    )}
 
     <div style="text-align:center;padding:32px 0 8px;">
       <!-- Option A : visitor-badge.laobi.icu (actif) -->
