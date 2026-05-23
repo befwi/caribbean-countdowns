@@ -1,0 +1,79 @@
+# Contributing
+
+Thank you for your interest in contributing to Caribbean Countdowns. This document explains how the project works and what is expected from contributors.
+
+## Ways to contribute
+
+- **Report a bug** — open a GitHub issue describing what you observed and what you expected
+- **Suggest a festival** — use the [suggest-event form](https://caribbean.countdowns.co/suggest-event/) on the live site
+- **Propose a feature** — open an issue before writing code; discuss the approach first
+- **Submit a pull request** — see the workflow below
+
+## Branch protection and pull request requirement
+
+All changes to `main` require a pull request. Direct pushes to `main` are blocked. Every PR must pass the `build` CI check before it can be merged.
+
+Branch naming:
+
+| Type | Pattern | Example |
+|---|---|---|
+| New event / data | `content/…` | `content/crop-over-2026` |
+| New feature | `feat/…` | `feat/music-page` |
+| Bug fix | `fix/…` | `fix/countdown-timezone` |
+| Config / CI | `chore/…` | `chore/dependabot` |
+| Docs | `docs/…` | `docs/architecture` |
+
+## Tech stack
+
+- **Astro** (static output) — pages in `src/pages/`, components in `src/components/`
+- **JavaScript** — all scripts in `public/scripts/*.js` as classic (non-module) files
+- **Data** — festival JSON files in `src/data/`
+- **Images** — WebP format, `public/images/`
+
+## Coding standards
+
+### JavaScript
+
+- Scripts go in `public/scripts/` — never inline in `.astro` files
+- Script tags must use: `<script is:inline src="/scripts/x.js" defer></script>`
+- Never use `onclick` attributes — use `addEventListener` from the external script file
+- The CSP enforces `script-src 'self'` — inline scripts are blocked at the browser level
+
+### HTML / Astro
+
+- Semantic HTML elements (`<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`)
+- ARIA attributes where needed for interactive elements
+- No hardcoded English-only strings in templates — use the `t-en`/`t-fr`/`t-kr`/`t-es` class pattern
+
+### Languages
+
+The site supports four languages: English (`t-en`), French (`t-fr`), Kréyol haïtien (`t-kr`), Spanish (`t-es`). Any user-facing text added to `.astro` pages must include all four language variants.
+
+### Dependencies
+
+- Adding a new npm dependency requires justification in the PR description
+- New dependencies must pass `npm audit` at high severity level before merging
+
+## Tests and CI
+
+The CI pipeline (`build` job in `.github/workflows/deploy.yml`) runs on every PR:
+
+1. Validates all JSON files with a Python schema check — invalid JSON fails the build
+2. Runs `npm audit` — high-severity CVEs block the merge
+3. Runs `npm run build` — Astro must build without errors
+
+There is no separate test command. The build pipeline is the test suite. New functionality that introduces JSON data must be valid against the existing schema. New scripts must not break the Astro build.
+
+## Sign-off (DCO)
+
+By submitting a pull request you certify that you have the right to contribute the code under the project's MIT licence, and you agree to the [Developer Certificate of Origin](https://developercertificate.org). Add a sign-off line to your commits:
+
+```
+git commit -s -m "feat: add Crop Over festival"
+```
+
+This adds `Signed-off-by: Your Name <your@email.com>` to the commit message automatically.
+
+## Security issues
+
+Do not open a public issue for security vulnerabilities. Follow the process described in [SECURITY.md](SECURITY.md).
