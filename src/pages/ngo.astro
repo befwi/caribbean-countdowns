@@ -1,5 +1,6 @@
 ---
 import LiveBanner from "../components/LiveBanner.astro";
+import PageFooter from "../components/PageFooter.astro";
 import ngos from "../data/ngos.json";
 import quizQuestions from "../data/quiz-questions.json";
 const { ngo } = ngos;
@@ -925,5 +926,6 @@ const { ngo } = ngos;
   data-period-end={ngo.sponsorship.end}></div>
 <div id="quiz-data" hidden data-questions={JSON.stringify(quizQuestions)}></div>
 <script is:inline src="/scripts/ngo.js" defer></script>
+<PageFooter />
 </body>
 </html>
