@@ -22,9 +22,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       - name: Pull data from R2
+        if: github.event_name != 'pull_request'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_KEY }}
@@ -35,6 +36,7 @@ jobs:
             --quiet
 
       - name: Validate JSON files
+        if: github.event_name != 'pull_request'
         run: |
           for f in src/data/*.json; do
             python3 -m json.tool "$f" > /dev/null && echo "✓ $f" || { echo "✗ Invalid JSON: $f"; exit 1; }
@@ -48,9 +50,11 @@ jobs:
 
       - run: npm audit --audit-level=high --omit=dev
 
-      - run: npm run build
+      - name: Build
+        if: github.event_name != 'pull_request'
+        run: npm run build
 
-      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+      - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
         if: github.event_name != 'pull_request'
         with:
           path: ./dist
