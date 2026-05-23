@@ -58,11 +58,20 @@ The site supports four languages: English (`t-en`), French (`t-fr`), Kréyol ha�
 
 The CI pipeline (`build` job in `.github/workflows/deploy.yml`) runs on every PR:
 
-1. Validates all JSON files with a Python schema check — invalid JSON fails the build
-2. Runs `npm audit` — high-severity CVEs block the merge
-3. Runs `npm run build` — Astro must build without errors
+1. Runs `npm test` (`astro check`) — validates all Astro components and TypeScript types
+2. Runs `npm run lint` (ESLint) — checks JavaScript files in `public/scripts/` for errors
+3. Validates all JSON files with a Python schema check — invalid JSON fails the build
+4. Runs `npm audit` — high-severity CVEs block the merge
+5. Runs `npm run build` — Astro must build without errors
 
-There is no separate test command. The build pipeline is the test suite. New functionality that introduces JSON data must be valid against the existing schema. New scripts must not break the Astro build.
+Run the test suite and linter locally:
+
+```bash
+npm test
+npm run lint
+```
+
+**Policy:** when major new functionality is added, tests for that functionality must be added to the automated test suite before the PR is merged.
 
 ## Sign-off (DCO)
 
