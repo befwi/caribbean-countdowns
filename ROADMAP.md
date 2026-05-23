@@ -1,6 +1,6 @@
 # Roadmap
 
-This document outlines the planned direction for Caribbean Countdowns. It reflects current intentions — priorities may shift based on contributor interest and community feedback.
+This document outlines the planned technical direction for Caribbean Countdowns. Priorities may shift based on contributor interest and community feedback.
 
 ## Current state (v2026.05)
 
@@ -9,36 +9,34 @@ This document outlines the planned direction for Caribbean Countdowns. It reflec
 - Eco-evaluator — sustainability self-assessment for festival organisers
 - NGO spotlight — community progress tracker with gamification
 - Suggest-a-festival wizard — 12-step submission form
-- Fully static site: no server, no database, edge-served via Cloudflare
-- CI/CD pipeline with JSON validation, npm audit, and automated deploy
-- OpenSSF Scorecard 8.0/10, CII Best Practices badge
+- Fully static site: no server, no database, edge-served
+- CI/CD pipeline with type checking, linting, dependency audit, and automated deploy
+- OpenSSF Scorecard 8.1/10, CII Best Practices Passing badge
 
 ## Near term (next 3 months)
 
-- **More festival data** — ongoing additions for 2026 and early 2027 events across the Caribbean
-- **Caribbean music / riddim page** — curated playlist or chart integration (Spotify, Deezer, Shazam) highlighting Caribbean artists and riddim culture
-- **Sandy Ground Village Festival image** — missing image for the Saint-Martin entry
-- **Pending event images** — Éko Festival Péyi, Festival Lannuit, KRÉYÒL PRIDE (dates TBC)
+- **Festival data expansion** — ongoing additions for 2026 and early 2027 events
+- **Missing event images** — Sandy Ground Village Festival, Éko Festival Péyi, Festival Lannuit, KRÉYÒL PRIDE
 - **CII Best Practices silver level** — complete remaining self-assessment criteria
+- **Automated deploy trigger** — data update in private storage triggers build automatically, removing the manual step
 
 ## Medium term (3–9 months)
 
-- **Search and filter** — filter festivals by island, type (music/art/sport/carnival), or month
-- **iCal export** — one-click add-to-calendar for individual festivals
-- **Automated R2 → deploy trigger** — upload JSON to Cloudflare R2 → build fires automatically, no manual step
-- **Expanded NGO section** — additional partner organisations beyond L'Asso-Mer
+- **Search and filter** — filter festivals by island, type, or month without a server
+- **iCal export** — generate `.ics` files client-side for add-to-calendar functionality
+- **Expanded NGO section** — additional partner organisations, additional data fields
+- **Accessibility audit** — systematic review against WCAG 2.1 AA
 
 ## Long term
 
-- **Multi-year archive** — browse past editions, historical attendance data
+- **Multi-year archive** — static pages for past editions
 - **Community submissions pipeline** — automated triage of suggest-event form responses
-- **Contributor growth** — onboard at least one additional maintainer to improve bus factor
+- **Additional maintainer** — onboard more maintainers to grow the contributor team
 
 ## Out of scope
 
 - User accounts or authentication
 - Server-side rendering
-- Monetisation
 - Events outside the Caribbean and French Guiana region
 
 ## Feedback

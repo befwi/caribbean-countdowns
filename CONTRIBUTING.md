@@ -32,14 +32,23 @@ Branch naming:
 
 ## Coding standards
 
+The project follows these style guides for its primary languages. Contributions must generally comply. ESLint automatically enforces compliance for JavaScript on every PR.
+
 ### JavaScript
 
+Style guide: [MDN JavaScript guidelines](https://developer.mozilla.org/en-US/docs/MDN/Writing_guidelines/Writing_style_guide/Code_style_guide/JavaScript). Key rules enforced by ESLint (`eslint.config.js`):
+
+- Strict equality (`===`) required — `==` is an error
+- No undefined variables (`no-undef` error)
+- No unused variables (`no-unused-vars` warning)
 - Scripts go in `public/scripts/` — never inline in `.astro` files
 - Script tags must use: `<script is:inline src="/scripts/x.js" defer></script>`
 - Never use `onclick` attributes — use `addEventListener` from the external script file
 - The CSP enforces `script-src 'self'` — inline scripts are blocked at the browser level
 
 ### HTML / Astro
+
+Style guide: [Astro documentation](https://docs.astro.build/en/basics/astro-syntax/). Key rules:
 
 - Semantic HTML elements (`<nav>`, `<main>`, `<article>`, `<section>`, `<footer>`)
 - ARIA attributes where needed for interactive elements

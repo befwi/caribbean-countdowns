@@ -24,6 +24,38 @@ Fully static site — no server, no database, no runtime. Built at deploy time, 
 
 We are happy to share technical details with anyone curious about the approach — open an issue or reach out directly.
 
+## 🏗 Architecture
+
+The site follows a static-first, separation-of-concerns design:
+
+**Build pipeline** — Source code and festival data are kept separate. Data is fetched from private storage at build time, merged with templates, and output as a fully static site. No data is committed to the repository.
+
+**Hosting and delivery** — The built site is served as static files through a CDN with security headers, TLS, and edge caching. No application server runs between deploys.
+
+**Community API** — A lightweight serverless function handles stateful community interactions (NGO progress tracking). It reads and writes to a key-value store and exposes a single JSON endpoint consumed by the browser.
+
+**CI/CD** — Every push triggers an automated pipeline: type checking, linting, dependency audit, build, and deploy. All changes to `main` go through a pull request with mandatory review.
+
+**Key design principles:** no client-side framework, no runtime server, secrets never enter the repository, data separated from code.
+
+## 🚀 Quick start
+
+```bash
+git clone https://github.com/countdowns-co/caribbean-countdowns.git
+cd caribbean-countdowns
+npm install
+npm run dev
+```
+
+Open `http://localhost:4321` in your browser. The site will run with the NGO and sponsor data already in the repository. Festival data is fetched from private storage at build time — pages that depend on it will be empty in local dev but the full UI and all other pages are functional.
+
+To run the full type check and lint suite:
+
+```bash
+npm test        # type checker
+npm run lint    # JS linter
+```
+
 ## 💚 Open source
 
 This project is and will stay public. Keeping the code open is not just a technical choice — it is a commitment to transparency and collaboration.
