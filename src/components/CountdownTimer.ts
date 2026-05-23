@@ -1,3 +1,5 @@
+export {};
+
 function format(ms: number) {
   if (ms <= 0) return "0d 0h 0m";
 

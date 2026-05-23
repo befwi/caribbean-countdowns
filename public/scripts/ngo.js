@@ -35,7 +35,6 @@ applyLang();
 // ─── Config ──────────────────────────────────────────────────────────────────
 
 var _cfg = document.getElementById("ngo-config");
-var PERIOD_START = new Date(_cfg.dataset.periodStart).getTime();
 var PERIOD_END   = new Date(_cfg.dataset.periodEnd).getTime();
 
 var STATS_URL = "/api/ngo-stats";
@@ -118,8 +117,8 @@ function fetchStats() {
   fetch(STATS_URL)
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      communityProgress = data.communityProgress != null ? data.communityProgress : communityProgress;
-      communityContributors = data.contributors != null ? data.contributors : communityContributors;
+      communityProgress = data.communityProgress !== null ? data.communityProgress : communityProgress;
+      communityContributors = data.contributors !== null ? data.contributors : communityContributors;
       animateGaugeTo(getTotalProgress(), communityContributors);
     })
     .catch(function() {
@@ -135,8 +134,8 @@ function postContribution(pct) {
   })
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      communityProgress = data.communityProgress != null ? data.communityProgress : communityProgress;
-      communityContributors = data.contributors != null ? data.contributors : communityContributors;
+      communityProgress = data.communityProgress !== null ? data.communityProgress : communityProgress;
+      communityContributors = data.contributors !== null ? data.contributors : communityContributors;
     })
     .catch(function() {
       // Worker unreachable — local state still updated
@@ -325,12 +324,6 @@ function selectAnswer(chosen) {
   // Show next button
   var nextBtn = document.getElementById("quiz-next");
   var isLast = (idx === QUESTIONS.length - 1);
-  var finishTexts = {
-    en: "See my results →",
-    fr: "Voir mes résultats →",
-    kr: "Wè rezilta mwen →",
-    es: "Ver mis resultados →"
-  };
   nextBtn.innerHTML = isLast
     ? '<span class="t-en">See my results →</span><span class="t-fr">Voir mes résultats →</span><span class="t-kr">Wè rezilta mwen →</span><span class="t-es">Ver mis resultados →</span>'
     : '<span class="t-en">Next →</span><span class="t-fr">Suivant →</span><span class="t-kr">Swivan →</span><span class="t-es">Siguiente →</span>';

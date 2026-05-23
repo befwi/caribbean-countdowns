@@ -42,11 +42,18 @@ jobs:
             python3 -m json.tool "$f" > /dev/null && echo "✓ $f" || { echo "✗ Invalid JSON: $f"; exit 1; }
           done
 
-      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: 22
 
       - run: npm ci
+
+      - name: Type check
+        if: github.event_name != 'pull_request'
+        run: npm run check
+
+      - name: Lint
+        run: npm run lint
 
       - run: npm audit --audit-level=high --omit=dev
 
@@ -71,4 +78,4 @@ jobs:
 
     steps:
       - id: deployment
-        uses: actions/deploy-pages@cd2ce8fcbc39b97be8ca5fce6e763baed58fa128 # v5.0.0
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

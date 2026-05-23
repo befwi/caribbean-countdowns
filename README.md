@@ -38,6 +38,16 @@ We believe that open source is itself a sustainability practice. Shared code red
 
 The site is designed to minimise compute: fully static, edge-served, no server running between deploys. The [sustainability page](https://caribbean.countdowns.co/sustainability/) and eco-evaluator tool are more meaningful because the project applies the same principles to itself.
 
+## 🧪 Tests
+
+Run the type checker:
+
+```bash
+npm run check
+```
+
+This runs `astro check`, which validates all Astro components and TypeScript types. It runs automatically in CI on every push and pull request.
+
 ## 📄 Licence
 
 MIT
