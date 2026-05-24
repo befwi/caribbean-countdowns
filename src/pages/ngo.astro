@@ -398,7 +398,8 @@ const { ngo } = ngos;
     }
 
     .result-score { font-size: 36px; font-weight: 700; color: #34d399; margin-bottom: 8px; }
-    .result-label { font-size: 13px; color: #5eead4; margin-bottom: 20px; }
+    .result-label { font-size: 13px; color: #5eead4; margin-bottom: 8px; }
+    .result-round-label { font-size: 12px; color: #4a7a70; margin-bottom: 20px; }
     .result-contribution {
       display: inline-block;
       background: #0a1a1a;
@@ -853,9 +854,10 @@ const { ngo } = ngos;
   <!-- Quiz result -->
   <div id="quiz-result">
     <div class="result-box">
-      <div class="result-score" id="result-score">0/8</div>
+      <div class="result-score" id="result-score">0/5</div>
       <div class="result-label" id="result-label"></div>
       <div class="result-contribution" id="result-contribution"></div>
+      <div class="result-round-label" id="result-round-label"></div>
       <div class="result-actions">
         <button class="btn-replay" id="btn-replay">
           <span class="t-en">Play again</span>
