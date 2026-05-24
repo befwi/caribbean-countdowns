@@ -3,3 +3,4 @@ node_modules/
 dist/
 build/
 src/data/*.json
+!src/data/quiz-questions.json

@@ -185,6 +185,18 @@ setInterval(updateCountdown, 1000);
 
 var QUESTIONS = JSON.parse(document.getElementById("quiz-data").getAttribute("data-questions"));
 
+var QUESTIONS_PER_SESSION = 5;
+var sessionQuestions = [];
+
+function shufflePick(arr, n) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a.slice(0, n);
+}
+
 // ─── Quiz state ───────────────────────────────────────────────────────────────
 
 var quizState = {
@@ -195,6 +207,7 @@ var quizState = {
 };
 
 function startQuiz() {
+  sessionQuestions = shufflePick(QUESTIONS, QUESTIONS_PER_SESSION);
   quizState.current = 0;
   quizState.score = 0;
   quizState.answered = false;
@@ -212,8 +225,8 @@ function startQuiz() {
 
 function buildDots() {
   var container = document.getElementById("quiz-dots");
-  container.innerHTML = "";
-  QUESTIONS.forEach(function(_, i) {
+  while (container.firstChild) container.removeChild(container.firstChild);
+  sessionQuestions.forEach(function(_, i) {
     var dot = document.createElement("div");
     dot.className = "quiz-dot" + (i === 0 ? " active" : "");
     dot.id = "dot-" + i;
@@ -222,7 +235,7 @@ function buildDots() {
 }
 
 function updateDots() {
-  QUESTIONS.forEach(function(_, i) {
+  sessionQuestions.forEach(function(_, i) {
     var dot = document.getElementById("dot-" + i);
     if (!dot) return;
     dot.className = "quiz-dot" +
@@ -234,17 +247,17 @@ function updateDots() {
 function renderQuizQuestion() {
   if (!quizState.active) return;
   var idx = quizState.current;
-  if (idx >= QUESTIONS.length) return;
+  if (idx >= sessionQuestions.length) return;
 
-  var q = QUESTIONS[idx];
+  var q = sessionQuestions[idx];
   var data = q[lang] || q.en;
 
   var stepLabel = document.getElementById("quiz-step-label");
   var stepTexts = {
-    en: "Question " + (idx + 1) + " of " + QUESTIONS.length,
-    fr: "Question " + (idx + 1) + " sur " + QUESTIONS.length,
-    kr: "Kèstyon " + (idx + 1) + " sou " + QUESTIONS.length,
-    es: "Pregunta " + (idx + 1) + " de " + QUESTIONS.length
+    en: "Question " + (idx + 1) + " of " + sessionQuestions.length,
+    fr: "Question " + (idx + 1) + " sur " + sessionQuestions.length,
+    kr: "Kèstyon " + (idx + 1) + " sou " + sessionQuestions.length,
+    es: "Pregunta " + (idx + 1) + " de " + sessionQuestions.length
   };
   stepLabel.textContent = stepTexts[lang] || stepTexts.en;
 
@@ -288,7 +301,7 @@ function renderQuizQuestion() {
 function selectAnswer(chosen) {
   quizState.answered = true;
   var idx = quizState.current;
-  var q = QUESTIONS[idx];
+  var q = sessionQuestions[idx];
   var data = q[lang] || q.en;
   var correct = q.answer;
   var isCorrect = chosen === correct;
@@ -323,7 +336,7 @@ function selectAnswer(chosen) {
 
   // Show next button
   var nextBtn = document.getElementById("quiz-next");
-  var isLast = (idx === QUESTIONS.length - 1);
+  var isLast = (idx === sessionQuestions.length - 1);
   nextBtn.innerHTML = isLast
     ? '<span class="t-en">See my results →</span><span class="t-fr">Voir mes résultats →</span><span class="t-kr">Wè rezilta mwen →</span><span class="t-es">Ver mis resultados →</span>'
     : '<span class="t-en">Next →</span><span class="t-fr">Suivant →</span><span class="t-kr">Swivan →</span><span class="t-es">Siguiente →</span>';
@@ -335,7 +348,7 @@ function nextQuestion() {
   quizState.answered = false;
   quizState.current++;
 
-  if (quizState.current >= QUESTIONS.length) {
+  if (quizState.current >= sessionQuestions.length) {
     showResult();
     return;
   }
@@ -350,7 +363,7 @@ function showResult() {
   document.getElementById("quiz-next").className = "quiz-next";
 
   var score = quizState.score;
-  var total = QUESTIONS.length;
+  var total = sessionQuestions.length;
   var pct = Math.round((score / total) * MAX_PER_SESSION * 10) / 10;
 
   addUserContribution(pct);
