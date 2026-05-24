@@ -1,0 +1,362 @@
+[
+  {
+    "answer": 2,
+    "answerText": "25%",
+    "en": {
+      "q": "What percentage of all marine species depend on coral reefs, even though reefs cover less than 1% of the ocean floor?",
+      "opts": ["5%", "10%", "25%", "50%"],
+      "explain": "Coral reefs are often called the 'rainforests of the sea' — they cover under 1% of the ocean but support 25% of all marine species."
+    },
+    "fr": {
+      "q": "Quel pourcentage des espèces marines dépend des récifs coralliens, qui couvrent moins de 1 % du fond marin ?",
+      "opts": ["5%", "10%", "25%", "50%"],
+      "explain": "Les récifs coralliens sont souvent appelés les 'forêts tropicales de la mer' — ils couvrent moins de 1 % de l'océan mais soutiennent 25 % de toutes les espèces marines."
+    },
+    "kr": {
+      "q": "Ki pousan espès maren ki depann sou rekif koray, ki kouvri mwens pase 1% fon lanmè a ?",
+      "opts": ["5%", "10%", "25%", "50%"],
+      "explain": "Rekif koray yo rele souvan 'forè twopikal lanmè a' — yo kouvri mwens pase 1% losean an men yo sipòté 25% tout espès maren yo."
+    },
+    "es": {
+      "q": "¿Qué porcentaje de las especies marinas depende de los arrecifes de coral, que cubren menos del 1% del fondo oceánico?",
+      "opts": ["5%", "10%", "25%", "50%"],
+      "explain": "Los arrecifes de coral se llaman a menudo las 'selvas tropicales del mar' — cubren menos del 1% del océano pero sostienen el 25% de todas las especies marinas."
+    }
+  },
+  {
+    "answer": 1,
+    "answerText": "Rising ocean temperatures / La hausse des températures océaniques",
+    "en": {
+      "q": "What is the primary cause of coral bleaching in the Caribbean?",
+      "opts": ["Plastic pollution", "Rising ocean temperatures", "Overfishing", "Freshwater runoff"],
+      "explain": "When ocean temperatures rise even 1–2°C above normal for several weeks, corals expel their symbiotic algae and turn white. Without the algae, they slowly starve."
+    },
+    "fr": {
+      "q": "Quelle est la principale cause du blanchissement des coraux dans la Caraïbe ?",
+      "opts": ["La pollution plastique", "La hausse des températures océaniques", "La surpêche", "Les eaux de ruissellement"],
+      "explain": "Lorsque les températures de l'océan augmentent de 1 à 2 °C au-dessus de la normale pendant plusieurs semaines, les coraux expulsent leurs algues symbiotiques et blanchissent. Sans algues, ils meurent lentement."
+    },
+    "kr": {
+      "q": "Ki prensipal koz blanchisman koray nan Karayib la ?",
+      "opts": ["Pòlisyon plastik", "Ogmantasyon tanperati losean", "Lapèch anpil", "Dlo lapli koule"],
+      "explain": "Lè tanperati lanmè a monte 1-2°C anwo nòmal pou plizyè semèn, koray yo jete alg sinbiyotik yo épi tounen blan. San alg, yo mouri dousman."
+    },
+    "es": {
+      "q": "¿Cuál es la causa principal del blanqueamiento de corales en el Caribe?",
+      "opts": ["Contaminación plástica", "Aumento de temperaturas oceánicas", "Pesca excesiva", "Escorrentía de agua dulce"],
+      "explain": "Cuando las temperaturas oceánicas suben 1-2°C por encima de lo normal durante varias semanas, los corales expulsan sus algas simbióticas y se vuelven blancos. Sin las algas, mueren lentamente."
+    }
+  },
+  {
+    "answer": 1,
+    "answerText": "Nurseries for fish and coast protection / Nurseries aux poissons et protection des côtes",
+    "en": {
+      "q": "What critical role do mangroves play in Caribbean marine ecosystems?",
+      "opts": ["They produce oxygen for deep-sea creatures", "They serve as nurseries for fish and protect coasts from storms", "They filter saltwater into drinking water", "They regulate ocean currents"],
+      "explain": "Mangroves are vital nurseries where juvenile fish grow before moving to reefs. Their dense roots also buffer coastlines against hurricane damage."
+    },
+    "fr": {
+      "q": "Quel rôle essentiel jouent les mangroves dans les écosystèmes marins caribéens ?",
+      "opts": ["Elles produisent de l'oxygène pour les créatures des grands fonds", "Elles servent de nurseries aux poissons et protègent les côtes des tempêtes", "Elles filtrent l'eau de mer en eau potable", "Elles régulent les courants océaniques"],
+      "explain": "Les mangroves sont des nurseries essentielles où les jeunes poissons grandissent avant de rejoindre les récifs. Leurs racines denses protègent aussi les côtes contre les ouragans."
+    },
+    "kr": {
+      "q": "Ki wòl kritik pàletivyé jwe nan ekosistèm maren Karayib la ?",
+      "opts": ["Yo pwodwi oksijèn pou kreyati nan fon lanmè", "Yo sèvi kòm pépinyè pou pwason épi pwotèjé kòt kont tanpèt", "Yo filtre dlo lanmè an dlo pòtab", "Yo règle kouran losean"],
+      "explain": "Pàletivyé se pépinyè esansyèl kote ti pwason grandi avan yo ale sou rekif. Rasin yo pwotèjé tou kòt kont dommaj ouragan."
+    },
+    "es": {
+      "q": "¿Qué papel fundamental juegan los manglares en los ecosistemas marinos del Caribe?",
+      "opts": ["Producen oxígeno para criaturas de aguas profundas", "Sirven como criaderos de peces y protegen las costas de tormentas", "Filtran el agua de mar en agua potable", "Regulan las corrientes oceánicas"],
+      "explain": "Los manglares son criaderos vitales donde los peces jóvenes crecen antes de moverse a los arrecifes. Sus densas raíces también protegen las costas del daño de huracanes."
+    }
+  },
+  {
+    "answer": 1,
+    "answerText": "Keystone = their presence/absence affects the whole ecosystem",
+    "en": {
+      "q": "Sea turtles are considered 'keystone species'. What does this mean?",
+      "opts": ["They are the largest animals in the ocean", "Their presence or absence significantly affects the entire ecosystem", "They have been around since the dinosaurs", "They can live for over 200 years"],
+      "explain": "Sea turtles maintain healthy seagrass beds by grazing, and nourish beach ecosystems with their eggs. Removing them creates a ripple effect across the entire marine environment."
+    },
+    "fr": {
+      "q": "Les tortues marines sont des 'espèces clés de voûte'. Qu'est-ce que cela signifie ?",
+      "opts": ["Ce sont les plus grands animaux de l'océan", "Leur présence ou absence affecte l'ensemble de l'écosystème", "Elles existent depuis les dinosaures", "Elles peuvent vivre plus de 200 ans"],
+      "explain": "Les tortues marines entretiennent les herbiers en les broutant et nourrissent les écosystèmes côtiers avec leurs œufs. Leur disparition crée un effet domino dans tout l'environnement marin."
+    },
+    "kr": {
+      "q": "Tòti maren yo konsidéré 'espès pivi'. Kisa sa vlé di ?",
+      "opts": ["Se yo ki pi gwo bèt nan lanmè a", "Prezans oswa absans yo afèkte tout ekosistèm nan", "Yo ekziste depi tan dinozò yo", "Yo ka viv plis pase 200 an"],
+      "explain": "Tòti maren yo antretni zèb maren yo nan manjé yo, épi nouri ekosistèm plaj yo ak ze yo. Disparisyon yo kréye yon efè domino nan tout anviwonman maren an."
+    },
+    "es": {
+      "q": "Las tortugas marinas son 'especies clave'. ¿Qué significa esto?",
+      "opts": ["Son los animales más grandes del océano", "Su presencia o ausencia afecta significativamente todo el ecosistema", "Han existido desde los dinosaurios", "Pueden vivir más de 200 años"],
+      "explain": "Las tortugas marinas mantienen saludables las praderas de pastos marinos pastando, y nutren los ecosistemas de playa con sus huevos. Su desaparición crea un efecto cascada en todo el entorno marino."
+    }
+  },
+  {
+    "answer": 2,
+    "answerText": "50%",
+    "en": {
+      "q": "Approximately what percentage of Earth's oxygen is produced by ocean plants and phytoplankton?",
+      "opts": ["20%", "35%", "50%", "70%"],
+      "explain": "About 50% of Earth's oxygen comes from microscopic ocean plants called phytoplankton. A healthy ocean is literally essential for every breath we take."
+    },
+    "fr": {
+      "q": "Quel pourcentage environ de l'oxygène terrestre est produit par les plantes océaniques et le phytoplancton ?",
+      "opts": ["20%", "35%", "50%", "70%"],
+      "explain": "Environ 50 % de l'oxygène terrestre provient de microscopiques plantes océaniques appelées phytoplancton. Un océan sain est littéralement essentiel à chaque souffle que nous prenons."
+    },
+    "kr": {
+      "q": "Anviwon ki pousan oksijèn latè a pwodwi pa plant losean épi fitoplankton ?",
+      "opts": ["20%", "35%", "50%", "70%"],
+      "explain": "Anviwon 50% oksijèn latè a sòti nan ti plant losean yo rele fitoplankton. On losean an bòn santé se literalman esansyèl pou chak souf nou pran."
+    },
+    "es": {
+      "q": "¿Aproximadamente qué porcentaje del oxígeno de la Tierra es producido por plantas oceánicas y fitoplancton?",
+      "opts": ["20%", "35%", "50%", "70%"],
+      "explain": "Aproximadamente el 50% del oxígeno de la Tierra proviene de microscópicas plantas oceánicas llamadas fitoplancton. Un océano saludable es literalmente esencial para cada respiración que tomamos."
+    }
+  },
+  {
+    "answer": 1,
+    "answerText": "8 million tonnes",
+    "en": {
+      "q": "How much plastic waste enters the world's oceans every year?",
+      "opts": ["1 million tonnes", "8 million tonnes", "20 million tonnes", "50 million tonnes"],
+      "explain": "Around 8 million tonnes of plastic enter our oceans annually. Caribbean islands, as small landmasses surrounded by ocean, are disproportionately affected."
+    },
+    "fr": {
+      "q": "Quelle quantité de plastique pénètre dans les océans chaque année ?",
+      "opts": ["1 million de tonnes", "8 millions de tonnes", "20 millions de tonnes", "50 millions de tonnes"],
+      "explain": "Environ 8 millions de tonnes de plastique entrent dans nos océans chaque année. Les îles caribéennes, petites terres entourées d'océan, sont touchées de manière disproportionnée."
+    },
+    "kr": {
+      "q": "Konbyen plastik ki antre nan losean chak ané ?",
+      "opts": ["1 milyon tòn", "8 milyon tòn", "20 milyon tòn", "50 milyon tòn"],
+      "explain": "Anviwon 8 milyon tòn plastik antre nan losean nou yo chak ané. Zile Karayib yo, ti tè ki antoure pa losean, afèkte plis ki lòt kote."
+    },
+    "es": {
+      "q": "¿Cuántos residuos plásticos entran en los océanos del mundo cada año?",
+      "opts": ["1 millón de toneladas", "8 millones de toneladas", "20 millones de toneladas", "50 millones de toneladas"],
+      "explain": "Alrededor de 8 millones de toneladas de plástico entran en nuestros océanos anualmente. Las islas caribeñas, como pequeñas masas de tierra rodeadas de océano, se ven afectadas desproporcionadamente."
+    }
+  },
+  {
+    "answer": 1,
+    "answerText": "Responsible ecotourism with trained guides (NOT a threat)",
+    "en": {
+      "q": "Which of these is NOT currently a threat to Caribbean marine biodiversity?",
+      "opts": ["Climate change and ocean warming", "Responsible ecotourism with trained guides", "Agricultural runoff and coastal pollution", "Invasive species like the lionfish"],
+      "explain": "Responsible, regulated ecotourism actually supports conservation by generating funds for NGOs and creating economic incentives to protect the environment. The others are real threats."
+    },
+    "fr": {
+      "q": "Lequel de ces éléments ne constitue PAS actuellement une menace pour la biodiversité marine caribéenne ?",
+      "opts": ["Le changement climatique et le réchauffement de l'océan", "L'écotourisme responsable avec des guides formés", "Les rejets agricoles et la pollution côtière", "Les espèces invasives comme le poisson-lion"],
+      "explain": "L'écotourisme responsable et réglementé soutient en fait la conservation en générant des fonds pour les ONG et en créant des incitations économiques à protéger l'environnement. Les autres sont de vraies menaces."
+    },
+    "kr": {
+      "q": "Ki nan sa yo pa yon menas aktyèl pou biodivèsité maren Karayib la ?",
+      "opts": ["Chanjman klimatik épi rechofman losean", "Ekotourism responsab avèk gid fòmé", "Dechaj agrikòl épi pòlisyon kòtal", "Espès envazif tankou pwason lion"],
+      "explain": "Ekotourism responsab épi règlemante an reyalité sipòté konsèvasyon nan jenere fon pou ONG yo épi kréye ensitasyon ekonomik pou pwotèjé anviwonman an. Lòt yo se vrè menas."
+    },
+    "es": {
+      "q": "¿Cuál de estos NO es actualmente una amenaza para la biodiversidad marina del Caribe?",
+      "opts": ["El cambio climático y el calentamiento oceánico", "El ecoturismo responsable con guías capacitados", "La escorrentía agrícola y la contaminación costera", "Especies invasoras como el pez león"],
+      "explain": "El ecoturismo responsable y regulado en realidad apoya la conservación al generar fondos para las ONG y crear incentivos económicos para proteger el medio ambiente. Los demás son amenazas reales."
+    }
+  },
+  {
+    "answer": 1,
+    "answerText": "A designated ocean area with rules to protect marine life and habitats",
+    "en": {
+      "q": "What is a Marine Protected Area (MPA)?",
+      "opts": ["A zone where all fishing is banned permanently", "A designated ocean area with rules to protect marine life and habitats", "A beach resort certified for environmental practices", "An underwater research facility"],
+      "explain": "MPAs are designated areas where human activity is regulated to protect ecosystems. They range from fully no-take zones to areas with managed sustainable fishing. The Caribbean needs more of them."
+    },
+    "fr": {
+      "q": "Qu'est-ce qu'une Aire Marine Protégée (AMP) ?",
+      "opts": ["Une zone où toute pêche est définitivement interdite", "Une zone océanique désignée avec des règles pour protéger la vie marine et les habitats", "Une station balnéaire certifiée pour ses pratiques environnementales", "Une installation de recherche sous-marine"],
+      "explain": "Les AMP sont des zones désignées où l'activité humaine est réglementée pour protéger les écosystèmes. Elles vont des zones totalement interdites à la pêche à celles avec une pêche durable gérée. La Caraïbe en a besoin de plus."
+    },
+    "kr": {
+      "q": "Kisa on Zòn Maren Pwotèjé (AMP) ye ?",
+      "opts": ["On zòn kote tout lapèch entèdi definitivamente", "On zòn losean désigné avèk règ pou pwotèjé vi maren épi abita", "On resort plaj sètifye pou pratik anviwonmantal li", "On fasilité rechèch anba lanmè"],
+      "explain": "AMP yo se zòn désigné kote aktivité imen règlemante pou pwotèjé ekosistèm yo. Yo ale de zòn entèdiksyon total pou lapèch a zòn avèk lapèch dirab jere. Karayib la bezwen plis yo."
+    },
+    "es": {
+      "q": "¿Qué es un Área Marina Protegida (AMP)?",
+      "opts": ["Una zona donde toda la pesca está permanentemente prohibida", "Un área oceánica designada con reglas para proteger la vida marina y los hábitats", "Un complejo turístico certificado por prácticas medioambientales", "Una instalación de investigación submarina"],
+      "explain": "Las AMP son áreas designadas donde la actividad humana está regulada para proteger los ecosistemas. Van desde zonas completamente vedadas a la pesca hasta áreas con pesca sostenible gestionada. El Caribe necesita más de ellas."
+    }
+  },
+  {
+    "answer": 0,
+    "answerText": "The Indo-Pacific Ocean",
+    "en": {
+      "q": "The lionfish is an invasive species devastating Caribbean reefs. Where does it originally come from?",
+      "opts": ["The Indo-Pacific Ocean", "The Gulf of Mexico", "The Atlantic coast of Africa", "The Mediterranean Sea"],
+      "explain": "Lionfish are native to the Indo-Pacific. First spotted in Florida in the 1980s — likely released from aquariums — they spread explosively across the Caribbean with no natural predators to control them."
+    },
+    "fr": {
+      "q": "Le poisson-lion est une espèce invasive qui dévaste les récifs caribéens. D'où vient-il à l'origine ?",
+      "opts": ["L'océan Indo-Pacifique", "Le golfe du Mexique", "La côte atlantique de l'Afrique", "La mer Méditerranée"],
+      "explain": "Le poisson-lion est originaire de l'Indo-Pacifique. Aperçu pour la première fois en Floride dans les années 1980 — probablement relâché d'aquariums — il s'est propagé dans toute la Caraïbe sans prédateurs naturels pour le contrôler."
+    },
+    "kr": {
+      "q": "Pwason lion se yon espès envazif ki ravaje rekif Karayib yo. Ki kote li sòti orijinalman ?",
+      "opts": ["Losean Indo-Pasifik", "Gòlf Meksik", "Kòt Atlantik Afrik", "Lanmè Mediterane"],
+      "explain": "Pwason lion sòti nan Indo-Pasifik. Premye fwa wè nan Florid nan ane 1980 yo — pwobableman lage depi akwaryòm — li pwopaje rapidman nan tout Karayib la san predatè natirèl pou kontwole li."
+    },
+    "es": {
+      "q": "El pez león es una especie invasora que devasta los arrecifes caribeños. ¿De dónde proviene originalmente?",
+      "opts": ["El océano Indo-Pacífico", "El Golfo de México", "La costa atlántica de África", "El mar Mediterráneo"],
+      "explain": "El pez león es nativo del Indo-Pacífico. Avistado por primera vez en Florida en los años 1980 — probablemente liberado de acuarios — se propagó explosivamente por el Caribe sin depredadores naturales que lo controlen."
+    }
+  },
+  {
+    "answer": 2,
+    "answerText": "They are a major carbon sink, storing CO₂ in the seabed",
+    "en": {
+      "q": "Why are seagrass beds considered important in the fight against climate change?",
+      "opts": ["They cool the water around coral reefs", "They produce more oxygen than rainforests per hectare", "They are a major carbon sink, storing CO₂ in the seabed", "They reflect sunlight to reduce ocean warming"],
+      "explain": "Seagrass meadows capture carbon up to 35 times faster than tropical forests and lock it in sediments for thousands of years. Destroying them releases centuries of stored CO₂ back into the atmosphere."
+    },
+    "fr": {
+      "q": "Pourquoi les herbiers marins sont-ils importants dans la lutte contre le changement climatique ?",
+      "opts": ["Ils refroidissent l'eau autour des récifs coralliens", "Ils produisent plus d'oxygène que les forêts tropicales par hectare", "Ils constituent un important puits de carbone en stockant le CO₂ dans les fonds marins", "Ils réfléchissent la lumière solaire pour réduire le réchauffement"],
+      "explain": "Les herbiers marins capturent le carbone jusqu'à 35 fois plus vite que les forêts tropicales et le stockent dans les sédiments pendant des milliers d'années. Les détruire relâche dans l'atmosphère des siècles de CO₂ accumulé."
+    },
+    "kr": {
+      "q": "Poukisa zèb maren konsidéré enpòtan nan lit kont chanjman klimatik ?",
+      "opts": ["Yo rafrèchi dlo otou rekif koray", "Yo pwodwi plis oksijèn pase forè twopikal pa ekta", "Yo se yon gwo rezèvwa kabòn, estoke CO₂ nan fon lanmè", "Yo reflete limyè solèy pou redwi rechofman losean"],
+      "explain": "Patiraj zèb maren kaptire kabòn jiska 35 fwa pi vit pase forè twopikal épi vèwouje li nan sediman pou dè milye ané. Detwi yo lage syèk CO₂ estoke tounen nan atmosfè a."
+    },
+    "es": {
+      "q": "¿Por qué las praderas de pastos marinos se consideran importantes en la lucha contra el cambio climático?",
+      "opts": ["Enfrían el agua alrededor de los arrecifes de coral", "Producen más oxígeno que los bosques tropicales por hectárea", "Son un importante sumidero de carbono, almacenando CO₂ en el fondo marino", "Reflejan la luz solar para reducir el calentamiento oceánico"],
+      "explain": "Las praderas de pastos marinos capturan carbono hasta 35 veces más rápido que los bosques tropicales y lo almacenan en sedimentos durante miles de años. Destruirlas libera siglos de CO₂ almacenado de vuelta a la atmósfera."
+    }
+  },
+  {
+    "answer": 1,
+    "answerText": "CO₂ absorbed by the ocean reacts with water to form carbonic acid",
+    "en": {
+      "q": "What causes ocean acidification, which weakens coral skeletons?",
+      "opts": ["Industrial chemicals dumped directly into the sea", "CO₂ absorbed by the ocean reacts with water to form carbonic acid", "Rising water temperatures dissolving calcium", "Plastic pollution releasing acidic compounds"],
+      "explain": "Oceans absorb about 30% of atmospheric CO₂. This forms carbonic acid, lowering ocean pH. More acidic water makes it harder for corals and shellfish to build and maintain their calcium carbonate structures."
+    },
+    "fr": {
+      "q": "Qu'est-ce qui provoque l'acidification des océans, qui fragilise les squelettes coralliens ?",
+      "opts": ["Des produits chimiques industriels déversés directement en mer", "Le CO₂ absorbé par l'océan réagit avec l'eau pour former de l'acide carbonique", "La hausse des températures dissolvant le calcium", "La pollution plastique libérant des composés acides"],
+      "explain": "Les océans absorbent environ 30 % du CO₂ atmosphérique. Cela forme de l'acide carbonique, abaissant le pH de l'eau. Une eau plus acide rend difficile la construction et le maintien des structures calcaires des coraux et mollusques."
+    },
+    "kr": {
+      "q": "Kisa ki koze asidifikasyon losean, ki fè skelèt koray yo fèb ?",
+      "opts": ["Pwodwi chimik endistryèl jete dirèkteman nan lanmè", "CO₂ absòbe pa losean reyaji ak dlo pou fòme asid karbònik", "Ogmantasyon tanperati dlo ki dissoud kalsyòm", "Pòlisyon plastik ki lage konpoze asid"],
+      "explain": "Losean yo absòbe anviwon 30% CO₂ atmosferik. Sa fòme asid karbònik, bese pH dlo a. Dlo plis asid rann li pi difisil pou koray ak koki konstwi épi kenbe estrikti kalsyòm yo."
+    },
+    "es": {
+      "q": "¿Qué causa la acidificación oceánica, que debilita los esqueletos de coral?",
+      "opts": ["Químicos industriales vertidos directamente al mar", "El CO₂ absorbido por el océano reacciona con el agua para formar ácido carbónico", "El aumento de temperaturas disolviendo el calcio", "La contaminación plástica liberando compuestos ácidos"],
+      "explain": "Los océanos absorben aproximadamente el 30% del CO₂ atmosférico. Esto forma ácido carbónico, bajando el pH del océano. Un agua más ácida dificulta que los corales y mariscos construyan y mantengan sus estructuras de carbonato de calcio."
+    }
+  },
+  {
+    "answer": 3,
+    "answerText": "Its shell was used for centuries to make jewellery and luxury goods",
+    "en": {
+      "q": "Why is the hawksbill sea turtle critically endangered in the Caribbean?",
+      "opts": ["It cannot adapt to warming waters", "It is slow to reproduce and easy to catch on beaches", "It competes directly with humans for the same fish", "Its shell was used for centuries to make jewellery and luxury goods"],
+      "explain": "Hawksbill shells ('tortoiseshell') were used for combs, glasses frames, jewellery and decorative items for centuries. Combined with egg poaching and habitat loss, their population collapsed. International trade of their shells has been banned since 1977."
+    },
+    "fr": {
+      "q": "Pourquoi la tortue imbriquée est-elle en danger critique d'extinction dans la Caraïbe ?",
+      "opts": ["Elle ne peut pas s'adapter au réchauffement des eaux", "Elle se reproduit lentement et est facile à capturer sur les plages", "Elle entre en concurrence directe avec les humains pour les mêmes poissons", "Sa carapace a été utilisée pendant des siècles pour fabriquer des bijoux et objets de luxe"],
+      "explain": "Les carapaces de tortues imbriquées ('écaille de tortue') étaient utilisées pour les peignes, montures de lunettes, bijoux et objets décoratifs depuis des siècles. Combiné au braconnage des œufs et à la perte d'habitat, leur population s'est effondrée. Le commerce international de leurs carapaces est interdit depuis 1977."
+    },
+    "kr": {
+      "q": "Poukisa tòti karet an danje kritik nan Karayib la ?",
+      "opts": ["Li pa ka adapte ak rechofman dlo yo", "Li repwodwi dousman épi fasil pou trape sou plaj yo", "Li konkuranse dirèkteman ak imen pou menm pwason an", "Koki li te itilize pou dè syèk pou fè bijou ak pwodwi liks"],
+      "explain": "Koki tòti karet ('zekèy tòti') te itilize pou peny, monti linèt, bijou ak objè dekoratif pou dè syèk. Konbine ak brakonaj ze ak pèt abita, popilasyon yo te kraze. Komès entènasyonal koki yo entèdi depi 1977."
+    },
+    "es": {
+      "q": "¿Por qué la tortuga carey está en peligro crítico de extinción en el Caribe?",
+      "opts": ["No puede adaptarse al calentamiento del agua", "Se reproduce lentamente y es fácil de capturar en las playas", "Compite directamente con los humanos por los mismos peces", "Su concha fue utilizada durante siglos para fabricar joyería y artículos de lujo"],
+      "explain": "Las conchas de tortuga carey ('carey') se usaban para peines, monturas de gafas, joyería y artículos decorativos durante siglos. Combinado con el furtivismo de huevos y la pérdida de hábitat, su población colapsó. El comercio internacional de sus conchas está prohibido desde 1977."
+    }
+  },
+  {
+    "answer": 0,
+    "answerText": "About 50% of Caribbean reefs have been lost since the 1970s",
+    "en": {
+      "q": "How much of the Caribbean's coral reef coverage has been lost since the 1970s?",
+      "opts": ["About 50%", "About 10%", "About 80%", "Less than 5%"],
+      "explain": "The Caribbean has lost roughly half its coral cover since the 1970s due to warming, disease, overfishing and pollution. Some sub-regions have seen losses above 80%, making conservation work like L'Asso-Mer's critically urgent."
+    },
+    "fr": {
+      "q": "Quelle part de la couverture corallienne des Caraïbes a été perdue depuis les années 1970 ?",
+      "opts": ["Environ 50 %", "Environ 10 %", "Environ 80 %", "Moins de 5 %"],
+      "explain": "Les Caraïbes ont perdu environ la moitié de leur couverture corallienne depuis les années 1970 à cause du réchauffement, des maladies, de la surpêche et de la pollution. Certaines sous-régions ont subi des pertes supérieures à 80 %, rendant le travail des associations comme L'Asso-Mer absolument urgent."
+    },
+    "kr": {
+      "q": "Konbyen kouvèti rekif koray Karayib la ki pèdu depi ane 1970 yo ?",
+      "opts": ["Anviwon 50%", "Anviwon 10%", "Anviwon 80%", "Mwens pase 5%"],
+      "explain": "Karayib la pèdi anviwon mwatye kouvèti koray li depi ane 1970 yo akòz rechofman, maladi, lapèch anpil ak pòlisyon. Kèk sou-rejyon wè pèt ki depase 80%, sa ki rann travay konsèvasyon tankou L'Asso-Mer ijan kritikman."
+    },
+    "es": {
+      "q": "¿Cuánta cobertura de arrecifes de coral del Caribe se ha perdido desde los años 70?",
+      "opts": ["Aproximadamente el 50%", "Aproximadamente el 10%", "Aproximadamente el 80%", "Menos del 5%"],
+      "explain": "El Caribe ha perdido aproximadamente la mitad de su cobertura de coral desde los años 70 debido al calentamiento, enfermedades, sobrepesca y contaminación. Algunas subregiones han experimentado pérdidas superiores al 80%, haciendo que el trabajo de conservación como el de L'Asso-Mer sea críticamente urgente."
+    }
+  },
+  {
+    "answer": 2,
+    "answerText": "Tiny symbiotic algae called zooxanthellae living inside their tissue",
+    "en": {
+      "q": "What gives corals their vibrant colours?",
+      "opts": ["Pigments secreted by the coral skeleton", "Minerals absorbed from the surrounding seawater", "Tiny symbiotic algae called zooxanthellae living inside their tissue", "Bioluminescent bacteria on the reef surface"],
+      "explain": "Zooxanthellae are microscopic algae living within coral tissue. They photosynthesize and provide up to 90% of the coral's energy. When stressed by heat, corals expel them — causing bleaching and the loss of all colour."
+    },
+    "fr": {
+      "q": "Qu'est-ce qui donne aux coraux leurs couleurs vives ?",
+      "opts": ["Des pigments sécrétés par le squelette corallien", "Des minéraux absorbés de l'eau de mer environnante", "De minuscules algues symbiotiques appelées zooxanthelles vivant dans leurs tissus", "Des bactéries bioluminescentes à la surface du récif"],
+      "explain": "Les zooxanthelles sont des algues microscopiques vivant dans les tissus coralliens. Elles photosynthétisent et fournissent jusqu'à 90 % de l'énergie du corail. Sous l'effet du stress thermique, les coraux les expulsent — provoquant le blanchissement et la perte de toute couleur."
+    },
+    "kr": {
+      "q": "Kisa ki ba koray yo koulè vivan yo ?",
+      "opts": ["Pigman sekreté pa skelèt koray la", "Mineral absòbe nan dlo lanmè antoure a", "Ti alg sinbiyotik yo rele zooksantèl ki viv nan tisi yo", "Bakteri bioliminesan sou sifas rekif la"],
+      "explain": "Zooksantèl se alg mikwoskopik ki viv nan tisi koray yo. Yo fotosentèz épi founi jiska 90% enèji koray la. Lè yo estrese pa chalè, koray yo jete yo — koze blanchisman épi pèt tout koulè."
+    },
+    "es": {
+      "q": "¿Qué da a los corales sus vibrantes colores?",
+      "opts": ["Pigmentos secretados por el esqueleto del coral", "Minerales absorbidos del agua de mar circundante", "Pequeñas algas simbióticas llamadas zooxantelas que viven dentro de su tejido", "Bacterias bioluminiscentes en la superficie del arrecife"],
+      "explain": "Las zooxantelas son algas microscópicas que viven dentro del tejido del coral. Fotosintétizan y proporcionan hasta el 90% de la energía del coral. Bajo el estrés del calor, los corales las expulsan — causando el blanqueamiento y la pérdida de todo el color."
+    }
+  },
+  {
+    "answer": 1,
+    "answerText": "Sargassum provides habitat for juvenile fish and sea turtles in the open ocean",
+    "en": {
+      "q": "Sargassum seaweed has washed onto Caribbean beaches in record quantities. What is a lesser-known positive role of sargassum?",
+      "opts": ["It removes microplastics from the water as it floats", "Sargassum provides habitat for juvenile fish and sea turtles in the open ocean", "It prevents hurricane formation by cooling surface water", "It filters agricultural runoff before it reaches the reef"],
+      "explain": "Open-ocean sargassum mats are vital nurseries for juvenile fish, sea turtles, and dozens of other species. The problem is when excessive blooms suffocate coastlines. Balancing its ecological value while managing strandings is a key challenge."
+    },
+    "fr": {
+      "q": "Les algues sargasses envahissent les plages caribéennes en quantités record. Quel est le rôle positif méconnu des sargasses ?",
+      "opts": ["Elles éliminent les microplastiques de l'eau en flottant", "Les sargasses servent d'habitat aux jeunes poissons et tortues marines en pleine mer", "Elles préviennent la formation d'ouragans en refroidissant l'eau de surface", "Elles filtrent les eaux agricoles avant qu'elles n'atteignent le récif"],
+      "explain": "Les tapis de sargasses en pleine mer sont des nurseries vitales pour les jeunes poissons, tortues marines et des dizaines d'autres espèces. Le problème survient quand des blooms excessifs étouffent les côtes. Équilibrer leur valeur écologique et la gestion des échouages est un défi clé."
+    },
+    "kr": {
+      "q": "Alg sargàs kouvri plaj Karayib yo an kantite rekò. Ki wòl pozitif mwens konni sargàs la ?",
+      "opts": ["Li retire mikwoplastik nan dlo pandan li flote", "Sargàs bay abita pou ti pwason ak tòti maren nan losean louvri", "Li anpeche fòmasyon ouragan nan rafrèchi dlo sifas", "Li filtre dechaj agrikòl avan li rive sou rekif la"],
+      "explain": "Tapi sargàs nan plenn losean se pépinyè vital pou ti pwason, tòti maren ak douzèn lòt espès. Pwoblèm nan rive lè flòrèzon exsesif toufe kòt yo. Balanse valè ekolojik li ak jesyon ekouaj se yon defi kle."
+    },
+    "es": {
+      "q": "El sargazo ha llegado a las playas caribeñas en cantidades récord. ¿Cuál es un papel positivo poco conocido del sargazo?",
+      "opts": ["Elimina los microplásticos del agua mientras flota", "El sargazo proporciona hábitat para peces juveniles y tortugas marinas en el océano abierto", "Previene la formación de huracanes al enfriar el agua superficial", "Filtra la escorrentía agrícola antes de que llegue al arrecife"],
+      "explain": "Las alfombras de sargazo en mar abierto son criaderos vitales para peces juveniles, tortugas marinas y docenas de otras especies. El problema surge cuando los blooms excesivos sofocan las costas. Equilibrar su valor ecológico mientras se gestionan los varamientos es un desafío clave."
+    }
+  }
+]
