@@ -186,15 +186,46 @@ setInterval(updateCountdown, 1000);
 var QUESTIONS = JSON.parse(document.getElementById("quiz-data").getAttribute("data-questions"));
 
 var QUESTIONS_PER_SESSION = 5;
+var MAX_SESSIONS = 3;
 var sessionQuestions = [];
+var sessionCurrentIndices = [];
 
-function shufflePick(arr, n) {
+function shuffle(arr) {
   var a = arr.slice();
   for (var i = a.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
     var t = a[i]; a[i] = a[j]; a[j] = t;
   }
-  return a.slice(0, n);
+  return a;
+}
+
+function getSessionCount() {
+  return parseInt(localStorage.getItem("ngo_quiz_sessions") || "0", 10);
+}
+
+function getShownIndices() {
+  try { return JSON.parse(localStorage.getItem("ngo_quiz_shown") || "[]"); }
+  catch(e) { return []; }
+}
+
+function saveSessionComplete(indices) {
+  var shown = getShownIndices().concat(indices);
+  localStorage.setItem("ngo_quiz_shown", JSON.stringify(shown));
+  localStorage.setItem("ngo_quiz_sessions", getSessionCount() + 1);
+}
+
+function updateQuizButton() {
+  var sessions = getSessionCount();
+  var btn = document.getElementById("btn-start-quiz");
+  if (sessions >= MAX_SESSIONS) {
+    btn.disabled = true;
+    btn.textContent = "";
+    btn.appendChild(Object.assign(document.createElement("span"), { className: "t-en", textContent: "Quiz completed — thank you! 🌊" }));
+    btn.appendChild(Object.assign(document.createElement("span"), { className: "t-fr", textContent: "Quiz terminé — merci ! 🌊" }));
+    btn.appendChild(Object.assign(document.createElement("span"), { className: "t-kr", textContent: "Quiz fini — mèsi ! 🌊" }));
+    btn.appendChild(Object.assign(document.createElement("span"), { className: "t-es", textContent: "Quiz completado — ¡gracias! 🌊" }));
+    applyLang();
+  }
 }
 
 // ─── Quiz state ───────────────────────────────────────────────────────────────
@@ -207,7 +238,17 @@ var quizState = {
 };
 
 function startQuiz() {
-  sessionQuestions = shufflePick(QUESTIONS, QUESTIONS_PER_SESSION);
+  if (getSessionCount() >= MAX_SESSIONS) return;
+
+  var shown = getShownIndices();
+  var unseen = shuffle(
+    QUESTIONS.map(function(_, i) { return i; })
+      .filter(function(i) { return shown.indexOf(i) === -1; })
+  ).slice(0, QUESTIONS_PER_SESSION);
+
+  sessionCurrentIndices = unseen;
+  sessionQuestions = unseen.map(function(i) { return QUESTIONS[i]; });
+
   quizState.current = 0;
   quizState.score = 0;
   quizState.answered = false;
@@ -367,24 +408,51 @@ function showResult() {
   var pct = Math.round((score / total) * MAX_PER_SESSION * 10) / 10;
 
   addUserContribution(pct);
+  saveSessionComplete(sessionCurrentIndices);
+
+  var sessionsNow = getSessionCount();
+  var sessionsLeft = MAX_SESSIONS - sessionsNow;
 
   document.getElementById("result-score").textContent = score + "/" + total;
 
   var resultTexts = {
-    en: score >= 7 ? "Excellent! You really know your Caribbean marine ecosystems." :
-        score >= 5 ? "Good job! Every question answered helps the mission." :
+    en: score >= 4 ? "Excellent! You really know your Caribbean marine ecosystems." :
+        score >= 3 ? "Good job! Every question answered helps the mission." :
                      "Thanks for playing — keep learning to do better next time!",
-    fr: score >= 7 ? "Excellent ! Vous connaissez vraiment les écosystèmes marins de la Caraïbe." :
-        score >= 5 ? "Bon travail ! Chaque réponse aide la mission." :
+    fr: score >= 4 ? "Excellent ! Vous connaissez vraiment les écosystèmes marins de la Caraïbe." :
+        score >= 3 ? "Bon travail ! Chaque réponse aide la mission." :
                      "Merci de jouer — continuez à apprendre pour faire mieux la prochaine fois !",
-    kr: score >= 7 ? "Ekselan ! Ou vrèman konnen ekosistèm maren Karayib la." :
-        score >= 5 ? "Bon travay ! Chak repons édé misyon an." :
+    kr: score >= 4 ? "Ekselan ! Ou vrèman konnen ekosistèm maren Karayib la." :
+        score >= 3 ? "Bon travay ! Chak repons édé misyon an." :
                      "Mèsi pou jwe — kontinye aprann pou fè miyò pwochen fwa !",
-    es: score >= 7 ? "¡Excelente! Realmente conoces los ecosistemas marinos del Caribe." :
-        score >= 5 ? "¡Buen trabajo! Cada respuesta ayuda a la misión." :
+    es: score >= 4 ? "¡Excelente! Realmente conoces los ecosistemas marinos del Caribe." :
+        score >= 3 ? "¡Buen trabajo! Cada respuesta ayuda a la misión." :
                      "¡Gracias por jugar — sigue aprendiendo para hacerlo mejor la próxima vez!"
   };
   document.getElementById("result-label").textContent = resultTexts[lang] || resultTexts.en;
+
+  var roundLabel = document.getElementById("result-round-label");
+  if (roundLabel) {
+    var roundTexts = sessionsLeft > 0
+      ? {
+          en: "Round " + sessionsNow + " of " + MAX_SESSIONS + " — " + sessionsLeft + " round" + (sessionsLeft > 1 ? "s" : "") + " remaining.",
+          fr: "Manche " + sessionsNow + " sur " + MAX_SESSIONS + " — " + sessionsLeft + " manche" + (sessionsLeft > 1 ? "s" : "") + " restante" + (sessionsLeft > 1 ? "s" : "") + ".",
+          kr: "Manche " + sessionsNow + " sou " + MAX_SESSIONS + " — " + sessionsLeft + " manche " + (sessionsLeft > 1 ? "rete yo" : "rete") + ".",
+          es: "Ronda " + sessionsNow + " de " + MAX_SESSIONS + " — " + sessionsLeft + " ronda" + (sessionsLeft > 1 ? "s" : "") + " restante" + (sessionsLeft > 1 ? "s" : "") + "."
+        }
+      : {
+          en: "You've completed all " + MAX_SESSIONS + " rounds — thank you for supporting L'Asso-Mer! 🌊",
+          fr: "Vous avez terminé les " + MAX_SESSIONS + " manches — merci de soutenir L'Asso-Mer ! 🌊",
+          kr: "Ou fini tout " + MAX_SESSIONS + " manche yo — mèsi pou sipòte L'Asso-Mer ! 🌊",
+          es: "Has completado las " + MAX_SESSIONS + " rondas — ¡gracias por apoyar a L'Asso-Mer! 🌊"
+        };
+    roundLabel.textContent = roundTexts[lang] || roundTexts.en;
+  }
+
+  var replayBtn = document.getElementById("btn-replay");
+  if (replayBtn) replayBtn.style.display = sessionsLeft > 0 ? "" : "none";
+
+  updateQuizButton();
 
   postContribution(pct).then(function() {
     var newTotal = getTotalProgress();
@@ -427,8 +495,8 @@ document.getElementById("quiz-next").addEventListener("click", function() {
 });
 
 document.getElementById("btn-replay").addEventListener("click", function() {
+  if (getSessionCount() >= MAX_SESSIONS) return;
   document.getElementById("quiz-result").classList.remove("visible");
-  document.getElementById("btn-start-quiz").disabled = false;
   startQuiz();
 });
 
@@ -439,3 +507,5 @@ setTimeout(function() {
   animateGaugeTo(getTotalProgress(), communityContributors);
   fetchStats();
 }, 400);
+
+updateQuizButton();
