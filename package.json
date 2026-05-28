@@ -16,7 +16,7 @@
     "generate-next-year": "node scripts/generate-next-year.js"
   },
   "dependencies": {
-    "astro": "^6.1.6"
+    "astro": "^6.3.8"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.4",
