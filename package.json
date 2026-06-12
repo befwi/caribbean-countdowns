@@ -22,6 +22,6 @@
     "@astrojs/renderer-preact": "^0.5.0",
     "eslint": "^9.39.4",
     "globals": "^16.5.0",
-    "typescript": "^5.8.0"
+    "typescript": "^6.0.3"
   }
 }
