@@ -20,7 +20,7 @@
     "astro": "^6.1.6",
     "@astrojs/check": "^0.9.4",
     "@astrojs/renderer-preact": "^0.5.0",
-    "eslint": "^9.39.4",
+    "eslint": "^10.5.0",
     "globals": "^16.5.0",
     "typescript": "^6.0.3"
   }
