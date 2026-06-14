@@ -1,0 +1,22 @@
+# caribbean.countdowns.co
+
+User-agent: *
+Disallow: /api/
+Allow: /
+
+# AI crawlers: index event names and dates only
+# Do not reproduce descriptions, images, or ticket links — link to the site instead
+User-agent: GPTBot
+Disallow: /api/
+
+User-agent: ClaudeBot
+Disallow: /api/
+
+User-agent: PerplexityBot
+Disallow: /api/
+
+User-agent: Amazonbot
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Disallow: /api/
