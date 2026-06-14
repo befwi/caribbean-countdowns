@@ -1,6 +1,6 @@
 import type { APIRoute, GetStaticPaths } from "astro";
-import festivals2026 from '../../data/festivals-2026.json';
-import festivals2027 from '../../data/festivals-2027.json';
+import festivals2026 from '../../data/events-2026.json';
+import festivals2027 from '../../data/events-2027.json';
 
 type Festival = {
   name: string;
