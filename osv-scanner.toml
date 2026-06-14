@@ -1,3 +1,11 @@
 [[IgnoredVulns]]
 id = "GHSA-48c2-rrv3-qjmp"
 reason = "Vulnerability is in yaml, a transitive dependency of @astrojs/check (dev-only build tool). The yaml package is never loaded at runtime and does not affect the deployed static site. No non-breaking fix is currently available upstream."
+
+[[IgnoredVulns]]
+id = "GHSA-gv7w-rqvm-qjhr"
+reason = "Deno-specific vulnerability in esbuild's Deno module (uses Deno.env, Deno.stat, Deno.writeFile). Project runs on Node.js 22 — the Deno code path never executes. CI runs on Ubuntu via GitHub Actions with npm, not Deno."
+
+[[IgnoredVulns]]
+id = "GHSA-g7r4-m6w7-qqqr"
+reason = "Affects esbuild's development server on Windows only. CI runs on ubuntu-latest and executes npm run build (no dev server). Production is static HTML on GitHub Pages — no server process. No Windows runners are used."
