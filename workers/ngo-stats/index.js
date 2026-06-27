@@ -29,6 +29,12 @@ export default {
     }
 
     if (request.method === "POST") {
+      const ip = request.headers.get("CF-Connecting-IP") ?? "unknown";
+      const { success } = await env.RATE_LIMITER.limit({ key: ip });
+      if (!success) {
+        return new Response("Too many requests", { status: 429 });
+      }
+
       let body;
       try {
         body = await request.json();

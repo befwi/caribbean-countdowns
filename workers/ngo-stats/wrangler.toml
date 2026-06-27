@@ -4,8 +4,14 @@ compatibility_date = "2025-01-01"
 
 [[kv_namespaces]]
 binding = "NGO_KV"
-id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
+id = "d1cf1196097b44b7be80ed578c521317"
 
 [[routes]]
 pattern = "caribbean.countdowns.co/api/ngo-stats"
 zone_name = "countdowns.co"
+
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }
