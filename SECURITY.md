@@ -93,3 +93,52 @@ Data exfiltration and authentication bypass are not applicable — the site stor
 ## Security Measures
 
 See https://caribbean.countdowns.co/security for third-party audit results and CI/CD hardening details.
+
+---
+
+## R2 Credential Rotation
+
+### Secrets in use
+
+| Secret | Used in | Purpose |
+|--------|---------|---------|
+| `R2_ACCESS_KEY` | `.github/workflows/deploy.yml` | AWS-compat Access Key ID for R2 |
+| `R2_SECRET_KEY` | `.github/workflows/deploy.yml` | AWS-compat Secret Access Key for R2 |
+| `CF_ACCOUNT_ID` | `.github/workflows/deploy.yml` | Endpoint URL construction — identifier, no rotation needed |
+
+### When to rotate
+
+- Every 90 days (quarterly)
+- Immediately if a contributor with access leaves the project
+- Immediately if a secret is accidentally exposed (commit, log, screenshot)
+- If suspicious R2 activity is detected in Cloudflare logs
+
+### Procedure
+
+**Step 1 — Generate new R2 API token**
+1. Cloudflare Dashboard → R2 → top-right "Manage R2 API Tokens"
+2. Click "Create API token"
+3. Name: `github-deploy-YYYY-MM-DD`
+4. Permissions: Object Read & Write
+5. Specify bucket: `caribbean-data`
+6. Click "Create API Token"
+7. Copy the **Access Key ID** and **Secret Access Key** — shown once only
+
+**Step 2 — Update GitHub Secrets**
+1. GitHub → `countdowns-co/caribbean-countdowns` → Settings → Secrets and variables → Actions
+2. Update `R2_ACCESS_KEY` → paste new Access Key ID
+3. Update `R2_SECRET_KEY` → paste new Secret Access Key
+
+**Step 3 — Verify**
+1. Actions → "Deploy CC" → "Run workflow" (manual trigger)
+2. Confirm "Pull data from R2" step succeeds (green)
+3. Confirm site builds and deploys correctly
+
+**Step 4 — Revoke old token**
+1. Cloudflare Dashboard → R2 → Manage R2 API Tokens
+2. Find the previous token (by name/date)
+3. Click "..." → Delete
+
+### Last rotated
+
+Not yet documented — establish baseline on first rotation.
