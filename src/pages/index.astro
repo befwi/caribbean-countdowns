@@ -443,7 +443,7 @@ function splitLines(text: string) {
     <p class="site-subtitle">
       <span class="t-en">Live countdowns to music festivals and cultural events across the Caribbean.</span>
       <span class="t-fr">Compte à rebours des événements à venir de la Caraïbe — festivals, carnavals, régates...</span>
-      <span class="t-kr">Kont a rébò pou festival mizik épi gro évènman an Karayib la.</span>
+      <span class="t-kr">Kont a rebò pou festival mizik epi gro evènman an Karayib la.</span>
       <span class="t-es">Cuenta regresiva de festivales de música y eventos en el Caribe.</span>
     </p>
 
@@ -451,13 +451,13 @@ function splitLines(text: string) {
       <span>
         <span class="t-en">Last update: {lastUpdateEn}</span>
         <span class="t-fr">Dernière mise à jour : {lastUpdateFr}</span>
-        <span class="t-kr">Dènyé mizajou : {lastUpdateFr}</span>
+        <span class="t-kr">Dènye mizajou : {lastUpdateFr}</span>
         <span class="t-es">Última actualización: {lastUpdateEs}</span>
       </span>
       <span>
         <span class="t-en">Want to add an event? <a href="/suggest-event/">Use the form</a>.</span>
         <span class="t-fr">Ajouter un évènement ? <a href="/suggest-event/">Utiliser le formulaire</a>.</span>
-        <span class="t-kr">Vou vlé mété an evènman ? <a href="/suggest-event/">Sèvi ak fòmilè a</a>.</span>
+        <span class="t-kr">Vou vle mete yon evènman ? <a href="/suggest-event/">Sèvi ak fòmilè a</a>.</span>
         <span class="t-es">¿Agregar un evento? <a href="/suggest-event/">Usa el formulario</a>.</span>
       </span>
     </div>
@@ -468,7 +468,7 @@ function splitLines(text: string) {
         <span class="sponsor-cause-text">
           <span class="t-en">This site supports the NGO <a href="/ngo/">{ngo.name}</a><br />Thanks to our sponsor <a href={sponsor.website} target="_blank" rel="noopener noreferrer">{sponsor.name}</a></span>
           <span class="t-fr">Ce site soutient l'ONG <a href="/ngo/">{ngo.name}</a><br />Merci à notre sponsor <a href={sponsor.website} target="_blank" rel="noopener noreferrer">{sponsor.name}</a></span>
-          <span class="t-kr">Sit sa a sipòté ONG <a href="/ngo/">{ngo.name}</a><br />Mèsi bay sponsor nou <a href={sponsor.website} target="_blank" rel="noopener noreferrer">{sponsor.name}</a></span>
+          <span class="t-kr">Sit sa a sipote ONG <a href="/ngo/">{ngo.name}</a><br />Mèsi bay sponsor nou <a href={sponsor.website} target="_blank" rel="noopener noreferrer">{sponsor.name}</a></span>
           <span class="t-es">Este sitio apoya a la ONG <a href="/ngo/">{ngo.name}</a><br />Gracias a nuestro sponsor <a href={sponsor.website} target="_blank" rel="noopener noreferrer">{sponsor.name}</a></span>
         </span>
         <div class="sponsor-logos">
@@ -495,7 +495,7 @@ function splitLines(text: string) {
         <span>
           <span class="t-en"><strong>{liveFestivals.length}</strong> {liveFestivals.length === 1 ? "event is" : "events are"} happening now.</span>
           <span class="t-fr"><strong>{liveFestivals.length}</strong> {liveFestivals.length === 1 ? "évènement est" : "évènements sont"} en cours.</span>
-          <span class="t-kr"><strong>{liveFestivals.length}</strong> {liveFestivals.length === 1 ? "évènman ap" : "évènman ap"} fèt kounye a.</span>
+          <span class="t-kr"><strong>{liveFestivals.length}</strong> {liveFestivals.length === 1 ? "evènman ap" : "evènman ap"} fèt kounye a.</span>
           <span class="t-es"><strong>{liveFestivals.length}</strong> {liveFestivals.length === 1 ? "evento está" : "eventos están"} ocurriendo ahora.</span>
         </span>
       </div>
@@ -525,7 +525,7 @@ function splitLines(text: string) {
             <span class="filter-panel-label">
               <span class="t-en">Type</span>
               <span class="t-fr">Type</span>
-              <span class="t-kr">Kalité</span>
+              <span class="t-kr">Kalite</span>
               <span class="t-es">Tipo</span>
             </span>
             <div class="filter-chips">
@@ -544,7 +544,7 @@ function splitLines(text: string) {
             <span class="filter-panel-label">
               <span class="t-en">Country</span>
               <span class="t-fr">Pays</span>
-              <span class="t-kr">Péyi</span>
+              <span class="t-kr">Peyi</span>
               <span class="t-es">País</span>
             </span>
             <div class="filter-chips">
@@ -552,7 +552,7 @@ function splitLines(text: string) {
                 <button class={`filter-chip${c === "All" ? " active" : ""}`} data-filter-type="country" data-value={c} type="button">
                   <span class="t-en">{c === "All" ? "All countries" : c}</span>
                   <span class="t-fr">{c === "All" ? "Tous les pays" : c}</span>
-                  <span class="t-kr">{c === "All" ? "Tout péyi" : c}</span>
+                  <span class="t-kr">{c === "All" ? "Tout peyi" : c}</span>
                   <span class="t-es">{c === "All" ? "Todos los países" : c}</span>
                 </button>
               ))}
@@ -577,7 +577,7 @@ function splitLines(text: string) {
         <span class="past-label">
           <span class="t-en">Past events</span>
           <span class="t-fr">Événements passés</span>
-          <span class="t-kr">Évènman ki fini</span>
+          <span class="t-kr">Evènman ki fini</span>
           <span class="t-es">Eventos pasados</span>
           <span class="past-count">{endedFestivals.length}</span>
         </span>
@@ -612,14 +612,14 @@ function splitLines(text: string) {
       <a href="/suggest-event/" style="color:#333;text-decoration:underline;">
         <span class="t-en">Add an event</span>
         <span class="t-fr">Ajouter un événement</span>
-        <span class="t-kr">Ajouter an évènman</span>
+        <span class="t-kr">Ajoute yon evènman</span>
         <span class="t-es">Agregar un evento</span>
       </a>
       &nbsp;·&nbsp;
       <a href="/eco-evaluator/" style="color:#333;text-decoration:underline;">
         <span class="t-en">Eco evaluator</span>
         <span class="t-fr">Évaluateur éco</span>
-        <span class="t-kr">Evaluatè éko</span>
+        <span class="t-kr">Evaluatè eko</span>
         <span class="t-es">Evaluador eco</span>
       </a>
     </div>
@@ -627,7 +627,7 @@ function splitLines(text: string) {
       <a href="/legal/" style="color:#333;text-decoration:underline;">
         <span class="t-en">Legal notice</span>
         <span class="t-fr">Mentions légales</span>
-        <span class="t-kr">Mention légal</span>
+        <span class="t-kr">Avi legal</span>
         <span class="t-es">Aviso legal</span>
       </a>
       &nbsp;·&nbsp;
