@@ -205,7 +205,7 @@ function getSessionCount() {
 
 function getShownIndices() {
   try { return JSON.parse(localStorage.getItem("ngo_quiz_shown") || "[]"); }
-  catch(e) { return []; }
+  catch { return []; }
 }
 
 function saveSessionComplete(indices) {
