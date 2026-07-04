@@ -1,0 +1,42 @@
+name: Lighthouse CI
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  workflow_run:
+    workflows: ["Deploy CC"]
+    types: [completed]
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * 1" # weekly, Monday 06:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    # After a deploy: only audit if the deploy succeeded. Schedule/dispatch: always run.
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Audit live site
+        uses: treosh/lighthouse-ci-action@3e7e23fb74242897f95c0ba9cabad3d0227b9b18 # 12.6.2
+        with:
+          urls: |
+            https://caribbean.countdowns.co/
+            https://caribbean.countdowns.co/ngo/
+            https://caribbean.countdowns.co/sustainability/
+            https://caribbean.countdowns.co/suggest-event/
+            https://caribbean.countdowns.co/sponsor/
+            https://caribbean.countdowns.co/legal/
+          configPath: ./.lighthouserc.json
+          runs: 3
+          uploadArtifacts: true
+          temporaryPublicStorage: false
