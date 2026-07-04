@@ -215,20 +215,22 @@ function renderStep(n) {
            + (hint ? '<div class="step-hint">' + escHtml(hint) + '</div>' : '');
 
   if (step.type === "text" || step.type === "url") {
-    html += '<input type="' + (step.type === "url" ? "url" : "text") + '" id="stepInput" class="step-input" value="' + escHtml(state[step.id] || "") + '" autocomplete="off" />';
+    html += '<input type="' + (step.type === "url" ? "url" : "text") + '" id="stepInput" class="step-input" aria-label="' + escHtml(q) + '" value="' + escHtml(state[step.id] || "") + '" autocomplete="off" />';
   } else if (step.type === "textarea") {
-    html += '<textarea id="stepInput" class="step-input step-textarea">' + escHtml(state[step.id] || "") + '</textarea>';
+    html += '<textarea id="stepInput" class="step-input step-textarea" aria-label="' + escHtml(q) + '">' + escHtml(state[step.id] || "") + '</textarea>';
   } else if (step.type === "date-range") {
     var sd = state.startDate || "", ed = state.endDate || "";
+    var sdLabel = { en: "Start date", fr: "Date de début", kr: "Dat kòmansman", es: "Fecha de inicio" };
+    var edLabel = { en: "End date", fr: "Date de fin", kr: "Dat lafen", es: "Fecha de fin" };
     html += '<div class="date-row">'
           + '<div><div class="date-label t-en">Start date</div><div class="date-label t-fr">Date de début</div><div class="date-label t-kr">Dat kòmansman</div><div class="date-label t-es">Fecha de inicio</div>'
-          + '<input type="date" id="startDate" class="step-input" value="' + escHtml(sd) + '" /></div>'
+          + '<input type="date" id="startDate" class="step-input" aria-label="' + escHtml(sdLabel[lang] || sdLabel.en) + '" value="' + escHtml(sd) + '" /></div>'
           + '<div><div class="date-label t-en">End date</div><div class="date-label t-fr">Date de fin</div><div class="date-label t-kr">Dat lafen</div><div class="date-label t-es">Fecha de fin</div>'
-          + '<input type="date" id="endDate" class="step-input" value="' + escHtml(ed) + '" /></div>'
+          + '<input type="date" id="endDate" class="step-input" aria-label="' + escHtml(edLabel[lang] || edLabel.en) + '" value="' + escHtml(ed) + '" /></div>'
           + '</div>';
   } else if (step.type === "select") {
     var current = state[step.id] || "";
-    html += '<select id="stepInput" class="step-input"><option value="">—</option>';
+    html += '<select id="stepInput" class="step-input" aria-label="' + escHtml(q) + '"><option value="">—</option>';
     step.options.forEach(function(opt) {
       var label = step.optionLabels ? (step.optionLabels[opt][lang] || step.optionLabels[opt].en) : opt;
       html += '<option value="' + escHtml(opt) + '"' + (current === opt ? " selected" : "") + '>' + escHtml(label) + '</option>';
