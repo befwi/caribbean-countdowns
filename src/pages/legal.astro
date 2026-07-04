@@ -160,10 +160,10 @@ import PageFooter from "../components/PageFooter.astro";
         <span class="badge">Aucun cookie</span>
         <p>Ce site <strong>n'utilise pas de cookies</strong>.</p>
         <p><strong>Préférence de langue</strong> — enregistrée localement via <strong>localStorage</strong> (FR, EN, KR, ES). Reste sur votre appareil, jamais transmise à un serveur.</p>
-        <p><strong>Compteur de visites</strong> — affiché via le service tiers <strong>visitor-badge.laobi.icu</strong>. Ce service reçoit votre adresse IP lors du chargement de la page pour incrémenter un compteur. Aucun cookie déposé, aucune donnée personnelle stockée par ce site.</p>
+        <p><strong>Compteur de visites</strong> — compteur agrégé première partie, servi par notre propre Cloudflare Worker (<strong>/api/hit</strong>). Aucune adresse IP n'est stockée ni transmise à un tiers : les visites uniques du jour sont estimées via une empreinte anonyme non réversible (hachage salé renouvelé chaque jour, jamais conservé en clair, expirée sous 24 h). Aucun cookie déposé.</p>
         <p><strong>Statistiques NGO</strong> — la jauge de progression communautaire enregistre un incrément anonyme sur Cloudflare KV (nombre uniquement). Aucun identifiant personnel ni adresse IP n'est associé à cette action.</p>
         <p><strong>Formulaire de suggestion d'événement</strong> — les données saisies sont compilées localement dans votre navigateur. Si vous cliquez sur « Envoyer par email », votre client de messagerie s'ouvre avec les informations pré-remplies. Ce site ne transmet ni ne stocke ces données.</p>
-        <p>Conformément au RGPD, ce site ne traite aucune donnée personnelle directement. Le traitement éventuel des adresses IP par visitor-badge.laobi.icu relève de leur propre politique de confidentialité.</p>
+        <p>Conformément au RGPD, ce site ne traite aucune donnée personnelle directement et le compteur de visites ne conserve aucun identifiant.</p>
       </div>
 
       <hr class="divider" />
@@ -227,10 +227,10 @@ import PageFooter from "../components/PageFooter.astro";
         <span class="badge">No cookies</span>
         <p>This site <strong>does not use cookies</strong>.</p>
         <p><strong>Language preference</strong> — stored locally via <strong>localStorage</strong> (FR, EN, KR, ES). Stays on your device, never sent to a server.</p>
-        <p><strong>Visit counter</strong> — displayed via the third-party service <strong>visitor-badge.laobi.icu</strong>. This service receives your IP address when the page loads to increment a counter. No cookies are set and no personal data is stored by this site.</p>
+        <p><strong>Visit counter</strong> — first-party aggregate counter served by our own Cloudflare Worker (<strong>/api/hit</strong>). No IP address is stored or shared with any third party: daily unique visits are estimated from a non-reversible anonymous fingerprint (salted hash rotated daily, never stored raw, expired within 24 h). No cookies are set.</p>
         <p><strong>NGO stats</strong> — the community progress gauge records an anonymous increment on Cloudflare KV (a number only). No personal identifier or IP address is associated with this action.</p>
         <p><strong>Suggest-event form</strong> — data entered is compiled locally in your browser. If you click "Send by email", your email client opens with the information pre-filled. This site does not transmit or store any of this data.</p>
-        <p>This site does not directly process personal data under GDPR. Any IP address processing by visitor-badge.laobi.icu is governed by their own privacy policy.</p>
+        <p>This site does not directly process personal data under GDPR; the visit counter keeps no identifiers.</p>
       </div>
 
       <hr class="divider" />
@@ -294,10 +294,10 @@ import PageFooter from "../components/PageFooter.astro";
         <span class="badge">Okenn kuki</span>
         <p>Sit la <strong>pa itilize okenn kuki</strong>.</p>
         <p><strong>Preferans lang</strong> — anrejistreye lokalman pa <strong>localStorage</strong> (FR, EN, KR, ES). Rèsté sou aparèy ou, pa janmen transmèt bay on sèvè.</p>
-        <p><strong>Konptè vizit</strong> — afichè pa sèvis tièrs <strong>visitor-badge.laobi.icu</strong>. Sèvis sa a resevwa adrès IP ou lè paj la chajé pou inkrementé on konptè. Okenn kuki depoze, okenn done pèsonèl estoke pa sit la.</p>
+        <p><strong>Konptè vizit</strong> — konptè agreje premye pati, sèvi pa pwòp Cloudflare Worker nou (<strong>/api/hit</strong>). Okenn adrès IP pa estoke ni pataje ak yon tyès : vizit inik chak jou estime ak yon anprent anonim ki pa ka envèse (hash sale ki chanje chak jou, ki pa janm konsève an klè, ki ekspire nan 24 è). Okenn kuki depoze.</p>
         <p><strong>Estatistik NGO</strong> — jòj pwogresyon kominotè a anrejistreye yon inkreman anonim sou Cloudflare KV (nonb sèlman). Okenn idantifyan pèsonèl ni adrès IP pa asosyé epi aksyon sa a.</p>
         <p><strong>Fòmilè sijesyon evènman</strong> — done ou antre yo konpilé lokalman adan navigatè ou. Si ou klike sou « Voye pa imèl », kliyan imèl ou louvri epi enfomasyon yo pre-ranpli. Sit la pa transmèt ni estoke done sa yo.</p>
-        <p>Sit la pa trete okenn done pèsonèl dirèkteman. Trajtman éventèl adrès IP pa visitor-badge.laobi.icu soumiz a politik konfidansyalité yo pwòp.</p>
+        <p>Sit la pa trete okenn done pèsonèl dirèkteman ; konptè vizit la pa konsève okenn idantifyan.</p>
       </div>
 
       <hr class="divider" />
@@ -360,10 +360,10 @@ import PageFooter from "../components/PageFooter.astro";
         <span class="badge">Sin cookies</span>
         <p>Este sitio <strong>no utiliza cookies</strong>.</p>
         <p><strong>Preferencia de idioma</strong> — almacenada localmente mediante <strong>localStorage</strong> (FR, EN, KR, ES). Permanece en su dispositivo, nunca se transmite a un servidor.</p>
-        <p><strong>Contador de visitas</strong> — mostrado a través del servicio de terceros <strong>visitor-badge.laobi.icu</strong>. Este servicio recibe su dirección IP al cargar la página para incrementar un contador. No se instalan cookies ni se almacenan datos personales en este sitio.</p>
+        <p><strong>Contador de visitas</strong> — contador agregado de primera parte, servido por nuestro propio Cloudflare Worker (<strong>/api/hit</strong>). No se almacena ni se comparte ninguna dirección IP con terceros: las visitas únicas diarias se estiman mediante una huella anónima no reversible (hash con sal rotada a diario, nunca guardado en claro, expirado en 24 h). No se instalan cookies.</p>
         <p><strong>Estadísticas NGO</strong> — el medidor de progreso comunitario registra un incremento anónimo en Cloudflare KV (solo un número). Ningún identificador personal ni dirección IP se asocia a esta acción.</p>
         <p><strong>Formulario de sugerencia de evento</strong> — los datos introducidos se compilan localmente en su navegador. Si hace clic en «Enviar por correo», su cliente de correo se abre con la información pre-rellenada. Este sitio no transmite ni almacena estos datos.</p>
-        <p>Este sitio no trata datos personales directamente bajo el RGPD. El tratamiento de direcciones IP por visitor-badge.laobi.icu se rige por su propia política de privacidad.</p>
+        <p>Este sitio no trata datos personales directamente bajo el RGPD; el contador de visitas no conserva ningún identificador.</p>
       </div>
 
       <hr class="divider" />
