@@ -106,6 +106,10 @@
   buildContent(tickerA);
   buildContent(tickerB);
 
+  // tickerB is the aria-hidden duplicate for the seamless scroll loop —
+  // its links must not be reachable by keyboard
+  tickerB.querySelectorAll("a").forEach(function (a) { a.tabIndex = -1; });
+
   banner.classList.add("is-visible");
 
   requestAnimationFrame(function () {
