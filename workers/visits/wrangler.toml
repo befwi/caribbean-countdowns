@@ -1,0 +1,23 @@
+name = "visits"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+[[kv_namespaces]]
+binding = "VISITS_KV"
+id = "18001906783d438c9c26b54533744194"  # npx wrangler kv namespace create VISITS_KV
+
+[[routes]]
+pattern = "caribbean.countdowns.co/api/hit"
+zone_name = "countdowns.co"
+
+# Optional: Workers Analytics Engine — free, no-PII traffic datapoints
+# (path + country per hit, uniques via daily-hash index). Remove if unused.
+[[analytics_engine_datasets]]
+binding = "TRAFFIC"
+dataset = "caribbean_traffic"
+
+[[unsafe.bindings]]
+name = "RATE_LIMITER"
+type = "ratelimit"
+namespace_id = "1002"
+simple = { limit = 30, period = 60 }
