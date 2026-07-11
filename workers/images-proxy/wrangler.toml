@@ -1,0 +1,11 @@
+name = "images-proxy"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+[[r2_buckets]]
+binding = "CARIBBEAN_DATA"
+bucket_name = "caribbean-data"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/images/*"
+zone_name = "countdowns.co"
