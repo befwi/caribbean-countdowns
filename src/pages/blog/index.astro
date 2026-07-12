@@ -1,0 +1,134 @@
+---
+import LiveBanner from "../../components/LiveBanner.astro";
+import PageFooter from "../../components/PageFooter.astro";
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Blog — countdowns.co</title>
+  <meta name="description" content="Editorial guides to Caribbean festivals, carnivals and regattas — seasonal picks, dates and tickets, from the countdowns.co event dataset." />
+  <style>.t-fr,.t-kr,.t-es{display:none}</style>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f0f0f;
+      color: #e0e0e0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .site-title { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; color: #fff; }
+
+    .back-link { font-size: 13px; color: #888; }
+    .back-link:hover { color: #ccc; }
+
+    .lang-group { display: flex; gap: 4px; flex-shrink: 0; }
+    .lang-btn {
+      background: transparent; border: 1px solid #555; border-radius: 3px;
+      cursor: pointer; font-size: 18px; padding: 2px 6px; color: #aaa;
+      font-family: inherit; transition: all 0.15s; opacity: 0.5;
+    }
+    .lang-btn:hover { border-color: #888; opacity: 0.8; }
+    .lang-btn.active { background: #1a1a1a; border-color: #555; opacity: 1; }
+
+    .divider { border: none; border-top: 1px solid #2a2a2a; margin: 24px 0 32px; }
+
+    h2 { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.3px; }
+    .blog-sub { font-size: 14px; color: #888; margin-bottom: 36px; }
+
+    .post-card {
+      display: block; background: #161616; border: 1px solid #2a2a2a;
+      border-radius: 8px; overflow: hidden; transition: border-color 0.15s;
+    }
+    .post-card:hover { border-color: #0d9488; text-decoration: none; }
+    .post-card img { width: 100%; height: auto; display: block; }
+    .post-card-body { padding: 20px 24px; }
+    .post-card-date { font-size: 11px; color: #5eead4; margin-bottom: 6px; }
+    .post-card-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.3; }
+    .post-card-excerpt { font-size: 13px; color: #999; }
+    .post-card-read { font-size: 13px; color: #0d9488; font-weight: 600; margin-top: 12px; display: inline-block; }
+  </style>
+</head>
+
+<body>
+<LiveBanner />
+  <div class="page">
+
+    <div class="header-row">
+      <h1 class="site-title">
+        <a href="/">Countdowns</a>
+      </h1>
+      <div style="display:flex;align-items:center;gap:16px;">
+        <a class="back-link" href="/">
+          <span class="t-en">← Back</span>
+          <span class="t-fr">← Retour</span>
+          <span class="t-kr">← Retounen</span>
+          <span class="t-es">← Volver</span>
+        </a>
+        <div class="lang-group">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="fr">FR</button>
+          <button class="lang-btn" data-lang="kr">KR</button>
+          <button class="lang-btn" data-lang="es">ES</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+
+    <h2>Blog</h2>
+    <p class="blog-sub">
+      <span class="t-en">Seasonal guides to Caribbean events — written from our own dataset.</span>
+      <span class="t-fr">Guides saisonniers des événements caribéens — écrits à partir de nos propres données.</span>
+      <span class="t-kr">Gid sezon pou evenman karayibeyen yo — ekri apati pwòp done nou.</span>
+      <span class="t-es">Guías de temporada de eventos caribeños — escritas a partir de nuestros propios datos.</span>
+    </p>
+
+    <a class="post-card" href="/blog/top-carnivals-2026/">
+      <img src="/images/vincymas.webp" alt="Caribbean carnival" width="860" height="400" loading="eager" />
+      <div class="post-card-body">
+        <div class="post-card-date">
+          <span class="t-en">July 2026</span>
+          <span class="t-fr">Juillet 2026</span>
+          <span class="t-kr">Jiyè 2026</span>
+          <span class="t-es">Julio de 2026</span>
+        </div>
+        <div class="post-card-title">
+          <span class="t-en">The 5 Caribbean carnivals to live this summer 2026</span>
+          <span class="t-fr">Les 5 carnavals caribéens à vivre cet été 2026</span>
+          <span class="t-kr">5 kanaval karayibeyen pou viv ete 2026 la</span>
+          <span class="t-es">Los 5 carnavales caribeños para vivir este verano 2026</span>
+        </div>
+        <div class="post-card-excerpt">
+          <span class="t-en">Vincy Mas, Lucian Carnival, Anguilla Summer Festival, Crop Over, SpiceMas — dates, highlights and tickets, in calendar order.</span>
+          <span class="t-fr">Vincy Mas, Lucian Carnival, Anguilla Summer Festival, Crop Over, SpiceMas — dates, temps forts et billets, dans l'ordre du calendrier.</span>
+          <span class="t-kr">Vincy Mas, Lucian Carnival, Anguilla Summer Festival, Crop Over, SpiceMas — dat, gwo moman epi tikè, nan lòd kalandriye a.</span>
+          <span class="t-es">Vincy Mas, Lucian Carnival, Anguilla Summer Festival, Crop Over, SpiceMas — fechas, momentos clave y entradas, en orden de calendario.</span>
+        </div>
+        <span class="post-card-read">
+          <span class="t-en">Read →</span>
+          <span class="t-fr">Lire →</span>
+          <span class="t-kr">Li →</span>
+          <span class="t-es">Leer →</span>
+        </span>
+      </div>
+    </a>
+
+  </div>
+
+  <script is:inline src="/scripts/lang.js" defer></script>
+<PageFooter />
+</body>
+</html>
