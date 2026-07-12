@@ -72,4 +72,18 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://caribbean.countdowns.co/blog/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://caribbean.countdowns.co/blog/top-carnivals-2026/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

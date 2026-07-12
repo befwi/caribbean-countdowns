@@ -4,7 +4,9 @@ import festivals2026 from "../data/events-2026.json";
 import festivals2027 from "../data/events-2027.json";
 import sponsors from "../data/sponsors.json";
 import ngos from "../data/ngos.json";
+import ecoCriteria from "../data/eco-criteria.json";
 import { tzDayStart, tzDayEnd } from "../utils/tz";
+import { computeEcoGrade } from "../utils/eco";
 
 const festivals = [...festivals2026, ...festivals2027];
 import FestivalRow from "../components/FestivalRow.astro";
@@ -37,6 +39,12 @@ const eventTypeLabels: Record<string, Record<string, string>> = {
 
 const details = ["All", ...Array.from(new Set(festivals.flatMap(f => f.details ?? []).filter(v => v)))];
 const countries = ["All", ...Array.from(new Set(festivals.map(f => f.country).filter(Boolean)))];
+
+const GRADE_ORDER = ["A", "B", "C", "D", "F"];
+const presentGrades = GRADE_ORDER.filter(g =>
+  festivals.some(f => computeEcoGrade(f.eco, ecoCriteria as any[]) === g)
+);
+const ecoGrades = ["All", ...presentGrades];
 
 const lastUpdateEn = new Date().toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
 const lastUpdateFr = new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
@@ -560,6 +568,31 @@ function splitLines(text: string) {
             </div>
           </div>
 
+          <div class="filter-panel-group">
+            <span class="filter-panel-label">
+              <span class="t-en">Eco grade</span>
+              <span class="t-fr">Note éco</span>
+              <span class="t-kr">Nòt eko</span>
+              <span class="t-es">Nota eco</span>
+            </span>
+            <div class="filter-chips">
+              {ecoGrades.map(g => (
+                <button class={`filter-chip${g === "All" ? " active" : ""}`} data-filter-type="eco" data-value={g} type="button">
+                  {g === "All" ? (
+                    <span>
+                      <span class="t-en">All grades</span>
+                      <span class="t-fr">Toutes les notes</span>
+                      <span class="t-kr">Tout nòt</span>
+                      <span class="t-es">Todas las notas</span>
+                    </span>
+                  ) : (
+                    <span>♻️ {g}</span>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -622,6 +655,13 @@ function splitLines(text: string) {
         <span class="t-fr">Évaluateur éco</span>
         <span class="t-kr">Evaluatè eko</span>
         <span class="t-es">Evaluador eco</span>
+      </a>
+      &nbsp;·&nbsp;
+      <a href="/blog/" style="color:#333;text-decoration:underline;">
+        <span class="t-en">Blog</span>
+        <span class="t-fr">Blog</span>
+        <span class="t-kr">Blog</span>
+        <span class="t-es">Blog</span>
       </a>
     </div>
     <div style="text-align:center;padding:0 0 10px;font-size:11px;">
