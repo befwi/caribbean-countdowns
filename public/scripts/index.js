@@ -95,6 +95,7 @@ var searchQuery    = "";
 var activeType     = "All"; // single select
 var activeDetails  = [];    // multi-select (empty = all)
 var activeCountries = [];   // multi-select (empty = all)
+var activeEcoGrades = [];   // multi-select (empty = all)
 
 function applyFilters() {
   document.querySelectorAll(".festival-entry").forEach(function(row) {
@@ -102,11 +103,13 @@ function applyFilters() {
     var rowType    = row.getAttribute("data-type")    || "";
     var rowDetails = (row.getAttribute("data-details") || "").split(",").filter(Boolean);
     var rowCountry = row.getAttribute("data-country") || "";
+    var rowEco     = row.getAttribute("data-eco-grade") || "";
     var matchSearch  = !searchQuery || rowName.indexOf(searchQuery) !== -1;
     var matchType    = activeType === "All" || rowType === activeType;
     var matchCountry = activeCountries.length === 0 || activeCountries.indexOf(rowCountry) !== -1;
     var matchDetail  = activeDetails.length === 0 || activeDetails.some(function(v) { return rowDetails.indexOf(v) !== -1; });
-    var show = matchSearch && matchType && matchCountry && matchDetail;
+    var matchEco     = activeEcoGrades.length === 0 || activeEcoGrades.indexOf(rowEco) !== -1;
+    var show = matchSearch && matchType && matchCountry && matchDetail && matchEco;
     row.style.display = show ? "" : "none";
     var next = row.nextElementSibling;
     if (next && next.classList.contains("divider")) {
@@ -116,7 +119,7 @@ function applyFilters() {
 }
 
 function updateFilterBadge() {
-  var count = (activeType !== "All" ? 1 : 0) + activeDetails.length + activeCountries.length;
+  var count = (activeType !== "All" ? 1 : 0) + activeDetails.length + activeCountries.length + activeEcoGrades.length;
   var badge = document.getElementById("filterBadge");
   var toggle = document.getElementById("filterToggle");
   if (badge) { badge.textContent = count; badge.style.display = count > 0 ? "" : "none"; }
@@ -177,6 +180,19 @@ document.querySelectorAll(".filter-chip").forEach(function(btn) {
         else            { activeDetails.splice(idx, 1); btn.classList.remove("active"); }
         var allBtn = document.querySelector(".filter-chip[data-filter-type='detail'][data-value='All']");
         if (allBtn) allBtn.classList.toggle("active", activeDetails.length === 0);
+      }
+
+    } else if (type === "eco") {
+      if (value === "All") {
+        activeEcoGrades = [];
+        document.querySelectorAll(".filter-chip[data-filter-type='eco']").forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+      } else {
+        var idx = activeEcoGrades.indexOf(value);
+        if (idx === -1) { activeEcoGrades.push(value); btn.classList.add("active"); }
+        else            { activeEcoGrades.splice(idx, 1); btn.classList.remove("active"); }
+        var allBtn = document.querySelector(".filter-chip[data-filter-type='eco'][data-value='All']");
+        if (allBtn) allBtn.classList.toggle("active", activeEcoGrades.length === 0);
       }
     }
 

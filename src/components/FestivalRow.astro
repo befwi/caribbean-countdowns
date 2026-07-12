@@ -1,18 +1,10 @@
 ---
 import ecoCriteria from "../data/eco-criteria.json";
 import { tzDayStart, tzDayEnd } from "../utils/tz";
+import { computeEcoGrade } from "../utils/eco";
 const { festival } = Astro.props;
 
-let ecoGrade: string | null = null;
-if (festival.eco) {
-  let total = 0;
-  for (const cat of ecoCriteria as any[]) {
-    for (const c of cat.criteria) {
-      if ((festival.eco as any)[cat.key]?.[c.key] === true) total += 4;
-    }
-  }
-  ecoGrade = total >= 80 ? "A" : total >= 60 ? "B" : total >= 40 ? "C" : total >= 20 ? "D" : "F";
-}
+const ecoGrade = computeEcoGrade(festival.eco, ecoCriteria as any[]);
 
 const tz = festival.timezone ?? "America/Martinique";
 const startMs = tzDayStart(festival.startDate, tz);
@@ -315,6 +307,7 @@ const eventDateStr =
   data-type={festival.type ?? ""}
   data-details={(festival.details ?? []).join(",")}
   data-country={festival.country ?? ""}
+  data-eco-grade={ecoGrade ?? ""}
   style={(festival.image && status !== "ENDED") ? `background-image: url('${festival.image}')` : ""}
 >
   <div class="festival-header">
