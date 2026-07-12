@@ -53,13 +53,10 @@ import PageFooter from "../components/PageFooter.astro";
     .platform-url.visible { display: block; }
     .done-title { font-size: 16px; font-weight: 700; color: #4ade80; margin-bottom: 6px; }
     .done-hint { font-size: 12px; color: #555; margin-bottom: 20px; }
-    .btn-email { width: 100%; background: #0d2a1a; border: 1px solid #166534; color: #4ade80; border-radius: 4px; padding: 12px; cursor: pointer; font-size: 13px; font-family: inherit; font-weight: 600; transition: background 0.15s; margin-bottom: 16px; }
-    .btn-email:hover { background: #113520; }
-    .mail-fallback { font-size: 11px; color: #444; margin-bottom: 10px; }
-    .json-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.6px; color: #444; margin-bottom: 8px; }
-    .json-output { background: #141414; border: 1px solid #2e2e2e; border-radius: 4px; padding: 14px; font-family: 'Courier New', Courier, monospace; font-size: 12px; color: #ccc; white-space: pre; overflow-x: auto; line-height: 1.7; margin-bottom: 8px; }
-    .btn-copy { width: 100%; background: #1a1a1a; border: 1px solid #333; color: #666; border-radius: 4px; padding: 9px; cursor: pointer; font-size: 12px; font-family: inherit; transition: all 0.15s; }
-    .btn-copy:hover { border-color: #555; color: #aaa; }
+    .btn-submit { width: 100%; background: #0d2a1a; border: 1px solid #166534; color: #4ade80; border-radius: 4px; padding: 12px; cursor: pointer; font-size: 13px; font-family: inherit; font-weight: 600; transition: background 0.15s; margin-bottom: 16px; }
+    .btn-submit:hover:not(:disabled) { background: #113520; }
+    .btn-submit:disabled { opacity: 0.5; cursor: wait; }
+    .submit-error { font-size: 12px; color: #f87171; margin-bottom: 12px; }
     #wizardNav { display: flex; gap: 10px; margin-top: 28px; }
     #btnBack { background: transparent; border: 1px solid #333; border-radius: 4px; color: #555; font-size: 13px; font-family: inherit; padding: 10px 22px; cursor: pointer; transition: all 0.15s; }
     #btnBack:hover { border-color: #555; color: #aaa; }

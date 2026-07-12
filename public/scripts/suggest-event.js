@@ -66,22 +66,27 @@ var LABELS = {
   back:        { en: "← Back",            fr: "← Retour",                    kr: "← Retounen",       es: "← Volver" },
   next:        { en: "Next →",            fr: "Suivant →",                    kr: "Swivan →",          es: "Siguiente →" },
   skip:        { en: "Skip →",            fr: "Passer →",                     kr: "Pase →",            es: "Omitir →" },
-  send:        { en: "✉ Send by email",   fr: "✉ Envoyer par email",          kr: "✉ Voye pa imèl",   es: "✉ Enviar por correo" },
-  copy:        { en: "Copy JSON",         fr: "Copier JSON",                  kr: "Kopye JSON",        es: "Copiar JSON" },
-  copied:      { en: "Copied ✓",          fr: "Copié ✓",                      kr: "Kopye ✓",           es: "Copiado ✓" },
   done:        { en: "✓ All done!",       fr: "✓ C'est fait !",               kr: "✓ Fini !",          es: "✓ ¡Listo!" },
-  doneHint:    { en: "Click to send by email, or copy the JSON below if you're adding it directly.",
-                 fr: "Cliquez pour envoyer par email, ou copiez le JSON si vous l'ajoutez directement.",
-                 kr: "Klikye pou voye pa imèl, oswa kopye JSON an si w ap ajoute l dirèkteman.",
-                 es: "Haz clic para enviar, o copia el JSON si lo estás añadiendo directamente." },
-  jsonLabel:   { en: "JSON — copy to paste into festivals-2026.json",
-                 fr: "JSON — copier pour coller dans festivals-2026.json",
-                 kr: "JSON — kopye pou kole nan festivals-2026.json",
-                 es: "JSON — copia para pegar en festivals-2026.json" },
-  mailFallback:{ en: "If your mail client didn't open, copy below:",
-                 fr: "Si votre client mail ne s'est pas ouvert, copiez ci-dessous :",
-                 kr: "Si kliyan imèl ou pa ouvè, kopye anba a :",
-                 es: "Si tu cliente de correo no se abrió, copia abajo:" },
+  doneHint:    { en: "Click below to submit your suggestion — nothing else is sent.",
+                 fr: "Cliquez ci-dessous pour envoyer votre suggestion — rien d'autre n'est transmis.",
+                 kr: "Klike anba a pou voye sijesyon ou an — nou pa voye anyen ankò.",
+                 es: "Haz clic abajo para enviar tu sugerencia — no se transmite nada más." },
+  submit:      { en: "Submit suggestion", fr: "Envoyer la suggestion",        kr: "Voye sijesyon an",  es: "Enviar la sugerencia" },
+  sending:     { en: "Sending…",          fr: "Envoi…",                       kr: "Voye…",             es: "Enviando…" },
+  sentTitle:   { en: "✓ Suggestion sent!", fr: "✓ Suggestion envoyée !",      kr: "✓ Sijesyon voye !", es: "✓ ¡Sugerencia enviada!" },
+  sentHint:    { en: "We review suggestions within a few days. Thanks!",
+                 fr: "Nous examinons les suggestions sous quelques jours. Merci !",
+                 kr: "Nou egzamine sijesyon yo nan kèk jou. Mèsi !",
+                 es: "Revisamos las sugerencias en unos días. ¡Gracias!" },
+  errorHint:   { en: "Something went wrong — please try again.",
+                 fr: "Une erreur s'est produite — veuillez réessayer.",
+                 kr: "Gen yon erè — tanpri eseye ankò.",
+                 es: "Algo salió mal — inténtalo de nuevo." },
+  rateLimited: { en: "Too many submissions — try again in a minute.",
+                 fr: "Trop de soumissions — réessayez dans une minute.",
+                 kr: "Twòp soumisyon — eseye ankò nan yon minit.",
+                 es: "Demasiados envíos — inténtalo en un minuto." },
+  retry:       { en: "Retry",             fr: "Réessayer",                    kr: "Eseye ankò",        es: "Reintentar" },
 };
 
 var STEPS = [
@@ -356,69 +361,79 @@ function saveStep(n) {
   // multiselect, tickets, eco update state in real-time via event listeners
 }
 
-function buildJSON() {
-  var q = JSON.stringify;
-  var tickets = state.tickets.filter(function(t) { return t.url; });
-  var ticketObjs = tickets.length === 0
-    ? [{ name: "", url: "" }]
-    : tickets;
-  var ticketsStr = "[\n" + ticketObjs.map(function(t) {
-    return '      {\n        "name": ' + q(t.name) + ',\n        "url": ' + q(t.url) + '\n      }';
-  }).join(",\n") + "\n    ]";
-  var fields = [
-    '    "name": '        + q(state.name        || ""),
-    '    "website": '     + q(state.website      || ""),
-    '    "description": ' + q(state.description  || ""),
-    '    "startDate": '   + q(state.startDate    || ""),
-    '    "endDate": '     + q(state.endDate      || ""),
-    '    "city": '        + q(state.city         || ""),
-    '    "country": '     + q(state.country      || ""),
-    '    "timezone": '    + q(state.timezone     || ""),
-    '    "type": '        + q(state.type         || ""),
-    '    "details": ['    + state.details.map(q).join(", ") + "]",
-    '    "image": '       + q(state.image        || ""),
-    '    "tickets": '     + ticketsStr,
-    '    "eco": ['        + state.ecoSignals.map(q).join(", ") + "]",
-  ];
-  return "  {\n" + fields.join(",\n") + "\n  }";
+function buildPayload() {
+  return {
+    name:        state.name        || "",
+    website:     state.website     || "",
+    description: state.description || "",
+    startDate:   state.startDate   || "",
+    endDate:     state.endDate     || "",
+    city:        state.city        || "",
+    country:     state.country     || "",
+    timezone:    state.timezone    || "",
+    type:        state.type        || "",
+    details:     state.details.slice(),
+    image:       state.image       || "",
+    tickets:     state.tickets.filter(function(t) { return t.url; }),
+    eco:         state.ecoSignals.slice(),
+    notes:       state.notes       || ""
+  };
 }
+
+var finalState    = "idle"; // idle | sending | sent | error
+var finalErrorKey = "errorHint";
 
 function renderFinal() {
   var container = document.getElementById("wizardStep");
   if (!container) return;
-  var json = buildJSON();
   var L = function(k) { return LABELS[k][lang] || LABELS[k].en; };
 
-  container.innerHTML =
-    '<div class="done-title">'    + escHtml(L("done"))         + '</div>' +
-    '<div class="done-hint">'     + escHtml(L("doneHint"))     + '</div>' +
-    '<button id="btnEmail" class="btn-email">' + escHtml(L("send")) + '</button>' +
-    '<p class="mail-fallback">'   + escHtml(L("mailFallback")) + '</p>' +
-    '<div class="json-label">'    + escHtml(L("jsonLabel"))    + '</div>' +
-    '<div id="jsonOutput" class="json-output">' + escHtml(json) + '</div>' +
-    '<button id="btnCopy" class="btn-copy">'   + escHtml(L("copy")) + '</button>';
+  if (finalState === "sent") {
+    container.innerHTML =
+      '<div class="done-title">' + escHtml(L("sentTitle")) + '</div>' +
+      '<div class="done-hint">'  + escHtml(L("sentHint"))  + '</div>';
+    document.getElementById("btnNext").style.display = "none";
+    var bb = document.getElementById("btnBack");
+    if (bb) bb.style.display = "none";
+    updateProgress();
+    return;
+  }
+
+  var html =
+    '<div class="done-title">' + escHtml(L("done"))     + '</div>' +
+    '<div class="done-hint">'  + escHtml(L("doneHint")) + '</div>';
+  if (finalState === "error") {
+    html += '<p class="submit-error">' + escHtml(L(finalErrorKey)) + '</p>';
+  }
+  html += '<button id="btnSubmit" class="btn-submit"' + (finalState === "sending" ? " disabled" : "") + '>'
+        + escHtml(finalState === "sending" ? L("sending") : (finalState === "error" ? L("retry") : L("submit")))
+        + '</button>';
+  container.innerHTML = html;
 
   document.getElementById("btnNext").style.display = "none";
   var btnBack = document.getElementById("btnBack");
   if (btnBack) { btnBack.style.display = ""; btnBack.textContent = L("back"); }
   updateProgress();
 
-  document.getElementById("btnEmail").addEventListener("click", function() {
-    var g = { en:"Hi,\n\nHere is my event submission:\n\n", fr:"Bonjour,\n\nVoici ma soumission :\n\n", kr:"Bonjou,\n\nWa soumisyon mwen :\n\n", es:"Hola,\n\nAquí está mi propuesta:\n\n" };
-    var c = { en:"\n\nNotes: "+(state.notes||"(none)")+"\n\nThanks!", fr:"\n\nNotes : "+(state.notes||"(aucune)")+"\n\nMerci !", kr:"\n\nNòt : "+(state.notes||"(okenn)")+"\n\nMèsi !", es:"\n\nNotas: "+(state.notes||"(ninguna)")+"\n\n¡Gracias!" };
-    var body    = encodeURIComponent((g[lang]||g.en) + json + (c[lang]||c.en));
-    var subject = encodeURIComponent("New event — " + (state.name || ""));
-    var a = document.createElement("a");
-    a.href = "mailto:admin.hxqxk@silomails.com?subject=" + subject + "&body=" + body;
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  });
+  var btn = document.getElementById("btnSubmit");
+  if (btn) btn.addEventListener("click", submitSuggestion);
+}
 
-  document.getElementById("btnCopy").addEventListener("click", function() {
-    var btn = document.getElementById("btnCopy");
-    navigator.clipboard.writeText(json).then(function() {
-      btn.textContent = L("copied");
-      setTimeout(function() { btn.textContent = L("copy"); }, 2000);
-    });
+function submitSuggestion() {
+  if (finalState === "sending") return;
+  finalState = "sending";
+  renderFinal();
+  fetch("/api/suggest", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(buildPayload())
+  }).then(function(res) {
+    if (res.status === 201) { finalState = "sent"; }
+    else { finalState = "error"; finalErrorKey = res.status === 429 ? "rateLimited" : "errorHint"; }
+    renderFinal();
+  }).catch(function() {
+    finalState = "error"; finalErrorKey = "errorHint";
+    renderFinal();
   });
 }
 
