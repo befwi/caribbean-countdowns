@@ -98,6 +98,11 @@ var activeCountries = [];   // multi-select (empty = all)
 var activeEcoGrades = [];   // multi-select (empty = all)
 
 function applyFilters() {
+  var filtersActive = !!searchQuery || activeType !== "All" ||
+    activeCountries.length > 0 || activeDetails.length > 0 || activeEcoGrades.length > 0;
+  var pastEl = document.getElementById("past-events-section");
+  var pastMatch = false;
+
   document.querySelectorAll(".festival-entry").forEach(function(row) {
     var rowName    = (row.getAttribute("data-name")   || "").toLowerCase();
     var rowType    = row.getAttribute("data-type")    || "";
@@ -115,7 +120,16 @@ function applyFilters() {
     if (next && next.classList.contains("divider")) {
       next.style.display = show ? "" : "none";
     }
+    if (show && pastEl && pastEl.contains(row)) pastMatch = true;
   });
+
+  // Past events are collapsed by default. When a filter is active, reveal the
+  // past section if it holds matches — otherwise an event whose only match is
+  // past (e.g. a graded past edition) would silently vanish. With no filter,
+  // restore the section to the user's toggle state.
+  if (pastEl) {
+    pastEl.style.display = filtersActive ? (pastMatch ? "" : "none") : (pastOpen ? "" : "none");
+  }
 }
 
 function updateFilterBadge() {

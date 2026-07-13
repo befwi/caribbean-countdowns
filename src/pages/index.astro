@@ -4,9 +4,7 @@ import festivals2026 from "../data/events-2026.json";
 import festivals2027 from "../data/events-2027.json";
 import sponsors from "../data/sponsors.json";
 import ngos from "../data/ngos.json";
-import ecoCriteria from "../data/eco-criteria.json";
 import { tzDayStart, tzDayEnd } from "../utils/tz";
-import { computeEcoGrade } from "../utils/eco";
 
 const festivals = [...festivals2026, ...festivals2027];
 import FestivalRow from "../components/FestivalRow.astro";
@@ -40,11 +38,10 @@ const eventTypeLabels: Record<string, Record<string, string>> = {
 const details = ["All", ...Array.from(new Set(festivals.flatMap(f => f.details ?? []).filter(v => v)))];
 const countries = ["All", ...Array.from(new Set(festivals.map(f => f.country).filter(Boolean)))];
 
-const GRADE_ORDER = ["A", "B", "C", "D", "F"];
-const presentGrades = GRADE_ORDER.filter(g =>
-  festivals.some(f => computeEcoGrade((f as any).eco, ecoCriteria as any[]) === g)
-);
-const ecoGrades = ["All", ...presentGrades];
+// All grades A–F always shown; the filter matches each event by its computed grade
+// (data-eco-grade on the row, set in FestivalRow). Chips for grades with no event
+// yet simply match nothing until events are graded.
+const ecoGrades = ["All", "A", "B", "C", "D", "F"];
 
 const lastUpdateEn = new Date().toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" });
 const lastUpdateFr = new Date().toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
