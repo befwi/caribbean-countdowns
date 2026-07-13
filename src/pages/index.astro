@@ -42,7 +42,7 @@ const countries = ["All", ...Array.from(new Set(festivals.map(f => f.country).fi
 
 const GRADE_ORDER = ["A", "B", "C", "D", "F"];
 const presentGrades = GRADE_ORDER.filter(g =>
-  festivals.some(f => computeEcoGrade(f.eco, ecoCriteria as any[]) === g)
+  festivals.some(f => computeEcoGrade((f as any).eco, ecoCriteria as any[]) === g)
 );
 const ecoGrades = ["All", ...presentGrades];
 
