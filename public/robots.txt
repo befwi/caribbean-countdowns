@@ -1,84 +1,65 @@
 # As a condition of accessing this website, you agree to abide by the following
 # content signals:
-
-# (a)  If a Content-Signal = yes, you may collect content for the corresponding
-#      use.
-# (b)  If a Content-Signal = no, you may not collect content for the
-#      corresponding use.
-# (c)  If the website operator does not include a Content-Signal for a
-#      corresponding use, the website operator neither grants nor restricts
-#      permission via Content-Signal with respect to the corresponding use.
-
-# The content signals and their meanings are:
-
-# search:   building a search index and providing search results (e.g., returning
-#           hyperlinks and short excerpts from your website's contents). Search does not
-#           include providing AI-generated search summaries.
-# ai-input: inputting content into one or more AI models (e.g., retrieval
-#           augmented generation, grounding, or other real-time query taking of content for
-#           generative AI search answers).
+#
+# (a)  If a Content-Signal = yes, you may collect content for the corresponding use.
+# (b)  If a Content-Signal = no, you may not collect content for the corresponding use.
+# (c)  If the website operator does not include a Content-Signal for a corresponding
+#      use, the website operator neither grants nor restricts permission via
+#      Content-Signal with respect to the corresponding use.
+#
+# search:   building a search index and providing search results (hyperlinks and
+#           short excerpts). Does not include AI-generated search summaries.
+# ai-input: inputting content into AI models at answer time (retrieval-augmented
+#           generation, grounding, generative-search answers).
 # ai-train: training or fine-tuning AI models.
+#
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF RIGHTS
+# UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT AND RELATED
+# RIGHTS IN THE DIGITAL SINGLE MARKET.
 
-# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF
-# RIGHTS UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790 ON COPYRIGHT
-# AND RELATED RIGHTS IN THE DIGITAL SINGLE MARKET.
-
-# BEGIN Cloudflare Managed content
+# Policy: cite yes, train no.
+#   Answer/search engines may crawl public pages (event names, dates, blog) so they
+#   can cite the site. AI training crawlers are disallowed. The API (/api/) is never
+#   crawlable. Curated index for LLMs: https://caribbean.countdowns.co/llms.txt
 
 User-agent: *
-Content-Signal: search=yes,ai-train=no
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+Disallow: /api/
 Allow: /
 
-User-agent: Amazonbot
-Disallow: /
-
-User-agent: Applebot-Extended
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: CCBot
+# ── AI training crawlers — disallowed entirely ──
+User-agent: GPTBot
 Disallow: /
 
 User-agent: ClaudeBot
-Disallow: /
-
-User-agent: CloudflareBrowserRenderingCrawler
 Disallow: /
 
 User-agent: Google-Extended
 Disallow: /
 
-User-agent: GPTBot
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Applebot-Extended
 Disallow: /
 
 User-agent: meta-externalagent
 Disallow: /
 
-# END Cloudflare Managed Content
+User-agent: Amazonbot
+Disallow: /
 
-# caribbean.countdowns.co
-
-User-agent: *
-Disallow: /api/
-Allow: /
-
-# AI crawlers: index event names and dates only
-# Do not reproduce descriptions, images, or ticket links — link to the site instead
-User-agent: GPTBot
-Disallow: /api/
-
-User-agent: ClaudeBot
+# ── AI answer/search crawlers — public pages allowed, API gated ──
+User-agent: OAI-SearchBot
 Disallow: /api/
 
 User-agent: PerplexityBot
 Disallow: /api/
 
-User-agent: Amazonbot
-Disallow: /api/
-
-User-agent: Applebot-Extended
+User-agent: Applebot
 Disallow: /api/
 
 Sitemap: https://caribbean.countdowns.co/sitemap.xml
