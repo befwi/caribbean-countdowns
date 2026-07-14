@@ -51,6 +51,11 @@ const liveFestivals   = enriched.filter(f => f.status === "LIVE");
 const endedFestivals  = enriched.filter(f => f.status === "ENDED");
 const activeFestivals = enriched.filter(f => f.status !== "ENDED");
 
+// LCP hint: the first active card with an image is the likely largest-paint
+// element. Preload it (fetchpriority high) so the browser fetches it early
+// instead of waiting for the CSS background-image to be discovered.
+const lcpImage = activeFestivals.find(f => f.image)?.image ?? null;
+
 const { ngo } = ngos;
 const { sponsor } = sponsors;
 
@@ -64,6 +69,7 @@ function splitLines(text: string) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="no-referrer" />
+  {lcpImage && <link rel="preload" as="image" href={lcpImage} fetchpriority="high" />}
   <title>countdowns.co — Caribbean</title>
   <meta name="description" content="Live countdowns to Caribbean festivals, carnivals and regattas — dates, tickets and eco scores for 75+ events across the Caribbean, in 4 languages." />
   <style>.t-fr,.t-kr,.t-es{display:none}</style>
@@ -596,9 +602,9 @@ function splitLines(text: string) {
 
     <hr class="divider" />
 
-    <!-- Festival list — active events -->
-    {activeFestivals.map(festival => (
-      <FestivalRow festival={festival} />
+    <!-- Festival list — active events (first 3 eager for LCP; rest lazy) -->
+    {activeFestivals.map((festival, i) => (
+      <FestivalRow festival={festival} eager={i < 3 || festival.image === lcpImage} />
     ))}
 
     <!-- Past events toggle card -->

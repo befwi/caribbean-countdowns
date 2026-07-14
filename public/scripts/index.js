@@ -250,3 +250,26 @@ if (pastCard && pastSection) {
   });
 }
 
+// Lazy-load below-the-fold card backgrounds. The first 3 active cards stay eager
+// (LCP), so they are not in [data-bg]. .has-image already reserves the 180px box,
+// so setting the image on scroll causes no layout shift. Hidden past-event cards
+// are observed too and load when the section is revealed and scrolled into view.
+(function () {
+  var lazyBgEls = document.querySelectorAll("[data-bg]");
+  if (!lazyBgEls.length) return;
+  function loadBg(el) {
+    var url = el.getAttribute("data-bg");
+    if (url) { el.style.backgroundImage = "url('" + url + "')"; el.removeAttribute("data-bg"); }
+  }
+  if (!("IntersectionObserver" in window)) {
+    lazyBgEls.forEach(loadBg);
+    return;
+  }
+  var bgObserver = new IntersectionObserver(function (entries, obs) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { loadBg(e.target); obs.unobserve(e.target); }
+    });
+  }, { rootMargin: "300px" });
+  lazyBgEls.forEach(function (el) { bgObserver.observe(el); });
+})();
+
