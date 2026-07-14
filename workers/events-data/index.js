@@ -1,8 +1,15 @@
 /* events-data Worker — caribbean.countdowns.co/api/events/:year
  * R2 binding: CARIBBEAN_DATA (bucket: caribbean-data)
- * GET /api/events/2026          → full events-2026.json
- * GET /api/events/2026?country=TT → filtered by country
- * GET /api/events/2026?type=music  → filtered by type
+ * Secrets (wrangler secret put): KEY_MEDIUM, KEY_PREMIUM
+ *
+ * GET /api/events/2026                          → events-2026.json (tier-filtered)
+ * GET /api/events/2026?country=Trinidad%20and%20Tobago → filtered by country (full name)
+ * GET /api/events/2026?type=music               → filtered by type
+ *
+ * Tiers (header X-API-Key, silent fallback to free on missing/unknown key):
+ *   free    (no key)   → name, startDate, endDate, country
+ *   medium  KEY_MEDIUM → + description, type, website
+ *   premium KEY_PREMIUM→ all fields
  */
 
 const ALLOWED_YEARS = ['2026', '2027'];
@@ -11,8 +18,25 @@ const API_VERSION   = '1';
 const CORS = {
   'Access-Control-Allow-Origin':  '*',
   'Access-Control-Allow-Methods': 'GET, OPTIONS',
+  'Access-Control-Allow-Headers': 'X-API-Key',
   'Access-Control-Max-Age':       '86400',
 };
+
+const FIELDS = {
+  free:    ['name', 'startDate', 'endDate', 'country'],
+  medium:  ['name', 'startDate', 'endDate', 'country', 'description', 'type', 'website'],
+  premium: null,   // all fields
+};
+
+// Missing or unknown key → free (no leakage, no 401).
+const getTier = (apiKey, env) =>
+  !apiKey                    ? 'free'
+  : apiKey === env.KEY_PREMIUM ? 'premium'
+  : apiKey === env.KEY_MEDIUM  ? 'medium'
+  : 'free';
+
+const project = (ev, tier) =>
+  FIELDS[tier] ? Object.fromEntries(FIELDS[tier].map(f => [f, ev[f] ?? null])) : ev;
 
 function jsonResponse(body, status = 200, extra = {}) {
   return new Response(JSON.stringify(body), {
@@ -59,16 +83,22 @@ export default {
       return jsonResponse({ error: 'Data parse error' }, 500);
     }
 
-    // Optional query filters — stackable
+    // Optional query filters — stackable, applied before tier projection.
     const country = url.searchParams.get('country');
     const type    = url.searchParams.get('type');
 
     if (country) events = events.filter(e => e.country === country);
     if (type)    events = events.filter(e => e.type    === type);
 
+    // X-Total-Count reflects the (post-filter) result set, before projection.
+    const total = events.length;
+    const tier  = getTier(request.headers.get('X-API-Key'), env);
+    events = events.map(e => project(e, tier));
+
     return jsonResponse(events, 200, {
-      'Cache-Control': 'public, max-age=3600',
-      'X-Total-Count': String(events.length),
+      'Cache-Control': tier === 'free' ? 'public, max-age=3600' : 'private, max-age=300',
+      'X-Total-Count': String(total),
+      'X-API-Tier':    tier,
     });
   },
 };
