@@ -2,7 +2,9 @@
 import ecoCriteria from "../data/eco-criteria.json";
 import { tzDayStart, tzDayEnd } from "../utils/tz";
 import { computeEcoGrade } from "../utils/eco";
-const { festival } = Astro.props;
+// `eager` cards (above the fold) paint their background inline; others defer it
+// to a data-bg attribute loaded on scroll (see index.js IntersectionObserver).
+const { festival, eager = false } = Astro.props;
 
 const ecoGrade = computeEcoGrade(festival.eco, ecoCriteria as any[]);
 
@@ -308,7 +310,8 @@ const eventDateStr =
   data-details={(festival.details ?? []).join(",")}
   data-country={festival.country ?? ""}
   data-eco-grade={ecoGrade ?? ""}
-  style={(festival.image && status !== "ENDED") ? `background-image: url('${festival.image}')` : ""}
+  data-bg={(!eager && festival.image && status !== "ENDED") ? festival.image : undefined}
+  style={(eager && festival.image && status !== "ENDED") ? `background-image: url('${festival.image}')` : ""}
 >
   <div class="festival-header">
     <div class="festival-name">
