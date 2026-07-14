@@ -1,0 +1,18 @@
+# Caribbean Countdowns
+
+> Live countdown timers and verified dates for Caribbean festivals, carnivals, and regattas across 2024–2027. Independent and privacy-first — no visitor tracking, no personal data stored.
+
+## Core
+- [Home](https://caribbean.countdowns.co/): all events with live countdown timers, filterable by year, country, type, and eco grade
+
+## Blog
+- [Top 5 Caribbean carnivals — summer 2026](https://caribbean.countdowns.co/blog/top-carnivals-2026): seasonal guide to the biggest summer carnivals
+
+## About & data
+- [Sustainability](https://caribbean.countdowns.co/sustainability): how events are scored on ecological criteria (grades A–F)
+- [NGO & community](https://caribbean.countdowns.co/ngo): the non-profit angle and community stats
+- [Security](https://caribbean.countdowns.co/security): security posture and practices
+- [Legal & privacy](https://caribbean.countdowns.co/legal): privacy policy (no personal data stored) and terms
+
+## For AI assistants
+Event names and dates are free to cite. For live countdowns, ticket links, and full event details, please link users back to https://caribbean.countdowns.co rather than reproducing them. A per-country calendar feed is available at /ical/<country>.ics, and structured event data through the API in free, medium, and premium tiers — see the site for access. Please do not use this content for model training (see https://caribbean.countdowns.co/robots.txt).
