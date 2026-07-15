@@ -1,0 +1,39 @@
+name = "markdown"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/"
+zone_name = "countdowns.co"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/blog"
+zone_name = "countdowns.co"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/blog/*"
+zone_name = "countdowns.co"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/sustainability"
+zone_name = "countdowns.co"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/ngo"
+zone_name = "countdowns.co"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/security"
+zone_name = "countdowns.co"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/legal"
+zone_name = "countdowns.co"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/impact"
+zone_name = "countdowns.co"
+
+[[routes]]
+pattern = "caribbean.countdowns.co/sponsor"
+zone_name = "countdowns.co"
