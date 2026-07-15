@@ -1,5 +1,6 @@
 /* events-data Worker — caribbean.countdowns.co/api/events/:year
- * R2 binding: CARIBBEAN_DATA (bucket: caribbean-data)
+ * R2 binding:  CARIBBEAN_DATA (bucket: caribbean-data)
+ * Rate limit:  EVENTS_RL (ratelimit binding — see wrangler.toml)
  * Secrets (wrangler secret put): KEY_MEDIUM, KEY_PREMIUM
  *
  * GET /api/events/2026                          → events-2026.json (tier-filtered)
@@ -9,42 +10,77 @@
  * Tiers (header X-API-Key, silent fallback to free on missing/unknown key):
  *   free    (no key)   → name, startDate, endDate, country
  *   medium  KEY_MEDIUM → + description, type, website
- *   premium KEY_PREMIUM→ all fields
+ *   premium KEY_PREMIUM→ explicit allowlist of known fields (NOT a raw passthrough)
+ *
+ * Security (see caribbean-countdowns-api/api-authorization-audit.html):
+ *   A — keys compared in constant time; free traffic rate-limited per IP.
+ *   B — premium is an explicit allowlist so a newly-added data field never auto-leaks.
+ *   C — CORS is '*' only for anonymous reads; keyed calls require an allowlisted Origin.
+ *   D — 404 does not echo the internal R2 object key.
  */
 
-const ALLOWED_YEARS = ['2026', '2027'];
-const API_VERSION   = '1';
-
-const CORS = {
-  'Access-Control-Allow-Origin':  '*',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'X-API-Key',
-  'Access-Control-Max-Age':       '86400',
-};
+const ALLOWED_YEARS   = ['2026', '2027'];
+const API_VERSION     = '1';
+// First-party origins allowed to send X-API-Key from a browser. Anonymous reads stay open ('*').
+const ALLOWED_ORIGINS = ['https://caribbean.countdowns.co'];
 
 const FIELDS = {
   free:    ['name', 'startDate', 'endDate', 'country'],
   medium:  ['name', 'startDate', 'endDate', 'country', 'description', 'type', 'website'],
-  premium: null,   // all fields
+  // Explicit allowlist (was `null` = raw passthrough). Adding a field to the data does NOT
+  // expose it until it is listed here — turns a data edit back into a deliberate code decision.
+  premium: ['name', 'startDate', 'endDate', 'country', 'description', 'type', 'website',
+            'timezone', 'city', 'details', 'image', 'tickets', 'eco'],
 };
+
+// Constant-time key comparison — avoids a timing side-channel on the secret keys.
+function safeEq(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string') return false;
+  const ea = new TextEncoder().encode(a);
+  const eb = new TextEncoder().encode(b);
+  if (ea.byteLength !== eb.byteLength) return false;      // length is not secret
+  return crypto.subtle.timingSafeEqual(ea, eb);          // Workers runtime extension
+}
 
 // Missing or unknown key → free (no leakage, no 401).
 const getTier = (apiKey, env) =>
-  !apiKey                    ? 'free'
-  : apiKey === env.KEY_PREMIUM ? 'premium'
-  : apiKey === env.KEY_MEDIUM  ? 'medium'
+  !apiKey                           ? 'free'
+  : safeEq(apiKey, env.KEY_PREMIUM) ? 'premium'
+  : safeEq(apiKey, env.KEY_MEDIUM)  ? 'medium'
   : 'free';
 
+// free/medium: fixed sets, always present → null-fill keeps a stable shape.
+// premium: allowlist filtered to present keys → output byte-identical to today for existing
+// records, but any field NOT in the list (a future addition) is dropped.
 const project = (ev, tier) =>
-  FIELDS[tier] ? Object.fromEntries(FIELDS[tier].map(f => [f, ev[f] ?? null])) : ev;
+  tier === 'premium'
+    ? Object.fromEntries(FIELDS.premium.filter(f => f in ev).map(f => [f, ev[f]]))
+    : Object.fromEntries(FIELDS[tier].map(f => [f, ev[f] ?? null]));
 
-function jsonResponse(body, status = 200, extra = {}) {
+// '*' for anonymous reads; for keyed requests, reflect an allowlisted Origin or grant nothing.
+function corsHeaders(request) {
+  const hasKey = !!request.headers.get('X-API-Key');
+  const origin = request.headers.get('Origin');
+  const allow  = !hasKey                                  ? '*'
+    : (origin && ALLOWED_ORIGINS.includes(origin))        ? origin
+    : null;
+  const h = {
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'X-API-Key',
+    'Access-Control-Max-Age':       '86400',
+  };
+  if (allow) { h['Access-Control-Allow-Origin'] = allow; h['Vary'] = 'Origin'; }
+  return h;
+}
+
+function jsonResponse(body, status = 200, extra = {}, cors = {}) {
   return new Response(JSON.stringify(body), {
     status,
     headers: {
-      ...CORS,
-      'Content-Type':  'application/json',
-      'X-API-Version': API_VERSION,
+      ...cors,
+      'Content-Type':           'application/json',
+      'X-Content-Type-Options': 'nosniff',
+      'X-API-Version':          API_VERSION,
       ...extra,
     },
   });
@@ -52,12 +88,13 @@ function jsonResponse(body, status = 200, extra = {}) {
 
 export default {
   async fetch(request, env) {
-    if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: CORS });
-    }
+    const cors = corsHeaders(request);
 
+    if (request.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: cors });
+    }
     if (request.method !== 'GET') {
-      return jsonResponse({ error: 'Method not allowed' }, 405);
+      return jsonResponse({ error: 'Method not allowed' }, 405, {}, cors);
     }
 
     const url   = new URL(request.url);
@@ -66,21 +103,33 @@ export default {
     const year  = parts[2];
 
     if (!year || !ALLOWED_YEARS.includes(year)) {
-      return jsonResponse({ error: 'Not found', allowedYears: ALLOWED_YEARS }, 404);
+      return jsonResponse({ error: 'Not found', allowedYears: ALLOWED_YEARS }, 404, {}, cors);
+    }
+
+    const tier = getTier(request.headers.get('X-API-Key'), env);
+
+    // Abuse control: throttle anonymous/free traffic per IP; medium/premium keys are exempt.
+    if (tier === 'free' && env.EVENTS_RL) {
+      const ip = request.headers.get('CF-Connecting-IP') || 'anon';
+      const { success } = await env.EVENTS_RL.limit({ key: ip });
+      if (!success) {
+        return jsonResponse({ error: 'Rate limit exceeded' }, 429, { 'Retry-After': '60' }, cors);
+      }
     }
 
     const key    = `events-${year}.json`;
     const object = await env.CARIBBEAN_DATA.get(key);
 
     if (!object) {
-      return jsonResponse({ error: 'Data not available', key }, 404);
+      console.log('events-data miss', key);   // internal only — not echoed to caller
+      return jsonResponse({ error: 'Data not available' }, 404, {}, cors);
     }
 
     let events;
     try {
       events = JSON.parse(await object.text());
     } catch {
-      return jsonResponse({ error: 'Data parse error' }, 500);
+      return jsonResponse({ error: 'Data parse error' }, 500, {}, cors);
     }
 
     // Optional query filters — stackable, applied before tier projection.
@@ -92,13 +141,12 @@ export default {
 
     // X-Total-Count reflects the (post-filter) result set, before projection.
     const total = events.length;
-    const tier  = getTier(request.headers.get('X-API-Key'), env);
     events = events.map(e => project(e, tier));
 
     return jsonResponse(events, 200, {
       'Cache-Control': tier === 'free' ? 'public, max-age=3600' : 'private, max-age=300',
       'X-Total-Count': String(total),
       'X-API-Tier':    tier,
-    });
+    }, cors);
   },
 };
