@@ -6,6 +6,16 @@ compatibility_date = "2025-01-01"
 binding = "CARIBBEAN_DATA"
 bucket_name = "caribbean-data"
 
+# Free-tier abuse control — 30 requests / 60s per IP (keyed tiers exempt in code).
+# namespace_id is an arbitrary per-Worker integer; period must be 10 or 60.
+[[ratelimits]]
+name = "EVENTS_RL"
+namespace_id = "1001"
+
+  [ratelimits.simple]
+  limit = 30
+  period = 60
+
 [[routes]]
 pattern = "caribbean.countdowns.co/api/events/*"
 zone_name = "countdowns.co"
