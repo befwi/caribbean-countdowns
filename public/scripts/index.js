@@ -128,7 +128,8 @@ function applyFilters() {
   // past (e.g. a graded past edition) would silently vanish. With no filter,
   // restore the section to the user's toggle state.
   if (pastEl) {
-    pastEl.style.display = filtersActive ? (pastMatch ? "" : "none") : (pastOpen ? "" : "none");
+    var showPast = filtersActive ? pastMatch : pastOpen;
+    pastEl.classList.toggle("is-hidden", !showPast);
   }
 }
 
@@ -136,7 +137,7 @@ function updateFilterBadge() {
   var count = (activeType !== "All" ? 1 : 0) + activeDetails.length + activeCountries.length + activeEcoGrades.length;
   var badge = document.getElementById("filterBadge");
   var toggle = document.getElementById("filterToggle");
-  if (badge) { badge.textContent = count; badge.style.display = count > 0 ? "" : "none"; }
+  if (badge) { badge.textContent = count; badge.classList.toggle("is-hidden", count === 0); }
   if (toggle) toggle.classList.toggle("has-active", count > 0);
 }
 
@@ -255,6 +256,15 @@ if (pastCard && pastSection) {
 // so setting the image on scroll causes no layout shift. Hidden past-event cards
 // are observed too and load when the section is revealed and scrolled into view.
 (function () {
+  // Eager (LCP) card backgrounds: the URL used to be an inline style attribute,
+  // but CSP style-src 'self' (Observatory A+) forbids that. The preload <link>
+  // still fetches the bytes early; we apply the background via CSSOM (not gated
+  // by CSP) as the very first thing the deferred script does, so paint is prompt.
+  document.querySelectorAll("[data-bg-eager]").forEach(function (el) {
+    var url = el.getAttribute("data-bg-eager");
+    if (url) { el.style.backgroundImage = "url('" + url + "')"; el.removeAttribute("data-bg-eager"); }
+  });
+
   var lazyBgEls = document.querySelectorAll("[data-bg]");
   if (!lazyBgEls.length) return;
   function loadBg(el) {

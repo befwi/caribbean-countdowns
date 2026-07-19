@@ -52,7 +52,7 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
   <meta name="referrer" content="no-referrer" />
   <title>Sustainable Events — countdowns.co</title>
   <meta name="description" content="How Caribbean events earn their eco score — sustainability criteria, A–F grades and practical tips for greener festivals, carnivals and regattas." />
-  <style>.t-fr,.t-kr,.t-es{display:none}</style>
+  <style>.t-fr,.t-kr,.t-es{display:none}.sep{color:#333;margin:0 4px}.lnk-teal{color:#0d9488}</style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -247,11 +247,13 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
     }
 
     .bar-fill {
+      width: 0;
       height: 100%;
       background: #0d9488;
       border-radius: 3px;
       transition: width 0.3s;
     }
+    .bar-fill.w20{width:20%}.bar-fill.w40{width:40%}.bar-fill.w60{width:60%}.bar-fill.w80{width:80%}.bar-fill.w100{width:100%}
 
     .cat-fraction {
       font-size: 11px;
@@ -395,7 +397,7 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
           <span class="t-kr">80–100 — Ekzanplè</span>
           <span class="t-es">80–100 — Ejemplar</span>
         </span>
-        <span style="color:#333;margin:0 4px">·</span>
+        <span class="sep">·</span>
         <span class="legend-pill grade-B">B</span>
         <span class="legend-item">
           <span class="t-en">60–79 — Good</span>
@@ -403,7 +405,7 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
           <span class="t-kr">60–79 — Bon</span>
           <span class="t-es">60–79 — Bueno</span>
         </span>
-        <span style="color:#333;margin:0 4px">·</span>
+        <span class="sep">·</span>
         <span class="legend-pill grade-C">C</span>
         <span class="legend-item">
           <span class="t-en">40–59 — Making progress</span>
@@ -411,7 +413,7 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
           <span class="t-kr">40–59 — An pwogrè</span>
           <span class="t-es">40–59 — En progreso</span>
         </span>
-        <span style="color:#333;margin:0 4px">·</span>
+        <span class="sep">·</span>
         <span class="legend-pill grade-D">D</span>
         <span class="legend-item">
           <span class="t-en">20–39 — Early stage</span>
@@ -419,7 +421,7 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
           <span class="t-kr">20–39 — Debutan</span>
           <span class="t-es">20–39 — Fase inicial</span>
         </span>
-        <span style="color:#333;margin:0 4px">·</span>
+        <span class="sep">·</span>
         <span class="legend-pill grade-F">F</span>
         <span class="legend-item">0–19</span>
       </div>
@@ -433,16 +435,16 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
         <span class="t-es">Cada evento se puntúa en 5 categorías: Emisiones, Residuos, Agua, Biodiversidad y Comunidad. Cada categoría tiene 5 criterios de 4 puntos cada uno — <strong>25 criterios × 4 puntos = 100 máximo</strong>.</span>
       </p>
       <p>
-        <span class="t-en">Scores are based on publicly available information and assessed independently. If you organise one of these events and believe your grade does not reflect your current practices, send us an <a href="mailto:admin.hxqxk@silomails.com?subject=Score%20update%20request" style="color:#0d9488">email with supporting evidence</a> and we will update the evaluation.</span>
-        <span class="t-fr">Les notes sont établies à partir d'informations publiquement disponibles et évaluées de façon indépendante. Si vous organisez l'un de ces événements et estimez que votre note ne reflète pas vos pratiques actuelles, envoyez-nous un <a href="mailto:admin.hxqxk@silomails.com?subject=Demande%20de%20mise%20%C3%A0%20jour%20du%20score" style="color:#0d9488">e-mail avec preuves à l'appui</a> et nous mettrons l'évaluation à jour.</span>
-        <span class="t-kr">Nòt yo baze sou enfòmasyon ki disponib piblikman epi evalye endepandamman. Si ou òganize youn nan festivàl sa yo epi ou kwè nòt ou a pa reflete pratik ou aktyèl yo, voye nou yon <a href="mailto:admin.hxqxk@silomails.com?subject=Demann%20mizajou%20eskò" style="color:#0d9488">imèl ak prèv yo</a> epi nou pral mete evalyasyon an ajou.</span>
-        <span class="t-es">Las puntuaciones se basan en información públicamente disponible y se evalúan de forma independiente. Si organizas uno de estos eventos y crees que tu nota no refleja tus prácticas actuales, envíanos un <a href="mailto:admin.hxqxk@silomails.com?subject=Solicitud%20de%20actualizaci%C3%B3n%20de%20puntuaci%C3%B3n" style="color:#0d9488">correo con pruebas correspondientes</a> y actualizaremos la evaluación.</span>
+        <span class="t-en">Scores are based on publicly available information and assessed independently. If you organise one of these events and believe your grade does not reflect your current practices, send us an <a href="mailto:admin.hxqxk@silomails.com?subject=Score%20update%20request" class="lnk-teal">email with supporting evidence</a> and we will update the evaluation.</span>
+        <span class="t-fr">Les notes sont établies à partir d'informations publiquement disponibles et évaluées de façon indépendante. Si vous organisez l'un de ces événements et estimez que votre note ne reflète pas vos pratiques actuelles, envoyez-nous un <a href="mailto:admin.hxqxk@silomails.com?subject=Demande%20de%20mise%20%C3%A0%20jour%20du%20score" class="lnk-teal">e-mail avec preuves à l'appui</a> et nous mettrons l'évaluation à jour.</span>
+        <span class="t-kr">Nòt yo baze sou enfòmasyon ki disponib piblikman epi evalye endepandamman. Si ou òganize youn nan festivàl sa yo epi ou kwè nòt ou a pa reflete pratik ou aktyèl yo, voye nou yon <a href="mailto:admin.hxqxk@silomails.com?subject=Demann%20mizajou%20eskò" class="lnk-teal">imèl ak prèv yo</a> epi nou pral mete evalyasyon an ajou.</span>
+        <span class="t-es">Las puntuaciones se basan en información públicamente disponible y se evalúan de forma independiente. Si organizas uno de estos eventos y crees que tu nota no refleja tus prácticas actuales, envíanos un <a href="mailto:admin.hxqxk@silomails.com?subject=Solicitud%20de%20actualizaci%C3%B3n%20de%20puntuaci%C3%B3n" class="lnk-teal">correo con pruebas correspondientes</a> y actualizaremos la evaluación.</span>
       </p>
       <p>
-        <span class="t-en">Not yet listed? Use the <a href="/eco-evaluator/" style="color:#0d9488">eco evaluator</a> to run a first self-assessment and understand where your event stands before reaching out.</span>
-        <span class="t-fr">Pas encore référencé ? Utilisez l'<a href="/eco-evaluator/" style="color:#0d9488">évaluateur éco</a> pour réaliser un premier bilan et comprendre où en est votre événement avant de nous contacter.</span>
-        <span class="t-kr">Poko nan lis la ? Itilize <a href="/eco-evaluator/" style="color:#0d9488">evaluatè eko a</a> pou fè yon premye bilan epi konprann kote festivàl ou ye anvan ou kontakte nou.</span>
-        <span class="t-es">¿Aún no apareces? Usa el <a href="/eco-evaluator/" style="color:#0d9488">evaluador eco</a> para realizar una primera autoevaluación y entender dónde se sitúa tu evento antes de contactarnos.</span>
+        <span class="t-en">Not yet listed? Use the <a href="/eco-evaluator/" class="lnk-teal">eco evaluator</a> to run a first self-assessment and understand where your event stands before reaching out.</span>
+        <span class="t-fr">Pas encore référencé ? Utilisez l'<a href="/eco-evaluator/" class="lnk-teal">évaluateur éco</a> pour réaliser un premier bilan et comprendre où en est votre événement avant de nous contacter.</span>
+        <span class="t-kr">Poko nan lis la ? Itilize <a href="/eco-evaluator/" class="lnk-teal">evaluatè eko a</a> pou fè yon premye bilan epi konprann kote festivàl ou ye anvan ou kontakte nou.</span>
+        <span class="t-es">¿Aún no apareces? Usa el <a href="/eco-evaluator/" class="lnk-teal">evaluador eco</a> para realizar una primera autoevaluación y entender dónde se sitúa tu evento antes de contactarnos.</span>
       </p>
     </div>
 
@@ -491,7 +493,7 @@ const notEvaluated = allFestivals.filter((f: any) => !f.eco);
                     <span class="t-es">{cat.label.es}</span>
                   </span>
                   <div class="bar-track">
-                    <div class="bar-fill" style={`width:${cat.met / 5 * 100}%`}></div>
+                    <div class={`bar-fill w${cat.met / 5 * 100}`}></div>
                   </div>
                   <span class="cat-fraction">{cat.met}/5</span>
                 </div>

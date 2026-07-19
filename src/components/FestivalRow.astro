@@ -48,6 +48,7 @@ const eventDateStr =
 ---
 
 <style>
+  .frow-meta{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
   .festival-entry {
     padding: 20px 0 18px;
   }
@@ -311,7 +312,7 @@ const eventDateStr =
   data-country={festival.country ?? ""}
   data-eco-grade={ecoGrade ?? ""}
   data-bg={(!eager && festival.image && status !== "ENDED") ? festival.image : undefined}
-  style={(eager && festival.image && status !== "ENDED") ? `background-image: url('${festival.image}')` : ""}
+  data-bg-eager={(eager && festival.image && status !== "ENDED") ? festival.image : undefined}
 >
   <div class="festival-header">
     <div class="festival-name">
@@ -364,7 +365,7 @@ const eventDateStr =
       <span class="t-kr">{status === "UPCOMING" ? "TALÈ" : status === "LIVE" ? "AN KOU" : "FINI"}</span>
       <span class="t-es">{status === "UPCOMING" ? "PRÓXIMO" : status === "LIVE" ? "EN VIVO" : "TERMINADO"}</span>
     </span>
-    <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px">
+    <div class="frow-meta">
       {ecoGrade && (
         <a href="/sustainability" class={`eco-badge eco-${ecoGrade}`}>♻️ {ecoGrade}</a>
       )}
