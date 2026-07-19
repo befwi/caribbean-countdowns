@@ -1,0 +1,8 @@
+# Caribbean Countdowns — security contact (RFC 9116)
+# Human-readable policy: https://caribbean.countdowns.co/security
+Contact: https://github.com/countdowns-co/caribbean-countdowns/security/advisories/new
+Contact: https://caribbean.countdowns.co/security
+Expires: 2027-07-19T00:00:00.000Z
+Preferred-Languages: en, fr, es, ht
+Policy: https://caribbean.countdowns.co/security
+Canonical: https://caribbean.countdowns.co/.well-known/security.txt
