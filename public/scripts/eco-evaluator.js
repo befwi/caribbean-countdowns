@@ -228,7 +228,7 @@ function renderForm() {
     header.innerHTML =
       '<span class="category-icon">' + cat.icon + '</span>' +
       '<span class="category-name" id="catname-' + cat.key + '">' + (cat.label[lang] || cat.label.en) + '</span>' +
-      '<div class="cat-bar-track"><div class="cat-bar-fill" id="catbar-' + cat.key + '" style="width:0%"></div></div>' +
+      '<div class="cat-bar-track"><div class="cat-bar-fill" id="catbar-' + cat.key + '"></div></div>' +
       '<span class="category-tally" id="tally-' + cat.key + '">0/5</span>';
     section.appendChild(header);
 

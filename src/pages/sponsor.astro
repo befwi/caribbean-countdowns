@@ -10,7 +10,7 @@ import PageFooter from "../components/PageFooter.astro";
   <meta name="referrer" content="no-referrer" />
   <title>Support a Cause — countdowns.co</title>
   <meta name="description" content="Sponsor Caribbean cultural events through countdowns.co — transparent partnership tiers supporting festivals, carnivals and marine conservation." />
-  <style>.t-fr,.t-kr,.t-es{display:none}</style>
+  <style>.t-fr,.t-kr,.t-es{display:none}.lang-row{display:flex;align-items:center;gap:16px}.note-excluded{font-size:12px;color:#555;margin-bottom:10px}.cta-block.cta-flush{margin-top:0}.cta-lead{color:#ddd}</style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -348,7 +348,7 @@ import PageFooter from "../components/PageFooter.astro";
       <h1 class="site-title">
         <a href="/">Countdowns</a>
       </h1>
-      <div style="display:flex;align-items:center;gap:16px;">
+      <div class="lang-row">
         <a class="back-link" href="/">
           <span class="t-en">← Back</span>
           <span class="t-fr">← Retour</span>
@@ -388,7 +388,7 @@ import PageFooter from "../components/PageFooter.astro";
         <span class="t-kr">Pa elijib</span>
         <span class="t-es">No elegibles</span>
       </strong>
-      <p style="font-size:12px;color:#555;margin-bottom:10px;">
+      <p class="note-excluded">
         <span class="t-en">Sponsorship is a form of visibility. We don't offer it to sectors that — however economically present in the region — are among the leading drivers of the environmental pressures the Caribbean faces: rising seas, coral bleaching, and coastal erosion.</span>
         <span class="t-fr">Le sponsoring est une forme de visibilité. Nous ne l'offrons pas aux secteurs qui — aussi présents soient-ils économiquement dans la région — figurent parmi les principales causes des pressions environnementales que subit la Caraïbe : montée des eaux, blanchissement des coraux et érosion côtière.</span>
         <span class="t-kr">Sponsoring se on fòm vizibilite. Nou pa ofri l bay sektè ki — kèlkeswa prezans ekonomik yo nan rejyon an — nan tèt sektè ki koze plis presyon anviwonnmantal Karayib la ap fè fas a : monte dlo lanmè, blan koray, epi ewozyon bò lanmè.</span>
@@ -528,8 +528,8 @@ import PageFooter from "../components/PageFooter.astro";
       </div>
     </div>
 
-    <div class="cta-block" style="margin-top:0;">
-      <p style="color:#ddd;">
+    <div class="cta-block cta-flush">
+      <p class="cta-lead">
         <span class="t-en">Are you an NGO or nonprofit protecting the Caribbean? Apply for a free listing.</span>
         <span class="t-fr">Vous êtes une ONG ou association protégeant la Caraïbe ? Demandez un référencement gratuit.</span>
         <span class="t-kr">Ou se yon ONG oswa asosyasyon ki pwoteje Karayib la ? Mande yon enskripsyon gratis.</span>

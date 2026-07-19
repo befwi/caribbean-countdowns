@@ -203,7 +203,7 @@ function updateNav(n) {
     ? (LABELS.skip[lang] || LABELS.skip.en)
     : (LABELS.next[lang] || LABELS.next.en);
   if (btnBack) {
-    btnBack.style.display = n === 0 ? "none" : "";
+    btnBack.classList.toggle("is-hidden", n === 0);
     btnBack.textContent = LABELS.back[lang] || LABELS.back.en;
   }
 }
@@ -394,7 +394,7 @@ function renderFinal() {
       '<div class="done-hint">'  + escHtml(L("sentHint"))  + '</div>';
     document.getElementById("btnNext").style.display = "none";
     var bb = document.getElementById("btnBack");
-    if (bb) bb.style.display = "none";
+    if (bb) bb.classList.add("is-hidden");
     updateProgress();
     return;
   }
@@ -412,7 +412,7 @@ function renderFinal() {
 
   document.getElementById("btnNext").style.display = "none";
   var btnBack = document.getElementById("btnBack");
-  if (btnBack) { btnBack.style.display = ""; btnBack.textContent = L("back"); }
+  if (btnBack) { btnBack.classList.remove("is-hidden"); btnBack.textContent = L("back"); }
   updateProgress();
 
   var btn = document.getElementById("btnSubmit");
