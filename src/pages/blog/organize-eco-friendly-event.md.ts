@@ -9,9 +9,9 @@ url: https://caribbean.countdowns.co/blog/organize-eco-friendly-event
 
 _July 2026 · countdowns.co editorial · the eco guide_
 
-Most "green event" claims are marketing — a reusable-cup photo and a hashtag. A genuinely low-impact festival is measured across five dimensions, not one. In the Caribbean the stakes are higher: island isolation makes some emissions unavoidable, and venues often sit metres from coral reefs, mangroves and turtle-nesting beaches.
+Most "green event" claims are marketing — a reusable-cup photo and a hashtag. A genuinely low-impact festival is measured across five dimensions, not one. In the Caribbean the stakes are higher: island isolation makes some emissions unavoidable and venues often sit metres from coral reefs, mangroves and turtle-nesting beaches.
 
-This is a practical playbook: what you can do in each dimension, and which local partners and services can make it happen. It's the companion to our free interactive evaluator: https://caribbean.countdowns.co/eco-evaluator/
+This is a practical playbook: what you can do in each dimension and which local partners and services can make it happen. It's the companion to our free interactive evaluator: https://caribbean.countdowns.co/eco-evaluator/
 
 ## The five dimensions
 
