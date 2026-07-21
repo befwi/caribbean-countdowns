@@ -10,6 +10,16 @@ import PageFooter from "../../components/PageFooter.astro";
   <meta name="referrer" content="no-referrer" />
   <title>Cutting event emissions in the Caribbean — countdowns.co</title>
   <meta name="description" content="Shared attendee transport (with local partners like Zotcar), renewable energy, carbon offsets, regional artists and low-carbon catering — the emissions playbook for Caribbean events." />
+  <link rel="canonical" href="https://caribbean.countdowns.co/blog/eco-events-emissions/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://caribbean.countdowns.co/blog/eco-events-emissions/" />
+  <meta property="og:title" content="Cutting event emissions in the Caribbean — countdowns.co" />
+  <meta property="og:description" content="Shared attendee transport, renewable energy, carbon offsets, regional artists and low-carbon catering — the emissions playbook for Caribbean events." />
+  <meta property="og:image" content="https://caribbean.countdowns.co/images/og-eco-emissions.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://caribbean.countdowns.co/images/og-eco-emissions.webp" />
   <style>.t-fr{display:none}.lang-row{display:flex;align-items:center;gap:16px}</style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,6 +27,7 @@ import PageFooter from "../../components/PageFooter.astro";
     a { color: inherit; text-decoration: none; }
     a:hover { text-decoration: underline; }
     .page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .hero { width: 100%; height: auto; border-radius: 10px; border: 1px solid #2a2a2a; margin: 8px 0 4px; display: block; }
     .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
     .site-title { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; color: #fff; }
     .back-link { font-size: 13px; color: #888; }
@@ -65,6 +76,8 @@ import PageFooter from "../../components/PageFooter.astro";
 
     <hr class="divider" />
 
+    <img class="hero" src="/images/og-eco-emissions.webp" width="1200" height="630" alt="Cutting event emissions in the Caribbean — countdowns.co eco guide" loading="eager" />
+
     <div class="post-meta">
       <span class="t-en">Eco guide · dimension 1 of 5 · <a href="/blog/organize-eco-friendly-event/">back to the hub</a></span>
       <span class="t-fr">Guide éco · dimension 1 sur 5 · <a href="/blog/organize-eco-friendly-event/">retour au sommaire</a></span>
@@ -75,8 +88,8 @@ import PageFooter from "../../components/PageFooter.astro";
       <span class="t-fr">💨 Réduire les émissions d'un événement dans la Caraïbe</span>
     </h2>
     <p class="intro">
-      <span class="t-en">Emissions are the biggest, most visible lever — and the one attendees judge you on. Five things move the needle: how the crowd travels, how you power the site, who headlines, what's on the plates, and what you offset. Attendee transport dwarfs the rest.</span>
-      <span class="t-fr">Les émissions sont le levier le plus important et le plus visible — celui sur lequel le public vous juge. Cinq éléments font la différence : comment le public se déplace, comment vous alimentez le site, qui est à l'affiche, ce qu'il y a dans les assiettes et ce que vous compensez. Le transport du public écrase tout le reste.</span>
+      <span class="t-en">Emissions are the biggest, most visible lever — and the one attendees judge you on. Five things move the needle: how the crowd travels, how you power the site of the event, who headlines, what's on the plates and what you offset. Attendee transport dwarfs the rest.</span>
+      <span class="t-fr">Les émissions sont le levier le plus important et le plus visible — celui sur lequel le public vous juge. Cinq éléments font la différence : comment le public se déplace, comment vous alimentez le site de l'évènement, qui est à l'affiche, ce qu'il y a dans les assiettes et ce que vous compensez. Le transport du public écrase tout le reste.</span>
     </p>
 
     <section class="crit" id="attendeeTransport">
@@ -90,10 +103,10 @@ import PageFooter from "../../components/PageFooter.astro";
         <span class="t-fr">Organiser sans communiquer échoue (chacun vient en voiture solo) ; communiquer sans organiser échoue (un plan sans service est une promesse vide). Faites donc les deux : mettez en place au moins une option, puis affichez-la sur chaque billet, le site et les réseaux. Partenaires concrets :</span>
       </p>
       <ul class="menu">
-        <li><span class="t-en">🚗 <b>Carsharing</b> — arrange an event code / drop-off zone with a local operator (<em>e.g. Zotcar, French West Indies</em>).</span><span class="t-fr">🚗 <b>Autopartage</b> — mettez en place un code événement / une zone de dépose avec un opérateur local (<em>ex. Zotcar, Antilles françaises</em>).</span></li>
+        <li><span class="t-en">🚗 <b>Carsharing</b> — arrange an event code / drop-off zone with a local operator (<em>e.g. Zotcar, French West Indies</em>).</span><span class="t-fr">🚗 <b>Autopartage</b> — mettez en place un code événement / une zone de dépose avec un opérateur local.</span></li>
         <li><span class="t-en">🚕 <b>Taxi / VTC</b> — negotiate a group flat rate + a signposted pickup point with a co-op or VTC; print the number on tickets.</span><span class="t-fr">🚕 <b>Taxi / VTC</b> — négociez un forfait de groupe + un point de prise en charge signalé avec une coopérative ou un VTC ; imprimez le numéro sur les billets.</span></li>
-        <li><span class="t-en">🚌 <b>Shuttle</b> — charter a bus company for loops from relay car parks / town centres (<em>the €5 Martinique Carnival model</em>).</span><span class="t-fr">🚌 <b>Navette</b> — affrétez un autocariste pour des rotations depuis des parkings relais / centres-villes (<em>le modèle Carnaval de Martinique à 5 €</em>).</span></li>
-        <li><span class="t-en">👥 <b>Carpool</b> — open an event page on a carpool platform (<em>BlaBlaCar where it runs</em>) or a simple shared form / group, and reserve the best-placed parking for full cars.</span><span class="t-fr">👥 <b>Covoiturage</b> — créez une page événement sur une plateforme (<em>BlaBlaCar là où il opère</em>) ou un simple formulaire / groupe partagé, et réservez les meilleures places aux voitures pleines.</span></li>
+        <li><span class="t-en">🚌 <b>Shuttle</b> — charter a bus company for loops from relay car parks / town centres (<em>the €5 Martinique Carnival model</em>).</span><span class="t-fr">🚌 <b>Navette</b> — affrétez un autocariste pour des rotations depuis des parkings relais / centres-villes.</span></li>
+        <li><span class="t-en">👥 <b>Carpool</b> — open an event page on a local carpool platform or a simple shared form / group and reserve the best-placed parking for full cars.</span><span class="t-fr">👥 <b>Covoiturage</b> — créez une page événement sur une plateforme locale ou un simple formulaire / groupe partagé, et réservez les meilleures places aux voitures pleines.</span></li>
         <li><span class="t-en">🚈 <b>Public transit</b> — ask the island bus network for extra or late event-day service, or bundle a transit pass into the ticket.</span><span class="t-fr">🚈 <b>Transport en commun</b> — demandez au réseau de bus de l'île des dessertes supplémentaires ou tardives le jour J, ou intégrez un titre de transport au billet.</span></li>
         <li><span class="t-en">🚲 <b>Active travel</b> — staffed bike parking + a short walking / cycling map for nearby attendees.</span><span class="t-fr">🚲 <b>Mobilité active</b> — parking vélo surveillé + une petite carte à pied / à vélo pour les festivaliers proches.</span></li>
       </ul>
@@ -130,20 +143,20 @@ import PageFooter from "../../components/PageFooter.astro";
     <section class="crit" id="localHeadliners">
       <h3><span class="ic">🎤</span><span class="t-en">Regional headliners</span><span class="t-fr">Têtes d'affiche régionales</span></h3>
       <div class="why">
-        <span class="t-en">A single Paris–Martinique return ≈ 1.2 t CO₂e/person. A transatlantic act + crew (5 people) can equal a 2,000-person festival's entire ground-transport footprint.</span>
+        <span class="t-en">A single Paris–Guadeloupe return ≈ 1.2 t CO₂e/person. A transatlantic act + crew (5 people) can equal a 2,000-person festival's entire ground-transport footprint.</span>
         <span class="t-fr">Un aller-retour Paris–Martinique ≈ 1,2 t CO₂e/personne. Un artiste transatlantique + équipe (5 personnes) peut égaler l'empreinte transport au sol d'un festival de 2 000 personnes.</span>
       </div>
       <p>
-        <span class="t-en">Prioritise Caribbean and regional artists — inter-island flights (e.g. Guadeloupe–Martinique, ~30 min) emit roughly 20× less than transatlantic routes, and the line-up stays rooted in the region's own scene.</span>
-        <span class="t-fr">Privilégiez les artistes caribéens et régionaux — les vols inter-îles (ex. Guadeloupe–Martinique, ~30 min) émettent environ 20× moins que les routes transatlantiques, et la programmation reste ancrée dans la scène de la région.</span>
+        <span class="t-en">Prioritise Caribbean and regional artists — inter-island flights emit roughly 20× less than transatlantic routes and the line-up stays rooted in the region's own scene.</span>
+        <span class="t-fr">Privilégiez les artistes caribéens et régionaux — les vols inter-îles émettent environ 20× moins que les routes transatlantiques et la programmation reste ancrée dans la scène régionale.</span>
       </p>
     </section>
 
     <section class="crit" id="lowCarbonCatering">
       <h3><span class="ic">🍽️</span><span class="t-en">Low-carbon catering</span><span class="t-fr">Restauration bas-carbone</span></h3>
       <div class="why">
-        <span class="t-en">Food ≈ 25% of global GHG emissions; beef and lamb generate up to 20× more per serving than plant-based dishes.</span>
-        <span class="t-fr">L'alimentation ≈ 25% des émissions mondiales de GES ; le bœuf et l'agneau génèrent jusqu'à 20× plus par portion que les plats végétaux.</span>
+        <span class="t-en">Food ≈ 25% of global greenhouse gas (GHG); beef and lamb generate up to 20× more per serving than plant-based dishes.</span>
+        <span class="t-fr">L'alimentation ≈ 25% des émissions mondiales de gaz à effet de serre (GES) ; le bœuf et l'agneau génèrent jusqu'à 20× plus par portion que les plats végétaux.</span>
       </div>
       <p>
         <span class="t-en">Require each vendor to feature at least one plant-based or legume dish prominently — it aligns naturally with Caribbean cuisine (rice and peas, lentil soup, breadfruit, plantain). Document and publish the plant-based : meat stall ratio.</span>
@@ -152,8 +165,8 @@ import PageFooter from "../../components/PageFooter.astro";
     </section>
 
     <div class="cta">
-      <span class="t-en">Score your event across all five dimensions in the <a href="/eco-evaluator/">free eco-evaluator</a>, or go back to the <a href="/blog/organize-eco-friendly-event/">eco guide hub</a>.</span>
-      <span class="t-fr">Évaluez votre événement sur les cinq dimensions avec l'<a href="/eco-evaluator/">évaluateur éco gratuit</a>, ou revenez au <a href="/blog/organize-eco-friendly-event/">sommaire du guide éco</a>.</span>
+      <span class="t-en">Score your event across all five dimensions in the <a href="/eco-evaluator/">free eco-evaluator</a>, or go back to the <a href="/blog/organize-eco-friendly-event/">eco guide hub</a>. Wondering why it matters? Read <a href="/blog/why-organize-eco-friendly-event/">why eco-friendly events pay off →</a></span>
+      <span class="t-fr">Évaluez votre événement sur les cinq dimensions avec l'<a href="/eco-evaluator/">évaluateur éco gratuit</a>, ou revenez au <a href="/blog/organize-eco-friendly-event/">sommaire du guide éco</a>. Vous vous demandez pourquoi ? Lisez <a href="/blog/why-organize-eco-friendly-event/">pourquoi les événements écoresponsables paient →</a></span>
     </div>
 
   </div>
