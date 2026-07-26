@@ -1,0 +1,184 @@
+---
+import LiveBanner from "../../components/LiveBanner.astro";
+import PageFooter from "../../components/PageFooter.astro";
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Eco-Friendly Events in the Caribbean: Why They're Worth It — Cost, Law & Reputation — countdowns.co</title>
+  <meta name="description" content="Why organize an eco-friendly event in the Caribbean? Seven reasons — cost savings, tightening waste law, sponsors & ESG, audience demand, resilience and community — with local specifics." />
+  <link rel="canonical" href="https://caribbean.countdowns.co/blog/why-organize-eco-friendly-event/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://caribbean.countdowns.co/blog/why-organize-eco-friendly-event/" />
+  <meta property="og:title" content="Eco-Friendly Events in the Caribbean: Why They're Worth It" />
+  <meta property="og:description" content="Seven reasons Caribbean organisers go eco — cost, law, sponsors, demand, resilience, community." />
+  <meta property="og:image" content="https://caribbean.countdowns.co/images/og-why-organize.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://caribbean.countdowns.co/images/og-why-organize.webp" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context":"https://schema.org","@type":"FAQPage",
+    "mainEntity":[
+      {"@type":"Question","name":"Does an eco-friendly event save money?","acceptedAnswer":{"@type":"Answer","text":"Yes — cutting waste and energy, sharing transport and using solar reduce logistics cost, and eco grants/subsidies — such as ADEME in the French West Indies, with equivalents elsewhere — offset investment."}},
+      {"@type":"Question","name":"Is running a sustainable event a legal requirement?","acceptedAnswer":{"@type":"Answer","text":"Increasingly. Single-use-plastic rules, strict waste law (such as EU and AGEC law in the French West Indies), and permit conditions near protected reefs and turtle beaches all apply."}},
+      {"@type":"Question","name":"Do sponsors care about sustainability?","acceptedAnswer":{"@type":"Answer","text":"Credible eco credentials attract sponsors, press and public funding under ESG expectations; greenwashing is penalised."}},
+      {"@type":"Question","name":"Do attendees prefer eco-friendly events?","acceptedAnswer":{"@type":"Answer","text":"Yes — audiences increasingly choose events on sustainability, which lifts ticket appeal and loyalty."}},
+      {"@type":"Question","name":"How does sustainability improve event resilience?","acceptedAnswer":{"@type":"Answer","text":"Efficient water, energy and waste systems cut exposure to the climate and supply-chain shocks that hit islands first."}},
+      {"@type":"Question","name":"Why does sustainability matter for a Caribbean venue specifically?","acceptedAnswer":{"@type":"Answer","text":"Caribbean events often sit metres from coral reefs, mangroves and turtle-nesting beaches; low-impact operations protect the very setting that draws the crowd."}},
+      {"@type":"Question","name":"How does going eco strengthen an event's relationship with its community?","acceptedAnswer":{"@type":"Answer","text":"Prioritising local vendors, artists and an NGO partnership builds goodwill and a community licence to operate that keeps the event welcome year after year."}}
+    ]
+  })} />
+  <style>.t-fr{display:none}.lang-row{display:flex;align-items:center;gap:16px}</style>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0f0f0f; color: #e0e0e0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .site-title { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; color: #fff; }
+    .back-link { font-size: 13px; color: #888; }
+    .back-link:hover { color: #ccc; }
+    .lang-group { display: flex; gap: 4px; flex-shrink: 0; }
+    .lang-btn { background: transparent; border: 1px solid #555; border-radius: 3px; cursor: pointer; font-size: 18px; padding: 2px 6px; color: #aaa; font-family: inherit; transition: all 0.15s; opacity: 0.5; }
+    .lang-btn:hover { border-color: #888; opacity: 0.8; }
+    .lang-btn.active { background: #1a1a1a; border-color: #555; opacity: 1; }
+    .divider { border: none; border-top: 1px solid #2a2a2a; margin: 24px 0 32px; }
+    .post-meta { font-size: 12px; color: #666; margin-bottom: 24px; }
+    h2 { font-size: 26px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 12px; letter-spacing: -0.3px; }
+    h3 { font-size: 15px; font-weight: 700; color: #5eead4; margin: 32px 0 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .intro { font-size: 15px; color: #bbb; margin-bottom: 20px; }
+    p { color: #aaa; margin-bottom: 14px; }
+    .cta { background: #101d1a; border: 1px solid #0d9488; border-radius: 8px; padding: 20px 24px; margin: 28px 0; font-size: 14px; color: #bbb; }
+    .cta a { color: #5eead4; font-weight: 700; }
+    .dims { list-style: none; margin: 8px 0 0; }
+    .dim { display: block; background: #161616; border: 1px solid #2a2a2a; border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; transition: border-color 0.15s; }
+    a.dim:hover { border-color: #0d9488; text-decoration: none; }
+    .dim-title { font-size: 16px; font-weight: 700; color: #fff; }
+    .dim-title .dim-icon { margin-right: 8px; }
+    .dim-desc { font-size: 13px; color: #999; margin: 4px 0 0; }
+    .dim-soon { font-size: 11px; color: #666; border: 1px solid #333; border-radius: 20px; padding: 1px 8px; margin-left: 8px; vertical-align: middle; }
+    .dim-read { font-size: 12px; color: #0d9488; font-weight: 600; margin-top: 8px; display: inline-block; }
+    .hero { width: 100%; height: auto; border-radius: 10px; border: 1px solid #2a2a2a; margin: 8px 0 4px; display: block; }
+  </style>
+</head>
+
+<body>
+<LiveBanner />
+  <div class="page">
+
+    <div class="header-row">
+      <h1 class="site-title"><a href="/">Countdowns</a></h1>
+      <div class="lang-row">
+        <a class="back-link" href="/blog/">
+          <span class="t-en">← Blog</span>
+          <span class="t-fr">← Blog</span>
+        </a>
+        <div class="lang-group">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="fr">FR</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="divider" />
+    <img class="hero" src="/images/og-why-organize.webp" width="1200" height="630" alt="Why organize an eco-friendly event — countdowns.co eco guide" loading="eager" />
+
+    <div class="post-meta">
+      <span class="t-en">July 2026 · countdowns.co editorial · the eco guide</span>
+      <span class="t-fr">Juillet 2026 · éditorial countdowns.co · le guide éco</span>
+    </div>
+
+    <h2>
+      <span class="t-en">Eco-Friendly Events in the Caribbean: Why They're Worth It — Cost, Law & Reputation</span>
+      <span class="t-fr">Événements écoresponsables dans la Caraïbe : pourquoi ça en vaut la peine — coût, loi et réputation</span>
+    </h2>
+
+    <p class="intro">
+      <span class="t-en">Going green isn't a cost centre — it's a lever. For Caribbean organisers, a genuinely low-impact event cuts real spend, keeps you on the right side of tightening rules, and wins over the audiences and sponsors who now expect it. Here are seven concrete reasons it pays off, with the local specifics that make them real.</span>
+      <span class="t-fr">Passer au vert n'est pas un centre de coûts — c'est un levier. Pour les organisateurs caribéens, un événement réellement à faible impact réduit les dépenses réelles, vous met en règle avec des réglementations qui se durcissent, et séduit les publics et sponsors qui l'attendent désormais. Voici sept raisons concrètes, avec les spécificités locales qui les rendent tangibles.</span>
+    </p>
+
+    <div class="cta">
+      <span class="t-en">👉 Curious where you stand? The <a href="/eco-evaluator/">free eco-evaluator</a> scores your event across five dimensions in two minutes.</span>
+      <span class="t-fr">👉 Envie de savoir où vous en êtes ? L'<a href="/eco-evaluator/">évaluateur éco gratuit</a> note votre événement sur cinq dimensions en deux minutes.</span>
+    </div>
+
+    <h3>
+      <span class="t-en">1. It saves money</span>
+      <span class="t-fr">1. Ça fait des économies</span>
+    </h3>
+    <p>
+      <span class="t-en">Cutting waste and energy use isn't just good optics — it's lower invoices. Shared transport and solar generators trim logistics costs that diesel and single-vehicle shuttles quietly inflate, and eco grants and subsidies — such as ADEME funding in the French West Indies, with equivalents on other islands — can offset the upfront investment in reusable infrastructure. Organisers who measure their consumption consistently find the "green" version is also the cheaper one. Many of these savings — shared transport, solar power — are detailed in our <a href="/blog/eco-events-emissions/">emissions guide</a>.</span>
+      <span class="t-fr">Réduire les déchets et la consommation d'énergie n'est pas qu'une question d'image — ce sont des factures plus légères. Le transport partagé et les groupes électrogènes solaires font baisser des coûts logistiques que le diesel et les navettes individuelles gonflent discrètement, et des aides — comme les subventions ADEME dans les Antilles françaises, avec des équivalents sur d'autres îles — peuvent compenser l'investissement initial dans des équipements réutilisables. Les organisateurs qui mesurent leur consommation constatent presque toujours que la version « verte » est aussi la moins chère. Beaucoup de ces économies — transport partagé, énergie solaire — sont détaillées dans notre <a href="/blog/eco-events-emissions/">guide des émissions</a>.</span>
+    </p>
+
+    <h3>
+      <span class="t-en">2. It's increasingly the law</span>
+      <span class="t-fr">2. C'est de plus en plus la loi</span>
+    </h3>
+    <p>
+      <span class="t-en">Single-use plastics are being restricted island by island, and several islands are bound by strict waste and circular-economy law — the French West Indies, for example, by EU rules and France's AGEC law — non-compliance risks fines and permit trouble, not just bad press. Events near protected reefs, mangroves or turtle-nesting beaches face additional impact-assessment and permitting requirements that a genuinely low-impact plan satisfies almost by default.</span>
+      <span class="t-fr">Le plastique à usage unique est de plus en plus restreint île par île, et plusieurs îles sont soumises à une législation stricte sur les déchets et l'économie circulaire — les Antilles françaises, par exemple, aux règles européennes et à la loi AGEC — la non-conformité expose à des amendes et des complications d'autorisation, pas seulement à une mauvaise image. Les événements proches de récifs protégés, de mangroves ou de plages de ponte des tortues font l'objet d'exigences d'évaluation d'impact et de permis supplémentaires, qu'un plan réellement à faible impact satisfait presque naturellement.</span>
+    </p>
+
+    <h3>
+      <span class="t-en">3. Conviction — protecting the place</span>
+      <span class="t-fr">3. La conviction — protéger le lieu</span>
+    </h3>
+    <p>
+      <span class="t-en">Plenty of Caribbean venues sit metres from a coral reef or a nesting beach — the exact scenery that sells tickets in the first place. Keeping light, noise and runoff low isn't abstract environmentalism there; it's protecting the asset your whole event is built on, for this year and the next one.</span>
+      <span class="t-fr">De nombreux sites caribéens se trouvent à quelques mètres d'un récif corallien ou d'une plage de ponte — le décor même qui fait vendre les billets. Y limiter la lumière, le bruit et le ruissellement n'est pas de l'écologie abstraite ; c'est protéger l'atout sur lequel repose tout votre événement, cette année comme la suivante.</span>
+    </p>
+
+    <h3>
+      <span class="t-en">4. Reputation and sponsors (ESG)</span>
+      <span class="t-fr">4. Réputation et sponsors (ESG)</span>
+    </h3>
+    <p>
+      <span class="t-en">Credible eco credentials — not a logo, but published numbers — open doors with sponsors under ESG mandates, with press looking for a genuine story, and with public funders who now favour low-impact events. The flip side is real too: greenwashing gets called out fast, and a debunked claim costs more trust than never making it.</span>
+      <span class="t-fr">Des preuves écologiques crédibles — pas un logo, mais des chiffres publiés — ouvrent des portes auprès des sponsors soumis à des mandats ESG, de la presse en quête d'une vraie histoire, et des financeurs publics qui privilégient désormais les événements à faible impact. L'inverse est vrai aussi : le greenwashing est vite démasqué, et une promesse démentie coûte plus cher en confiance que de ne jamais l'avoir faite.</span>
+    </p>
+
+    <h3>
+      <span class="t-en">5. Audiences expect it</span>
+      <span class="t-fr">5. Le public l'attend</span>
+    </h3>
+    <p>
+      <span class="t-en">More attendees now factor sustainability into which events they buy tickets for, especially among younger and repeat festival-goers. A visible, honest eco effort isn't a niche appeal anymore — it lifts ticket sales and turns first-timers into returning fans.</span>
+      <span class="t-fr">De plus en plus de festivaliers tiennent compte de la durabilité au moment de choisir leurs billets, surtout les plus jeunes et les habitués. Une démarche écologique visible et honnête n'est plus une niche — elle stimule les ventes de billets et transforme les nouveaux venus en fidèles.</span>
+    </p>
+
+    <h3>
+      <span class="t-en">6. Resilience</span>
+      <span class="t-fr">6. La résilience</span>
+    </h3>
+    <p>
+      <span class="t-en">Islands feel climate and supply-chain shocks first — a fuel delay, a drought, a storm season that shifts. Efficient water, energy and waste systems aren't only cleaner; they're cheaper to run and steadier under stress, which means fewer surprises on event day when something upstream goes wrong.</span>
+      <span class="t-fr">Les îles subissent en premier les chocs climatiques et logistiques — un retard de carburant, une sécheresse, une saison des ouragans qui se décale. Des systèmes d'eau, d'énergie et de déchets efficaces ne sont pas seulement plus propres ; ils coûtent moins cher à faire tourner et tiennent mieux sous tension, donc moins de mauvaises surprises le jour J quand quelque chose se dérègle en amont.</span>
+    </p>
+
+    <h3>
+      <span class="t-en">7. Community licence to operate</span>
+      <span class="t-fr">7. Le feu vert de la communauté</span>
+    </h3>
+    <p>
+      <span class="t-en">Booking local vendors and artists, and partnering with a local eco NGO, builds real goodwill in the community that hosts you — the kind that gets you the permit renewed and the neighbours on side next year, instead of the noise complaint that ends the run.</span>
+      <span class="t-fr">Faire appel à des prestataires et artistes locaux, et s'associer à une ONG éco locale, construit une vraie bienveillance dans la communauté qui vous accueille — celle qui vous fait renouveler le permis et garde les voisins de votre côté l'année suivante, plutôt que la plainte pour nuisance qui met fin à l'aventure.</span>
+    </p>
+
+    <div class="cta">
+      <span class="t-en">Convinced? The <a href="/blog/organize-eco-friendly-event/">how-to playbook</a> walks through exactly what to do across all five dimensions, with local partners named. <a href="/eco-evaluator/">Score your event →</a></span>
+      <span class="t-fr">Convaincu ? Le <a href="/blog/organize-eco-friendly-event/">guide pratique</a> détaille exactement quoi faire dans les cinq dimensions, avec les partenaires locaux nommés. <a href="/eco-evaluator/">Évaluez votre événement →</a></span>
+    </div>
+
+  </div>
+
+  <script is:inline src="/scripts/lang.js" defer></script>
+<PageFooter />
+</body>
+</html>
