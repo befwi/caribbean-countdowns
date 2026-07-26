@@ -1,7 +1,7 @@
 import type { APIRoute } from "astro";
 const md = `---
 title: Cutting event emissions in the Caribbean
-description: Shared attendee transport (with local partners like Zotcar), renewable energy, carbon offsets, regional artists and low-carbon catering — the emissions playbook for Caribbean events.
+description: Shared attendee transport, renewable energy, carbon offsets, regional artists and low-carbon catering — the emissions playbook for Caribbean events.
 url: https://caribbean.countdowns.co/blog/eco-events-emissions
 ---
 
@@ -30,7 +30,7 @@ Diesel generators are the biggest on-site emission source. Use grid power where 
 Island isolation makes some emissions unavoidable (artist flights, freight). Partner with a Gold Standard or VCS-certified scheme, funded by a €1–2 per-ticket levy; publish the tonnes offset.
 
 ## Regional headliners
-A Paris–Guadeloupe return ≈ 1.2 t CO₂e/person; a transatlantic act + crew can equal a 2,000-person festival's ground transport. Prioritise Caribbean/regional artists — inter-island flights emit ~20× less.
+A long-haul intercontinental return flight ≈ 1.2 t CO₂e/person; a transatlantic act + crew can equal a 2,000-person festival's ground transport. Prioritise Caribbean/regional artists — inter-island flights emit ~20× less.
 
 ## Low-carbon catering
 Food ≈ 25% of global GHG; beef/lamb up to 20× more per serving than plant-based. Require each vendor to feature a plant-based dish (rice and peas, lentil soup, breadfruit, plantain); publish the plant-based:meat ratio.

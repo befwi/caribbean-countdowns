@@ -1,11 +1,11 @@
 import type { APIRoute } from "astro";
 const md = `---
-title: How to organize a REAL eco-friendly event
+title: How to organize a REAL eco-friendly event in the Caribbean
 description: A practical Caribbean playbook — the 5 dimensions of a genuinely low-impact festival (emissions, waste, water, biodiversity, community), with concrete steps and local partners.
 url: https://caribbean.countdowns.co/blog/organize-eco-friendly-event
 ---
 
-# How to organize a REAL eco-friendly event
+# How to organize a REAL eco-friendly event in the Caribbean
 
 _July 2026 · countdowns.co editorial · the eco guide_
 
