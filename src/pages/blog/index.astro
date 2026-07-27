@@ -15,7 +15,7 @@ import PageFooter from "../../components/PageFooter.astro";
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: #0f0f0f;
+      background: #0a0f0f;
       color: #e0e0e0;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 14px;
@@ -24,9 +24,8 @@ import PageFooter from "../../components/PageFooter.astro";
     }
 
     a { color: inherit; text-decoration: none; }
-    a:hover { text-decoration: underline; }
 
-    .page { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    .page { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
 
     .header-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
     .site-title { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; color: #fff; }
@@ -43,22 +42,60 @@ import PageFooter from "../../components/PageFooter.astro";
     .lang-btn:hover { border-color: #888; opacity: 0.8; }
     .lang-btn.active { background: #1a1a1a; border-color: #555; opacity: 1; }
 
-    .divider { border: none; border-top: 1px solid #2a2a2a; margin: 24px 0 32px; }
+    .divider { border: none; border-top: 1px solid #1a3030; margin: 24px 0 32px; }
 
     h2 { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 8px; letter-spacing: -0.3px; }
-    .blog-sub { font-size: 14px; color: #888; margin-bottom: 36px; }
+    .blog-sub { font-size: 14px; color: #888; margin-bottom: 28px; }
 
-    .post-card {
-      display: block; background: #161616; border: 1px solid #2a2a2a;
-      border-radius: 8px; overflow: hidden; transition: border-color 0.15s;
+    .featured {
+      display: block; background: #0d1a1a; border: 1px solid #1a3030;
+      border-left: 4px solid #a3e635; border-radius: 8px; padding: 26px 28px;
+      margin-bottom: 28px; position: relative; overflow: hidden;
+      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
     }
-    .post-card:hover { border-color: #0d9488; text-decoration: none; }
-    .post-card img { width: 100%; height: auto; display: block; }
-    .post-card-body { padding: 20px 24px; }
-    .post-card-date { font-size: 11px; color: #5eead4; margin-bottom: 6px; }
-    .post-card-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; line-height: 1.3; }
-    .post-card-excerpt { font-size: 13px; color: #999; }
-    .post-card-read { font-size: 13px; color: #0d9488; font-weight: 600; margin-top: 12px; display: inline-block; }
+    .featured::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(120% 90% at 0% 0%, #a3e635 0%, transparent 60%);
+      opacity: 0.10;
+    }
+    .featured:hover { transform: translateY(-2px); border-color: #365314; border-left-color: #a3e635; box-shadow: 0 8px 24px #00000066; }
+    .featured-label { font-size: 10px; font-weight: 800; color: #a3e635; letter-spacing: 1.2px; margin-bottom: 10px; }
+    .featured-icon { position: absolute; right: 24px; top: 22px; font-size: 34px; }
+    .featured-title { font-size: 19px; font-weight: 800; color: #fff; line-height: 1.35; margin-bottom: 8px; padding-right: 56px; }
+    .featured-desc { font-size: 13px; color: #888; line-height: 1.55; margin-bottom: 14px; max-width: 620px; }
+    .featured-meta { display: flex; gap: 18px; font-size: 11px; color: #555; }
+    .featured-meta .go { color: #0d9488; font-weight: 700; }
+    .featured:hover .go { color: #5eead4; }
+
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .chip {
+      background: transparent; border: 1px solid #1a3030; border-radius: 20px;
+      color: #888; font-size: 12px; font-weight: 600; padding: 6px 16px;
+      cursor: pointer; font-family: inherit; transition: all 0.15s; letter-spacing: 0.3px;
+    }
+    .chip:hover { border-color: #0d9488; color: #aaa; }
+    .chip.active { background: #0d2a2a; border-color: #0d9488; color: #5eead4; }
+
+    .tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+    .tile {
+      background: #0d1a1a; border: 1px solid #1a3030; border-radius: 8px;
+      border-left: 4px solid var(--accent, #0d9488);
+      padding: 22px 20px; display: flex; flex-direction: column; gap: 12px;
+      position: relative; overflow: hidden;
+      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    }
+    .tile:hover { transform: translateY(-3px); border-color: var(--accent, #0d9488); box-shadow: 0 8px 24px #00000066; }
+    .tile.hidden { display: none; }
+    .tile-title .ico { margin-right: 8px; }
+    .tag { font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 5px; letter-spacing: 0.8px; align-self: flex-start; }
+    .tag-organizers { color: #a3e635; background: #1a2a08; border: 1px solid #365314; }
+    .tag-attendees  { color: #5eead4; background: #0d2a2a; border: 1px solid #0d9488; }
+    .tag-guide      { color: #4ade80; background: #0d2a0d; border: 1px solid #166534; }
+    .tag-data       { color: #fbbf24; background: #1a1000; border: 1px solid #d97706; }
+    .tile-title { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.45; flex-grow: 1; }
+    .tile-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: #555; }
+    .tile-meta .go { color: #0d9488; white-space: nowrap; }
+    .tile:hover .go { color: #5eead4; }
   </style>
 </head>
 
@@ -96,141 +133,228 @@ import PageFooter from "../../components/PageFooter.astro";
       <span class="t-es">Guías de temporada de eventos caribeños — escritas a partir de nuestros propios datos.</span>
     </p>
 
-    <a class="post-card" href="/blog/why-organize-eco-friendly-event/">
-      <img src="/images/og-why-organize.webp" alt="Why organize an eco-friendly event" width="1200" height="630" loading="lazy" />
-      <div class="post-card-body">
-        <div class="post-card-date">
-          <span class="t-en">July 2026</span>
-          <span class="t-fr">Juillet 2026</span>
-          <span class="t-kr">July 2026</span>
-          <span class="t-es">July 2026</span>
-        </div>
-        <div class="post-card-title">
+    <a class="featured" href="/blog/why-organize-eco-friendly-event/">
+      <div class="featured-label">
+        <span class="t-en">LATEST — JULY 2026</span>
+        <span class="t-fr">DERNIER — JUILLET 2026</span>
+        <span class="t-kr">DÈNYE — JIYÈ 2026</span>
+        <span class="t-es">ÚLTIMO — JULIO 2026</span>
+      </div>
+      <span class="featured-icon">🌱</span>
+      <div class="featured-title">
+        <span class="t-en">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
+        <span class="t-fr">Événements écoresponsables dans la Caraïbe : pourquoi ça vaut le coup</span>
+        <span class="t-kr">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
+        <span class="t-es">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
+      </div>
+      <div class="featured-desc">
+        <span class="t-en">Cost, law, sponsors, audience demand, resilience and community — seven reasons Caribbean organisers go green.</span>
+        <span class="t-fr">Coût, loi, sponsors, attentes du public, résilience et communauté — sept raisons pour les organisateurs.</span>
+        <span class="t-kr">Cost, law, sponsors, audience demand, resilience and community — seven reasons Caribbean organisers go green.</span>
+        <span class="t-es">Cost, law, sponsors, audience demand, resilience and community — seven reasons Caribbean organisers go green.</span>
+      </div>
+      <div class="featured-meta">
+        <span>
+          <span class="t-en">FOR ORGANIZERS</span>
+          <span class="t-fr">POUR ORGANISATEURS</span>
+          <span class="t-kr">POU ÒGANIZATÈ</span>
+          <span class="t-es">PARA ORGANIZADORES</span>
+        </span>
+        <span>
+          <span class="t-en">5 MIN READ</span>
+          <span class="t-fr">5 MIN DE LECTURE</span>
+          <span class="t-kr">5 MIN</span>
+          <span class="t-es">5 MIN DE LECTURA</span>
+        </span>
+        <span class="go">
+          <span class="t-en">READ →</span>
+          <span class="t-fr">LIRE →</span>
+          <span class="t-kr">LI →</span>
+          <span class="t-es">LEER →</span>
+        </span>
+      </div>
+    </a>
+
+    <div class="chips">
+      <button class="chip active" data-f="all">
+        <span class="t-en">All · 5</span>
+        <span class="t-fr">Tout · 5</span>
+        <span class="t-kr">Tout · 5</span>
+        <span class="t-es">Todos · 5</span>
+      </button>
+      <button class="chip" data-f="organize">
+        <span class="t-en">Organize an event</span>
+        <span class="t-fr">Organiser</span>
+        <span class="t-kr">Òganize</span>
+        <span class="t-es">Organizar</span>
+      </button>
+      <button class="chip" data-f="out">
+        <span class="t-en">Go out</span>
+        <span class="t-fr">Sortir</span>
+        <span class="t-kr">Soti</span>
+        <span class="t-es">Salir</span>
+      </button>
+      <button class="chip" data-f="data">
+        <span class="t-en">Explore the data</span>
+        <span class="t-fr">Explorer les données</span>
+        <span class="t-kr">Eksplore done yo</span>
+        <span class="t-es">Explorar los datos</span>
+      </button>
+    </div>
+
+    <div class="tiles">
+
+      <a class="tile" data-c="organize" href="/blog/why-organize-eco-friendly-event/" style="--accent:#a3e635">
+        <span class="tile-title"><span class="ico">🌱</span>
           <span class="t-en">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
           <span class="t-fr">Événements écoresponsables dans la Caraïbe : pourquoi ça vaut le coup</span>
           <span class="t-kr">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
           <span class="t-es">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
-        </div>
-        <div class="post-card-excerpt">
-          <span class="t-en">Cost, law, sponsors, audience demand, resilience and community — seven reasons Caribbean organisers go green.</span>
-          <span class="t-fr">Coût, loi, sponsors, attentes du public, résilience et communauté — sept raisons pour les organisateurs.</span>
-          <span class="t-kr">Cost, law, sponsors, audience demand, resilience and community — seven reasons Caribbean organisers go green.</span>
-          <span class="t-es">Cost, law, sponsors, audience demand, resilience and community — seven reasons Caribbean organisers go green.</span>
-        </div>
-        <span class="post-card-read">
-          <span class="t-en">Read →</span>
-          <span class="t-fr">Lire →</span>
-          <span class="t-kr">Read →</span>
-          <span class="t-es">Read →</span>
         </span>
-      </div>
-    </a>
+        <span class="tag tag-organizers">
+          <span class="t-en">FOR ORGANIZERS</span>
+          <span class="t-fr">POUR ORGANISATEURS</span>
+          <span class="t-kr">POU ÒGANIZATÈ</span>
+          <span class="t-es">PARA ORGANIZADORES</span>
+        </span>
+        <span class="tile-meta">
+          <span>
+            <span class="t-en">July 2026 · 5 min</span>
+            <span class="t-fr">Juillet 2026 · 5 min</span>
+            <span class="t-kr">Jiyè 2026 · 5 min</span>
+            <span class="t-es">Julio 2026 · 5 min</span>
+          </span>
+          <span class="go">
+            <span class="t-en">READ →</span>
+            <span class="t-fr">LIRE →</span>
+            <span class="t-kr">LI →</span>
+            <span class="t-es">LEER →</span>
+          </span>
+        </span>
+      </a>
 
-    <a class="post-card" href="/blog/why-choose-sustainable-event/">
-      <img src="/images/og-why-choose.webp" alt="Why choose a sustainable event" width="1200" height="630" loading="lazy" />
-      <div class="post-card-body">
-        <div class="post-card-date">
-          <span class="t-en">July 2026</span>
-          <span class="t-fr">Juillet 2026</span>
-          <span class="t-kr">July 2026</span>
-          <span class="t-es">July 2026</span>
-        </div>
-        <div class="post-card-title">
+      <a class="tile" data-c="out" href="/blog/why-choose-sustainable-event/" style="--accent:#5eead4">
+        <span class="tile-title"><span class="ico">🎟️</span>
           <span class="t-en">Why Choose a Sustainable Event?</span>
           <span class="t-fr">Pourquoi choisir un événement écoresponsable ?</span>
           <span class="t-kr">Why Choose a Sustainable Event?</span>
           <span class="t-es">Why Choose a Sustainable Event?</span>
-        </div>
-        <div class="post-card-excerpt">
-          <span class="t-en">A cheaper, healthier, better night out — and better for the islands. Seven reasons, from your wallet to the reefs.</span>
-          <span class="t-fr">Une sortie moins chère, plus saine, meilleure — et meilleure pour les îles. Sept raisons, de votre porte-monnaie aux récifs.</span>
-          <span class="t-kr">A cheaper, healthier, better night out — and better for the islands. Seven reasons, from your wallet to the reefs.</span>
-          <span class="t-es">A cheaper, healthier, better night out — and better for the islands. Seven reasons, from your wallet to the reefs.</span>
-        </div>
-        <span class="post-card-read">
-          <span class="t-en">Read →</span>
-          <span class="t-fr">Lire →</span>
-          <span class="t-kr">Read →</span>
-          <span class="t-es">Read →</span>
         </span>
-      </div>
-    </a>
+        <span class="tag tag-attendees">
+          <span class="t-en">FOR ATTENDEES</span>
+          <span class="t-fr">POUR PARTICIPANTS</span>
+          <span class="t-kr">POU PATISIPAN</span>
+          <span class="t-es">PARA ASISTENTES</span>
+        </span>
+        <span class="tile-meta">
+          <span>
+            <span class="t-en">July 2026 · 4 min</span>
+            <span class="t-fr">Juillet 2026 · 4 min</span>
+            <span class="t-kr">Jiyè 2026 · 4 min</span>
+            <span class="t-es">Julio 2026 · 4 min</span>
+          </span>
+          <span class="go">
+            <span class="t-en">READ →</span>
+            <span class="t-fr">LIRE →</span>
+            <span class="t-kr">LI →</span>
+            <span class="t-es">LEER →</span>
+          </span>
+        </span>
+      </a>
 
-    <a class="post-card" href="/blog/organize-eco-friendly-event/">
-      <div class="post-card-body">
-        <div class="post-card-date">
-          <span class="t-en">July 2026</span><span class="t-fr">Juillet 2026</span><span class="t-kr">July 2026</span><span class="t-es">July 2026</span>
-        </div>
-        <div class="post-card-title">
+      <a class="tile" data-c="organize" href="/blog/organize-eco-friendly-event/" style="--accent:#4ade80">
+        <span class="tile-title"><span class="ico">🧭</span>
           <span class="t-en">How to organize a REAL eco-friendly event in the Caribbean</span>
           <span class="t-fr">Comment organiser un événement VRAIMENT écoresponsable dans la Caraïbe</span>
           <span class="t-kr">How to organize a REAL eco-friendly event in the Caribbean</span>
           <span class="t-es">How to organize a REAL eco-friendly event in the Caribbean</span>
-        </div>
-        <div class="post-card-excerpt">
-          <span class="t-en">The 5 dimensions of a genuinely low-impact Caribbean festival — concrete steps and local partners. The eco guide's hub.</span>
-          <span class="t-fr">Les 5 dimensions d'un festival caribéen vraiment à faible impact — étapes concrètes et partenaires locaux. Le pilier du guide éco.</span>
-          <span class="t-kr">The 5 dimensions of a genuinely low-impact Caribbean festival — concrete steps and local partners. The eco guide's hub.</span>
-          <span class="t-es">The 5 dimensions of a genuinely low-impact Caribbean festival — concrete steps and local partners. The eco guide's hub.</span>
-        </div>
-        <span class="post-card-read"><span class="t-en">Read →</span><span class="t-fr">Lire →</span><span class="t-kr">Read →</span><span class="t-es">Read →</span></span>
-      </div>
-    </a>
+        </span>
+        <span class="tag tag-guide">
+          <span class="t-en">ECO GUIDE · HUB</span>
+          <span class="t-fr">GUIDE ÉCO · PILIER</span>
+          <span class="t-kr">GID EKO · HUB</span>
+          <span class="t-es">GUÍA ECO · HUB</span>
+        </span>
+        <span class="tile-meta">
+          <span>
+            <span class="t-en">July 2026 · 2 min</span>
+            <span class="t-fr">Juillet 2026 · 2 min</span>
+            <span class="t-kr">Jiyè 2026 · 2 min</span>
+            <span class="t-es">Julio 2026 · 2 min</span>
+          </span>
+          <span class="go">
+            <span class="t-en">READ →</span>
+            <span class="t-fr">LIRE →</span>
+            <span class="t-kr">LI →</span>
+            <span class="t-es">LEER →</span>
+          </span>
+        </span>
+      </a>
 
-    <a class="post-card" href="/blog/eco-events-emissions/">
-      <div class="post-card-body">
-        <div class="post-card-date">
-          <span class="t-en">July 2026</span><span class="t-fr">Juillet 2026</span><span class="t-kr">July 2026</span><span class="t-es">July 2026</span>
-        </div>
-        <div class="post-card-title">
+      <a class="tile" data-c="organize" href="/blog/eco-events-emissions/" style="--accent:#4ade80">
+        <span class="tile-title"><span class="ico">💨</span>
           <span class="t-en">Cutting event emissions in the Caribbean</span>
           <span class="t-fr">Réduire les émissions d'un événement dans la Caraïbe</span>
           <span class="t-kr">Cutting event emissions in the Caribbean</span>
           <span class="t-es">Cutting event emissions in the Caribbean</span>
-        </div>
-        <div class="post-card-excerpt">
-          <span class="t-en">Shared attendee transport (with local partners), renewable energy, offsets, regional artists and low-carbon catering.</span>
-          <span class="t-fr">Transport partagé du public (avec partenaires locaux), énergie renouvelable, compensation, artistes régionaux et restauration bas-carbone.</span>
-          <span class="t-kr">Shared attendee transport (with local partners), renewable energy, offsets, regional artists and low-carbon catering.</span>
-          <span class="t-es">Shared attendee transport (with local partners), renewable energy, offsets, regional artists and low-carbon catering.</span>
-        </div>
-        <span class="post-card-read"><span class="t-en">Read →</span><span class="t-fr">Lire →</span><span class="t-kr">Read →</span><span class="t-es">Read →</span></span>
-      </div>
-    </a>
+        </span>
+        <span class="tag tag-guide">
+          <span class="t-en">DIMENSION 1 / 5</span>
+          <span class="t-fr">DIMENSION 1 / 5</span>
+          <span class="t-kr">DIMANSYON 1 / 5</span>
+          <span class="t-es">DIMENSIÓN 1 / 5</span>
+        </span>
+        <span class="tile-meta">
+          <span>
+            <span class="t-en">July 2026 · 3 min</span>
+            <span class="t-fr">Juillet 2026 · 3 min</span>
+            <span class="t-kr">Jiyè 2026 · 3 min</span>
+            <span class="t-es">Julio 2026 · 3 min</span>
+          </span>
+          <span class="go">
+            <span class="t-en">READ →</span>
+            <span class="t-fr">LIRE →</span>
+            <span class="t-kr">LI →</span>
+            <span class="t-es">LEER →</span>
+          </span>
+        </span>
+      </a>
 
-    <a class="post-card" href="/blog/top-carnivals-2026/">
-      <img src="/images/vincymas.webp" alt="Caribbean carnival" width="860" height="400" loading="eager" />
-      <div class="post-card-body">
-        <div class="post-card-date">
-          <span class="t-en">July 2026</span>
-          <span class="t-fr">Juillet 2026</span>
-          <span class="t-kr">Jiyè 2026</span>
-          <span class="t-es">Julio de 2026</span>
-        </div>
-        <div class="post-card-title">
+      <a class="tile" data-c="out data" href="/blog/top-carnivals-2026/" style="--accent:#fbbf24">
+        <span class="tile-title"><span class="ico">🎭</span>
           <span class="t-en">The 5 Caribbean carnivals to live this summer 2026</span>
           <span class="t-fr">Les 5 carnavals caribéens à vivre cet été 2026</span>
           <span class="t-kr">5 kanaval karayibeyen pou viv ete 2026 la</span>
           <span class="t-es">Los 5 carnavales caribeños para vivir este verano 2026</span>
-        </div>
-        <div class="post-card-excerpt">
-          <span class="t-en">Vincy Mas, Lucian Carnival, Anguilla Summer Festival, Crop Over, SpiceMas — dates, highlights and tickets, in calendar order.</span>
-          <span class="t-fr">Vincy Mas, Lucian Carnival, Anguilla Summer Festival, Crop Over, SpiceMas — dates, temps forts et billets, dans l'ordre du calendrier.</span>
-          <span class="t-kr">Vincy Mas, Lucian Carnival, Anguilla Summer Festival, Crop Over, SpiceMas — dat, gwo moman epi tikè, nan lòd kalandriye a.</span>
-          <span class="t-es">Vincy Mas, Lucian Carnival, Anguilla Summer Festival, Crop Over, SpiceMas — fechas, momentos clave y entradas, en orden de calendario.</span>
-        </div>
-        <span class="post-card-read">
-          <span class="t-en">Read →</span>
-          <span class="t-fr">Lire →</span>
-          <span class="t-kr">Li →</span>
-          <span class="t-es">Leer →</span>
         </span>
-      </div>
-    </a>
+        <span class="tag tag-data">
+          <span class="t-en">DATA · RANKING</span>
+          <span class="t-fr">DONNÉES · CLASSEMENT</span>
+          <span class="t-kr">DONE · KLASMAN</span>
+          <span class="t-es">DATOS · RANKING</span>
+        </span>
+        <span class="tile-meta">
+          <span>
+            <span class="t-en">July 2026 · 6 min</span>
+            <span class="t-fr">Juillet 2026 · 6 min</span>
+            <span class="t-kr">Jiyè 2026 · 6 min</span>
+            <span class="t-es">Julio 2026 · 6 min</span>
+          </span>
+          <span class="go">
+            <span class="t-en">READ →</span>
+            <span class="t-fr">LIRE →</span>
+            <span class="t-kr">LI →</span>
+            <span class="t-es">LEER →</span>
+          </span>
+        </span>
+      </a>
+
+    </div>
 
   </div>
 
   <script is:inline src="/scripts/lang.js" defer></script>
+  <script is:inline src="/scripts/blog-filter.js" defer></script>
 <PageFooter />
 </body>
 </html>
