@@ -90,8 +90,6 @@ import PageFooter from "../../components/PageFooter.astro";
     .tag { font-size: 10px; font-weight: 800; padding: 3px 10px; border-radius: 5px; letter-spacing: 0.8px; align-self: flex-start; }
     .tag-organizers { color: #a3e635; background: #1a2a08; border: 1px solid #365314; }
     .tag-attendees  { color: #5eead4; background: #0d2a2a; border: 1px solid #0d9488; }
-    .tag-guide      { color: #4ade80; background: #0d2a0d; border: 1px solid #166534; }
-    .tag-data       { color: #fbbf24; background: #1a1000; border: 1px solid #d97706; }
     .tile-title { font-size: 14px; font-weight: 700; color: #fff; line-height: 1.45; flex-grow: 1; }
     .tile-meta { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: #555; }
     .tile-meta .go { color: #0d9488; white-space: nowrap; }
@@ -111,14 +109,10 @@ import PageFooter from "../../components/PageFooter.astro";
         <a class="back-link" href="/">
           <span class="t-en">← Back</span>
           <span class="t-fr">← Retour</span>
-          <span class="t-kr">← Retounen</span>
-          <span class="t-es">← Volver</span>
         </a>
         <div class="lang-group">
           <button class="lang-btn" data-lang="en">EN</button>
           <button class="lang-btn" data-lang="fr">FR</button>
-          <button class="lang-btn" data-lang="kr">KR</button>
-          <button class="lang-btn" data-lang="es">ES</button>
         </div>
       </div>
     </div>
@@ -129,222 +123,152 @@ import PageFooter from "../../components/PageFooter.astro";
     <p class="blog-sub">
       <span class="t-en">Seasonal guides to Caribbean events — written from our own dataset.</span>
       <span class="t-fr">Guides saisonniers des événements caribéens — écrits à partir de nos propres données.</span>
-      <span class="t-kr">Gid sezon pou evenman karayibeyen yo — ekri apati pwòp done nou.</span>
-      <span class="t-es">Guías de temporada de eventos caribeños — escritas a partir de nuestros propios datos.</span>
     </p>
 
     <a class="featured" href="/blog/why-organize-eco-friendly-event/">
       <div class="featured-label">
         <span class="t-en">LATEST — JULY 2026</span>
         <span class="t-fr">DERNIER — JUILLET 2026</span>
-        <span class="t-kr">DÈNYE — JIYÈ 2026</span>
-        <span class="t-es">ÚLTIMO — JULIO 2026</span>
       </div>
       <span class="featured-icon">🌱</span>
       <div class="featured-title">
         <span class="t-en">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
-        <span class="t-fr">Événements écoresponsables dans la Caraïbe : pourquoi ça vaut le coup</span>
-        <span class="t-kr">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
-        <span class="t-es">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
+        <span class="t-fr">Événements éco-responsables dans la Caraïbe : pourquoi ça vaut le coup</span>
       </div>
       <div class="featured-desc">
         <span class="t-en">Cost, law, sponsors, audience demand, resilience and community — seven reasons Caribbean organisers go green.</span>
         <span class="t-fr">Coût, loi, sponsors, attentes du public, résilience et communauté — sept raisons pour les organisateurs.</span>
-        <span class="t-kr">Cost, law, sponsors, audience demand, resilience and community — seven reasons Caribbean organisers go green.</span>
-        <span class="t-es">Cost, law, sponsors, audience demand, resilience and community — seven reasons Caribbean organisers go green.</span>
       </div>
       <div class="featured-meta">
         <span>
           <span class="t-en">FOR ORGANIZERS</span>
           <span class="t-fr">POUR ORGANISATEURS</span>
-          <span class="t-kr">POU ÒGANIZATÈ</span>
-          <span class="t-es">PARA ORGANIZADORES</span>
         </span>
         <span>
           <span class="t-en">5 MIN READ</span>
           <span class="t-fr">5 MIN DE LECTURE</span>
-          <span class="t-kr">5 MIN</span>
-          <span class="t-es">5 MIN DE LECTURA</span>
         </span>
         <span class="go">
           <span class="t-en">READ →</span>
           <span class="t-fr">LIRE →</span>
-          <span class="t-kr">LI →</span>
-          <span class="t-es">LEER →</span>
         </span>
       </div>
     </a>
 
     <div class="chips">
-      <button class="chip active" data-f="all">
-        <span class="t-en">All · 5</span>
-        <span class="t-fr">Tout · 5</span>
-        <span class="t-kr">Tout · 5</span>
-        <span class="t-es">Todos · 5</span>
+      <button class="chip" data-f="organizers">
+        <span class="t-en">Organizers</span>
+        <span class="t-fr">Organisateurs</span>
       </button>
-      <button class="chip" data-f="organize">
-        <span class="t-en">Organize an event</span>
-        <span class="t-fr">Organiser</span>
-        <span class="t-kr">Òganize</span>
-        <span class="t-es">Organizar</span>
-      </button>
-      <button class="chip" data-f="out">
-        <span class="t-en">Go out</span>
-        <span class="t-fr">Sortir</span>
-        <span class="t-kr">Soti</span>
-        <span class="t-es">Salir</span>
-      </button>
-      <button class="chip" data-f="data">
-        <span class="t-en">Explore the data</span>
-        <span class="t-fr">Explorer les données</span>
-        <span class="t-kr">Eksplore done yo</span>
-        <span class="t-es">Explorar los datos</span>
+      <button class="chip" data-f="attendees">
+        <span class="t-en">Attendees</span>
+        <span class="t-fr">Participants</span>
       </button>
     </div>
 
     <div class="tiles">
 
-      <a class="tile" data-c="organize" href="/blog/why-organize-eco-friendly-event/" style="--accent:#a3e635">
+      <a class="tile" data-c="organizers" href="/blog/why-organize-eco-friendly-event/" style="--accent:#a3e635">
         <span class="tile-title"><span class="ico">🌱</span>
           <span class="t-en">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
-          <span class="t-fr">Événements écoresponsables dans la Caraïbe : pourquoi ça vaut le coup</span>
-          <span class="t-kr">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
-          <span class="t-es">Eco-Friendly Events in the Caribbean: Why They're Worth It</span>
+          <span class="t-fr">Événements éco-responsables dans la Caraïbe : pourquoi ça vaut le coup</span>
         </span>
         <span class="tag tag-organizers">
           <span class="t-en">FOR ORGANIZERS</span>
           <span class="t-fr">POUR ORGANISATEURS</span>
-          <span class="t-kr">POU ÒGANIZATÈ</span>
-          <span class="t-es">PARA ORGANIZADORES</span>
         </span>
         <span class="tile-meta">
           <span>
             <span class="t-en">July 2026 · 5 min</span>
             <span class="t-fr">Juillet 2026 · 5 min</span>
-            <span class="t-kr">Jiyè 2026 · 5 min</span>
-            <span class="t-es">Julio 2026 · 5 min</span>
           </span>
           <span class="go">
             <span class="t-en">READ →</span>
             <span class="t-fr">LIRE →</span>
-            <span class="t-kr">LI →</span>
-            <span class="t-es">LEER →</span>
           </span>
         </span>
       </a>
 
-      <a class="tile" data-c="out" href="/blog/why-choose-sustainable-event/" style="--accent:#5eead4">
+      <a class="tile" data-c="attendees" href="/blog/why-choose-sustainable-event/" style="--accent:#5eead4">
         <span class="tile-title"><span class="ico">🎟️</span>
           <span class="t-en">Why Choose a Sustainable Event?</span>
-          <span class="t-fr">Pourquoi choisir un événement écoresponsable ?</span>
-          <span class="t-kr">Why Choose a Sustainable Event?</span>
-          <span class="t-es">Why Choose a Sustainable Event?</span>
+          <span class="t-fr">Pourquoi choisir un événement éco-responsable ?</span>
         </span>
         <span class="tag tag-attendees">
           <span class="t-en">FOR ATTENDEES</span>
           <span class="t-fr">POUR PARTICIPANTS</span>
-          <span class="t-kr">POU PATISIPAN</span>
-          <span class="t-es">PARA ASISTENTES</span>
         </span>
         <span class="tile-meta">
           <span>
             <span class="t-en">July 2026 · 4 min</span>
             <span class="t-fr">Juillet 2026 · 4 min</span>
-            <span class="t-kr">Jiyè 2026 · 4 min</span>
-            <span class="t-es">Julio 2026 · 4 min</span>
           </span>
           <span class="go">
             <span class="t-en">READ →</span>
             <span class="t-fr">LIRE →</span>
-            <span class="t-kr">LI →</span>
-            <span class="t-es">LEER →</span>
           </span>
         </span>
       </a>
 
-      <a class="tile" data-c="organize" href="/blog/organize-eco-friendly-event/" style="--accent:#4ade80">
+      <a class="tile" data-c="organizers" href="/blog/organize-eco-friendly-event/" style="--accent:#4ade80">
         <span class="tile-title"><span class="ico">🧭</span>
           <span class="t-en">How to organize a REAL eco-friendly event in the Caribbean</span>
-          <span class="t-fr">Comment organiser un événement VRAIMENT écoresponsable dans la Caraïbe</span>
-          <span class="t-kr">How to organize a REAL eco-friendly event in the Caribbean</span>
-          <span class="t-es">How to organize a REAL eco-friendly event in the Caribbean</span>
+          <span class="t-fr">Comment organiser un événement VRAIMENT éco-responsable dans la Caraïbe</span>
         </span>
-        <span class="tag tag-guide">
-          <span class="t-en">ECO GUIDE · HUB</span>
-          <span class="t-fr">GUIDE ÉCO · PILIER</span>
-          <span class="t-kr">GID EKO · HUB</span>
-          <span class="t-es">GUÍA ECO · HUB</span>
+        <span class="tag tag-organizers">
+          <span class="t-en">FOR ORGANIZERS</span>
+          <span class="t-fr">POUR ORGANISATEURS</span>
         </span>
         <span class="tile-meta">
           <span>
             <span class="t-en">July 2026 · 2 min</span>
             <span class="t-fr">Juillet 2026 · 2 min</span>
-            <span class="t-kr">Jiyè 2026 · 2 min</span>
-            <span class="t-es">Julio 2026 · 2 min</span>
           </span>
           <span class="go">
             <span class="t-en">READ →</span>
             <span class="t-fr">LIRE →</span>
-            <span class="t-kr">LI →</span>
-            <span class="t-es">LEER →</span>
           </span>
         </span>
       </a>
 
-      <a class="tile" data-c="organize" href="/blog/eco-events-emissions/" style="--accent:#4ade80">
+      <a class="tile" data-c="organizers" href="/blog/eco-events-emissions/" style="--accent:#4ade80">
         <span class="tile-title"><span class="ico">💨</span>
           <span class="t-en">Cutting event emissions in the Caribbean</span>
           <span class="t-fr">Réduire les émissions d'un événement dans la Caraïbe</span>
-          <span class="t-kr">Cutting event emissions in the Caribbean</span>
-          <span class="t-es">Cutting event emissions in the Caribbean</span>
         </span>
-        <span class="tag tag-guide">
-          <span class="t-en">DIMENSION 1 / 5</span>
-          <span class="t-fr">DIMENSION 1 / 5</span>
-          <span class="t-kr">DIMANSYON 1 / 5</span>
-          <span class="t-es">DIMENSIÓN 1 / 5</span>
+        <span class="tag tag-organizers">
+          <span class="t-en">FOR ORGANIZERS</span>
+          <span class="t-fr">POUR ORGANISATEURS</span>
         </span>
         <span class="tile-meta">
           <span>
             <span class="t-en">July 2026 · 3 min</span>
             <span class="t-fr">Juillet 2026 · 3 min</span>
-            <span class="t-kr">Jiyè 2026 · 3 min</span>
-            <span class="t-es">Julio 2026 · 3 min</span>
           </span>
           <span class="go">
             <span class="t-en">READ →</span>
             <span class="t-fr">LIRE →</span>
-            <span class="t-kr">LI →</span>
-            <span class="t-es">LEER →</span>
           </span>
         </span>
       </a>
 
-      <a class="tile" data-c="out data" href="/blog/top-carnivals-2026/" style="--accent:#fbbf24">
+      <a class="tile" data-c="attendees" href="/blog/top-carnivals-2026/" style="--accent:#fbbf24">
         <span class="tile-title"><span class="ico">🎭</span>
           <span class="t-en">The 5 Caribbean carnivals to live this summer 2026</span>
           <span class="t-fr">Les 5 carnavals caribéens à vivre cet été 2026</span>
-          <span class="t-kr">5 kanaval karayibeyen pou viv ete 2026 la</span>
-          <span class="t-es">Los 5 carnavales caribeños para vivir este verano 2026</span>
         </span>
-        <span class="tag tag-data">
-          <span class="t-en">DATA · RANKING</span>
-          <span class="t-fr">DONNÉES · CLASSEMENT</span>
-          <span class="t-kr">DONE · KLASMAN</span>
-          <span class="t-es">DATOS · RANKING</span>
+        <span class="tag tag-attendees">
+          <span class="t-en">FOR ATTENDEES</span>
+          <span class="t-fr">POUR PARTICIPANTS</span>
         </span>
         <span class="tile-meta">
           <span>
             <span class="t-en">July 2026 · 6 min</span>
             <span class="t-fr">Juillet 2026 · 6 min</span>
-            <span class="t-kr">Jiyè 2026 · 6 min</span>
-            <span class="t-es">Julio 2026 · 6 min</span>
           </span>
           <span class="go">
             <span class="t-en">READ →</span>
             <span class="t-fr">LIRE →</span>
-            <span class="t-kr">LI →</span>
-            <span class="t-es">LEER →</span>
           </span>
         </span>
       </a>
