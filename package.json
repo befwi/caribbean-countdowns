@@ -22,7 +22,7 @@
     "sharp": ">=0.35.0"
   },
   "devDependencies": {
-    "astro": "^7.1.0",
+    "astro": "^7.1.6",
     "@astrojs/check": "^0.9.10",
     "@astrojs/renderer-preact": "^0.5.0",
     "eslint": "^10.8.0",
