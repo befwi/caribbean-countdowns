@@ -10,7 +10,10 @@
  * Tiers (header X-API-Key, silent fallback to free on missing/unknown key):
  *   free    (no key)   → name, startDate, endDate, country
  *   medium  KEY_MEDIUM → + description, type, website
- *   premium KEY_PREMIUM→ explicit allowlist of known fields (NOT a raw passthrough)
+ *   premium KEY_PREMIUM→ explicit allowlist of known fields (NOT a raw passthrough).
+ *                        Also merges in events-{year}-candidates.json (events failing a
+ *                        listing criterion, e.g. not yet 2nd edition), tagged listed:false.
+ *                        Free/medium never fetch the candidates object.
  *
  * Security (see caribbean-countdowns-api/api-authorization-audit.html):
  *   A — keys compared in constant time; free traffic rate-limited per IP.
@@ -29,8 +32,10 @@ const FIELDS = {
   medium:  ['name', 'startDate', 'endDate', 'country', 'description', 'type', 'website'],
   // Explicit allowlist (was `null` = raw passthrough). Adding a field to the data does NOT
   // expose it until it is listed here — turns a data edit back into a deliberate code decision.
+  // 'listed' is stamped by fetch() below (true for events-{year}.json, false for
+  // events-{year}-candidates.json) — it is never present in the source JSON files.
   premium: ['name', 'startDate', 'endDate', 'country', 'description', 'type', 'website',
-            'timezone', 'city', 'details', 'image', 'tickets', 'eco'],
+            'timezone', 'city', 'details', 'image', 'tickets', 'eco', 'listed'],
 };
 
 // Constant-time key comparison — avoids a timing side-channel on the secret keys.
@@ -130,6 +135,26 @@ export default {
       events = JSON.parse(await object.text());
     } catch {
       return jsonResponse({ error: 'Data parse error' }, 500, {}, cors);
+    }
+
+    // Premium only: merge in events that fail a listing criterion (e.g. not yet
+    // a 2nd edition) from a separate R2 object. Free/medium never fetch this —
+    // one less R2 read on the hot path, and it keeps them structurally unable
+    // to see unlisted events. Missing object (no candidates that year) → [].
+    if (tier === 'premium') {
+      const candidatesObject = await env.CARIBBEAN_DATA.get(`events-${year}-candidates.json`);
+      let candidates = [];
+      if (candidatesObject) {
+        try {
+          candidates = JSON.parse(await candidatesObject.text());
+        } catch {
+          return jsonResponse({ error: 'Data parse error' }, 500, {}, cors);
+        }
+      }
+      events = [
+        ...events.map(e => ({ ...e, listed: true })),
+        ...candidates.map(e => ({ ...e, listed: false })),
+      ];
     }
 
     // Optional query filters — stackable, applied before tier projection.
