@@ -20,6 +20,9 @@ on:
       - 'src/pages/**'
       - 'public/sitemap.xml'
 
+permissions:
+  contents: read
+
 jobs:
   check-sitemap:
     name: Verify every static page is listed in sitemap.xml
