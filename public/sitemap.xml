@@ -100,4 +100,18 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://caribbean.countdowns.co/blog/organize-eco-friendly-event/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://caribbean.countdowns.co/blog/eco-events-emissions/</loc>
+    <lastmod>2026-07-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>
