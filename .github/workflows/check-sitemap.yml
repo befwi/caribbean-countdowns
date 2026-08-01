@@ -1,0 +1,103 @@
+name: Check sitemap coverage
+
+# public/sitemap.xml is hand-maintained (not generated), so this is the guard
+# against a shipped page silently never being told to search engines — see
+# caribbean-countdowns-push/changes/08/2026-08-01-caribbean-countdowns-sitemap-missing-articles.md
+# for the incident that prompted this (2 of 5 blog articles were missing).
+#
+# The comparison logic is inlined below rather than a committed scripts/*.js
+# file — this workflow is the only place it needs to exist.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/pages/**'
+      - 'public/sitemap.xml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/pages/**'
+      - 'public/sitemap.xml'
+
+permissions:
+  contents: read
+
+jobs:
+  check-sitemap:
+    name: Verify every static page is listed in sitemap.xml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Compare src/pages/ against public/sitemap.xml
+        run: |
+          cat > "$RUNNER_TEMP/check-sitemap.mjs" <<'SCRIPT_EOF'
+          // Fails if any static page under src/pages/ is missing from public/sitemap.xml.
+          //
+          // Excluded on purpose:
+          //   - *.md.ts / *.ics.ts routes - alternate-format twins (AI markdown negotiation)
+          //     or data exports, not separate content that should be indexed.
+          //   - Dynamic routes ([param].astro) - not enumerable statically.
+          //   - *.astro files whose entire body is a redirect (frontmatter-only, no
+          //     template) - e.g. legacy-URL redirect stubs. A redirect isn't canonical
+          //     content; the destination it points to is already in the sitemap.
+
+          import { readFileSync, readdirSync, statSync } from 'node:fs';
+          import { join, relative, sep } from 'node:path';
+
+          const PAGES_DIR    = 'src/pages/';
+          const SITEMAP_PATH = 'public/sitemap.xml';
+          const SITE = 'https://caribbean.countdowns.co';
+
+          function walk(dir) {
+            let files = [];
+            for (const entry of readdirSync(dir)) {
+              const full = join(dir, entry);
+              if (statSync(full).isDirectory()) files = files.concat(walk(full));
+              else files.push(full);
+            }
+            return files;
+          }
+
+          function isPureRedirectStub(content) {
+            const parts = content.split('---');
+            if (parts.length < 3) return false;
+            const body = parts.slice(2).join('---').trim();
+            return body === '';
+          }
+
+          function toRouteUrl(filePath) {
+            const rel = relative(PAGES_DIR, filePath).split(sep).join('/');
+            const withoutExt = rel.replace(/\.astro$/, '');
+            const path = withoutExt === 'index' ? ''
+              : withoutExt.endsWith('/index') ? withoutExt.slice(0, -'/index'.length)
+              : withoutExt;
+            return `${SITE}/${path ? path + '/' : ''}`;
+          }
+
+          const astroFiles = walk(PAGES_DIR).filter(f => f.endsWith('.astro'));
+
+          const pageUrls = [];
+          for (const file of astroFiles) {
+            if (/\[.+\]/.test(file)) continue;
+            const content = readFileSync(file, 'utf8');
+            if (isPureRedirectStub(content)) continue;
+            pageUrls.push(toRouteUrl(file));
+          }
+
+          const sitemapXml = readFileSync(SITEMAP_PATH, 'utf8');
+          const sitemapUrls = new Set([...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]));
+
+          const missing = pageUrls.filter(u => !sitemapUrls.has(u));
+
+          if (missing.length > 0) {
+            console.error(`sitemap.xml is missing ${missing.length} page(s):`);
+            for (const u of missing) console.error(`  - ${u}`);
+            console.error('\nAdd each as a <url> entry in public/sitemap.xml (match the format of existing entries).');
+            process.exit(1);
+          }
+
+          console.log(`sitemap.xml covers all ${pageUrls.length} static pages.`);
+          SCRIPT_EOF
+          node "$RUNNER_TEMP/check-sitemap.mjs"
