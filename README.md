@@ -17,6 +17,8 @@ Countdown timers to festival application deadlines across the Caribbean and Fren
 - 🌿 Eco-evaluator — sustainability self-assessment tool for festival organisers
 - 🤝 NGO spotlight — community progress tracker for the [NGO community](https://caribbean.countdowns.co/ngo/)
 - 📝 Suggest a festival — 12-step submission wizard
+- 🛡️ [Security posture](https://caribbean.countdowns.co/security/) — OpenSSF Scorecard, CII Best Practices, and privacy compliance tracked publicly, updated as the project evolves
+- 🔒 Privacy-first visit counter — first-party only, no third-party analytics or tracking scripts
 
 ## 🔧 How it's built
 
@@ -32,29 +34,11 @@ The site follows a static-first, separation-of-concerns design:
 
 **Hosting and delivery** — The built site is served as static files through a CDN with security headers, TLS, and edge caching. No application server runs between deploys.
 
-**Community API** — A lightweight serverless function handles stateful community interactions (NGO progress tracking). It reads and writes to a key-value store and exposes a single JSON endpoint consumed by the browser.
+**Community & data layer** — Stateful interactions (community progress tracking, event submissions, and other features as they're added) are handled by small, single-purpose serverless functions rather than a persistent backend — each one reads/writes a scoped store and exposes a narrow JSON endpoint to the browser. This layer is designed to grow: new stateful features get their own function rather than accumulating into a monolith.
 
-**CI/CD** — Every push triggers an automated pipeline: type checking, linting, dependency audit, build, and deploy. All changes to `main` go through a pull request with mandatory review.
+**CI/CD** — Every push triggers an automated pipeline: type checking, linting, dependency audit, build, and deploy, built entirely from GitHub's own official Actions rather than custom deploy scripts — less to maintain, less to audit, and immediately recognizable to anyone who's worked with GitHub Actions before. All changes to `main` go through a pull request with mandatory review.
 
-**Key design principles:** no client-side framework, no runtime server, secrets never enter the repository, data separated from code.
-
-## 🚀 Quick start
-
-```bash
-git clone https://github.com/countdowns-co/caribbean-countdowns.git
-cd caribbean-countdowns
-npm install
-npm run dev
-```
-
-Open `http://localhost:4321` in your browser. The site will run with the NGO and sponsor data already in the repository. Festival data is fetched from private storage at build time — pages that depend on it will be empty in local dev but the full UI and all other pages are functional.
-
-To run the full type check and lint suite:
-
-```bash
-npm test        # type checker
-npm run lint    # JS linter
-```
+**Key design principles:** no client-side framework, no persistent server process, secrets never enter the repository, data separated from code.
 
 ## 💚 Open source
 
@@ -69,16 +53,6 @@ If you want to contribute data, translations or code — open an issue or a pull
 We believe that open source is itself a sustainability practice. Shared code reduces duplicated effort across the ecosystem — every fork that reuses this avoids someone rebuilding it from scratch.
 
 The site is designed to minimise compute: fully static, edge-served, no server running between deploys. The [sustainability page](https://caribbean.countdowns.co/sustainability/) and eco-evaluator tool are more meaningful because the project applies the same principles to itself.
-
-## 🧪 Tests
-
-Run the type checker:
-
-```bash
-npm run check
-```
-
-This runs `astro check`, which validates all Astro components and TypeScript types. It runs automatically in CI on every push and pull request.
 
 ## 📄 Licence
 
