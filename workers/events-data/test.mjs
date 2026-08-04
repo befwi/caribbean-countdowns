@@ -127,3 +127,51 @@ test("premium: malformed candidates JSON → 500, free tier for same year unaffe
   const freeBody = await freeRes.json();
   assert.equal(freeBody.length, 1);
 });
+
+test("premium tier receives priceRangeEstimate + priceCheckedDate when a pricerange entry matches", async () => {
+  const env = makeEnv({
+    "events-2026.json": JSON.stringify([
+      { name: "Test Fest", country: "Testland", startDate: "2026-01-01", endDate: "2026-01-01" },
+    ]),
+    "events-2026-pricerange.json": JSON.stringify([
+      { name: "Test Fest", country: "Testland", priceRangeEstimate: "under_20", priceCheckedDate: "2026-08-01" },
+    ]),
+  });
+  const res = await worker.fetch(get("/api/events/2026", { "X-API-Key": "premium-secret" }), env);
+  assert.equal(res.status, 200);
+  const body = await res.json();
+  const event = body.find((e) => e.name === "Test Fest");
+  assert.equal(event.priceRangeEstimate, "under_20");
+  assert.equal(event.priceCheckedDate, "2026-08-01");
+});
+
+test("free tier never receives priceRangeEstimate even when a pricerange entry matches", async () => {
+  const env = makeEnv({
+    "events-2026.json": JSON.stringify([
+      { name: "Test Fest", country: "Testland", startDate: "2026-01-01", endDate: "2026-01-01" },
+    ]),
+    "events-2026-pricerange.json": JSON.stringify([
+      { name: "Test Fest", country: "Testland", priceRangeEstimate: "under_20", priceCheckedDate: "2026-08-01" },
+    ]),
+  });
+  const res = await worker.fetch(get("/api/events/2026"), env);
+  assert.equal(res.status, 200);
+  const body = await res.json();
+  const event = body.find((e) => e.name === "Test Fest");
+  assert.equal("priceRangeEstimate" in event, false);
+  assert.equal("priceCheckedDate" in event, false);
+  assert.ok(!env.calls.includes("events-2026-pricerange.json"));
+});
+
+test("missing events-{year}-pricerange.json object does not error, behaves as before", async () => {
+  const env = makeEnv({
+    "events-2026.json": JSON.stringify([
+      { name: "Solo Event", country: "Nowhere", startDate: "2026-01-01", endDate: "2026-01-01" },
+    ]),
+  });
+  const res = await worker.fetch(get("/api/events/2026", { "X-API-Key": "premium-secret" }), env);
+  assert.equal(res.status, 200);
+  const body = await res.json();
+  assert.equal(body[0].name, "Solo Event");
+  assert.equal("priceRangeEstimate" in body[0], false);
+});
