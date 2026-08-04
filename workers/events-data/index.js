@@ -13,7 +13,9 @@
  *   premium KEY_PREMIUM→ explicit allowlist of known fields (NOT a raw passthrough).
  *                        Also merges in events-{year}-candidates.json (events failing a
  *                        listing criterion, e.g. not yet 2nd edition), tagged listed:false.
- *                        Free/medium never fetch the candidates object.
+ *                        Also merges in events-{year}-pricerange.json (ticket price-range
+ *                        estimates keyed by name+country) as priceRangeEstimate/priceCheckedDate.
+ *                        Free/medium never fetch either object.
  *
  * Security (see caribbean-countdowns-api/api-authorization-audit.html):
  *   A — keys compared in constant time; free traffic rate-limited per IP.
@@ -34,8 +36,11 @@ const FIELDS = {
   // expose it until it is listed here — turns a data edit back into a deliberate code decision.
   // 'listed' is stamped by fetch() below (true for events-{year}.json, false for
   // events-{year}-candidates.json) — it is never present in the source JSON files.
+  // priceRangeEstimate/priceCheckedDate come from events-{year}-pricerange.json —
+  // premium-only ticket price tracking, never on free/medium.
   premium: ['name', 'startDate', 'endDate', 'country', 'description', 'type', 'website',
-            'timezone', 'city', 'details', 'image', 'tickets', 'eco', 'listed'],
+            'timezone', 'city', 'details', 'image', 'tickets', 'eco', 'listed',
+            'priceRangeEstimate', 'priceCheckedDate'],
 };
 
 // Constant-time key comparison — avoids a timing side-channel on the secret keys.
@@ -155,6 +160,26 @@ export default {
         ...events.map(e => ({ ...e, listed: true })),
         ...candidates.map(e => ({ ...e, listed: false })),
       ];
+
+      // Premium only: attach ticket price-range estimates from a separate R2 object,
+      // produced by the price-tracking script. Keyed by name+country (events have no
+      // stable id). Missing object (no pricing run yet that year) → [], same as candidates.
+      const pricerangeObject = await env.CARIBBEAN_DATA.get(`events-${year}-pricerange.json`);
+      let priceranges = [];
+      if (pricerangeObject) {
+        try {
+          priceranges = JSON.parse(await pricerangeObject.text());
+        } catch {
+          return jsonResponse({ error: 'Data parse error' }, 500, {}, cors);
+        }
+      }
+      const priceByKey = new Map(priceranges.map(p => [`${p.name}::${p.country}`, p]));
+      events = events.map(e => {
+        const price = priceByKey.get(`${e.name}::${e.country}`);
+        return price
+          ? { ...e, priceRangeEstimate: price.priceRangeEstimate, priceCheckedDate: price.priceCheckedDate }
+          : e;
+      });
     }
 
     // Optional query filters — stackable, applied before tier projection.
