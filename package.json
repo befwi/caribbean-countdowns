@@ -24,11 +24,11 @@
     "brace-expansion": ">=5.0.9"
   },
   "devDependencies": {
-    "astro": "^7.2.0",
+    "astro": "^7.2.4",
     "@astrojs/check": "^0.9.10",
     "@astrojs/renderer-preact": "^0.5.0",
     "eslint": "^10.8.1",
-    "globals": "^17.9.0",
+    "globals": "^17.11.0",
     "typescript": "^5.8.0"
   }
 }
